@@ -122,14 +122,14 @@ public class Mundo
                     System.out.printf("\33[7;30m \33[0m");
                 }
 
-                else if(mundoQ1[i][j] >= 10 && mundoQ1[i][j] <= 99) //caminho possivel para o carro para baixo - preta
-                {
-                    System.out.printf("\33[7;30m \33[0m");
-                }
-
                 else if(mundoQ1[i][j] == 9) //carros - ciano
                 {
                     System.out.printf("\33[7;36m \33[0m");
+                }
+
+                else if(mundoQ1[i][j] >= 10 && mundoQ1[i][j] <= 99) //caminho possivel para o carro para baixo - preta
+                {
+                    System.out.printf("\33[7;30m \33[0m");
                 }
             }
 
@@ -164,6 +164,29 @@ public class Mundo
             Thread.sleep(50000); //funcao para dar uma pequena pausa
         }
         catch (InterruptedException e) { }
+    }
+
+    public int getLocalizacao(int quadrante, int x, int y)
+    {
+        if(quadrante == 1)
+        {
+            return mundoQ1[x][y];
+        }
+
+        else if (quadrante == 2)
+        {
+            return mundoQ2[x][y];
+        }
+
+        else if (quadrante == 3)
+        {
+            return mundoQ3[x][y];
+        }
+
+        else
+        {
+            return mundoQ4[x][y];
+        }
     }
 
     protected int mundoQ1[][], mundoQ2[][], mundoQ3[][], mundoQ4[][];
