@@ -33,7 +33,8 @@ public class Main
                     meuMundo.populaSemaforoQ1(semaforosQ1.get(i));
                 }
 
-                meuMundo.desenhaMundo();
+                meuMundo.desenhaMundo(meuMundo.getMundoQ1(), meuMundo.getMundoQ2());
+                meuMundo.desenhaMundo(meuMundo.getMundoQ3(), meuMundo.getMundoQ4());
                 meuMundo.pausaMundo();
             }
         }

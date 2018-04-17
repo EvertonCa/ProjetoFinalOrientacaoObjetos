@@ -71,69 +71,79 @@ public class Mundo
                 ,{0,0,0,0,0,0,0,20,20,20,20,20,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,8,2,7,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
     }
 
-    public void desenhaMundo()
+    public void desenhaMundo(int[][] q1, int[][] q2)
     {
         for (int i = 0; i < 60; i++)
         {
             for (int j = 0; j < 60; j++)
             {
-                if(mundoQ1[i][j] == 1) //quarteirao - azul
-                {
-                    System.out.printf("\33[7;34m  \33[0m");
-                }
+                desenhaLinha(q1, i, j);
+            }
 
-                else if(mundoQ1[i][j] == 0) //rua - preta
-                {
-                    System.out.printf("\33[7;30m  \33[0m");
-                }
-
-                else if(mundoQ1[i][j] == 2) //faixa - branca
-                {
-                    System.out.printf("\33[7;37m  \33[0m");
-                }
-
-                else if(mundoQ1[i][j] == 3) //semarofo - vermelho
-                {
-                    System.out.printf("\33[7;31m  \33[0m");
-                }
-
-                else if(mundoQ1[i][j] == 4) //semaforo - verde
-                {
-                    System.out.printf("\33[7;32m  \33[0m");
-                }
-
-                else if(mundoQ1[i][j] == 5) //caminho possivel para o carro para direita - preta
-                {
-                    System.out.printf("\33[7;30m  \33[0m");
-                }
-
-                else if(mundoQ1[i][j] == 6) //caminho possivel para o carro para esquerda - preta
-                {
-                    System.out.printf("\33[7;30m  \33[0m");
-                }
-
-                else if(mundoQ1[i][j] == 7) //caminho possivel para o carro para cima - preta
-                {
-                    System.out.printf("\33[7;30m  \33[0m");
-                }
-
-                else if(mundoQ1[i][j] == 8) //caminho possivel para o carro para baixo - preta
-                {
-                    System.out.printf("\33[7;30m  \33[0m");
-                }
-
-                else if(mundoQ1[i][j] == 9) //carros - ciano
-                {
-                    System.out.printf("\33[7;36m  \33[0m");
-                }
-
-                else if(mundoQ1[i][j] >= 10 && mundoQ1[i][j] <= 99) //caminho possivel para o carro para baixo - preta
-                {
-                    System.out.printf("\33[7;30m  \33[0m");
-                }
+            for (int j = 0; j < 60; j++)
+            {
+                desenhaLinha(q2, i, j);
             }
 
             System.out.printf("\n");
+        }
+    }
+
+    public void desenhaLinha(int[][] quadrante, int i, int j)
+    {
+        if(quadrante[i][j] == 1) //quarteirao - azul
+        {
+            System.out.printf("\33[7;34m  \33[0m");
+        }
+
+        else if(quadrante[i][j] == 0) //rua - preta
+        {
+            System.out.printf("\33[7;30m  \33[0m");
+        }
+
+        else if(quadrante[i][j] == 2) //faixa - branca
+        {
+            System.out.printf("\33[7;37m  \33[0m");
+        }
+
+        else if(quadrante[i][j] == 3) //semarofo - vermelho
+        {
+            System.out.printf("\33[7;31m  \33[0m");
+        }
+
+        else if(quadrante[i][j] == 4) //semaforo - verde
+        {
+            System.out.printf("\33[7;32m  \33[0m");
+        }
+
+        else if(quadrante[i][j] == 5) //caminho possivel para o carro para direita - preta
+        {
+            System.out.printf("\33[7;30m  \33[0m");
+        }
+
+        else if(quadrante[i][j] == 6) //caminho possivel para o carro para esquerda - preta
+        {
+            System.out.printf("\33[7;30m  \33[0m");
+        }
+
+        else if(quadrante[i][j] == 7) //caminho possivel para o carro para cima - preta
+        {
+            System.out.printf("\33[7;30m  \33[0m");
+        }
+
+        else if(quadrante[i][j] == 8) //caminho possivel para o carro para baixo - preta
+        {
+            System.out.printf("\33[7;30m  \33[0m");
+        }
+
+        else if(quadrante[i][j] == 9) //carros - ciano
+        {
+            System.out.printf("\33[7;36m  \33[0m");
+        }
+
+        else if(quadrante[i][j] >= 10 && quadrante[i][j] <= 99) //caminho possivel para o carro para baixo - preta
+        {
+            System.out.printf("\33[7;30m  \33[0m");
         }
     }
 
@@ -187,6 +197,26 @@ public class Mundo
         {
             return mundoQ4[x][y];
         }
+    }
+
+    public int[][] getMundoQ1()
+    {
+        return mundoQ1;
+    }
+
+    public int[][] getMundoQ2()
+    {
+        return mundoQ2;
+    }
+
+    public int[][] getMundoQ3()
+    {
+        return mundoQ3;
+    }
+
+    public int[][] getMundoQ4()
+    {
+        return mundoQ4;
     }
 
     protected int mundoQ1[][], mundoQ2[][], mundoQ3[][], mundoQ4[][];
