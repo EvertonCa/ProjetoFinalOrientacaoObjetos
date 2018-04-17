@@ -28,13 +28,17 @@ public class Main
             ///loop de execução enquanto os veiculos nao chegam ao destino
             while (!cheguei)
             {
+                ///popula os semaforos do Q1 no mundo
                 for (int i=0; i < semaforosQ1.size(); i++)
                 {
                     meuMundo.populaSemaforoQ1(semaforosQ1.get(i));
                 }
 
+                ///desenha o mundo com os quadrantes 1 e 2
                 meuMundo.desenhaMundo(meuMundo.getMundoQ1(), meuMundo.getMundoQ2());
+                ///desenha o mundo com os quadrantes 3 e 4
                 meuMundo.desenhaMundo(meuMundo.getMundoQ3(), meuMundo.getMundoQ4());
+                ///pausa a execução do programa pelo tempo determinado
                 meuMundo.pausaMundo();
             }
         }
