@@ -125,6 +125,18 @@ public class Mundo
         }
     }
 
+    public void populaSemaforoQ1(Semaforo farol)
+    {
+        if(farol.getVerde() == true)
+        {
+            mundoQ1[farol.getX()][farol.getY()] = 4;
+        }
+        else
+        {
+            mundoQ1[farol.getX()][farol.getY()] = 3;
+        }
+    }
+
     public void pausaMundo()
     {
         try

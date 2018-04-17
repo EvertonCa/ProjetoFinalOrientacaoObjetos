@@ -1,70 +1,90 @@
 public class CoordenadasSemaforos
 {
-    public int[] getCoordenadasXQ1()
+    public int getSizeQ1()
     {
-        return coordenadasXQ1;
+        return coordenadasXQ1.length;
     }
 
-    public int[] getCoordenadasYQ1()
+    public int getSizeQ2()
     {
-        return coordenadasYQ1;
+        return coordenadasXQ2.length;
     }
 
-    public boolean[] getVerdeQ1()
+    public int getSizeQ3()
     {
-        return verdeQ1;
+        return coordenadasXQ3.length;
     }
 
-    public int[] getCoordenadasXQ2()
+    public int getSizeQ4()
     {
-        return coordenadasXQ2;
+        return coordenadasXQ4.length;
     }
 
-    public int[] getCoordenadasYQ2()
+    public int getCoordenadasXQ1(int i)
     {
-        return coordenadasYQ2;
+        return coordenadasXQ1[i];
     }
 
-    public boolean[] getVerdeQ2()
+    public int getCoordenadasYQ1(int i)
     {
-        return verdeQ2;
+        return coordenadasYQ1[i];
     }
 
-    public int[] getCoordenadasXQ3()
+    public boolean getVerdeQ1(int i)
     {
-        return coordenadasXQ3;
+        return verdeQ1[i];
     }
 
-    public int[] getCoordenadasYQ3()
+    public int getCoordenadasXQ2(int i)
     {
-        return coordenadasYQ3;
+        return coordenadasXQ2[i];
     }
 
-    public boolean[] getVerdeQ3()
+    public int getCoordenadasYQ2(int i)
     {
-        return verdeQ3;
+        return coordenadasYQ2[i];
     }
 
-    public int[] getCoordenadasXQ4()
+    public boolean getVerdeQ2(int i)
     {
-        return coordenadasXQ4;
+        return verdeQ2[i];
     }
 
-    public int[] getCoordenadasYQ4()
+    public int getCoordenadasXQ3(int i)
     {
-        return coordenadasYQ4;
+        return coordenadasXQ3[i];
     }
 
-    public boolean[] getVerdeQ4()
+    public int getCoordenadasYQ3(int i)
     {
-        return verdeQ4;
+        return coordenadasYQ3[i];
+    }
+
+    public boolean getVerdeQ3(int i)
+    {
+        return verdeQ3[i];
+    }
+
+    public int getCoordenadasXQ4(int i)
+    {
+        return coordenadasXQ4[i];
+    }
+
+    public int getCoordenadasYQ4(int i)
+    {
+        return coordenadasYQ4[i];
+    }
+
+    public boolean getVerdeQ4(int i)
+    {
+        return verdeQ4[i];
     }
 
     //31 semaforos Q1
     protected int coordenadasXQ1[] = {3,3,7,7,7,8,8,8,17,17,17,18,18,22,22,22,23,23,32,33,37,37,38,47,47,48,48,52,52,52,53};
     protected int coordenadasYQ1[] = {15,40,9,34,54,14,39,59,10,35,55,15,40,9,34,54,28,59,55,45,39,59,44,24,40,29,45,23,39,59,44};
-    protected boolean verdeQ1[] = {true, true, true, true, true, false, false, false, true, true, true, true, true,
-            false, false, false, true, true, true, false, true, true, false, false, false, true, true, true, true, true, false};
+    protected boolean verdeQ1[] = {true, true, true, true, true, false, false, false, false, false, false, true, true,
+            true, true, true, false, false, false, true, true, true, false, false, false, true, true, true, true, true, false};
 
     //xx semaforos Q2
     protected int coordenadasXQ2[] = {};

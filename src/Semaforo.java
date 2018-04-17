@@ -7,6 +7,21 @@ public class Semaforo
         this.verde = verde;
     }
 
+    public int getX()
+    {
+        return x;
+    }
+
+    public int getY()
+    {
+        return y;
+    }
+
+    public boolean getVerde()
+    {
+        return verde;
+    }
+
     protected int x, y;
     protected boolean verde;
 }
