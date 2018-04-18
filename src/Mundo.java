@@ -141,7 +141,7 @@ public class Mundo
             System.out.printf("\33[7;36m  \33[0m");
         }
 
-        else if(quadrante[i][j] >= 10 && quadrante[i][j] <= 99) //caminho possivel para o carro para baixo - preta
+        else if(quadrante[i][j] >= 10 && quadrante[i][j] <= 99) //intersecções - preta
         {
             System.out.printf("\33[7;30m  \33[0m");
         }
