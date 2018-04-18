@@ -87,9 +87,10 @@ public class CoordenadasSemaforos
             true, true, true, false, false, false, true, true, true, false, false, false, true, true, true, true, true, false};
 
     //xx semaforos Q2
-    protected int coordenadasXQ2[] = {};
-    protected int coordenadasYQ2[] = {};
-    protected boolean verdeQ2[] = {};
+    protected int coordenadasXQ2[] = {10,9,14,15,10,14,13,34,39,45,50,58,57,10,9,14,15,24,25,30,40,45,46,53,58,52,41,46};
+    protected int coordenadasYQ2[] = {3,8,9,4,22,26,29,22,23,22,23,23,26,46,51,52,47,51,46,47,51,52,47,46,47,51,54,55};
+    protected boolean verdeQ2[] = {true, true, true, true, true, false, false, false, false, false, false, true, true,
+            true, true, true, false, false, false, true, true, true, false, false, false, true, true, true};
 
     //xx semaforos Q3
     protected int coordenadasXQ3[] = {};
