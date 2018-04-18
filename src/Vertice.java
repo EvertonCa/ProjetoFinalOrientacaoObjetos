@@ -3,13 +3,19 @@ import java.util.List;
 
 public class Vertice implements Comparable<Vertice>
 {
-    public Vertice(){}
+    public Vertice()
+    {
+        visitado = false;
+    }
 
-    public Vertice(List <Aresta> arestas, List <Vertice> vizinhos)
+    public void setArestas(List<Aresta> arestas)
     {
         this.arestas.addAll(arestas);
-        verticesVizinhos.addAll(vizinhos);
-        visitado = false;
+    }
+
+    public void setVerticesVizinhos(List<Vertice> verticesVizinhos)
+    {
+        this.verticesVizinhos.addAll(verticesVizinhos);
     }
 
     public void setDescricao(String descricao)

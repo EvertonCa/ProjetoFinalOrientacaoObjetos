@@ -81,13 +81,11 @@ public class Dijkstra
                 }
 
             }
-            // Marca o vertice atual como visitado e o retira da lista de nao
-            // visitados
+            // Marca o vertice atual como visitado e o retira da lista de nao visitados
             atual.visitar();
             this.naoVisitados.remove(atual);
             /*
-             * Ordena a lista, para que o vertice com menor distancia fique na
-             * primeira posicao
+             * Ordena a lista, para que o vertice com menor distancia fique na primeira posicao
              */
             Collections.sort(naoVisitados);
             System.out.println("Nao foram visitados ainda:"+naoVisitados);

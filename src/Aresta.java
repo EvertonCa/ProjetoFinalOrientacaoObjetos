@@ -1,10 +1,11 @@
 public class Aresta
 {
-    public Aresta(Vertice origem, Vertice destino, int peso)
+    public Aresta(Vertice origem, Vertice destino, int peso, int quadrante)
     {
         this.origem = origem;
         this.destino = destino;
         this.peso = peso;
+        this.quadrante = quadrante;
     }
 
     public int getPeso()
@@ -20,6 +21,26 @@ public class Aresta
     public Vertice getOrigem()
     {
         return origem;
+    }
+
+    public void setBaixo(int[][] baixo)
+    {
+        this.baixo = baixo;
+    }
+
+    public void setCima(int[][] cima)
+    {
+        this.cima = cima;
+    }
+
+    public void setDireita(int[][] direita)
+    {
+        this.direita = direita;
+    }
+
+    public void setEsquerda(int[][] esquerda)
+    {
+        this.esquerda = esquerda;
     }
 
     protected Vertice origem, destino;
