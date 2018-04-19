@@ -93,7 +93,7 @@ public class CoordenadasSemaforos
 
     //17 semaforos semaforos Q3
     protected int coordenadasXQ3[] = {7,12,40,39,45,44,11,7,12,6,11,7,6,11,7,12,11};
-    protected int coordenadasYQ3[] = {4,5,4,9,5,10,10,19,20,24,25,34,39,40,49,50,55};
+    protected int coordenadasYQ3[] = {4,5,10,15,11,16,10,19,20,24,25,34,39,40,49,50,55};
     protected boolean verdeQ3[] = {true, true, true,false, false, true, true, true, false, false, true, true ,true, false, false,true, true};
 
     //xx semaforos Q4
