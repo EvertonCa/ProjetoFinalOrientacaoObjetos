@@ -97,12 +97,12 @@ public class CoordenadasSemaforos
     protected boolean verdeQ3[] = {};
 
     //xx semaforos Q4
-    protected int coordenadasXQ4[] = {44,9,40,14,25,45,57,8,19,39,51,24,56,8,2,20,7,25,47,19,41,24,46,3,20,42,8,17,47,
+    protected int coordenadasXQ4[] = {44,40,25,45,57,19,39,51,24,56,8,2,7,20,25,47,19,41,24,46,3,20,42,8,17,47,
             2,11,19,7,46,30,42,35,41,34,46};
-    protected int coordenadasYQ4[] = {0,9,9,10,10,10,10,14,14,14,14,15,15,25,29,29,30,30,30,34,34,35,35,39,39,39,40,40,
+    protected int coordenadasYQ4[] = {0,9,10,10,10,14,14,14,15,15,24,28,29,29,30,30,34,34,35,35,39,39,39,40,40,
             40,44,44,44,45,45,49,49,50,54,55,55};
     protected boolean verdeQ4[] = {true, true, true, true, true, false, false, false, false, false, false, true, true,
             true, true, true, false, false, false, true, true, true, false, false, false, true, true, true, true, true,
-            false, true, false, false, false, true, true, true, true, true};
+            false, true, false, false, false, true, true};
 
 }
