@@ -13,7 +13,7 @@ public class Main
         ///criação da lista que armazena os objetos semaforos do Q1
         ArrayList <Semaforo> semaforosQ1 = new ArrayList<>();
         
-	    ///criação da lista que armazana os objetos semaforos do Q3
+	 ///criação da lista que armazana os objetos semaforos do Q3
 	    ArrayList <Semaforo> semaforosQ3 = new ArrayList<>();        
 
         ///adiciona os objetos semaforos com as coordenadas padrão na lista do Q1
