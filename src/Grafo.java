@@ -5,8 +5,8 @@ public class Grafo
 {
     public Grafo()
     {
-        ///cria 18 vertices padrão para as 18 intersecções
-        for(int i = 0; i < 18; i++)
+        ///cria 76 vertices padrão para os 18 vertices nulos (que saem da cidade) e 58 intersecções
+        for(int i = 0; i < 76; i++)
         {
             vertices.add(new Vertice());
         }
@@ -163,6 +163,27 @@ public class Grafo
         buffer.get(18).setEsquerda(matriz);
         matriz = new int[][] {{28,39},{51,51}};
         buffer.get(18).setDireita(matriz);
+
+        ///cria a aresta 20, de peso 2, com rotas para baixo e cima, conectada ao vertice 13 e 17
+        buffer.add(new Aresta(vertices.get(13), vertices.get(17), 2, 1));
+        matriz = new int[][] {{8,8},{53,54}};
+        buffer.get(20).setBaixo(matriz);
+        matriz = new int[][] {{10,10},{53,54}};
+        buffer.get(20).setCima(matriz);
+
+        ///cria a aresta 21, de peso 7, com rotas para esquerda e direita, conectada ao vertice 16 e 17
+        buffer.add(new Aresta(vertices.get(16), vertices.get(17), 7, 1));
+        matriz = new int[][] {{0,6},{56,56}};
+        buffer.get(21).setEsquerda(matriz);
+        matriz = new int[][] {{0,6},{58,58}};
+        buffer.get(21).setDireita(matriz);
+
+        ///cria a aresta 22, de peso 7, com rotas para baixo e cima, conectada ao vertice 15 e 36
+        buffer.add(new Aresta(vertices.get(15), vertices.get(36), 7, 1));
+        matriz = new int[][] {{41,41},{53,59}};
+        buffer.get(22).setBaixo(matriz);
+        matriz = new int[][] {{43,43},{53,59}};
+        buffer.get(22).setCima(matriz);
 
         this.grafo.addAll(vertices);
     }
