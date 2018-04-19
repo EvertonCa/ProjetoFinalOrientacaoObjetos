@@ -13,6 +13,7 @@ public class Main
         ///criação da lista que armazena os objetos semaforos do Q1
         ArrayList <Semaforo> semaforosQ1 = new ArrayList<>();
 
+        ///criação da lista que armazena os objetos semaforos do Q2
         ArrayList <Semaforo> semaforosQ2 = new ArrayList<>();
       
         ///criação da lista que armazana os objetos semaforos do Q3
@@ -58,6 +59,7 @@ public class Main
                 {
                     meuMundo.populaSemaforoQ1(semaforosQ1.get(i));
                 }
+                ///popula os semaforos do Q2 no mundo
                 for (int i=0; i < semaforosQ2.size(); i++)
                 {
                     meuMundo.populaSemaforoQ2(semaforosQ2.get(i));
@@ -81,6 +83,7 @@ public class Main
                 meuMundo.desenhaMundo(meuMundo.getMundoQ3(), meuMundo.getMundoQ4());
                 ///pausa a execução do programa pelo tempo determinado
                 meuMundo.pausaMundo();
+                meuMundo.voltaComeco();
             }
         }
     }
