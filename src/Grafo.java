@@ -19,7 +19,7 @@ public class Grafo
         List <Vertice> verticesQ1 = new ArrayList<Vertice>();
 
         ///cria 17 vertices padrão para os 17 cruzamentos
-        for(int i = 0; i < 17; i++)
+        for(int i = 0; i < 18; i++)
         {
             verticesQ1.add(new Vertice());
         }
@@ -28,6 +28,10 @@ public class Grafo
         List <Aresta> buffer = new ArrayList<Aresta>();
 
         buffer.add(new Aresta(verticesQ1.get(0), verticesQ1.get(1), 10, 1));
+        int[][] matriz1 = {{0,9},{4,4}};
+        buffer.get(0).setEsquerda(matriz1);
+        int [][] matriz2 = {{0,9},{6,6}};
+        buffer.get(0).setDireita(matriz2);
 
         this.grafo.addAll(verticesQ1);
     }
