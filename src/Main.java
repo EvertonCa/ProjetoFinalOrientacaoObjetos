@@ -47,7 +47,7 @@ public class Main
                 ///desenha o mundo com os quadrantes 1 e 2
                 meuMundo.desenhaMundo(meuMundo.getMundoQ1(), meuMundo.getMundoQ2());
                 ///desenha o mundo com os quadrantes 3 e 4
-                meuMundo.desenhaMundo(meuMundo.getMundoQ3(), meuMundo.getMundoQ4());
+                //meuMundo.desenhaMundo(meuMundo.getMundoQ3(), meuMundo.getMundoQ4());
                 ///pausa a execução do programa pelo tempo determinado
                 meuMundo.pausaMundo();
             }
