@@ -8,6 +8,16 @@ public class Aresta
         this.quadrante = quadrante;
     }
 
+    public void setOrigem(Vertice origem)
+    {
+        this.origem = origem;
+    }
+
+    public void setDestino(Vertice destino)
+    {
+        this.destino = destino;
+    }
+
     public int getPeso()
     {
         return peso;
@@ -46,7 +56,7 @@ public class Aresta
     protected Vertice origem, destino;
     protected int peso, quadrante;
     /// matriz que indica as coordenadas das "ruas" no mundo
-    // {{coordenada inicial X, coordenada final X},{coordenada inicial Y, coordenada final Y}}
+    /// {{coordenada inicial X, coordenada final X},{coordenada inicial Y, coordenada final Y}}
     protected int [][] direita = {{0,0},{0,0}};
     protected int [][] esquerda = {{0,0},{0,0}};
     protected int [][] cima = {{0,0},{0,0}};
