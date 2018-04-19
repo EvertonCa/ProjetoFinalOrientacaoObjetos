@@ -12,6 +12,7 @@ public class Main
 
         ///criação da lista que armazena os objetos semaforos do Q1
         ArrayList <Semaforo> semaforosQ1 = new ArrayList<>();
+        ArrayList <Semaforo> semaforosQ2 = new ArrayList<>();
 
         ///criação da lista que armazana os objetos semaforos do Q4
         ArrayList <Semaforo> semaforosQ4 = new ArrayList<>();
@@ -20,6 +21,11 @@ public class Main
         for (int i=0; i < coordenadas.getSizeQ1(); i++)
         {
             semaforosQ1.add(new Semaforo(coordenadas.getCoordenadasXQ1(i), coordenadas.getCoordenadasYQ1(i), coordenadas.getVerdeQ1(i)));
+        }
+        ///adiciona os objetos semaforos com as coordenadas padrão na lista do Q2
+        for (int i=0; i < coordenadas.getSizeQ2(); i++)
+        {
+            semaforosQ2.add(new Semaforo(coordenadas.getCoordenadasXQ2(i), coordenadas.getCoordenadasYQ2(i), coordenadas.getVerdeQ2(i)));
         }
 
         ///adiciona os objetos semaforos com as coordenadas padrão na lista do Q4
@@ -41,6 +47,10 @@ public class Main
                 for (int i=0; i < semaforosQ1.size(); i++)
                 {
                     meuMundo.populaSemaforoQ1(semaforosQ1.get(i));
+                }
+                for (int i=0; i < semaforosQ2.size(); i++)
+                {
+                    meuMundo.populaSemaforoQ2(semaforosQ2.get(i));
                 }
 
                 ///popula os semaforos do Q4 no mundo
