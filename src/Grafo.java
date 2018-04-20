@@ -83,30 +83,34 @@ public class Grafo
                 int verticeFinal = Integer.parseInt(prop.getProperty("aresta" + i + "VerticeFinal"));
                 int peso = Integer.parseInt(prop.getProperty("aresta" + i + "Peso"));
                 int quadranteArestaNova = Integer.parseInt(prop.getProperty("aresta" + i + "Quadrante"));
-                int x1Inicial = Integer.parseInt(prop.getProperty("aresta" + i + "CoordenadaInicialX1"));
-                int x1Final = Integer.parseInt(prop.getProperty("aresta" + i + "CoordenadaFinalX1"));
-                int x2Inicial = Integer.parseInt(prop.getProperty("aresta" + i + "CoordenadaInicialX2"));
-                int x2Final = Integer.parseInt(prop.getProperty("aresta" + i + "CoordenadaFinalX2"));
-                int y1Inicial = Integer.parseInt(prop.getProperty("aresta" + i + "CoordenadaInicialY1"));
-                int y1Final = Integer.parseInt(prop.getProperty("aresta" + i + "CoordenadaFinalY1"));
-                int y2Inicial = Integer.parseInt(prop.getProperty("aresta" + i + "CoordenadaInicialY2"));
-                int y2Final = Integer.parseInt(prop.getProperty("aresta" + i + "CoordenadaFinalY2"));
+                int xInicial = Integer.parseInt(prop.getProperty("aresta" + i + "CoordenadaInicialX"));
+                int xFinal = Integer.parseInt(prop.getProperty("aresta" + i + "CoordenadaFinalX"));
+                int yInicial = Integer.parseInt(prop.getProperty("aresta" + i + "CoordenadaInicialY"));
+                int yFinal = Integer.parseInt(prop.getProperty("aresta" + i + "CoordenadaFinalY"));
 
-                if(direcao.equals("vertical"))
+                if(direcao.equals("direita"))
                 {
                     arestas.add(new Aresta(vertices.get(verticeInicial), vertices.get(verticeFinal),peso,quadranteArestaNova));
-                    matriz = new int[][] {{x1Inicial, x1Final}, {y1Inicial, y1Final}};
-                    arestas.get(i).setBaixo(matriz);
-                    matriz = new int[][] {{x2Inicial, x2Final},{y2Inicial, y2Final}};
+                    matriz = new int[][] {{xInicial, xFinal}, {yInicial, yFinal}};
+                    arestas.get(i).setDireita(matriz);
+                }
+                else if(direcao.equals("esquerda"))
+                {
+                    arestas.add(new Aresta(vertices.get(verticeInicial), vertices.get(verticeFinal),peso,quadranteArestaNova));
+                    matriz = new int[][] {{xInicial, xFinal}, {yInicial, yFinal}};
+                    arestas.get(i).setEsquerda(matriz);
+                }
+                else if(direcao.equals("cima"))
+                {
+                    arestas.add(new Aresta(vertices.get(verticeInicial), vertices.get(verticeFinal),peso,quadranteArestaNova));
+                    matriz = new int[][] {{xInicial, xFinal}, {yInicial, yFinal}};
                     arestas.get(i).setCima(matriz);
                 }
                 else
                 {
                     arestas.add(new Aresta(vertices.get(verticeInicial), vertices.get(verticeFinal),peso,quadranteArestaNova));
-                    matriz = new int[][] {{x1Inicial, x1Final},{y1Inicial, y1Final}};
-                    arestas.get(i).setEsquerda(matriz);
-                    matriz = new int[][] {{x2Inicial, x2Final},{y2Inicial, y2Final}};
-                    arestas.get(i).setDireita(matriz);
+                    matriz = new int[][] {{xInicial, xFinal}, {yInicial, yFinal}};
+                    arestas.get(i).setBaixo(matriz);
                 }
             }
 
