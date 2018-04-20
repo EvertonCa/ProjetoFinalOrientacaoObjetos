@@ -13,6 +13,11 @@ public class Vertice implements Comparable<Vertice>
         this.arestas.addAll(arestas);
     }
 
+    public void addAresta(Aresta aresta)
+    {
+        this.arestas.add(aresta);
+    }
+
     public void setVerticesVizinhos(List<Vertice> verticesVizinhos)
     {
         this.verticesVizinhos.addAll(verticesVizinhos);

@@ -8,16 +8,6 @@ public class Aresta
         this.quadrante = quadrante;
     }
 
-    public void setOrigem(Vertice origem)
-    {
-        this.origem = origem;
-    }
-
-    public void setDestino(Vertice destino)
-    {
-        this.destino = destino;
-    }
-
     public int getPeso()
     {
         return peso;
