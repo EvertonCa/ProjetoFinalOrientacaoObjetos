@@ -14,6 +14,8 @@ public class Grafo
             vertices.add(new Vertice());
         }
         quadrante1();
+
+        criaGrafo();
     }
 
     public List<Vertice> getGrafo()
@@ -90,11 +92,22 @@ public class Grafo
                     verticesVizinhos.add(vertices.get(Integer.parseInt(prop2.getProperty("vertice" + i + "VerticeVizinho" + j))));
                 }
                 vertices.get(i).setVerticesVizinhos(verticesVizinhos);
-                vertices.get(i).setArestas();
+
+                List <Aresta > arestasVizinhas = new ArrayList<Aresta>();
+
+                for(int j = 0; j < (Integer.parseInt(prop2.getProperty("vertice" + i + "QuantidadeDeArestasVizinhas"))); j++)
+                {
+                    arestasVizinhas.add(buffer.get(Integer.parseInt(prop2.getProperty("vertice" + i + "ArestaVizinha" + j))));
+                }
+                vertices.get(i).setArestas(arestasVizinhas);
             }
 
-            this.grafo.addAll(vertices);
         }catch (IOException e){System.out.println("Erro no arquivo de propriedades Quadrante 1");}
+    }
+
+    public void criaGrafo()
+    {
+        this.grafo.addAll(vertices);
     }
 
     // Método que retorna o vértice cuja descrição é igual à procurada.
