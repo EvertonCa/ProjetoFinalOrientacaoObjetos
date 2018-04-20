@@ -2,7 +2,8 @@ public class Mundo
 {
     public Mundo()
     {
-        reiniciaMundos();
+      ///mundo com 76 vertices (nulos e intersecções)
+      reiniciaMundos();
     }
 
     public void reiniciaMundoQ1()
@@ -206,6 +207,7 @@ public class Mundo
     public void reiniciaMundoQ4()
     {
         mundoQ4 = new int[][] // 60x60 quarto quadrante / 32 semaforos / 16 cruzamentos
+
                 {{1,1,1,1,1,1,1,1,1,0,8,2,7,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,8,2,7,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
                 ,{1,1,1,1,1,1,1,1,1,0,8,2,7,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,8,2,7,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
                 ,{1,1,1,1,1,1,1,1,1,0,8,2,7,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,8,2,7,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
