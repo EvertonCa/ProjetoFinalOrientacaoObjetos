@@ -12,6 +12,14 @@ public class Manipulador
         return props;
     }
 
+    public static Properties getVerticesQ1() throws IOException
+    {
+        Properties props = new Properties();
+        FileInputStream file = new FileInputStream("./Properties/VerticesQ1.properties");
+        props.load(file);
+        return props;
+    }
+
     public static Properties getArestasQ2() throws IOException
     {
         Properties props = new Properties();

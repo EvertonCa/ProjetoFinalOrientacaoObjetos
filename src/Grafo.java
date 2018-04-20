@@ -31,11 +31,11 @@ public class Grafo
             Manipulador manip = new Manipulador();
             Properties prop = manip.getArestasQ1();
 
-            int quantidade = Integer.parseInt(prop.getProperty("quantidadeDeArestas"));
+            int quantidadeDeArestas = Integer.parseInt(prop.getProperty("quantidadeDeArestas"));
 
             int[][] matriz;
 
-            for(int i = 0; i < quantidade; i++)
+            for(int i = 0; i < quantidadeDeArestas; i++)
             {
                 String direcao = prop.getProperty("aresta" + i + "Direcao");
 
@@ -73,6 +73,24 @@ public class Grafo
                                     Integer.parseInt(prop.getProperty("aresta" + i + "CoordenadaFinalY2"))}};
                     buffer.get(i).setDireita(matriz);
                 }
+            }
+
+            Properties prop2 = manip.getVerticesQ1();
+
+            int quantidadeDeVertices = Integer.parseInt(prop2.getProperty("quantidadeDeVertices"));
+
+            for(int i=0; i < quantidadeDeVertices; i++)
+            {
+                vertices.get(i).setDescricao(prop2.getProperty("vertice" + i + "Descricao"));
+
+                List <Vertice > verticesVizinhos = new ArrayList<Vertice>();
+
+                for(int j = 0; j < (Integer.parseInt(prop2.getProperty("vertice" + i + "QuantidadeDeVerticesVizinhos"))); j++)
+                {
+                    verticesVizinhos.add(vertices.get(Integer.parseInt(prop2.getProperty("vertice" + i + "VerticeVizinho" + j))));
+                }
+                vertices.get(i).setVerticesVizinhos(verticesVizinhos);
+                vertices.get(i).setArestas();
             }
 
             this.grafo.addAll(vertices);
