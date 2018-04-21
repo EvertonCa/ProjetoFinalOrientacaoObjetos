@@ -28,9 +28,21 @@ public class Aresta
         this.coordenadas = coordenadas;
     }
 
+    public int[][] getCoordenadas() {
+        return coordenadas;
+    }
+
     public void setDirecao(String direcao)
     {
         this.direcao = direcao;
+    }
+
+    public String getDirecao() {
+        return direcao;
+    }
+
+    public int getQuadrante() {
+        return quadrante;
     }
 
     protected Vertice origem, destino;
