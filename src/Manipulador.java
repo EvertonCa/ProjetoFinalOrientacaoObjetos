@@ -20,6 +20,14 @@ public class Manipulador
         return props;
     }
 
+    public static Properties getRuasQ1() throws IOException
+    {
+        Properties props = new Properties();
+        FileInputStream file = new FileInputStream("./Properties/RuasQ1.properties");
+        props.load(file);
+        return props;
+    }
+
     public static Properties getArestasQ2() throws IOException
     {
         Properties props = new Properties();
@@ -32,6 +40,14 @@ public class Manipulador
     {
         Properties props = new Properties();
         FileInputStream file = new FileInputStream("./Properties/VerticesQ2.properties");
+        props.load(file);
+        return props;
+    }
+
+    public static Properties getRuasQ2() throws IOException
+    {
+        Properties props = new Properties();
+        FileInputStream file = new FileInputStream("./Properties/RuasQ2.properties");
         props.load(file);
         return props;
     }
@@ -52,6 +68,14 @@ public class Manipulador
         return props;
     }
 
+    public static Properties getRuasQ3() throws IOException
+    {
+        Properties props = new Properties();
+        FileInputStream file = new FileInputStream("./Properties/RuasQ3.properties");
+        props.load(file);
+        return props;
+    }
+
     public static Properties getArestasQ4() throws IOException
     {
         Properties props = new Properties();
@@ -64,6 +88,14 @@ public class Manipulador
     {
         Properties props = new Properties();
         FileInputStream file = new FileInputStream("./Properties/VerticesQ4.properties");
+        props.load(file);
+        return props;
+    }
+
+    public static Properties getRuasQ4() throws IOException
+    {
+        Properties props = new Properties();
+        FileInputStream file = new FileInputStream("./Properties/RuasQ4.properties");
         props.load(file);
         return props;
     }

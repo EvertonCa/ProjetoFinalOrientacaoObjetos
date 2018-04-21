@@ -4,6 +4,9 @@ public class Main
 {
     public static void main (String argv[])
     {
+
+        GPS gps = new GPS();
+
         ///criação do objeto mundo
         Mundo meuMundo = new Mundo();
 
@@ -86,5 +89,6 @@ public class Main
                 meuMundo.voltaComeco();
             }
         }
+
     }
 }

@@ -225,6 +225,26 @@ public class Grafo
 
     }
 
+    public Aresta getArestasQ1(int indice)
+    {
+        return arestasQ1.get(indice);
+    }
+
+    public Aresta getArestasQ2(int indice)
+    {
+        return arestasQ2.get(indice);
+    }
+
+    public Aresta getArestasQ3(int indice)
+    {
+        return arestasQ3.get(indice);
+    }
+
+    public Aresta getArestasQ4(int indice)
+    {
+        return arestasQ4.get(indice);
+    }
+
     protected List <Vertice> grafo = new ArrayList<Vertice>();
     protected List <Vertice> vertices = new ArrayList<Vertice>();
     protected List <Aresta> arestasQ1 = new ArrayList<Aresta>();
