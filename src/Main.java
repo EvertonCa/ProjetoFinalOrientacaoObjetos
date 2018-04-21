@@ -5,12 +5,11 @@ public class Main
 {
     public static void main (String argv[])
     {
-        Grafo grafo = new Grafo();
-        Dijkstra dijkstra = new Dijkstra();
+        GPS gps = new GPS();
 
         List <Vertice> menorRota = new ArrayList<Vertice>();
 
-        menorRota = dijkstra.encontrarMenorCaminhoDijkstra(grafo, grafo.encontrarVertice("verticeNulo0"), grafo.encontrarVertice("vertice20"));
+        menorRota = gps.getMenorRota();
 
         for(int i = 0; i < menorRota.size(); i++)
         {
