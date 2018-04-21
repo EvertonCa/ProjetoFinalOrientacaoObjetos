@@ -1,14 +1,14 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.io.IOException;
+import java.util.*;
 
 public class GPS
 {
     public GPS()
     {
+        Grafo grafo = new Grafo();
+        this.grafo = grafo;
         obterRuasUsuario();
         obterRota();
-
     }
 
     public void obterRuasUsuario()
@@ -21,7 +21,7 @@ public class GPS
             System.out.printf("Entre com a origem: ");
             ruaOrigem = teclado.nextLine();
 
-            origem = ruaParaVertice("origem");
+            origem = ruaExiste("origem");
 
             if(origem.equals("naoEncontrado"))
             {
@@ -30,6 +30,8 @@ public class GPS
 
             else
             {
+                encontraArestas(origem, "origem");
+                encontraVertices("origem");
                 origemExiste = true;
             }
         }
@@ -39,7 +41,7 @@ public class GPS
             System.out.printf("Entre com a destino: ");
             ruaDestino = teclado.nextLine();
 
-            destino = ruaParaVertice("origem");
+            destino = ruaExiste("origem");
 
             if(destino.equals("naoEncontrado"))
             {
@@ -48,6 +50,8 @@ public class GPS
 
             else
             {
+                encontraArestas(destino, "destino");
+                encontraVertices("destino");
                 destinoExiste = true;
             }
         }
@@ -55,18 +59,201 @@ public class GPS
 
     }
 
-    public String ruaParaVertice(String origemOuDestino)
+    public String ruaExiste(String origemOuDestino) {
+        try {
+            Manipulador manip = new Manipulador();
+            Properties propQ1 = manip.getRuasQ1();
+            Properties propQ2 = manip.getRuasQ2();
+            Properties propQ3 = manip.getRuasQ3();
+            Properties propQ4 = manip.getRuasQ4();
+
+            String tudoJunto, resposta;
+
+            if (origemOuDestino.equals("origem")) {
+
+                String separados[] = ruaOrigem.split(" ");
+                tudoJunto = separados[0] + separados[1];
+            } else {
+                String separados[] = ruaDestino.split(" ");
+                tudoJunto = separados[0] + separados[1];
+            }
+
+            String arestas = propQ1.getProperty(tudoJunto);
+            quadrante = 1;
+
+            if(arestas == null)
+            {
+                arestas = propQ2.getProperty(tudoJunto);
+                quadrante = 2;
+
+                if(arestas == null)
+                {
+                    arestas = propQ3.getProperty(tudoJunto);
+                    quadrante = 3;
+
+                    if(arestas == null)
+                    {
+                        arestas = propQ4.getProperty(tudoJunto);
+                        quadrante = 4;
+                    }
+                }
+            }
+
+            if(arestas == null)
+            {
+                resposta = "naoEncontrado";
+            }
+            else
+            {
+                resposta = arestas;
+            }
+            return resposta;
+        } catch (IOException e){return null;}
+    }
+
+    public void encontraArestas(String arestas, String origemOuDestino)
     {
-        String resposta = "naoEncontrado";
-        return resposta;
+        String separados[] = arestas.split("e");
+        int primeiraAresta = Integer.parseInt(separados[0]);
+        int segundaAresta = Integer.parseInt(separados[1]);
+        if(origemOuDestino.equals("origem"))
+        {
+            switch (quadrante)
+            {
+                default:
+                {
+                    populaArestasOrigem(grafo.getArestasQ1(primeiraAresta));
+                    populaArestasOrigem(grafo.getArestasQ1(segundaAresta));
+                }
+
+                case 2:
+                {
+                    populaArestasOrigem(grafo.getArestasQ2(primeiraAresta));
+                    populaArestasOrigem(grafo.getArestasQ2(segundaAresta));
+                }
+
+                case 3:
+                {
+                    populaArestasOrigem(grafo.getArestasQ3(primeiraAresta));
+                    populaArestasOrigem(grafo.getArestasQ3(segundaAresta));
+                }
+
+                case 4:
+                {
+                    populaArestasOrigem(grafo.getArestasQ4(primeiraAresta));
+                    populaArestasOrigem(grafo.getArestasQ4(segundaAresta));
+                }
+            }
+        }
+        else
+        {
+            switch (quadrante)
+            {
+                default:
+                {
+                    populaArestasDestino(grafo.getArestasQ1(primeiraAresta));
+                    populaArestasDestino(grafo.getArestasQ1(segundaAresta));
+                }
+
+                case 2:
+                {
+                    populaArestasDestino(grafo.getArestasQ2(primeiraAresta));
+                    populaArestasDestino(grafo.getArestasQ2(segundaAresta));
+                }
+
+                case 3:
+                {
+                    populaArestasDestino(grafo.getArestasQ3(primeiraAresta));
+                    populaArestasDestino(grafo.getArestasQ3(segundaAresta));
+                }
+
+                case 4:
+                {
+                    populaArestasDestino(grafo.getArestasQ4(primeiraAresta));
+                    populaArestasDestino(grafo.getArestasQ4(segundaAresta));
+                }
+            }
+        }
+    }
+
+    public void encontraVertices(String origemOuDestino)
+    {
+        if(origemOuDestino.equals("origem"))
+        {
+            verticesOrigem.add(arestasOrigem.get(0).getOrigem());
+            verticesOrigem.add(arestasOrigem.get(1).getOrigem());
+        }
+        else
+        {
+            verticesDestino.add(arestasDestino.get(0).getDestino());
+            verticesDestino.add(arestasDestino.get(1).getDestino());
+        }
+    }
+
+    public void populaArestasOrigem(Aresta aresta)
+    {
+        arestasOrigem.add(aresta);
+    }
+
+    public void populaArestasDestino(Aresta aresta)
+    {
+        arestasDestino.add(aresta);
     }
 
     public void obterRota()
     {
-        Grafo grafo = new Grafo();
         Dijkstra dijkstra = new Dijkstra();
 
-        menorRota = dijkstra.encontrarMenorCaminhoDijkstra(grafo, grafo.encontrarVertice(origem), grafo.encontrarVertice(destino));
+        menorRota1 = dijkstra.encontrarMenorCaminhoDijkstra(grafo,
+                grafo.encontrarVertice(verticesOrigem.get(0).getDescricao()),
+                grafo.encontrarVertice(verticesDestino.get(0).getDescricao()));
+        menorRota2 = dijkstra.encontrarMenorCaminhoDijkstra(grafo,
+                grafo.encontrarVertice(verticesOrigem.get(0).getDescricao()),
+                grafo.encontrarVertice(verticesDestino.get(1).getDescricao()));
+        menorRota3 = dijkstra.encontrarMenorCaminhoDijkstra(grafo,
+                grafo.encontrarVertice(verticesOrigem.get(1).getDescricao()),
+                grafo.encontrarVertice(verticesDestino.get(0).getDescricao()));
+        menorRota4 = dijkstra.encontrarMenorCaminhoDijkstra(grafo,
+                grafo.encontrarVertice(verticesOrigem.get(1).getDescricao()),
+                grafo.encontrarVertice(verticesDestino.get(1).getDescricao()));
+
+        int tamanho1 = menorRota1.size(), tamanho2 = menorRota2.size(), tamanho3 = menorRota3.size(), tamanho4 = menorRota4.size();
+
+        List <Integer> rotas = new ArrayList<>();
+        rotas.add(tamanho1);
+        rotas.add(tamanho2);
+        rotas.add(tamanho3);
+        rotas.add(tamanho4);
+
+        Collections.sort(rotas);
+
+        int menorTamanho = rotas.get(0);
+
+        if(menorTamanho == tamanho1)
+        {
+            menorRota = menorRota1;
+            arestasDefinitivas.add(arestasOrigem.get(0));
+            arestasDefinitivas.add(arestasDestino.get(0));
+        }
+        else if(menorTamanho == tamanho2)
+        {
+            menorRota = menorRota2;
+            arestasDefinitivas.add(arestasOrigem.get(0));
+            arestasDefinitivas.add(arestasDestino.get(1));
+        }
+        else if(menorTamanho == tamanho3)
+        {
+            menorRota = menorRota3;
+            arestasDefinitivas.add(arestasOrigem.get(1));
+            arestasDefinitivas.add(arestasDestino.get(0));
+
+        }
+        else
+        {
+            menorRota = menorRota4;
+            arestasDefinitivas.add(arestasOrigem.get(1));
+            arestasDefinitivas.add(arestasDestino.get(1));
+        }
     }
 
     public void exibirMenorRota()
@@ -81,6 +268,13 @@ public class GPS
         }
     }
 
-    protected List <Vertice> menorRota = new ArrayList<Vertice>();
+    protected Grafo grafo;
+    protected int quadrante;
+    protected List <Vertice> menorRota1,menorRota2, menorRota3, menorRota4, menorRota;
+    protected List <Aresta> arestasOrigem = new ArrayList<>();
+    protected List <Aresta> arestasDestino = new ArrayList<>();
+    protected List <Aresta> arestasDefinitivas = new ArrayList<>();
+    protected List <Vertice> verticesOrigem = new ArrayList<>();
+    protected List <Vertice> verticesDestino = new ArrayList<>();
     protected String origem, destino, ruaOrigem, ruaDestino;
 }

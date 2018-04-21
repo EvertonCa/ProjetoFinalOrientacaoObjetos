@@ -7,7 +7,6 @@ public class Main
 
         GPS gps = new GPS();
 
-        gps.obterOrigemDestino();
         /*
         ///criação do objeto mundo
         Mundo meuMundo = new Mundo();
