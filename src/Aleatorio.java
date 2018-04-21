@@ -2,41 +2,38 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Aleatorio
 {
-    ///volta um número aleatório entre 1 e 4
-    public int randomizeDirecao()
+    public Aresta randomizeAresta(Grafo grafo)
     {
-        numero = ThreadLocalRandom.current().nextInt(1,5);
-        return numero;
-    }
+        this.grafo = grafo;
+        int quadrante = ThreadLocalRandom.current().nextInt(1,5);
+        int tamanhoLista;
+        switch (quadrante)
+        {
+            default:
+            {
+                tamanhoLista = grafo.getListaArestasQ1().size();
+                return grafo.getListaArestasQ1().get(ThreadLocalRandom.current().nextInt(0,tamanhoLista));
+            }
 
-    ///volta um número aleatório entre 0 e 30
-    public int randomize30()
-    {
-        numero = ThreadLocalRandom.current().nextInt(0,30);
-        return numero;
-    }
+            case 2:
+            {
+                tamanhoLista = grafo.getListaArestasQ2().size();
+                return grafo.getListaArestasQ2().get(ThreadLocalRandom.current().nextInt(0,tamanhoLista));
+            }
 
-    ///volta um número aleatório entre 0 e 60
-    public int randomize60()
-    {
-        numero = ThreadLocalRandom.current().nextInt(0,60);
-        return numero;
-    }
+            case 3:
+            {
+                tamanhoLista = grafo.getListaArestasQ3().size();
+                return grafo.getListaArestasQ3().get(ThreadLocalRandom.current().nextInt(0,tamanhoLista));
+            }
 
-    ///volta um número aleatório entre 1 e 5
-    public int randomizePassageiros()
-    {
-        numero = ThreadLocalRandom.current().nextInt(1,6);
-        return numero;
+            case 4:
+            {
+                tamanhoLista = grafo.getListaArestasQ4().size();
+                return grafo.getListaArestasQ4().get(ThreadLocalRandom.current().nextInt(0,tamanhoLista));
+            }
+        }
     }
-
-    ///volta um número aleatório entre 10000 e 30000
-    public int randomizeCarga()
-    {
-        numero = ThreadLocalRandom.current().nextInt(10000,30001);
-        return numero;
-    }
-
     ///volta um número aleatório entre 1 e 300000
     public int randomizeID()
     {
@@ -46,27 +43,7 @@ public class Aleatorio
         return id1+id2+id3;
     }
 
-    ///volta um tipo de moto aleatória
-    public String randomizeTipo()
-    {
-        int random;
-        random = ThreadLocalRandom.current().nextInt(0,3);
-
-        switch (random)
-        {
-            case 0: {
-                return "Esportiva";
-            }
-
-            case 1: {
-                return "Estradeira";
-            }
-
-            default: {
-                return "Dia-a-Dia";
-            }
-        }
-    }
 
     protected int numero;
+    protected Grafo grafo;
 }
