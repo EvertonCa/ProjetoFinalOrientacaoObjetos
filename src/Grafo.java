@@ -154,8 +154,9 @@ public class Grafo
             }
 
             int quantidadeDeVertices = Integer.parseInt(prop2.getProperty("quantidadeDeVertices"));
+            int verticeInicial = Integer.parseInt(prop2.getProperty("verticeInicial"));
 
-            for(int i=0; i < quantidadeDeVertices; i++)
+            for(int i = verticeInicial; i < (verticeInicial + quantidadeDeVertices); i++)
             {
                 vertices.get(i).setDescricao(prop2.getProperty("vertice" + i + "Descricao"));
 
