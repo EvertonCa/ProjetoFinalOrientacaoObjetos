@@ -92,14 +92,18 @@ public class CoordenadasSemaforos
     protected boolean verdeQ2[] = {true, false, true, false, true, true, true, false, true, false, false, true, true,
             false, false, true, false, true, false, true, false, true, false, true, false, true, true};
 
-    //xx semaforos Q3
-    protected int coordenadasXQ3[] = {};
-    protected int coordenadasYQ3[] = {};
-    protected boolean verdeQ3[] = {};
+    //17 semaforos semaforos Q3
+    protected int coordenadasXQ3[] = {7,12,40,39,45,44,11,7,12,6,11,7,6,11,7,12,11};
+    protected int coordenadasYQ3[] = {4,5,10,15,11,16,10,19,20,24,25,34,39,40,49,50,55};
+    protected boolean verdeQ3[] = {true, true, true,false, false, true, true, true, false, false, true, true ,true, false, false,true, true};
 
     //xx semaforos Q4
-    protected int coordenadasXQ4[] = {};
-    protected int coordenadasYQ4[] = {};
-    protected boolean verdeQ4[] = {};
+    protected int coordenadasXQ4[] = {44,40,25,45,57,19,39,51,24,56,3,8,2,7,20,25,47,19,41,24,46,3,20,42,8,17,47,
+            2,11,19,7,46};
+    protected int coordenadasYQ4[] = {0,9,10,10,10,14,14,14,15,15,23,24,28,29,29,30,30,34,34,35,35,39,39,39,40,40,
+            40,44,44,44,45,45};
+    protected boolean verdeQ4[] = {true, true, true, true, true, false, false, false, false, false, false, true, true,
+            true, true, true, false, false, false, true, true, true, false, false, false, true, true, true, true, true,
+            false, true};
 
 }
