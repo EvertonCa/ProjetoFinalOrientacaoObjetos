@@ -8,7 +8,7 @@ public class AutoPilot extends Veiculos
     {
         Aleatorio aleatorio = new Aleatorio();
         rotaAleatoria = true;
-        arestaOrigem = aleatorio.randomizeAresta(grafo);
+        arestaOrigem = aleatorio.randomizeArestaGrafo(grafo);
         posicionaNaAresta();
     }
 
@@ -24,6 +24,7 @@ public class AutoPilot extends Veiculos
 
     public void posicionaNaAresta()
     {
+        arestaAtual = arestaOrigem;
         String direcao = arestaOrigem.getDirecao();
         super.setQuadranteAtual(arestaOrigem.getQuadrante());
         int coordenadas[][] = arestaOrigem.getCoordenadas();
@@ -54,17 +55,220 @@ public class AutoPilot extends Veiculos
         super.setY(yCentral);
     }
 
-    public void moveRandom()
+    public void move()
     {
+        String direcao = arestaAtual.getDirecao();
 
+        if(direcao.equals("esquerda"))
+        {
+            if(super.getX() - 1 == 6)
+            {
+                proxArestaDefinida = false;
+                super.setX(super.getX()-1);
+            }
+            else
+            {
+                naEsquinaRandom();
+            }
+        }
+        else if(direcao.equals("direita"))
+        {
+            if(super.getX() + 1 == 5)
+            {
+                proxArestaDefinida = false;
+                super.setX(super.getX() + 1);
+
+            }
+            else
+            {
+                naEsquinaRandom();
+            }
+        }
+        else if(direcao.equals("cima"))
+        {
+            if(super.getY() - 1 == 7)
+            {
+                proxArestaDefinida = false;
+                super.setX(super.getY() - 1);
+            }
+            else
+            {
+                naEsquinaRandom();
+            }
+        }
+        else
+        {
+            if(super.getY() + 1 == 8)
+            {
+                proxArestaDefinida = false;
+                super.setX(super.getY() + 1);
+            }
+            else
+            {
+                naEsquinaRandom();
+            }
+        }
     }
 
-    public void moveRota()
+    public void naEsquinaRandom()
     {
-
+        if(!proxArestaDefinida)
+        {
+            defineArestaProxima();
+            proxArestaDefinida = true;
+            arestaAtual = arestaProxima;
+            rotaParaProximaAresta();
+        }
+        else
+        {
+            moveNoVertice();
+        }
     }
 
-    protected Aresta arestaOrigem, arestaDestino;
+    public void rotaParaProximaAresta()
+    {
+        rotaNosCruzamentos.clear();
+        if(arestaAtual.getDestino().equals("direita"))
+        {
+            if(arestaProxima.getDestino().equals("direita"))
+            {
+                for(int i = 0; i < 5; i++)
+                {
+                    rotaNosCruzamentos.add("direita");
+                }
+            }
+
+            else if(arestaProxima.getDestino().equals("cima"))
+            {
+                rotaNosCruzamentos.add("direita");
+                rotaNosCruzamentos.add("direita");
+                rotaNosCruzamentos.add("direita");
+                rotaNosCruzamentos.add("direita");
+                rotaNosCruzamentos.add("cima");
+                rotaNosCruzamentos.add("cima");
+                rotaNosCruzamentos.add("cima");
+            }
+            else if(arestaProxima.getDestino().equals("baixo"))
+            {
+                rotaNosCruzamentos.add("direita");
+                rotaNosCruzamentos.add("direita");
+                rotaNosCruzamentos.add("baixo");
+            }
+        }
+        else if(arestaAtual.getDestino().equals("esquerda"))
+        {
+            if(arestaProxima.getDestino().equals("esquerda"))
+            {
+                for(int i = 0; i < 5; i++)
+                {
+                    rotaNosCruzamentos.add("esquerda");
+                }
+            }
+            else if(arestaProxima.getDestino().equals("cima"))
+            {
+                rotaNosCruzamentos.add("esquerda");
+                rotaNosCruzamentos.add("esquerda");
+                rotaNosCruzamentos.add("cima");
+            }
+            else if(arestaProxima.getDestino().equals("baixo"))
+            {
+                rotaNosCruzamentos.add("esquerda");
+                rotaNosCruzamentos.add("esquerda");
+                rotaNosCruzamentos.add("esquerda");
+                rotaNosCruzamentos.add("esquerda");
+                rotaNosCruzamentos.add("baixo");
+                rotaNosCruzamentos.add("baixo");
+                rotaNosCruzamentos.add("baixo");
+            }
+        }
+        else if(arestaAtual.getDestino().equals("cima"))
+        {
+            if(arestaProxima.getDestino().equals("direita"))
+            {
+                rotaNosCruzamentos.add("cima");
+                rotaNosCruzamentos.add("cima");
+                rotaNosCruzamentos.add("direita");
+            }
+            else if(arestaProxima.getDestino().equals("esquerda"))
+            {
+                rotaNosCruzamentos.add("cima");
+                rotaNosCruzamentos.add("cima");
+                rotaNosCruzamentos.add("cima");
+                rotaNosCruzamentos.add("cima");
+                rotaNosCruzamentos.add("esquerda");
+                rotaNosCruzamentos.add("esquerda");
+                rotaNosCruzamentos.add("esquerda");
+            }
+            else if(arestaProxima.getDestino().equals("cima"))
+            {
+                for(int i = 0; i < 5; i++)
+                {
+                    rotaNosCruzamentos.add("cima");
+                }
+            }
+        }
+        else
+        {
+            if(arestaProxima.getDestino().equals("direita"))
+            {
+                rotaNosCruzamentos.add("baixo");
+                rotaNosCruzamentos.add("baixo");
+                rotaNosCruzamentos.add("baixo");
+                rotaNosCruzamentos.add("baixo");
+                rotaNosCruzamentos.add("direita");
+                rotaNosCruzamentos.add("direita");
+                rotaNosCruzamentos.add("direita");
+
+            }
+            else if(arestaProxima.getDestino().equals("esquerda"))
+            {
+                rotaNosCruzamentos.add("baixo");
+                rotaNosCruzamentos.add("baixo");
+                rotaNosCruzamentos.add("esquerda");
+            }
+            else if(arestaProxima.getDestino().equals("baixo"))
+            {
+                for(int i = 0; i < 5; i++)
+                {
+                    rotaNosCruzamentos.add("baixo");
+                }
+            }
+        }
+    }
+
+    public void defineArestaProxima()
+    {
+        Aleatorio aleatorio = new Aleatorio();
+        arestaProxima = aleatorio.randomizeArestaVertice(arestaAtual.getDestino());
+    }
+
+    public void moveNoVertice()
+    {
+        if(rotaNosCruzamentos.get(0).equals("direita"))
+        {
+            rotaNosCruzamentos.remove(0);
+            super.setX(super.getX() + 1);
+        }
+        else if(rotaNosCruzamentos.get(0).equals("esquerda"))
+        {
+            rotaNosCruzamentos.remove(0);
+            super.setX(super.getX() - 1);
+        }
+
+        else if(rotaNosCruzamentos.get(0).equals("cima"))
+        {
+            rotaNosCruzamentos.remove(0);
+            super.setX(super.getY() - 1);
+        }
+        else
+        {
+            rotaNosCruzamentos.remove(0);
+            super.setX(super.getY() + 1);
+        }
+    }
+
+    protected Aresta arestaOrigem, arestaDestino, arestaAtual, arestaProxima;
     protected List <Vertice> menorRota;
-    protected boolean rotaAleatoria;
+    protected List <String> rotaNosCruzamentos = new ArrayList<>();
+    protected boolean rotaAleatoria, proxArestaDefinida = false;
 }

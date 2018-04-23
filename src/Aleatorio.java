@@ -1,8 +1,9 @@
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Aleatorio
 {
-    public Aresta randomizeAresta(Grafo grafo)
+    public Aresta randomizeArestaGrafo(Grafo grafo)
     {
         this.grafo = grafo;
         int quadrante = ThreadLocalRandom.current().nextInt(1,5);
@@ -34,6 +35,14 @@ public class Aleatorio
             }
         }
     }
+
+    public Aresta randomizeArestaVertice(Vertice vertice)
+    {
+        List <Aresta> listaDeArestas = vertice.getArestas();
+        int tamanho = listaDeArestas.size();
+        return listaDeArestas.get(ThreadLocalRandom.current().nextInt(0,tamanho+1));
+    }
+
     ///volta um número aleatório entre 1 e 300000
     public int randomizeID()
     {

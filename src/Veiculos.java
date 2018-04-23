@@ -31,6 +31,14 @@ public class Veiculos
         this.y = y;
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
     public void setQuadranteAtual(int quadranteAtual) {
         this.quadranteAtual = quadranteAtual;
     }
