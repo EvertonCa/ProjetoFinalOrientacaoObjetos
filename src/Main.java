@@ -88,6 +88,7 @@ public class Main
                 meuMundo.desenhaMundo(meuMundo.getMundoQ3(), meuMundo.getMundoQ4());
                 ///pausa a execução do programa pelo tempo determinado
                 meuMundo.pausaMundo();
+                meuMundo.voltaComeco();
             }
         }
 
