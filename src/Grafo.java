@@ -9,19 +9,15 @@ public class Grafo
     public Grafo()
     {
         ///cria 76 vertices padrão para os 18 vertices nulos (que saem da cidade) e 58 intersecções
-        for(int i = 0; i < 76; i++)
+        for(int i = 0; i < 20; i++)
         {
             vertices.add(new Vertice());
         }
 
         criaArestas(1);
-        criaArestas(2);
-        criaArestas(3);
-        criaArestas(4);
+
         criaVertices(1);
-        criaVertices(2);
-        criaVertices(3);
-        criaVertices(4);
+
 
         criaGrafo();
     }

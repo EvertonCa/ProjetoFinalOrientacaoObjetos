@@ -317,6 +317,30 @@ public class AutoPilot extends Veiculos
         }
     }
 
+    public boolean getCheguei() {
+        return cheguei;
+    }
+
+    @Override
+    public int getX() {
+        return super.getX();
+    }
+
+    @Override
+    public int getY() {
+        return super.getY();
+    }
+
+    @Override
+    public int getxDestino() {
+        return super.getxDestino();
+    }
+
+    @Override
+    public int getyDestino() {
+        return super.getyDestino();
+    }
+
     protected Aresta arestaOrigem, arestaDestino, arestaAtual, arestaProxima;
     protected List <Vertice> menorRota;
     protected List <String> rotaNosCruzamentos = new ArrayList<>();
