@@ -20,6 +20,7 @@ public class AutoPilot extends Veiculos
         arestaOrigem = origemDestino.get(0);
         arestaDestino = origemDestino.get(1);
         posicionaNaAresta();
+        defineCoordenadasDestino();
     }
 
     public void posicionaNaAresta()
@@ -55,15 +56,75 @@ public class AutoPilot extends Veiculos
         super.setY(yCentral);
     }
 
+    public void defineCoordenadasDestino()
+    {
+        String sentido = arestaDestino.getDirecao();
+        super.setQuadranteDestino(arestaDestino.getQuadrante());
+        int coordenadas[][] = arestaDestino.getCoordenadas();
+        int xCentral, yCentral;
+
+        if(sentido.equals("esquerda"))
+        {
+            xCentral = coordenadas[0][1] + (arestaDestino.getPeso() / 2 );
+            yCentral = coordenadas[1][0];
+        }
+        else if(sentido.equals("direita"))
+        {
+            xCentral = coordenadas[0][0] + (arestaDestino.getPeso() / 2 );
+            yCentral = coordenadas[1][0];
+        }
+        else if(sentido.equals("cima"))
+        {
+            xCentral = coordenadas[0][1];
+            yCentral = coordenadas[1][1] + (arestaDestino.getPeso() / 2 );
+        }
+        else
+        {
+            xCentral = coordenadas[0][1];
+            yCentral = coordenadas[1][0] + (arestaDestino.getPeso() / 2 );
+        }
+        super.xDestino = xCentral;
+        super.yDestino = yCentral;
+    }
+
     public void move(boolean random)
     {
         String direcao = arestaAtual.getDirecao();
+        Mundo matrizMundo = new Mundo();
+        int quadrante = arestaAtual.getQuadrante();
+        int mundo[][];
+        switch (quadrante)
+        {
+            default:
+            {
+                mundo = matrizMundo.getMundoQ1();
+                break;
+            }
+
+            case 2:
+            {
+                mundo = matrizMundo.getMundoQ2();
+                break;
+            }
+
+            case 3:
+            {
+                mundo = matrizMundo.getMundoQ3();
+                break;
+            }
+
+            case 4:
+            {
+                mundo = matrizMundo.getMundoQ4();
+                break;
+            }
+        }
 
         if(!cheguei)
         {
             if(direcao.equals("esquerda"))
             {
-                if(super.getX() - 1 == 6)
+                if(mundo[super.getY()][super.getX() - 1] == 6)
                 {
                     proxArestaDefinida = false;
                     super.setX(super.getX()-1);
@@ -78,7 +139,7 @@ public class AutoPilot extends Veiculos
             }
             else if(direcao.equals("direita"))
             {
-                if(super.getX() + 1 == 5)
+                if(mundo[super.getY()][super.getX() + 1] == 5)
                 {
                     proxArestaDefinida = false;
                     super.setX(super.getX() + 1);
@@ -94,7 +155,7 @@ public class AutoPilot extends Veiculos
             }
             else if(direcao.equals("cima"))
             {
-                if(super.getY() - 1 == 7)
+                if(mundo[super.getY() - 1][super.getX()] == 7)
                 {
                     proxArestaDefinida = false;
                     super.setX(super.getY() - 1);
@@ -109,7 +170,7 @@ public class AutoPilot extends Veiculos
             }
             else
             {
-                if(super.getY() + 1 == 8)
+                if(mundo[super.getY() + 1][super.getX()] == 8)
                 {
                     proxArestaDefinida = false;
                     super.setX(super.getY() + 1);
@@ -147,11 +208,13 @@ public class AutoPilot extends Veiculos
             List <Aresta> buffer = menorRota.get(0).getArestas();
             for(int i=0; i < buffer.size(); i++)
             {
-                if(buffer.size() < 1)
+                if(menorRota.size() > 1)
                 {
-                    if(buffer.get(i).getDestino() == menorRota.get(1))
+                    Vertice comparador = menorRota.get(1);
+                    if(buffer.get(i).getDestino().equals(comparador))
                     {
                         arestaProxima = buffer.get(i);
+                        System.out.print(arestaProxima.getOrigem());
                         break;
                     }
                 }
@@ -166,8 +229,8 @@ public class AutoPilot extends Veiculos
             }
             menorRota.remove(0);
             proxArestaDefinida = true;
-            arestaAtual = arestaProxima;
             rotaParaProximaAresta();
+            arestaAtual = arestaProxima;
         }
         else
         {
@@ -178,9 +241,9 @@ public class AutoPilot extends Veiculos
     public void rotaParaProximaAresta()
     {
         rotaNosCruzamentos.clear();
-        if(arestaAtual.getDestino().equals("direita"))
+        if(arestaAtual.getDirecao().equals("direita"))
         {
-            if(arestaProxima.getDestino().equals("direita"))
+            if(arestaProxima.getDirecao().equals("direita"))
             {
                 for(int i = 0; i < 5; i++)
                 {
@@ -188,7 +251,7 @@ public class AutoPilot extends Veiculos
                 }
             }
 
-            else if(arestaProxima.getDestino().equals("cima"))
+            else if(arestaProxima.getDirecao().equals("cima"))
             {
                 rotaNosCruzamentos.add("direita");
                 rotaNosCruzamentos.add("direita");
@@ -198,30 +261,31 @@ public class AutoPilot extends Veiculos
                 rotaNosCruzamentos.add("cima");
                 rotaNosCruzamentos.add("cima");
             }
-            else if(arestaProxima.getDestino().equals("baixo"))
+            else if(arestaProxima.getDirecao().equals("baixo"))
             {
                 rotaNosCruzamentos.add("direita");
                 rotaNosCruzamentos.add("direita");
                 rotaNosCruzamentos.add("baixo");
             }
         }
-        else if(arestaAtual.getDestino().equals("esquerda"))
+        else if(arestaAtual.getDirecao().equals("esquerda"))
         {
-            if(arestaProxima.getDestino().equals("esquerda"))
+            if(arestaProxima.getDirecao().equals("esquerda"))
             {
                 for(int i = 0; i < 5; i++)
                 {
                     rotaNosCruzamentos.add("esquerda");
                 }
             }
-            else if(arestaProxima.getDestino().equals("cima"))
+            else if(arestaProxima.getDirecao().equals("cima"))
             {
                 rotaNosCruzamentos.add("esquerda");
                 rotaNosCruzamentos.add("esquerda");
                 rotaNosCruzamentos.add("cima");
             }
-            else if(arestaProxima.getDestino().equals("baixo"))
+            else if(arestaProxima.getDirecao().equals("baixo"))
             {
+                System.out.printf("\nHeeey\n");
                 rotaNosCruzamentos.add("esquerda");
                 rotaNosCruzamentos.add("esquerda");
                 rotaNosCruzamentos.add("esquerda");
@@ -231,15 +295,15 @@ public class AutoPilot extends Veiculos
                 rotaNosCruzamentos.add("baixo");
             }
         }
-        else if(arestaAtual.getDestino().equals("cima"))
+        else if(arestaAtual.getDirecao().equals("cima"))
         {
-            if(arestaProxima.getDestino().equals("direita"))
+            if(arestaProxima.getDirecao().equals("direita"))
             {
                 rotaNosCruzamentos.add("cima");
                 rotaNosCruzamentos.add("cima");
                 rotaNosCruzamentos.add("direita");
             }
-            else if(arestaProxima.getDestino().equals("esquerda"))
+            else if(arestaProxima.getDirecao().equals("esquerda"))
             {
                 rotaNosCruzamentos.add("cima");
                 rotaNosCruzamentos.add("cima");
@@ -249,7 +313,7 @@ public class AutoPilot extends Veiculos
                 rotaNosCruzamentos.add("esquerda");
                 rotaNosCruzamentos.add("esquerda");
             }
-            else if(arestaProxima.getDestino().equals("cima"))
+            else if(arestaProxima.getDirecao().equals("cima"))
             {
                 for(int i = 0; i < 5; i++)
                 {
@@ -259,7 +323,7 @@ public class AutoPilot extends Veiculos
         }
         else
         {
-            if(arestaProxima.getDestino().equals("direita"))
+            if(arestaProxima.getDirecao().equals("direita"))
             {
                 rotaNosCruzamentos.add("baixo");
                 rotaNosCruzamentos.add("baixo");
@@ -270,13 +334,13 @@ public class AutoPilot extends Veiculos
                 rotaNosCruzamentos.add("direita");
 
             }
-            else if(arestaProxima.getDestino().equals("esquerda"))
+            else if(arestaProxima.getDirecao().equals("esquerda"))
             {
                 rotaNosCruzamentos.add("baixo");
                 rotaNosCruzamentos.add("baixo");
                 rotaNosCruzamentos.add("esquerda");
             }
-            else if(arestaProxima.getDestino().equals("baixo"))
+            else if(arestaProxima.getDirecao().equals("baixo"))
             {
                 for(int i = 0; i < 5; i++)
                 {

@@ -43,5 +43,9 @@ public class Veiculos
         this.quadranteAtual = quadranteAtual;
     }
 
+    public void setQuadranteDestino(int quadranteDestino) {
+        this.quadranteDestino = quadranteDestino;
+    }
+
     protected int x, y, xDestino, yDestino, quadranteAtual, quadranteDestino, ID;
 }
