@@ -17,11 +17,11 @@ public class Main
 
         while(!tesla.getCheguei() || i < 20)
         {
+            tesla.move(false);
             System.out.printf("\nX e Y inicial:\n");
             System.out.print(tesla.getX() + " " + tesla.getY() + "\n");
             System.out.printf("X e Y destino:\n");
             System.out.print(tesla.getxDestino() + " " + tesla.getyDestino() + "\n");
-            tesla.move(false);
             i++;
         }
 

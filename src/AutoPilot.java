@@ -158,7 +158,7 @@ public class AutoPilot extends Veiculos
                 if(mundo[super.getY() - 1][super.getX()] == 7)
                 {
                     proxArestaDefinida = false;
-                    super.setX(super.getY() - 1);
+                    super.setY(super.getY() - 1);
                 }
                 else
                 {
@@ -173,7 +173,7 @@ public class AutoPilot extends Veiculos
                 if(mundo[super.getY() + 1][super.getX()] == 8)
                 {
                     proxArestaDefinida = false;
-                    super.setX(super.getY() + 1);
+                    super.setY(super.getY() + 1);
                 }
                 else
                 {
@@ -182,6 +182,11 @@ public class AutoPilot extends Veiculos
                     else
                         naEsquinaRota();
                 }
+            }
+
+            if(super.getX() == super.getxDestino() && super.getY() == super.getyDestino())
+            {
+                cheguei = true;
             }
         }
     }
@@ -214,16 +219,18 @@ public class AutoPilot extends Veiculos
                     if(buffer.get(i).getDestino().equals(comparador))
                     {
                         arestaProxima = buffer.get(i);
-                        System.out.print(arestaProxima.getOrigem());
                         break;
                     }
                 }
                 else
                 {
-                    if(buffer.get(i) == arestaDestino)
+                    if(buffer.get(i).getDestino().equals(arestaDestino.getDestino()) &&
+                            buffer.get(i).getOrigem().equals(arestaDestino.getOrigem()))
                     {
+                        System.out.print(buffer.get(i).getDestino() + " <- | -> " + arestaDestino.getDestino());
                         arestaProxima = arestaDestino;
-                        cheguei = true;
+                        chegueiNaArestaDestino = true;
+                        break;
                     }
                 }
             }
@@ -231,6 +238,7 @@ public class AutoPilot extends Veiculos
             proxArestaDefinida = true;
             rotaParaProximaAresta();
             arestaAtual = arestaProxima;
+            moveNoVertice();
         }
         else
         {
@@ -285,7 +293,6 @@ public class AutoPilot extends Veiculos
             }
             else if(arestaProxima.getDirecao().equals("baixo"))
             {
-                System.out.printf("\nHeeey\n");
                 rotaNosCruzamentos.add("esquerda");
                 rotaNosCruzamentos.add("esquerda");
                 rotaNosCruzamentos.add("esquerda");
@@ -372,12 +379,13 @@ public class AutoPilot extends Veiculos
         else if(rotaNosCruzamentos.get(0).equals("cima"))
         {
             rotaNosCruzamentos.remove(0);
-            super.setX(super.getY() - 1);
+            super.setY(super.getY() - 1);
         }
         else
         {
             rotaNosCruzamentos.remove(0);
-            super.setX(super.getY() + 1);
+            super.setY(super.getY() + 1);
+            System.out.printf("\nHeeey\n");
         }
     }
 
@@ -408,5 +416,5 @@ public class AutoPilot extends Veiculos
     protected Aresta arestaOrigem, arestaDestino, arestaAtual, arestaProxima;
     protected List <Vertice> menorRota;
     protected List <String> rotaNosCruzamentos = new ArrayList<>();
-    protected boolean rotaAleatoria, proxArestaDefinida = false, cheguei = false;
+    protected boolean rotaAleatoria, proxArestaDefinida = false, cheguei = false, chegueiNaArestaDestino = false;
 }
