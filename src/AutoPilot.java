@@ -237,11 +237,12 @@ public class AutoPilot extends Veiculos
             menorRota.remove(0);
             proxArestaDefinida = true;
             rotaParaProximaAresta();
-            arestaAtual = arestaProxima;
             moveNoVertice();
+            arestaAtual = arestaProxima;
         }
         else
         {
+            System.out.printf("\nHeeey\n");
             moveNoVertice();
         }
     }
@@ -253,7 +254,7 @@ public class AutoPilot extends Veiculos
         {
             if(arestaProxima.getDirecao().equals("direita"))
             {
-                for(int i = 0; i < 5; i++)
+                for(int i = 0; i < 7; i++)
                 {
                     rotaNosCruzamentos.add("direita");
                 }
@@ -280,7 +281,7 @@ public class AutoPilot extends Veiculos
         {
             if(arestaProxima.getDirecao().equals("esquerda"))
             {
-                for(int i = 0; i < 5; i++)
+                for(int i = 0; i < 7; i++)
                 {
                     rotaNosCruzamentos.add("esquerda");
                 }
@@ -322,7 +323,7 @@ public class AutoPilot extends Veiculos
             }
             else if(arestaProxima.getDirecao().equals("cima"))
             {
-                for(int i = 0; i < 5; i++)
+                for(int i = 0; i < 7; i++)
                 {
                     rotaNosCruzamentos.add("cima");
                 }
@@ -349,7 +350,7 @@ public class AutoPilot extends Veiculos
             }
             else if(arestaProxima.getDirecao().equals("baixo"))
             {
-                for(int i = 0; i < 5; i++)
+                for(int i = 0; i < 7; i++)
                 {
                     rotaNosCruzamentos.add("baixo");
                 }
@@ -385,7 +386,6 @@ public class AutoPilot extends Veiculos
         {
             rotaNosCruzamentos.remove(0);
             super.setY(super.getY() + 1);
-            System.out.printf("\nHeeey\n");
         }
     }
 
