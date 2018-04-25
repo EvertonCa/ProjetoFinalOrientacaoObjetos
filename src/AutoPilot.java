@@ -242,7 +242,6 @@ public class AutoPilot extends Veiculos
         }
         else
         {
-            System.out.printf("\nHeeey\n");
             moveNoVertice();
         }
     }
@@ -344,6 +343,7 @@ public class AutoPilot extends Veiculos
             }
             else if(arestaProxima.getDirecao().equals("esquerda"))
             {
+                System.out.printf("\nHeeey\n");
                 rotaNosCruzamentos.add("baixo");
                 rotaNosCruzamentos.add("baixo");
                 rotaNosCruzamentos.add("esquerda");
