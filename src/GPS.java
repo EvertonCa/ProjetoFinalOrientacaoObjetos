@@ -7,6 +7,14 @@ public class GPS
     {
         Grafo grafo = new Grafo();
         this.grafo = grafo;
+        Grafo grafo1 = new Grafo();
+        this.grafo1 = grafo1;
+        Grafo grafo2 = new Grafo();
+        this.grafo2 = grafo2;
+        Grafo grafo3 = new Grafo();
+        this.grafo3 = grafo3;
+        Grafo grafo4 = new Grafo();
+        this.grafo4 = grafo4;
         obterRuasUsuario();
         obterRota();
     }
@@ -41,7 +49,7 @@ public class GPS
             System.out.printf("Entre com a destino: ");
             ruaDestino = teclado.nextLine();
 
-            destino = ruaExiste("origem");
+            destino = ruaExiste("destino");
 
             if(destino.equals("naoEncontrado"))
             {
@@ -180,13 +188,14 @@ public class GPS
     {
         if(origemOuDestino.equals("origem"))
         {
-            verticesOrigem.add(arestasOrigem.get(0).getOrigem());
-            verticesOrigem.add(arestasOrigem.get(1).getOrigem());
+            verticesOrigem.add(arestasOrigem.get(0).getDestino());
+            verticesOrigem.add(arestasOrigem.get(1).getDestino());
+
         }
         else
         {
-            verticesDestino.add(arestasDestino.get(0).getDestino());
-            verticesDestino.add(arestasDestino.get(1).getDestino());
+            verticesDestino.add(arestasDestino.get(0).getOrigem());
+            verticesDestino.add(arestasDestino.get(1).getOrigem());
         }
     }
 
@@ -202,18 +211,21 @@ public class GPS
 
     public void obterRota()
     {
-        Dijkstra dijkstra = new Dijkstra();
+        Dijkstra dijkstra1 = new Dijkstra();
+        Dijkstra dijkstra2 = new Dijkstra();
+        Dijkstra dijkstra3 = new Dijkstra();
+        Dijkstra dijkstra4 = new Dijkstra();;
 
-        menorRota1 = dijkstra.encontrarMenorCaminhoDijkstra(grafo,
+        menorRota1 = dijkstra1.encontrarMenorCaminhoDijkstra(grafo,
                 grafo.encontrarVertice(verticesOrigem.get(0).getDescricao()),
                 grafo.encontrarVertice(verticesDestino.get(0).getDescricao()));
-        menorRota2 = dijkstra.encontrarMenorCaminhoDijkstra(grafo,
+        menorRota2 = dijkstra2.encontrarMenorCaminhoDijkstra(grafo,
                 grafo.encontrarVertice(verticesOrigem.get(0).getDescricao()),
                 grafo.encontrarVertice(verticesDestino.get(1).getDescricao()));
-        menorRota3 = dijkstra.encontrarMenorCaminhoDijkstra(grafo,
+        menorRota3 = dijkstra3.encontrarMenorCaminhoDijkstra(grafo,
                 grafo.encontrarVertice(verticesOrigem.get(1).getDescricao()),
                 grafo.encontrarVertice(verticesDestino.get(0).getDescricao()));
-        menorRota4 = dijkstra.encontrarMenorCaminhoDijkstra(grafo,
+        menorRota4 = dijkstra4.encontrarMenorCaminhoDijkstra(grafo,
                 grafo.encontrarVertice(verticesOrigem.get(1).getDescricao()),
                 grafo.encontrarVertice(verticesDestino.get(1).getDescricao()));
 
@@ -268,7 +280,7 @@ public class GPS
         }
     }
 
-    protected Grafo grafo;
+    protected Grafo grafo, grafo1, grafo2, grafo3, grafo4;
     protected int quadrante;
     protected List <Vertice> menorRota1,menorRota2, menorRota3, menorRota4, menorRota;
     protected List <Aresta> arestasOrigem = new ArrayList<>();
