@@ -280,6 +280,14 @@ public class GPS
         }
     }
 
+    public List<Vertice> getMenorRota() {
+        return menorRota;
+    }
+
+    public List<Aresta> getArestasDefinitivas() {
+        return arestasDefinitivas;
+    }
+
     protected Grafo grafo, grafo1, grafo2, grafo3, grafo4;
     protected int quadrante;
     protected List <Vertice> menorRota1,menorRota2, menorRota3, menorRota4, menorRota;

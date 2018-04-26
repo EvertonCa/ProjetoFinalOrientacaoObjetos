@@ -1,12 +1,24 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Main
 {
     public static void main (String argv[])
     {
+        Grafo grafo = new Grafo();
 
-        GPS gps = new GPS();
+        Dijkstra dijkstra  = new Dijkstra();
 
+        List<Vertice> menorRota = dijkstra.encontrarMenorCaminhoDijkstra(grafo, grafo.encontrarVertice("vertice22"), grafo.encontrarVertice("vertice77"));
+
+        for(int i = 0; i < menorRota.size(); i++)
+        {
+            System.out.print(menorRota.get(i));
+            System.out.printf(" -> ");
+        }
+
+
+        /*
         ///criação do objeto mundo
         Mundo meuMundo = new Mundo();
 
@@ -26,25 +38,25 @@ public class Main
         ArrayList <Semaforo> semaforosQ4 = new ArrayList<>();
 
         ///adiciona os objetos semaforos com as coordenadas padrão na lista do Q1
-        for (int i=0; i < coordenadas.getSizeQ1(); i++)
+        for (i=0; i < coordenadas.getSizeQ1(); i++)
         {
             semaforosQ1.add(new Semaforo(coordenadas.getCoordenadasXQ1(i), coordenadas.getCoordenadasYQ1(i), coordenadas.getVerdeQ1(i)));
         }
       
         ///adiciona os objetos semaforos com as coordenadas padrão na lista do Q2
-        for (int i=0; i < coordenadas.getSizeQ2(); i++)
+        for (i=0; i < coordenadas.getSizeQ2(); i++)
         {
             semaforosQ2.add(new Semaforo(coordenadas.getCoordenadasXQ2(i), coordenadas.getCoordenadasYQ2(i), coordenadas.getVerdeQ2(i)));
         }
 
         ///adiciona os objetos semaforos com as coordenadas padrão na lista do Q3
-        for (int i=0; i < coordenadas.getSizeQ3(); i++)
+        for (i=0; i < coordenadas.getSizeQ3(); i++)
         {
             semaforosQ3.add(new Semaforo(coordenadas.getCoordenadasXQ3(i), coordenadas.getCoordenadasYQ3(i), coordenadas.getVerdeQ3(i)));
         }
 
         ///adiciona os objetos semaforos com as coordenadas padrão na lista do Q4
-        for (int i=0; i < coordenadas.getSizeQ4(); i++)
+        for (i=0; i < coordenadas.getSizeQ4(); i++)
         {
             semaforosQ4.add(new Semaforo(coordenadas.getCoordenadasXQ4(i), coordenadas.getCoordenadasYQ4(i), coordenadas.getVerdeQ4(i)));
         }
@@ -59,23 +71,23 @@ public class Main
             while (!cheguei)
             {
                 ///popula os semaforos do Q1 no mundo
-                for (int i=0; i < semaforosQ1.size(); i++)
+                for (i=0; i < semaforosQ1.size(); i++)
                 {
                     meuMundo.populaSemaforoQ1(semaforosQ1.get(i));
                 }
 
                 ///popula os semaforos do Q2 no mundo
-                for (int i=0; i < semaforosQ2.size(); i++)
+                for (i=0; i < semaforosQ2.size(); i++)
                 {
                     meuMundo.populaSemaforoQ2(semaforosQ2.get(i));
                 }
                 ///popula os semaforos do Q3 no mundo
-                for (int i=0; i < semaforosQ3.size(); i++)
+                for (i=0; i < semaforosQ3.size(); i++)
                 {
                     meuMundo.populaSemaforoQ3(semaforosQ3.get(i));
                 }  
                 ///popula os semaforos do Q4 no mundo
-                for (int i=0; i < semaforosQ4.size(); i++)
+                for (i=0; i < semaforosQ4.size(); i++)
                 {
                     meuMundo.populaSemaforoQ4(semaforosQ4.get(i));
                 }
@@ -91,6 +103,7 @@ public class Main
                 meuMundo.voltaComeco();
             }
         }
+        */
 
     }
 }
