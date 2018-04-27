@@ -2,14 +2,14 @@ import java.util.concurrent.Semaphore;
 
 public class Semaforo extends Thread implements Runnable
 {
-    public Semaforo(int x, int y, boolean verde)
+    public Semaforo(int x, int y, boolean verde, int duracao)
     {
         this.x = x;
         this.y = y;
         this.verde = verde;
+        this.duracao = duracao;
 
         this.parar = false;
-        this.corMudou = false;
 
         new Thread(this).start();
     }
@@ -23,9 +23,9 @@ public class Semaforo extends Thread implements Runnable
         {
             try {
                 if (this.verde)
-                    Thread.sleep(2000);
+                    Thread.sleep(this.duracao);
                 else
-                    Thread.sleep(2000);
+                    Thread.sleep(this.duracao);
 
                 this.mudarCor();
             }
@@ -38,7 +38,6 @@ public class Semaforo extends Thread implements Runnable
     // metodo que faz a cor mudar de vermelho para verde e vice versa
     private synchronized void mudarCor()
     {
-        // se o
         if (this.verde) {
             this.verde = false;
         }
@@ -46,7 +45,6 @@ public class Semaforo extends Thread implements Runnable
         {
             this.verde = true;
         }
-        this.corMudou = true;
     }
 
     public synchronized void deligarSemaforo ()
@@ -70,7 +68,7 @@ public class Semaforo extends Thread implements Runnable
     }
 
     protected int x, y;
+    protected int duracao;
     protected boolean verde;
     private boolean parar;
-    private boolean corMudou;
 }

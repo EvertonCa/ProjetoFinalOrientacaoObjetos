@@ -80,11 +80,17 @@ public class CoordenadasSemaforos
         return verdeQ4[i];
     }
 
+    public int getDuracao(int i)
+    {
+        return duracao[i];
+    }
+
 
     //32 semaforos Q1
     protected int coordenadasXQ1[] = {15, 20, 21, 20};
     protected int coordenadasYQ1[] = {9, 14, 19, 24};
     protected boolean verdeQ1[] = {true, false, true, false};
+    protected int duracao[] = {3000, 3000, 4000, 4000};
 
     //27 semaforos Q2
     protected int coordenadasXQ2[] = { 0, 9, 8,13,14, 9,13,14,33,38,44,49,57,56, 9, 8,13,14,23,24,29,39,44,45,52,57,51};
