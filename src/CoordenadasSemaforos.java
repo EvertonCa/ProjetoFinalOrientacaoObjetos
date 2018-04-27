@@ -80,21 +80,6 @@ public class CoordenadasSemaforos
         return verdeQ4[i];
     }
 
-    public int[] getTesteX() {
-        return testeX;
-    }
-
-    public boolean[] getVerdeTeste() {
-        return verdeTeste;
-    }
-
-    public int[] getTesteY() {
-        return testeY;
-    }
-
-    protected int testeX[] = {15};
-    protected int testeY[] = {10};
-    protected boolean verdeTeste[] = {true};
 
     //32 semaforos Q1
     protected int coordenadasXQ1[] = {15, 20, 21, 20};
