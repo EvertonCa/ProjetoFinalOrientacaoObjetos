@@ -43,13 +43,11 @@ public class Aleatorio
         return listaDeArestas.get(ThreadLocalRandom.current().nextInt(0,tamanho+1));
     }
 
-    ///volta um número aleatório entre 1 e 300000
+    ///volta um número aleatório entre 100 e 300000
     public int randomizeID()
     {
-        int id1 = ThreadLocalRandom.current().nextInt(1,100000);
-        int id2 = ThreadLocalRandom.current().nextInt(1,100000);
-        int id3 = ThreadLocalRandom.current().nextInt(1,100000);
-        return id1+id2+id3;
+        int id = ThreadLocalRandom.current().nextInt(100,300000);
+        return id;
     }
 
 

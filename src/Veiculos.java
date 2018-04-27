@@ -47,5 +47,9 @@ public class Veiculos
         this.quadranteDestino = quadranteDestino;
     }
 
+    public int getQuadranteAtual() {
+        return quadranteAtual;
+    }
+
     protected int x, y, xDestino, yDestino, quadranteAtual, quadranteDestino, ID;
 }

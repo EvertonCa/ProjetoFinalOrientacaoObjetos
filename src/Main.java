@@ -5,22 +5,41 @@ public class Main
 {
     public static void main (String argv[])
     {
-        /* Dijkstra funcionando 4 quadrantes
+        int i;
+        /*
+        //Dijkstra funcionando 4 quadrantes
         Grafo grafo = new Grafo();
 
         Dijkstra dijkstra  = new Dijkstra();
 
         List<Vertice> menorRota = dijkstra.encontrarMenorCaminhoDijkstra(grafo, grafo.encontrarVertice("vertice22"), grafo.encontrarVertice("vertice77"));
 
-        for(int i = 0; i < menorRota.size(); i++)
+        for(i = 0; i < menorRota.size(); i++)
         {
             System.out.print(menorRota.get(i));
             System.out.printf(" -> ");
+        }*/
+
+        GPS gps = new GPS();
+
+        AutoPilot tesla = new AutoPilot(gps.getMenorRota(), gps.getArestasDefinitivas());
+
+        System.out.print("Arestas Definitivas" + gps.getArestasDefinitivas().get(0).getOrigem() + " e " + gps.getArestasDefinitivas().get(1).getDestino() + "\n");
+
+        gps.exibirMenorRota();
+
+        /*
+        while(!tesla.getCheguei())
+        {
+            tesla.move(false);
+            System.out.printf("\nX e Y inicial:\n");
+            System.out.print(tesla.getX() + " " + tesla.getY() + "\n");
+            System.out.printf("X e Y destino:\n");
+            System.out.print(tesla.getxDestino() + " " + tesla.getyDestino() + "\n");
         }
         */
 
-
-        /* Exibir o mundo com os 4 quadrantes funcionando
+        //Exibir o mundo com os 4 quadrantes funcionando
         ///criação do objeto mundo
         Mundo meuMundo = new Mundo();
 
@@ -94,7 +113,7 @@ public class Main
                     meuMundo.populaSemaforoQ4(semaforosQ4.get(i));
                 }
 
-                              
+                meuMundo.insereVeiculoNoMundo(tesla.getX(), tesla.getY(), tesla.getQuadranteAtual(), tesla.getID());
 
                 ///desenha o mundo com os quadrantes 1 e 2
                 meuMundo.desenhaMundo(meuMundo.getMundoQ1(), meuMundo.getMundoQ2());
@@ -102,27 +121,10 @@ public class Main
                 meuMundo.desenhaMundo(meuMundo.getMundoQ3(), meuMundo.getMundoQ4());
                 ///pausa a execução do programa pelo tempo determinado
                 meuMundo.pausaMundo();
+                meuMundo.reiniciaMundos();
+                tesla.move(false);
                 meuMundo.voltaComeco();
             }
-        }
-        */
-
-        GPS gps = new GPS();
-
-        AutoPilot tesla = new AutoPilot(gps.getMenorRota(), gps.getArestasDefinitivas());
-
-        System.out.print("Arestas Definitivas" + gps.getArestasDefinitivas().get(0).getOrigem() + " e " + gps.getArestasDefinitivas().get(1).getDestino() + "\n");
-
-        gps.exibirMenorRota();
-
-
-        while(!tesla.getCheguei())
-        {
-            tesla.move(false);
-            System.out.printf("\nX e Y inicial:\n");
-            System.out.print(tesla.getX() + " " + tesla.getY() + "\n");
-            System.out.printf("X e Y destino:\n");
-            System.out.print(tesla.getxDestino() + " " + tesla.getyDestino() + "\n");
         }
 
     }

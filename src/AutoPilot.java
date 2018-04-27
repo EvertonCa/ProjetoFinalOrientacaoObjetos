@@ -397,6 +397,7 @@ public class AutoPilot extends Veiculos
                 if(super.getX() == 59)
                 {
                     super.setX(0);
+                    setQuadranteAtual(arestaAtual.getQuadrante());
                 }
                 else
                 {
@@ -417,7 +418,10 @@ public class AutoPilot extends Veiculos
             else
             {
                 if(super.getX() == 0)
+                {
                     super.setX(59);
+                    setQuadranteAtual(arestaAtual.getQuadrante());
+                }
                 else
                     super.setX(super.getX() - 1);
             }
@@ -434,7 +438,10 @@ public class AutoPilot extends Veiculos
             else
             {
                 if(super.getY() == 0)
+                {
                     super.setY(59);
+                    setQuadranteAtual(arestaAtual.getQuadrante());
+                }
                 else
                     super.setY(super.getY() - 1);
             }
@@ -451,7 +458,10 @@ public class AutoPilot extends Veiculos
             else
             {
                 if(super.getY() == 59)
+                {
                     super.setY(0);
+                    setQuadranteAtual(arestaAtual.getQuadrante());
+                }
                 else
                     super.setY(super.getY() + 1);
             }
@@ -460,6 +470,10 @@ public class AutoPilot extends Veiculos
 
     public boolean getCheguei() {
         return cheguei;
+    }
+
+    public Aresta getArestaAtual() {
+        return arestaAtual;
     }
 
     @Override

@@ -282,6 +282,7 @@ public class GPS
             System.out.printf(" -> ");
             System.out.print(menorRota.get(i));
         }
+        System.out.printf("\n");
     }
 
     public List<Vertice> getMenorRota() {
