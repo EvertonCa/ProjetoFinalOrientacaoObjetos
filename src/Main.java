@@ -5,6 +5,7 @@ public class Main
 {
     public static void main (String argv[])
     {
+        /* Dijkstra funcionando 4 quadrantes
         Grafo grafo = new Grafo();
 
         Dijkstra dijkstra  = new Dijkstra();
@@ -16,9 +17,10 @@ public class Main
             System.out.print(menorRota.get(i));
             System.out.printf(" -> ");
         }
+        */
 
 
-        /*
+        /* Exibir o mundo com os 4 quadrantes funcionando
         ///criação do objeto mundo
         Mundo meuMundo = new Mundo();
 
@@ -104,6 +106,24 @@ public class Main
             }
         }
         */
+
+        GPS gps = new GPS();
+
+        AutoPilot tesla = new AutoPilot(gps.getMenorRota(), gps.getArestasDefinitivas());
+
+        System.out.print("Arestas Definitivas" + gps.getArestasDefinitivas().get(0).getOrigem() + " e " + gps.getArestasDefinitivas().get(1).getDestino() + "\n");
+
+        gps.exibirMenorRota();
+
+
+        while(!tesla.getCheguei())
+        {
+            tesla.move(false);
+            System.out.printf("\nX e Y inicial:\n");
+            System.out.print(tesla.getX() + " " + tesla.getY() + "\n");
+            System.out.printf("X e Y destino:\n");
+            System.out.print(tesla.getxDestino() + " " + tesla.getyDestino() + "\n");
+        }
 
     }
 }

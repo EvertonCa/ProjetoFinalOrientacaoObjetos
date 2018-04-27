@@ -132,24 +132,28 @@ public class GPS
                 {
                     populaArestasOrigem(grafo.getArestasQ1(primeiraAresta));
                     populaArestasOrigem(grafo.getArestasQ1(segundaAresta));
+                    break;
                 }
 
                 case 2:
                 {
                     populaArestasOrigem(grafo.getArestasQ2(primeiraAresta));
                     populaArestasOrigem(grafo.getArestasQ2(segundaAresta));
+                    break;
                 }
 
                 case 3:
                 {
                     populaArestasOrigem(grafo.getArestasQ3(primeiraAresta));
                     populaArestasOrigem(grafo.getArestasQ3(segundaAresta));
+                    break;
                 }
 
                 case 4:
                 {
                     populaArestasOrigem(grafo.getArestasQ4(primeiraAresta));
                     populaArestasOrigem(grafo.getArestasQ4(segundaAresta));
+                    break;
                 }
             }
         }
@@ -214,20 +218,20 @@ public class GPS
         Dijkstra dijkstra1 = new Dijkstra();
         Dijkstra dijkstra2 = new Dijkstra();
         Dijkstra dijkstra3 = new Dijkstra();
-        Dijkstra dijkstra4 = new Dijkstra();;
+        Dijkstra dijkstra4 = new Dijkstra();
 
-        menorRota1 = dijkstra1.encontrarMenorCaminhoDijkstra(grafo,
-                grafo.encontrarVertice(verticesOrigem.get(0).getDescricao()),
-                grafo.encontrarVertice(verticesDestino.get(0).getDescricao()));
-        menorRota2 = dijkstra2.encontrarMenorCaminhoDijkstra(grafo,
-                grafo.encontrarVertice(verticesOrigem.get(0).getDescricao()),
-                grafo.encontrarVertice(verticesDestino.get(1).getDescricao()));
-        menorRota3 = dijkstra3.encontrarMenorCaminhoDijkstra(grafo,
-                grafo.encontrarVertice(verticesOrigem.get(1).getDescricao()),
-                grafo.encontrarVertice(verticesDestino.get(0).getDescricao()));
-        menorRota4 = dijkstra4.encontrarMenorCaminhoDijkstra(grafo,
-                grafo.encontrarVertice(verticesOrigem.get(1).getDescricao()),
-                grafo.encontrarVertice(verticesDestino.get(1).getDescricao()));
+        menorRota1 = dijkstra1.encontrarMenorCaminhoDijkstra(grafo1,
+                grafo1.encontrarVertice(verticesOrigem.get(0).getDescricao()),
+                grafo1.encontrarVertice(verticesDestino.get(0).getDescricao()));
+        menorRota2 = dijkstra2.encontrarMenorCaminhoDijkstra(grafo2,
+                grafo2.encontrarVertice(verticesOrigem.get(0).getDescricao()),
+                grafo2.encontrarVertice(verticesDestino.get(1).getDescricao()));
+        menorRota3 = dijkstra3.encontrarMenorCaminhoDijkstra(grafo3,
+                grafo3.encontrarVertice(verticesOrigem.get(1).getDescricao()),
+                grafo3.encontrarVertice(verticesDestino.get(0).getDescricao()));
+        menorRota4 = dijkstra4.encontrarMenorCaminhoDijkstra(grafo4,
+                grafo4.encontrarVertice(verticesOrigem.get(1).getDescricao()),
+                grafo4.encontrarVertice(verticesDestino.get(1).getDescricao()));
 
         int tamanho1 = menorRota1.size(), tamanho2 = menorRota2.size(), tamanho3 = menorRota3.size(), tamanho4 = menorRota4.size();
 
