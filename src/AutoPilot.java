@@ -108,7 +108,16 @@ public class AutoPilot extends Veiculos
         {
             if(direcao.equals("esquerda"))
             {
-                if(mundo[super.getY()][super.getX() - 1] == 6)
+                if((quadrante == 2  || quadrante == 4) && super.getX() == 0)
+                {
+                    cruzandoQuadrante = true;
+                    naEsquinaRota();
+                }
+                else if(super.getX() == 0)
+                {
+                    naEsquinaRota();
+                }
+                else if(mundo[super.getY()][super.getX() - 1] == 6)
                 {
                     proxArestaDefinida = false;
                     super.setX(super.getX()-1);
@@ -123,7 +132,16 @@ public class AutoPilot extends Veiculos
             }
             else if(direcao.equals("direita"))
             {
-                if(mundo[super.getY()][super.getX() + 1] == 5)
+                if((quadrante == 1  || quadrante == 3) && super.getX() == 59)
+                {
+                    cruzandoQuadrante = true;
+                    naEsquinaRota();
+                }
+                else if(super.getX() == 59)
+                {
+                    naEsquinaRota();
+                }
+                else if(mundo[super.getY()][super.getX() + 1] == 5)
                 {
                     proxArestaDefinida = false;
                     super.setX(super.getX() + 1);
@@ -139,7 +157,16 @@ public class AutoPilot extends Veiculos
             }
             else if(direcao.equals("cima"))
             {
-                if(mundo[super.getY() - 1][super.getX()] == 7)
+                if((quadrante == 3  || quadrante == 4) && super.getY() == 0)
+                {
+                    cruzandoQuadrante = true;
+                    naEsquinaRota();
+                }
+                else if(super.getY() == 0)
+                {
+                    naEsquinaRota();
+                }
+                else if(mundo[super.getY() - 1][super.getX()] == 7)
                 {
                     proxArestaDefinida = false;
                     super.setY(super.getY() - 1);
@@ -154,7 +181,16 @@ public class AutoPilot extends Veiculos
             }
             else
             {
-                if(mundo[super.getY() + 1][super.getX()] == 8)
+                if((quadrante == 1  || quadrante == 3) && super.getY() == 59)
+                {
+                    cruzandoQuadrante = true;
+                    naEsquinaRota();
+                }
+                else if(super.getY() == 59)
+                {
+                    naEsquinaRota();
+                }
+                else if(mundo[super.getY() + 1][super.getX()] == 8)
                 {
                     proxArestaDefinida = false;
                     super.setY(super.getY() + 1);
@@ -351,23 +387,74 @@ public class AutoPilot extends Veiculos
         if(rotaNosCruzamentos.get(0).equals("direita"))
         {
             rotaNosCruzamentos.remove(0);
-            super.setX(super.getX() + 1);
+            if(cruzandoQuadrante)
+            {
+                super.setX(0);
+                cruzandoQuadrante = false;
+            }
+            else
+            {
+                if(super.getX() == 59)
+                {
+                    super.setX(0);
+                }
+                else
+                {
+                    super.setX(super.getX() + 1);
+                }
+
+            }
+
         }
         else if(rotaNosCruzamentos.get(0).equals("esquerda"))
         {
             rotaNosCruzamentos.remove(0);
-            super.setX(super.getX() - 1);
+            if(cruzandoQuadrante)
+            {
+                super.setX(59);
+                cruzandoQuadrante = false;
+            }
+            else
+            {
+                if(super.getX() == 0)
+                    super.setX(59);
+                else
+                    super.setX(super.getX() - 1);
+            }
         }
 
         else if(rotaNosCruzamentos.get(0).equals("cima"))
         {
             rotaNosCruzamentos.remove(0);
-            super.setY(super.getY() - 1);
+            if(cruzandoQuadrante)
+            {
+                super.setY(59);
+                cruzandoQuadrante = false;
+            }
+            else
+            {
+                if(super.getY() == 0)
+                    super.setY(59);
+                else
+                    super.setY(super.getY() - 1);
+            }
+
         }
         else
         {
             rotaNosCruzamentos.remove(0);
-            super.setY(super.getY() + 1);
+            if(cruzandoQuadrante)
+            {
+                super.setY(0);
+                cruzandoQuadrante = false;
+            }
+            else
+            {
+                if(super.getY() == 59)
+                    super.setY(0);
+                else
+                    super.setY(super.getY() + 1);
+            }
         }
     }
 
@@ -399,5 +486,6 @@ public class AutoPilot extends Veiculos
     protected List <Vertice> menorRota;
     protected List <String> rotaNosCruzamentos = new ArrayList<>();
     protected boolean rotaAleatoria, proxArestaDefinida = false, cheguei = false, chegueiNaArestaDestino = false;
+    protected boolean cruzandoQuadrante = false;
     protected int xCentral, yCentral;
 }
