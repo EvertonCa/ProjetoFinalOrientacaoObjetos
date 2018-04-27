@@ -342,9 +342,9 @@ public class Mundo
             System.out.printf("\33[7;30m  \33[0m");
         }
 
-        else if(quadrante[i][j] == 9) //carros - ciano
+        else if(quadrante[i][j] >= 100 && quadrante[i][j] < 300000) //carros - ciano
         {
-            System.out.printf("\33[7;36m  \33[0m");
+            System.out.printf("\33[7;35m  \33[0m");
         }
 
         else if(quadrante[i][j] >= 10 && quadrante[i][j] <= 99) //intersecções - preta
@@ -413,7 +413,7 @@ public class Mundo
     {
         try
         {
-            Thread.sleep(500000); //funcao para dar uma pequena pausa
+            Thread.sleep(1000); //funcao para dar uma pequena pausa
         }
         catch (InterruptedException e) { }
     }
@@ -438,6 +438,34 @@ public class Mundo
         else
         {
             return mundoQ4[x][y];
+        }
+    }
+
+    public void insereVeiculoNoMundo(int x, int y, int quadrante, int ID)
+    {
+        switch (quadrante)
+        {
+            default:
+            {
+                mundoQ1[y][x] = ID;
+                break;
+            }
+            case 2:
+            {
+                mundoQ2[y][x] = ID;
+                break;
+            }
+            case 3:
+            {
+                mundoQ3[y][x] = ID;
+                break;
+            }
+            case 4:
+            {
+                mundoQ4[y][x] = ID;
+                break;
+            }
+
         }
     }
 
