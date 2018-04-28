@@ -77,6 +77,9 @@ public class GPS
         ruaOrigem = random.randomizaRua();
         ruaDestino = random.randomizaRuaComExcecao(ruaOrigem);
 
+        System.out.printf("Origem: " + ruaOrigem + "\n");
+        System.out.printf("Destino: " + ruaDestino + "\n");
+
         origem = ruaExiste("origem");
         encontraArestas(origem, "origem");
         encontraVertices("origem");

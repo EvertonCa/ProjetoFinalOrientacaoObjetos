@@ -418,7 +418,7 @@ public class Mundo
     {
         try
         {
-            Thread.sleep(1000); //funcao para dar uma pequena pausa
+            Thread.sleep(100); //funcao para dar uma pequena pausa
         }
         catch (InterruptedException e) { }
     }
