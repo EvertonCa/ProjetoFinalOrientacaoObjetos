@@ -3,18 +3,11 @@ import java.util.List;
 
 public class AutoPilot extends Veiculos
 {
-    ///construtor com rota aleatoria
-    public AutoPilot(Grafo grafo)
-    {
-        Aleatorio aleatorio = new Aleatorio();
-        rotaAleatoria = true;
-        arestaOrigem = aleatorio.randomizeArestaGrafo(grafo);
-        posicionaNaAresta();
-    }
-
     ///construtor com rota especifica
-    public AutoPilot(List <Vertice> menorRota, List <Aresta> origemDestino)
+    public AutoPilot(List <Vertice> menorRota, List <Aresta> origemDestino, String aleatorio)
     {
+        if(aleatorio.equals("aleatorio"))
+            setIDParaRandom();
         rotaAleatoria = false;
         this.menorRota = menorRota;
         arestaOrigem = origemDestino.get(0);
@@ -27,7 +20,6 @@ public class AutoPilot extends Veiculos
     {
         arestaAtual = arestaOrigem;
         super.setQuadranteAtual(arestaOrigem.getQuadrante());
-
 
         centraliza(arestaOrigem);
 
@@ -71,7 +63,7 @@ public class AutoPilot extends Veiculos
         }
     }
 
-    public void move(boolean random)
+    public void move()
     {
         String direcao = arestaAtual.getDirecao();
         Mundo matrizMundo = new Mundo();
@@ -124,10 +116,7 @@ public class AutoPilot extends Veiculos
                 }
                 else
                 {
-                    if(random)
-                        naEsquinaRandom();
-                    else
-                        naEsquinaRota();
+                    naEsquinaRota();
                 }
             }
             else if(direcao.equals("direita"))
@@ -149,10 +138,7 @@ public class AutoPilot extends Veiculos
                 }
                 else
                 {
-                    if(random)
-                        naEsquinaRandom();
-                    else
-                        naEsquinaRota();
+                    naEsquinaRota();
                 }
             }
             else if(direcao.equals("cima"))
@@ -173,10 +159,7 @@ public class AutoPilot extends Veiculos
                 }
                 else
                 {
-                    if(random)
-                        naEsquinaRandom();
-                    else
-                        naEsquinaRota();
+                    naEsquinaRota();
                 }
             }
             else
@@ -197,10 +180,7 @@ public class AutoPilot extends Veiculos
                 }
                 else
                 {
-                    if(random)
-                        naEsquinaRandom();
-                    else
-                        naEsquinaRota();
+                    naEsquinaRota();
                 }
             }
 
@@ -208,21 +188,6 @@ public class AutoPilot extends Veiculos
             {
                 cheguei = true;
             }
-        }
-    }
-
-    public void naEsquinaRandom()
-    {
-        if(!proxArestaDefinida)
-        {
-            defineArestaProxima();
-            proxArestaDefinida = true;
-            arestaAtual = arestaProxima;
-            rotaParaProximaAresta();
-        }
-        else
-        {
-            moveNoVertice();
         }
     }
 

@@ -342,9 +342,14 @@ public class Mundo
             System.out.printf("\33[7;30m  \33[0m");
         }
 
-        else if(quadrante[i][j] >= 100 && quadrante[i][j] < 300000) //carros - ciano
+        else if(quadrante[i][j] >= 100 && quadrante[i][j] < 300000) //carros definidos - roxo
         {
             System.out.printf("\33[7;35m  \33[0m");
+        }
+
+        else if(quadrante[i][j] >= 300001 && quadrante[i][j] < 600000) //carros aleatorios - amarelos
+        {
+            System.out.printf("\33[7;33m  \33[0m");
         }
 
         else if(quadrante[i][j] >= 10 && quadrante[i][j] <= 99) //intersecções - preta

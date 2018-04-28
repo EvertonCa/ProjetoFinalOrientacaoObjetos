@@ -3,7 +3,7 @@ import java.util.*;
 
 public class GPS
 {
-    public GPS()
+    public GPS(String aleatorio)
     {
         Grafo grafo = new Grafo();
         this.grafo = grafo;
@@ -15,8 +15,13 @@ public class GPS
         this.grafo3 = grafo3;
         Grafo grafo4 = new Grafo();
         this.grafo4 = grafo4;
-        obterRuasUsuario();
+
+        if(aleatorio.equals("aleatorio"))
+            obterRuasAleatorias();
+        else
+            obterRuasUsuario();
         obterRota();
+
     }
 
     public void obterRuasUsuario()
@@ -63,8 +68,22 @@ public class GPS
                 destinoExiste = true;
             }
         }
+    }
 
+    public void obterRuasAleatorias()
+    {
+        Aleatorio random = new Aleatorio();
 
+        ruaOrigem = random.randomizaRua();
+        ruaDestino = random.randomizaRuaComExcecao(ruaOrigem);
+
+        origem = ruaExiste("origem");
+        encontraArestas(origem, "origem");
+        encontraVertices("origem");
+
+        destino = ruaExiste("destino");
+        encontraArestas(destino, "destino");
+        encontraVertices("destino");
     }
 
     public String ruaExiste(String origemOuDestino) {
@@ -165,24 +184,28 @@ public class GPS
                 {
                     populaArestasDestino(grafo.getArestasQ1(primeiraAresta));
                     populaArestasDestino(grafo.getArestasQ1(segundaAresta));
+                    break;
                 }
 
                 case 2:
                 {
                     populaArestasDestino(grafo.getArestasQ2(primeiraAresta));
                     populaArestasDestino(grafo.getArestasQ2(segundaAresta));
+                    break;
                 }
 
                 case 3:
                 {
                     populaArestasDestino(grafo.getArestasQ3(primeiraAresta));
                     populaArestasDestino(grafo.getArestasQ3(segundaAresta));
+                    break;
                 }
 
                 case 4:
                 {
                     populaArestasDestino(grafo.getArestasQ4(primeiraAresta));
                     populaArestasDestino(grafo.getArestasQ4(segundaAresta));
+                    break;
                 }
             }
         }

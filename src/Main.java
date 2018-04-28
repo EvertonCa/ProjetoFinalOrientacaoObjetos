@@ -6,38 +6,14 @@ public class Main
     public static void main (String argv[])
     {
         int i;
-        /*
-        //Dijkstra funcionando 4 quadrantes
-        Grafo grafo = new Grafo();
 
-        Dijkstra dijkstra  = new Dijkstra();
+        GPS gps = new GPS("definido");
 
-        List<Vertice> menorRota = dijkstra.encontrarMenorCaminhoDijkstra(grafo, grafo.encontrarVertice("vertice22"), grafo.encontrarVertice("vertice77"));
-
-        for(i = 0; i < menorRota.size(); i++)
-        {
-            System.out.print(menorRota.get(i));
-            System.out.printf(" -> ");
-        }*/
-
-        GPS gps = new GPS();
-
-        AutoPilot tesla = new AutoPilot(gps.getMenorRota(), gps.getArestasDefinitivas());
+        AutoPilot tesla = new AutoPilot(gps.getMenorRota(), gps.getArestasDefinitivas(), "definido");
 
         System.out.print("Arestas Definitivas" + gps.getArestasDefinitivas().get(0).getOrigem() + " e " + gps.getArestasDefinitivas().get(1).getDestino() + "\n");
 
         gps.exibirMenorRota();
-
-        /*
-        while(!tesla.getCheguei())
-        {
-            tesla.move(false);
-            System.out.printf("\nX e Y inicial:\n");
-            System.out.print(tesla.getX() + " " + tesla.getY() + "\n");
-            System.out.printf("X e Y destino:\n");
-            System.out.print(tesla.getxDestino() + " " + tesla.getyDestino() + "\n");
-        }
-        */
 
         //Exibir o mundo com os 4 quadrantes funcionando
         ///criação do objeto mundo
@@ -82,6 +58,17 @@ public class Main
             semaforosQ4.add(new Semaforo(coordenadas.getCoordenadasXQ4(i), coordenadas.getCoordenadasYQ4(i), coordenadas.getVerdeQ4(i)));
         }
 
+        List <AutoPilot> veiculosAleatorios = new ArrayList<>();
+
+        List <GPS> GPSsParaVeiculosAleatorios = new ArrayList<>();
+
+        for(i=0; i < 10; i++)
+        {
+            GPSsParaVeiculosAleatorios.add(new GPS("aleatorio"));
+            veiculosAleatorios.add(new AutoPilot(GPSsParaVeiculosAleatorios.get(i).getMenorRota(),
+                    GPSsParaVeiculosAleatorios.get(i).getArestasDefinitivas(), "aleatorio"));
+        }
+
         ///boleano que gerencia se os veiculos entrados pelo usuario chegaram ao destino final
         boolean cheguei = false;
 
@@ -89,7 +76,7 @@ public class Main
         while (true)
         {
             ///loop de execução enquanto os veiculos nao chegam ao destino
-            while (!cheguei)
+            while (!tesla.getCheguei())
             {
                 ///popula os semaforos do Q1 no mundo
                 for (i=0; i < semaforosQ1.size(); i++)
@@ -113,8 +100,16 @@ public class Main
                     meuMundo.populaSemaforoQ4(semaforosQ4.get(i));
                 }
 
-                meuMundo.insereVeiculoNoMundo(tesla.getX(), tesla.getY(), tesla.getQuadranteAtual(), tesla.getID());
 
+                meuMundo.insereVeiculoNoMundo(tesla.getX(), tesla.getY(), tesla.getQuadranteAtual(), tesla.getID());
+                /*
+                for(i=0; i < 10; i++)
+                {
+                    meuMundo.insereVeiculoNoMundo(veiculosAleatorios.get(i).getX(), veiculosAleatorios.get(i).getY(),
+                            veiculosAleatorios.get(i).getQuadranteAtual(), veiculosAleatorios.get(i).getID());
+                }
+
+                */
                 ///desenha o mundo com os quadrantes 1 e 2
                 meuMundo.desenhaMundo(meuMundo.getMundoQ1(), meuMundo.getMundoQ2());
                 ///desenha o mundo com os quadrantes 3 e 4
@@ -122,7 +117,21 @@ public class Main
                 ///pausa a execução do programa pelo tempo determinado
                 meuMundo.pausaMundo();
                 meuMundo.reiniciaMundos();
-                tesla.move(false);
+                tesla.move();
+                /*
+                for(i=0; i < 10; i++)
+                {
+                    if(veiculosAleatorios.get(i).getCheguei())
+                    {
+                        veiculosAleatorios.remove(i);
+                        GPSsParaVeiculosAleatorios.remove(i);
+                        GPSsParaVeiculosAleatorios.add(new GPS("aleatorio"));
+                        veiculosAleatorios.add(new AutoPilot(GPSsParaVeiculosAleatorios.get(i).getMenorRota(),
+                                GPSsParaVeiculosAleatorios.get(i).getArestasDefinitivas(), "aleatorio"));
+                    }
+                    veiculosAleatorios.get(i).move();
+                }
+                */
                 meuMundo.voltaComeco();
             }
         }
