@@ -23,34 +23,34 @@ public class Aresta
         return origem;
     }
 
-    public void setBaixo(int[][] baixo)
+    public void setCoordenadas(int[][] coordenadas)
     {
-        this.baixo = baixo;
+        this.coordenadas = coordenadas;
     }
 
-    public void setCima(int[][] cima)
-    {
-        this.cima = cima;
+    public int[][] getCoordenadas() {
+        return coordenadas;
     }
 
-    public void setDireita(int[][] direita)
+    public void setDirecao(String direcao)
     {
-        this.direita = direita;
+        this.direcao = direcao;
     }
 
-    public void setEsquerda(int[][] esquerda)
-    {
-        this.esquerda = esquerda;
+    public String getDirecao() {
+        return direcao;
+    }
+
+    public int getQuadrante() {
+        return quadrante;
     }
 
     protected Vertice origem, destino;
     protected int peso, quadrante;
     /// matriz que indica as coordenadas das "ruas" no mundo
     /// {{coordenada inicial X, coordenada final X},{coordenada inicial Y, coordenada final Y}}
-    protected int [][] direita = {{0,0},{0,0}};
-    protected int [][] esquerda = {{0,0},{0,0}};
-    protected int [][] cima = {{0,0},{0,0}};
-    protected int [][] baixo = {{0,0},{0,0}};
+    protected int [][] coordenadas = {{0,0},{0,0}};
+    protected String direcao;
 
 
 

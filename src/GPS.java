@@ -3,12 +3,25 @@ import java.util.*;
 
 public class GPS
 {
-    public GPS()
+    public GPS(String aleatorio)
     {
         Grafo grafo = new Grafo();
         this.grafo = grafo;
-        obterRuasUsuario();
+        Grafo grafo1 = new Grafo();
+        this.grafo1 = grafo1;
+        Grafo grafo2 = new Grafo();
+        this.grafo2 = grafo2;
+        Grafo grafo3 = new Grafo();
+        this.grafo3 = grafo3;
+        Grafo grafo4 = new Grafo();
+        this.grafo4 = grafo4;
+
+        if(aleatorio.equals("aleatorio"))
+            obterRuasAleatorias();
+        else
+            obterRuasUsuario();
         obterRota();
+
     }
 
     public void obterRuasUsuario()
@@ -41,7 +54,7 @@ public class GPS
             System.out.printf("Entre com a destino: ");
             ruaDestino = teclado.nextLine();
 
-            destino = ruaExiste("origem");
+            destino = ruaExiste("destino");
 
             if(destino.equals("naoEncontrado"))
             {
@@ -55,8 +68,25 @@ public class GPS
                 destinoExiste = true;
             }
         }
+    }
 
+    public void obterRuasAleatorias()
+    {
+        Aleatorio random = new Aleatorio();
 
+        ruaOrigem = random.randomizaRua();
+        ruaDestino = random.randomizaRuaComExcecao(ruaOrigem);
+
+        System.out.printf("Origem: " + ruaOrigem + "\n");
+        System.out.printf("Destino: " + ruaDestino + "\n");
+
+        origem = ruaExiste("origem");
+        encontraArestas(origem, "origem");
+        encontraVertices("origem");
+
+        destino = ruaExiste("destino");
+        encontraArestas(destino, "destino");
+        encontraVertices("destino");
     }
 
     public String ruaExiste(String origemOuDestino) {
@@ -124,24 +154,28 @@ public class GPS
                 {
                     populaArestasOrigem(grafo.getArestasQ1(primeiraAresta));
                     populaArestasOrigem(grafo.getArestasQ1(segundaAresta));
+                    break;
                 }
 
                 case 2:
                 {
                     populaArestasOrigem(grafo.getArestasQ2(primeiraAresta));
                     populaArestasOrigem(grafo.getArestasQ2(segundaAresta));
+                    break;
                 }
 
                 case 3:
                 {
                     populaArestasOrigem(grafo.getArestasQ3(primeiraAresta));
                     populaArestasOrigem(grafo.getArestasQ3(segundaAresta));
+                    break;
                 }
 
                 case 4:
                 {
                     populaArestasOrigem(grafo.getArestasQ4(primeiraAresta));
                     populaArestasOrigem(grafo.getArestasQ4(segundaAresta));
+                    break;
                 }
             }
         }
@@ -153,24 +187,28 @@ public class GPS
                 {
                     populaArestasDestino(grafo.getArestasQ1(primeiraAresta));
                     populaArestasDestino(grafo.getArestasQ1(segundaAresta));
+                    break;
                 }
 
                 case 2:
                 {
                     populaArestasDestino(grafo.getArestasQ2(primeiraAresta));
                     populaArestasDestino(grafo.getArestasQ2(segundaAresta));
+                    break;
                 }
 
                 case 3:
                 {
                     populaArestasDestino(grafo.getArestasQ3(primeiraAresta));
                     populaArestasDestino(grafo.getArestasQ3(segundaAresta));
+                    break;
                 }
 
                 case 4:
                 {
                     populaArestasDestino(grafo.getArestasQ4(primeiraAresta));
                     populaArestasDestino(grafo.getArestasQ4(segundaAresta));
+                    break;
                 }
             }
         }
@@ -180,13 +218,14 @@ public class GPS
     {
         if(origemOuDestino.equals("origem"))
         {
-            verticesOrigem.add(arestasOrigem.get(0).getOrigem());
-            verticesOrigem.add(arestasOrigem.get(1).getOrigem());
+            verticesOrigem.add(arestasOrigem.get(0).getDestino());
+            verticesOrigem.add(arestasOrigem.get(1).getDestino());
+
         }
         else
         {
-            verticesDestino.add(arestasDestino.get(0).getDestino());
-            verticesDestino.add(arestasDestino.get(1).getDestino());
+            verticesDestino.add(arestasDestino.get(0).getOrigem());
+            verticesDestino.add(arestasDestino.get(1).getOrigem());
         }
     }
 
@@ -202,20 +241,23 @@ public class GPS
 
     public void obterRota()
     {
-        Dijkstra dijkstra = new Dijkstra();
+        Dijkstra dijkstra1 = new Dijkstra();
+        Dijkstra dijkstra2 = new Dijkstra();
+        Dijkstra dijkstra3 = new Dijkstra();
+        Dijkstra dijkstra4 = new Dijkstra();
 
-        menorRota1 = dijkstra.encontrarMenorCaminhoDijkstra(grafo,
-                grafo.encontrarVertice(verticesOrigem.get(0).getDescricao()),
-                grafo.encontrarVertice(verticesDestino.get(0).getDescricao()));
-        menorRota2 = dijkstra.encontrarMenorCaminhoDijkstra(grafo,
-                grafo.encontrarVertice(verticesOrigem.get(0).getDescricao()),
-                grafo.encontrarVertice(verticesDestino.get(1).getDescricao()));
-        menorRota3 = dijkstra.encontrarMenorCaminhoDijkstra(grafo,
-                grafo.encontrarVertice(verticesOrigem.get(1).getDescricao()),
-                grafo.encontrarVertice(verticesDestino.get(0).getDescricao()));
-        menorRota4 = dijkstra.encontrarMenorCaminhoDijkstra(grafo,
-                grafo.encontrarVertice(verticesOrigem.get(1).getDescricao()),
-                grafo.encontrarVertice(verticesDestino.get(1).getDescricao()));
+        menorRota1 = dijkstra1.encontrarMenorCaminhoDijkstra(grafo1,
+                grafo1.encontrarVertice(verticesOrigem.get(0).getDescricao()),
+                grafo1.encontrarVertice(verticesDestino.get(0).getDescricao()));
+        menorRota2 = dijkstra2.encontrarMenorCaminhoDijkstra(grafo2,
+                grafo2.encontrarVertice(verticesOrigem.get(0).getDescricao()),
+                grafo2.encontrarVertice(verticesDestino.get(1).getDescricao()));
+        menorRota3 = dijkstra3.encontrarMenorCaminhoDijkstra(grafo3,
+                grafo3.encontrarVertice(verticesOrigem.get(1).getDescricao()),
+                grafo3.encontrarVertice(verticesDestino.get(0).getDescricao()));
+        menorRota4 = dijkstra4.encontrarMenorCaminhoDijkstra(grafo4,
+                grafo4.encontrarVertice(verticesOrigem.get(1).getDescricao()),
+                grafo4.encontrarVertice(verticesDestino.get(1).getDescricao()));
 
         int tamanho1 = menorRota1.size(), tamanho2 = menorRota2.size(), tamanho3 = menorRota3.size(), tamanho4 = menorRota4.size();
 
@@ -266,9 +308,18 @@ public class GPS
             System.out.printf(" -> ");
             System.out.print(menorRota.get(i));
         }
+        System.out.printf("\n");
     }
 
-    protected Grafo grafo;
+    public List<Vertice> getMenorRota() {
+        return menorRota;
+    }
+
+    public List<Aresta> getArestasDefinitivas() {
+        return arestasDefinitivas;
+    }
+
+    protected Grafo grafo, grafo1, grafo2, grafo3, grafo4;
     protected int quadrante;
     protected List <Vertice> menorRota1,menorRota2, menorRota3, menorRota4, menorRota;
     protected List <Aresta> arestasOrigem = new ArrayList<>();
