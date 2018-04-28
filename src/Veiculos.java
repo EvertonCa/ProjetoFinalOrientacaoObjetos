@@ -16,6 +16,12 @@ public class Veiculos
         return yDestino;
     }
 
+    public void setIDParaRandom()
+    {
+        Aleatorio random = new Aleatorio();
+        ID = random.randomizeIDParaAleatorios();
+    }
+
     public int getID()
     {
         return ID;

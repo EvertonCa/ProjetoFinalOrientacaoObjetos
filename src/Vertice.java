@@ -73,6 +73,14 @@ public class Vertice implements Comparable<Vertice>
         return distancia;
     }
 
+    public void setQuadrante(int quadrante) {
+        this.quadrante = quadrante;
+    }
+
+    public int getQuadrante() {
+        return quadrante;
+    }
+
     public int compareTo(Vertice vertice)
     {
         if(this.getDistancia() < vertice.getDistancia())
@@ -110,6 +118,6 @@ public class Vertice implements Comparable<Vertice>
     protected List <Aresta> arestas = new ArrayList<Aresta>();
     protected List <Vertice> verticesVizinhos = new ArrayList<Vertice>();
     protected boolean visitado;
-    protected int distancia;
+    protected int distancia, quadrante;
     protected String descricao;
 }

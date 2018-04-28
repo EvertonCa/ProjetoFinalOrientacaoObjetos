@@ -183,6 +183,7 @@ public class Grafo
                     }
                 }
                 vertices.get(i).setArestas(arestasVizinhas);
+                vertices.get(i).setQuadrante(quadrante);
             }
 
         }catch (IOException e){System.out.println("Erro no arquivo de propriedades Quadrante " + quadrante);}
