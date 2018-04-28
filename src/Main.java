@@ -121,14 +121,14 @@ public class Main
                 meuMundo.reiniciaMundos();
 
 /**/
-
+/*
                 System.out.printf("X e Y\n");
                 System.out.print(tesla.getX() + " " + tesla.getY() + "\n");
                 System.out.printf("X final e Y final\n");
                 System.out.print(tesla.getxDestino() + " " + tesla.getyDestino() + "\n");
                 System.out.printf("Quadrante\n");
                 System.out.print(tesla.getQuadranteAtual() + "\n\n");
-
+*/
 
                 tesla.move();
 /**/
