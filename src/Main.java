@@ -1,10 +1,25 @@
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import javafx.stage.Stage;
+import javafx.scene.layout.StackPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
-public class Main
+import javax.swing.text.Element;
+
+public class Main extends Application
 {
     public static void main (String argv[])
     {
+        launch(argv);
         int i;
 
         GPS gps = new GPS("definido");
@@ -151,4 +166,73 @@ public class Main
         }
 
     }
+
+    @Override
+    public void start(Stage primaryStage) throws FileNotFoundException
+    {
+        window = primaryStage;
+        window.setTitle("Ruas Inteligentes - Trabalho Final Orientação a Objetos");
+
+        botaoEnderecos = new Button("Mostrar Rota");
+        botaoEnderecos.setOnAction(e -> pegaRuas());
+        origem = new Label("Origem");
+        destino = new Label("Destino");
+        feitoPor = new Label("Feito por: Éverton Cardoso Acchetta");
+
+        ruaOrigem = new TextField();
+        ruaOrigem.setPromptText("Rua X");
+
+        ruaDestino = new TextField();
+        ruaDestino.setPromptText("Rua Y");
+
+        menuSuperior = new HBox(10);
+        menuSuperior.getChildren().addAll(origem, ruaOrigem, destino, ruaDestino, botaoEnderecos);
+        menuSuperior.setAlignment(Pos.CENTER);
+        menuSuperior.setPadding(new Insets(10,10,10,10));
+
+        layoutAnimacao = new Pane();
+        layoutAnimacao.setMinHeight(600);
+        layoutAnimacao.setMinWidth(600);
+
+        imagem = new Image(new FileInputStream("Image/Imagem.png"));
+        mapaCidade = new ImageView(imagem);
+
+        stackAnimacao = new StackPane();
+        stackAnimacao.getChildren().add(mapaCidade);
+
+        layoutAnimacao.getChildren().add(stackAnimacao);
+
+        menuInferior = new HBox(10);
+        menuInferior.getChildren().addAll(feitoPor);
+        menuInferior.setPadding(new Insets(10,10,10,10));
+        menuInferior.setAlignment(Pos.CENTER_RIGHT);
+
+        layout = new VBox(10);
+        layout.getChildren().addAll(menuSuperior, layoutAnimacao, menuInferior);
+
+        scene = new Scene(layout);
+        window.setScene(scene);
+        window.show();
+
+    }
+
+    public static void pegaRuas()
+    {
+        ruaDeOrigem = ruaOrigem.getText();
+        ruaDeDestino = ruaDestino.getText();
+        System.out.println(ruaDeOrigem + " e " + ruaDeDestino);
+    }
+
+    public static Stage window;
+    public static Scene scene;
+    public static Button botaoEnderecos;
+    public static Pane layoutAnimacao;
+    public static HBox menuSuperior, menuInferior;
+    public static VBox layout;
+    public static Label origem, destino, feitoPor;
+    public static TextField ruaOrigem, ruaDestino;
+    public static String ruaDeOrigem, ruaDeDestino;
+    public static ImageView mapaCidade;
+    public static StackPane stackAnimacao;
+    public static Image imagem;
 }
