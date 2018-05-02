@@ -3,6 +3,10 @@ import java.util.*;
 
 public class GPS
 {
+    public GPS()
+    {
+
+    }
     public GPS(String aleatorio)
     {
         Grafo grafo = new Grafo();
@@ -89,7 +93,7 @@ public class GPS
         encontraVertices("destino");
     }
 
-    public String ruaExiste(String origemOuDestino) {
+    public String ruaExiste(String rua) {
         try {
             Manipulador manip = new Manipulador();
             Properties propQ1 = manip.getRuasQ1();
@@ -99,14 +103,8 @@ public class GPS
 
             String tudoJunto, resposta;
 
-            if (origemOuDestino.equals("origem")) {
-
-                String separados[] = ruaOrigem.split(" ");
-                tudoJunto = separados[0] + separados[1];
-            } else {
-                String separados[] = ruaDestino.split(" ");
-                tudoJunto = separados[0] + separados[1];
-            }
+            String separados[] = rua.split(" ");
+            tudoJunto = separados[0] + separados[1];
 
             String arestas = propQ1.getProperty(tudoJunto);
             quadrante = 1;
@@ -138,7 +136,7 @@ public class GPS
                 resposta = arestas;
             }
             return resposta;
-        } catch (IOException e){return null;}
+        } catch (IOException e){return "naoEncontrado";}
     }
 
     public void encontraArestas(String arestas, String origemOuDestino)
