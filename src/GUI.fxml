@@ -38,7 +38,7 @@
             <Label fx:id="destino" text="Destino:" />
             <TextField fx:id="ruaDestino" promptText="Rua Y" />
             <Region HBox.hgrow="ALWAYS" />
-            <Button fx:id="botaoEnderecos" mnemonicParsing="false" onAction="#popupBoasVindas" text="Mostrar Rota" textAlignment="CENTER" />
+            <Button fx:id="botaoEnderecos" mnemonicParsing="false" onAction="#pegaRuas" text="Mostrar Rota" textAlignment="CENTER" />
          </children>
          <VBox.margin>
             <Insets />

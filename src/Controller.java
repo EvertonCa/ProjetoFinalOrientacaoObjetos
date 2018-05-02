@@ -45,19 +45,6 @@ public class Controller implements Initializable{
 
     }
 
-    public void popupBoasVindas() throws IOException
-    {
-        Parent boasVindasParent = FXMLLoader.load(getClass().getResource("PopUpBoasVindas.fxml"));
-        Scene boasVindasScene = new Scene(boasVindasParent);
-
-        boasVindas = new Stage();
-        boasVindas.setScene(boasVindasScene);
-        boasVindas.initOwner(botaoEnderecos.getScene().getWindow());
-        boasVindas.showAndWait();
-
-        boasVindas.close();
-    }
-
     public void chamaErroEndereco() throws IOException
     {
         Parent erroEnderecoParent = FXMLLoader.load(getClass().getResource("PopupErroEndereco.fxml"));
