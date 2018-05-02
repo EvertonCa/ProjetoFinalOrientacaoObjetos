@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -62,7 +63,10 @@
             <Pane fx:id="layoutAnimacao" prefHeight="600.0" prefWidth="600.0" StackPane.alignment="CENTER">
                <StackPane.margin>
                   <Insets left="10.0" right="10.0" />
-               </StackPane.margin></Pane>
+               </StackPane.margin>
+               <children>
+                  <Rectangle fx:id="carro" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="7.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
+               </children></Pane>
          </children></StackPane>
       <HBox fx:id="menuInferior" prefHeight="100.0" prefWidth="200.0">
          <children>

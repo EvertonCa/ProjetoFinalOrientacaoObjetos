@@ -85,43 +85,36 @@ public class Controller implements Initializable{
 
     public void animador()
     {
-
-        carro.setFill(Color.BLACK);
-        carro.setWidth(10);
-        carro.setHeight(5);
-        carro.setLayoutX(xInicial);
-        carro.setLayoutY(yInicial);
+        carro.setLayoutX(xInicial*5);
+        carro.setLayoutY(yInicial*5);
 
         SequentialTransition animaTudo = new SequentialTransition();
         animaTudo.setNode(carro);
 
         for(int i = 0; i < caminhosGUI.size(); i++)
         {
-            if(caminhosGUI.get(0).getDirecao().equals("direita"))
+            if(caminhosGUI.get(i).getDirecao().equals("direita"))
             {
                 TranslateTransition animacao = new TranslateTransition();
                 animacao.setDuration(Duration.seconds(caminhosGUI.get(0).getTamanho()));
                 animacao.setNode(carro);
-                animacao.setToX(xInicial + caminhosGUI.get(0).getTamanho());
-                animacao.setToY(yInicial);
+                animacao.setToX(xInicial*5 + caminhosGUI.get(0).getTamanho());
                 animaTudo.getChildren().add(animacao);
             }
-            else if(caminhosGUI.get(0).getDirecao().equals("esquerda"))
+            else if(caminhosGUI.get(i).getDirecao().equals("esquerda"))
             {
                 TranslateTransition animacao = new TranslateTransition();
                 animacao.setDuration(Duration.seconds(caminhosGUI.get(0).getTamanho()));
                 animacao.setNode(carro);
-                animacao.setToX(xInicial - caminhosGUI.get(0).getTamanho());
-                animacao.setToY(yInicial);
+                animacao.setToX(xInicial*5 - caminhosGUI.get(0).getTamanho());
                 animaTudo.getChildren().add(animacao);
             }
-            else if(caminhosGUI.get(0).getDirecao().equals("cima"))
+            else if(caminhosGUI.get(i).getDirecao().equals("cima"))
             {
                 TranslateTransition animacao = new TranslateTransition();
                 animacao.setDuration(Duration.seconds(caminhosGUI.get(0).getTamanho()));
                 animacao.setNode(carro);
-                animacao.setToX(xInicial);
-                animacao.setToY(yInicial - caminhosGUI.get(0).getTamanho());
+                animacao.setToY(yInicial*5 - caminhosGUI.get(0).getTamanho());
                 animaTudo.getChildren().add(animacao);
             }
             else
@@ -129,8 +122,7 @@ public class Controller implements Initializable{
                 TranslateTransition animacao = new TranslateTransition();
                 animacao.setDuration(Duration.seconds(caminhosGUI.get(0).getTamanho()));
                 animacao.setNode(carro);
-                animacao.setToX(xInicial);
-                animacao.setToY(yInicial + caminhosGUI.get(0).getTamanho());
+                animacao.setToY(yInicial*5 + caminhosGUI.get(0).getTamanho());
                 animaTudo.getChildren().add(animacao);
             }
 
@@ -142,10 +134,6 @@ public class Controller implements Initializable{
         }
 
         animaTudo.play();
-
-        layoutAnimacao = new Pane();
-        layoutAnimacao.getChildren().add(carro);
-
     }
 
     public Button botaoEnderecos, botaoOk;
@@ -161,6 +149,6 @@ public class Controller implements Initializable{
     public GPS gps;
     public AutoPilot tesla;
     public List <CaminhoGUI> caminhosGUI;
-    public Rectangle carro = new Rectangle();
+    public Rectangle carro;
     public int xInicial, yInicial;
 }
