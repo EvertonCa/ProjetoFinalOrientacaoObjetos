@@ -1,3 +1,6 @@
+import javafx.animation.RotateTransition;
+import javafx.animation.SequentialTransition;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,11 +14,17 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import javafx.scene.shape.Rectangle;
 
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable{
@@ -25,10 +34,10 @@ public class Controller implements Initializable{
 
     }
 
-    public void pegaRuas() throws IOException {
+    public void obterRota() throws IOException {
         ruaDeOrigem = ruaOrigem.getText();
         ruaDeDestino = ruaDestino.getText();
-        GPS gps = new GPS();
+        gps = new GPS();
         respostaGPSOrigem = gps.ruaExiste(ruaDeOrigem);
         respostaGPSDestino = gps.ruaExiste(ruaDeDestino);
 
@@ -37,12 +46,22 @@ public class Controller implements Initializable{
             chamaErroEndereco();
         }
 
-        System.out.println(respostaGPSOrigem + " e " + respostaGPSDestino);
-    }
+        System.out.println("Arestas da rua de Origem: " + respostaGPSOrigem + "\nArestas da rua de Destino: " + respostaGPSDestino);
 
-    public void calcularRota()
-    {
+        gps.obterRuasUsuario(respostaGPSOrigem, respostaGPSDestino);
+        gps.obterRota();
 
+        gps.exibirMenorRota();
+
+        tesla = new AutoPilot(gps.getMenorRota(), gps.getArestasDefinitivas(), "definido");
+
+        tesla.gerarCoordenadasGUI();
+        caminhosGUI = tesla.gerarRotasGUI();
+        tesla.exibeRotasGUI();
+        tesla.posicionaNaAresta();
+        xInicial = tesla.getX();
+        yInicial = tesla.getY();
+        animador();
     }
 
     public void chamaErroEndereco() throws IOException
@@ -64,6 +83,71 @@ public class Controller implements Initializable{
         stage.close();
     }
 
+    public void animador()
+    {
+
+        carro.setFill(Color.BLACK);
+        carro.setWidth(10);
+        carro.setHeight(5);
+        carro.setLayoutX(xInicial);
+        carro.setLayoutY(yInicial);
+
+        SequentialTransition animaTudo = new SequentialTransition();
+        animaTudo.setNode(carro);
+
+        for(int i = 0; i < caminhosGUI.size(); i++)
+        {
+            if(caminhosGUI.get(0).getDirecao().equals("direita"))
+            {
+                TranslateTransition animacao = new TranslateTransition();
+                animacao.setDuration(Duration.seconds(caminhosGUI.get(0).getTamanho()));
+                animacao.setNode(carro);
+                animacao.setToX(xInicial + caminhosGUI.get(0).getTamanho());
+                animacao.setToY(yInicial);
+                animaTudo.getChildren().add(animacao);
+            }
+            else if(caminhosGUI.get(0).getDirecao().equals("esquerda"))
+            {
+                TranslateTransition animacao = new TranslateTransition();
+                animacao.setDuration(Duration.seconds(caminhosGUI.get(0).getTamanho()));
+                animacao.setNode(carro);
+                animacao.setToX(xInicial - caminhosGUI.get(0).getTamanho());
+                animacao.setToY(yInicial);
+                animaTudo.getChildren().add(animacao);
+            }
+            else if(caminhosGUI.get(0).getDirecao().equals("cima"))
+            {
+                TranslateTransition animacao = new TranslateTransition();
+                animacao.setDuration(Duration.seconds(caminhosGUI.get(0).getTamanho()));
+                animacao.setNode(carro);
+                animacao.setToX(xInicial);
+                animacao.setToY(yInicial - caminhosGUI.get(0).getTamanho());
+                animaTudo.getChildren().add(animacao);
+            }
+            else
+            {
+                TranslateTransition animacao = new TranslateTransition();
+                animacao.setDuration(Duration.seconds(caminhosGUI.get(0).getTamanho()));
+                animacao.setNode(carro);
+                animacao.setToX(xInicial);
+                animacao.setToY(yInicial + caminhosGUI.get(0).getTamanho());
+                animaTudo.getChildren().add(animacao);
+            }
+
+            RotateTransition gira = new RotateTransition();
+            gira.setDuration(Duration.seconds(1));
+            gira.setNode(carro);
+            gira.setByAngle(90.0);
+            animaTudo.getChildren().add(gira);
+        }
+
+        animaTudo.play();
+
+        layoutAnimacao = new Pane();
+        layoutAnimacao.getChildren().add(carro);
+
+    }
+
     public Button botaoEnderecos, botaoOk;
     public Pane layoutAnimacao;
     public HBox menuSuperior, menuInferior;
@@ -73,5 +157,10 @@ public class Controller implements Initializable{
     public String ruaDeOrigem, ruaDeDestino, respostaGPSOrigem, respostaGPSDestino;
     public ImageView mapaCidade;
     public StackPane stackAnimacao;
-    public Stage avisoErro, boasVindas;
+    public Stage avisoErro, animacao;
+    public GPS gps;
+    public AutoPilot tesla;
+    public List <CaminhoGUI> caminhosGUI;
+    public Rectangle carro = new Rectangle();
+    public int xInicial, yInicial;
 }

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -14,7 +19,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="layout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<VBox fx:id="layout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <children>
       <MenuBar>
         <menus>
@@ -38,7 +43,7 @@
             <Label fx:id="destino" text="Destino:" />
             <TextField fx:id="ruaDestino" promptText="Rua Y" />
             <Region HBox.hgrow="ALWAYS" />
-            <Button fx:id="botaoEnderecos" mnemonicParsing="false" onAction="#pegaRuas" text="Mostrar Rota" textAlignment="CENTER" />
+            <Button fx:id="botaoEnderecos" mnemonicParsing="false" onAction="#obterRota" text="Mostrar Rota" textAlignment="CENTER" />
          </children>
          <VBox.margin>
             <Insets />
@@ -54,6 +59,10 @@
                   <Image url="@Imagem.png" />
                </image>
             </ImageView>
+            <Pane fx:id="layoutAnimacao" prefHeight="600.0" prefWidth="600.0" StackPane.alignment="CENTER">
+               <StackPane.margin>
+                  <Insets left="10.0" right="10.0" />
+               </StackPane.margin></Pane>
          </children></StackPane>
       <HBox fx:id="menuInferior" prefHeight="100.0" prefWidth="200.0">
          <children>

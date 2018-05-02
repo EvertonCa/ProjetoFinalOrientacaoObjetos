@@ -5,10 +5,6 @@ public class GPS
 {
     public GPS()
     {
-
-    }
-    public GPS(String aleatorio)
-    {
         Grafo grafo = new Grafo();
         this.grafo = grafo;
         Grafo grafo1 = new Grafo();
@@ -19,58 +15,29 @@ public class GPS
         this.grafo3 = grafo3;
         Grafo grafo4 = new Grafo();
         this.grafo4 = grafo4;
-
-        if(aleatorio.equals("aleatorio"))
-            obterRuasAleatorias();
-        else
-            obterRuasUsuario();
-        obterRota();
-
     }
 
-    public void obterRuasUsuario()
+    public void obterRuasUsuario(String ruaDeOrigem, String ruaDeDestino)
     {
-        Scanner teclado = new Scanner(System.in);
         boolean origemExiste = false, destinoExiste = false;
 
         while (!origemExiste)
         {
-            System.out.printf("Entre com a origem: ");
-            ruaOrigem = teclado.nextLine();
+            origem = ruaDeOrigem;
 
-            origem = ruaExiste("origem");
+            encontraArestas(origem, "origem");
+            encontraVertices("origem");
+            origemExiste = true;
 
-            if(origem.equals("naoEncontrado"))
-            {
-                System.out.printf("Rua não encontrada! tente novamente!\n");
-            }
-
-            else
-            {
-                encontraArestas(origem, "origem");
-                encontraVertices("origem");
-                origemExiste = true;
-            }
         }
 
         while (!destinoExiste)
         {
-            System.out.printf("Entre com a destino: ");
-            ruaDestino = teclado.nextLine();
+            destino = ruaDeDestino;
 
-            destino = ruaExiste("destino");
-
-            if(destino.equals("naoEncontrado"))
-            {
-                System.out.printf("Rua não encontrada! tente novamente!\n");
-            }
-
-            else
-            {
-                encontraArestas(destino, "destino");
-                encontraVertices("destino");
-                destinoExiste = true;
-            }
+            encontraArestas(destino, "destino");
+            encontraVertices("destino");
+            destinoExiste = true;
         }
     }
 
@@ -136,7 +103,7 @@ public class GPS
                 resposta = arestas;
             }
             return resposta;
-        } catch (IOException e){return "naoEncontrado";}
+        } catch (IOException e){return "Arquivo Não Encontrado";}
     }
 
     public void encontraArestas(String arestas, String origemOuDestino)

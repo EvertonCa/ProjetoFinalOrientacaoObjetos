@@ -446,12 +446,216 @@ public class AutoPilot extends Veiculos
         }
     }
 
+    public void gerarCoordenadasGUI()
+    {
+        caminhosGUI = new ArrayList<>();
+
+        while (getX() != getxDestino() || getY() != getyDestino())
+        {
+            System.out.printf("X atual e Y atual: ");
+            System.out.print(getX() + " " + getY() + "\n");
+            System.out.printf("X final e Y final: ");
+            System.out.print(getxDestino() + " " + getyDestino() + "\n");
+            System.out.printf("Quadrante: ");
+            System.out.print(getQuadranteAtual() + "\n\n");
+
+            List<Integer> bufferXeY = new ArrayList<>();
+
+            if(getQuadranteAtual() == 4)
+            {
+                bufferXeY.add(getX() + 60);
+                bufferXeY.add(getY() + 60);
+            }
+            else if(getQuadranteAtual() == 3)
+            {
+                bufferXeY.add(getX());
+                bufferXeY.add(getY() + 60);
+            }
+            else if(getQuadranteAtual() == 2)
+            {
+                bufferXeY.add(getX() + 60);
+                bufferXeY.add(getY());
+            }
+            else
+            {
+                bufferXeY.add(getX());
+                bufferXeY.add(getY());
+            }
+
+            caminhosGUI.add(bufferXeY);
+
+            move();
+        }
+
+        System.out.printf("X atual e Y atual: ");
+        System.out.print(getX() + " " + getY() + "\n");
+        System.out.printf("X final e Y final: ");
+        System.out.print(getxDestino() + " " + getyDestino() + "\n");
+        System.out.printf("Quadrante: ");
+        System.out.print(getQuadranteAtual() + "\n\n");
+    }
+
+    public List < CaminhoGUI > gerarRotasGUI()
+    {
+        int contador = 0;
+        rotasGUI = new ArrayList<>();
+
+        while (caminhosGUI.isEmpty() == false)
+        {
+            int xAtual, yAtual, xProximo, yProximo;
+
+            xAtual = caminhosGUI.get(0).get(0);
+            yAtual = caminhosGUI.get(0).get(1);
+
+            if(caminhosGUI.size() == 1)
+            {
+                contador++;
+                break;
+            }
+
+            xProximo = caminhosGUI.get(1).get(0);
+            yProximo = caminhosGUI.get(1).get(1);
+
+            if(xAtual + 1 == xProximo) //direita
+            {
+                contador++;
+
+                caminhosGUI.remove(0);
+                xAtual = caminhosGUI.get(0).get(0);
+                if(caminhosGUI.size() == 1)
+                {
+                    contador++;
+                    break;
+                }
+                xProximo = caminhosGUI.get(1).get(0);
+
+                while (caminhosGUI.isEmpty() == false && xAtual + 1 == xProximo)
+                {
+                    contador++;
+
+                    caminhosGUI.remove(0);
+                    xAtual = caminhosGUI.get(0).get(0);
+                    if(caminhosGUI.size() == 1)
+                    {
+                        contador++;
+                        break;
+                    }
+                    xProximo = caminhosGUI.get(1).get(0);
+                }
+
+                rotasGUI.add(new CaminhoGUI("direita", contador));
+                contador = 0;
+
+            }
+            else if(xAtual - 1 == xProximo) //esquerda
+            {
+                contador++;
+
+                caminhosGUI.remove(0);
+                xAtual = caminhosGUI.get(0).get(0);
+                if(caminhosGUI.size() == 1)
+                {
+                    contador++;
+                    break;
+                }
+                xProximo = caminhosGUI.get(1).get(0);
+
+                while (caminhosGUI.isEmpty() == false && xAtual - 1 == xProximo)
+                {
+                    contador++;
+
+                    caminhosGUI.remove(0);
+                    xAtual = caminhosGUI.get(0).get(0);
+                    if(caminhosGUI.size() == 1)
+                    {
+                        contador++;
+                        break;
+                    }
+                    xProximo = caminhosGUI.get(1).get(0);
+                }
+
+                rotasGUI.add(new CaminhoGUI("esquerda", contador));
+                contador = 0;
+            }
+            else if(yAtual + 1 == yProximo) //baixo
+            {
+                contador++;
+
+                caminhosGUI.remove(0);
+                yAtual = caminhosGUI.get(0).get(1);
+                if(caminhosGUI.size() == 1)
+                {
+                    contador++;
+                    break;
+                }
+                yProximo = caminhosGUI.get(1).get(1);
+
+                while (caminhosGUI.isEmpty() == false && yAtual + 1 == yProximo)
+                {
+                    contador++;
+
+                    caminhosGUI.remove(0);
+                    yAtual = caminhosGUI.get(0).get(1);
+                    if(caminhosGUI.size() == 1)
+                    {
+                        contador++;
+                        break;
+                    }
+                    yProximo = caminhosGUI.get(1).get(1);
+                }
+
+                rotasGUI.add(new CaminhoGUI("baixo", contador));
+                contador = 0;
+            }
+            else //cima
+            {
+                contador++;
+
+                caminhosGUI.remove(0);
+                yAtual = caminhosGUI.get(0).get(1);
+                if(caminhosGUI.size() == 1)
+                {
+                    contador++;
+                    break;
+                }
+                yProximo = caminhosGUI.get(1).get(1);
+
+                while (caminhosGUI.isEmpty() == false && yAtual - 1 == yProximo)
+                {
+                    contador++;
+
+                    caminhosGUI.remove(0);
+                    yAtual = caminhosGUI.get(0).get(1);
+                    if(caminhosGUI.size() == 1)
+                    {
+                        contador++;
+                        break;
+                    }
+                    yProximo = caminhosGUI.get(1).get(1);
+                }
+
+                rotasGUI.add(new CaminhoGUI("cima", contador));
+                contador = 0;
+            }
+        }
+        return rotasGUI;
+    }
+
     public boolean getCheguei() {
         return cheguei;
     }
 
     public Aresta getArestaAtual() {
         return arestaAtual;
+    }
+
+    public void exibeRotasGUI()
+    {
+        for(int i = 0; i < rotasGUI.size(); i++)
+        {
+            System.out.println("Direção: " + rotasGUI.get(i).getDirecao() + " Tamanho: " + rotasGUI.get(i).getTamanho());
+
+        }
     }
 
     @Override
@@ -477,6 +681,8 @@ public class AutoPilot extends Veiculos
     protected Aresta arestaOrigem, arestaDestino, arestaAtual, arestaProxima;
     protected List <Vertice> menorRota;
     protected List <String> rotaNosCruzamentos = new ArrayList<>();
+    protected List < List < Integer > > caminhosGUI;
+    protected List < CaminhoGUI > rotasGUI;
     protected boolean rotaAleatoria, proxArestaDefinida = false, cheguei = false, chegueiNaArestaDestino = false;
     protected boolean cruzandoQuadrante = false;
     protected int xCentral, yCentral;
