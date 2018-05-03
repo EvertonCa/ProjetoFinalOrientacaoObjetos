@@ -1,6 +1,8 @@
+import javafx.animation.Animation;
 import javafx.animation.RotateTransition;
 import javafx.animation.SequentialTransition;
 import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -61,7 +63,7 @@ public class Controller implements Initializable{
         tesla.posicionaNaAresta();
         xInicial = tesla.getX();
         yInicial = tesla.getY();
-        animador();
+        new Animador().start();
     }
 
     public void chamaErroEndereco() throws IOException
@@ -83,69 +85,192 @@ public class Controller implements Initializable{
         stage.close();
     }
 
-    public void animador()
+    class Animador extends Thread
     {
-        carro.setLayoutX(xInicial*5);
-        carro.setLayoutY(yInicial*5);
-
-        xAtual = xInicial*5;
-        yAtual = yInicial*5;
-
-        SequentialTransition animaTudo = new SequentialTransition();
-        animaTudo.setNode(carro);
-
-        for(int i = 0; i < caminhosGUI.size(); i++)
+        @Override
+        public void run()
         {
-            if(caminhosGUI.get(i).getDirecao().equals("direita"))
+            try
             {
-                int x;
-                xAtual = xAtual + caminhosGUI.get(i).getTamanho()*5;
-                x = xAtual;
-                TranslateTransition animacao = new TranslateTransition();
-                animacao.setDuration(Duration.seconds(caminhosGUI.get(i).getTamanho()/2));
-                animacao.setNode(carro);
-                animacao.setToX(x);
-                animaTudo.getChildren().add(animacao);
+                xAtual = xInicial*6;
+                yAtual = yInicial*6;
+
+
+                while (keepGoing)
+                {
+                    Thread.sleep(25); //40fps
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run()
+                        {
+                            moveObjetos();
+                        }
+                    });
+                }
+
+            }catch (InterruptedException ex)
+            {
+                return;
             }
-            else if(caminhosGUI.get(i).getDirecao().equals("esquerda"))
+        }
+    }
+
+    public void moveObjetos() //incrementos de 0.15 px para 40fps e mapa de 720x720
+    {
+        if(keepGoing && !girando)
+        {
+            if(caminhosGUI.get(0).getDirecao().equals("direita"))
             {
-                int x;
-                xAtual = xAtual - caminhosGUI.get(i).getTamanho()*5;
-                x = xAtual;
-                TranslateTransition animacao = new TranslateTransition();
-                animacao.setDuration(Duration.seconds(caminhosGUI.get(i).getTamanho()/2));
-                animacao.setNode(carro);
-                animacao.setToX(x);
-                animaTudo.getChildren().add(animacao);
+                if(caminhosGUI.get(0).getxAtual() < caminhosGUI.get(0).getxDestino())
+                {
+                    xAtual += 0.3;
+                    caminhosGUI.get(0).setxAtual(xAtual);
+                }
+                else
+                {
+                    if(caminhosGUI.size() > 1)
+                    {
+                        if(caminhosGUI.get(1).getDirecao().equals("baixo"))
+                        {
+                            girando = true;
+                            giraPara = "horario";
+                        }
+                        else if(caminhosGUI.get(1).getDirecao().equals("cima"))
+                        {
+                            girando = true;
+                            giraPara = "antihorario";
+                        }
+                        else
+                            caminhosGUI.remove(0);
+                    }
+                    if(caminhosGUI.isEmpty())
+                    {
+                        System.out.println("oi");
+                        keepGoing = false;
+                    }
+                }
             }
-            else if(caminhosGUI.get(i).getDirecao().equals("cima"))
+            else if(caminhosGUI.get(0).getDirecao().equals("esquerda"))
             {
-                yAtual = yAtual - caminhosGUI.get(i).getTamanho()*5;
-                TranslateTransition animacao = new TranslateTransition();
-                animacao.setDuration(Duration.seconds(caminhosGUI.get(i).getTamanho()/2));
-                animacao.setNode(carro);
-                animacao.setToY(yAtual);
-                animaTudo.getChildren().add(animacao);
+                if(caminhosGUI.get(0).getxAtual() > caminhosGUI.get(0).getxDestino())
+                {
+                    xAtual -= 0.3;
+                    caminhosGUI.get(0).setxAtual(xAtual);
+                }
+                else
+                {
+                    if(caminhosGUI.size() > 1)
+                    {
+                        if(caminhosGUI.get(1).getDirecao().equals("baixo"))
+                        {
+                            girando = true;
+                            giraPara = "antihorario";
+                        }
+                        else if(caminhosGUI.get(1).getDirecao().equals("cima"))
+                        {
+                            girando = true;
+                            giraPara = "horario";
+                        }
+                        else
+                            caminhosGUI.remove(0);
+                    }
+
+                    if(caminhosGUI.isEmpty())
+                    {
+                        keepGoing = false;
+                    }
+                }
+            }
+            else if(caminhosGUI.get(0).getDirecao().equals("cima"))
+            {
+                if(caminhosGUI.get(0).getyAtual() > caminhosGUI.get(0).getyDestino())
+                {
+                    yAtual -= 0.3;
+                    caminhosGUI.get(0).setyAtual(yAtual);
+                }
+                else
+                {
+                    if(caminhosGUI.size() > 1)
+                    {
+                        if(caminhosGUI.get(1).getDirecao().equals("esquerda"))
+                        {
+                            girando = true;
+                            giraPara = "antihorario";
+                        }
+                        else if(caminhosGUI.get(1).getDirecao().equals("direita"))
+                        {
+                            girando = true;
+                            giraPara = "horario";
+                        }
+                        else
+                            caminhosGUI.remove(0);
+                    }
+                    if(caminhosGUI.isEmpty())
+                    {
+                        keepGoing = false;
+                    }
+                }
             }
             else
             {
-                yAtual = yAtual + caminhosGUI.get(i).getTamanho()*5;
-                TranslateTransition animacao = new TranslateTransition();
-                animacao.setDuration(Duration.seconds(caminhosGUI.get(i).getTamanho()/2));
-                animacao.setNode(carro);
-                animacao.setToY(yAtual);
-                animaTudo.getChildren().add(animacao);
+                if(caminhosGUI.get(0).getyAtual() < caminhosGUI.get(0).getyDestino())
+                {
+                    yAtual += 0.3;
+                    caminhosGUI.get(0).setyAtual(yAtual);
+                }
+                else
+                {
+                    if(caminhosGUI.size() > 1)
+                    {
+                        if(caminhosGUI.get(1).getDirecao().equals("direita"))
+                        {
+                            girando = true;
+                            giraPara = "antihorario";
+                        }
+                        else if(caminhosGUI.get(1).getDirecao().equals("esquerda"))
+                        {
+                            girando = true;
+                            giraPara = "horario";
+                        }
+                        else
+                            caminhosGUI.remove(0);
+                    }
+                    if(caminhosGUI.isEmpty())
+                    {
+                        keepGoing = false;
+                    }
+                }
             }
-            System.out.println("X atual = " + xAtual + " Y atual = " + yAtual);
-
-            RotateTransition gira = new RotateTransition();
-            gira.setDuration(Duration.seconds(1));
-            gira.setNode(carro);
-            gira.setByAngle(90.0);
-            animaTudo.getChildren().add(gira);
         }
+        if(girando)
+        {
+            gira();
+        }
+        carro.setLayoutY(yAtual);
+        carro.setLayoutX(xAtual);
+        carro.setRotate(caminhosGUI.get(0).getAngulo());
+        //System.out.println("x atual " + caminhosGUI.get(0).getxAtual());
+        //System.out.println("y atual " + caminhosGUI.get(0).getyAtual());
+        //System.out.println("x destino " + caminhosGUI.get(0).getxDestino());
+        //System.out.println("y destino " + caminhosGUI.get(0).getyDestino());
+    }
 
-        animaTudo.play();
+    public void gira()
+    {
+        if(giraPara.equals("horario"))
+        {
+            caminhosGUI.get(0).setAngulo(caminhosGUI.get(0).getAngulo() + 1);
+        }
+        else
+            caminhosGUI.get(0).setAngulo(caminhosGUI.get(0).getAngulo() - 1);
+        carro.setRotate(caminhosGUI.get(0).getAngulo());
+        contadorRotacao++;
+        if(contadorRotacao == 90.0)
+        {
+            girando = false;
+            contadorRotacao = 0;
+            caminhosGUI.remove(0);
+        }
     }
 
     public Button botaoEnderecos, botaoOk;
@@ -154,13 +279,14 @@ public class Controller implements Initializable{
     public VBox layout;
     public Label origem, destino, feitoPor;
     public TextField ruaOrigem, ruaDestino;
-    public String ruaDeOrigem, ruaDeDestino, respostaGPSOrigem, respostaGPSDestino;
+    public String ruaDeOrigem, ruaDeDestino, respostaGPSOrigem, respostaGPSDestino, giraPara;
     public ImageView mapaCidade;
     public StackPane stackAnimacao;
-    public Stage avisoErro, animacao;
+    public Stage avisoErro;
     public GPS gps;
     public AutoPilot tesla;
     public List <CaminhoGUI> caminhosGUI;
     public Rectangle carro;
-    public int xInicial, yInicial, xAtual, yAtual;
+    public double xInicial, yInicial, xAtual, yAtual, contadorRotacao = 0.0;
+    public boolean keepGoing = true, girando = false;
 }

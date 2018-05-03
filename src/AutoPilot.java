@@ -502,10 +502,13 @@ public class AutoPilot extends Veiculos
 
         while (caminhosGUI.isEmpty() == false)
         {
-            int xAtual, yAtual, xProximo, yProximo;
+            int xAtual, yAtual, xProximo, yProximo, xInicial, yInicial;
 
             xAtual = caminhosGUI.get(0).get(0);
             yAtual = caminhosGUI.get(0).get(1);
+
+            xInicial = caminhosGUI.get(0).get(0);
+            yInicial = caminhosGUI.get(0).get(1);
 
             if(caminhosGUI.size() == 1)
             {
@@ -543,7 +546,7 @@ public class AutoPilot extends Veiculos
                     xProximo = caminhosGUI.get(1).get(0);
                 }
 
-                rotasGUI.add(new CaminhoGUI("direita", contador));
+                rotasGUI.add(new CaminhoGUI("direita", contador, xInicial, yInicial));
                 contador = 0;
 
             }
@@ -574,7 +577,7 @@ public class AutoPilot extends Veiculos
                     xProximo = caminhosGUI.get(1).get(0);
                 }
 
-                rotasGUI.add(new CaminhoGUI("esquerda", contador));
+                rotasGUI.add(new CaminhoGUI("esquerda", contador, xInicial, yInicial));
                 contador = 0;
             }
             else if(yAtual + 1 == yProximo) //baixo
@@ -604,7 +607,7 @@ public class AutoPilot extends Veiculos
                     yProximo = caminhosGUI.get(1).get(1);
                 }
 
-                rotasGUI.add(new CaminhoGUI("baixo", contador));
+                rotasGUI.add(new CaminhoGUI("baixo", contador, xInicial, yInicial));
                 contador = 0;
             }
             else //cima
@@ -634,7 +637,7 @@ public class AutoPilot extends Veiculos
                     yProximo = caminhosGUI.get(1).get(1);
                 }
 
-                rotasGUI.add(new CaminhoGUI("cima", contador));
+                rotasGUI.add(new CaminhoGUI("cima", contador, xInicial, yInicial));
                 contador = 0;
             }
         }

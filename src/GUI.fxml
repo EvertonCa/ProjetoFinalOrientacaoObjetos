@@ -21,7 +21,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="layout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<VBox fx:id="layout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <children>
       <MenuBar>
         <menus>
@@ -39,10 +39,10 @@
       </MenuBar>
       <HBox fx:id="menuSuperior" alignment="CENTER" spacing="10.0" VBox.vgrow="NEVER">
          <children>
-            <Label fx:id="origem" text="Origem:" />
+            <Label fx:id="origem" text="Rua de Origem:" />
             <TextField fx:id="ruaOrigem" promptText="Rua X" />
             <Region HBox.hgrow="ALWAYS" />
-            <Label fx:id="destino" text="Destino:" />
+            <Label fx:id="destino" text="Rua de Destino:" />
             <TextField fx:id="ruaDestino" promptText="Rua Y" />
             <Region HBox.hgrow="ALWAYS" />
             <Button fx:id="botaoEnderecos" mnemonicParsing="false" onAction="#obterRota" text="Mostrar Rota" textAlignment="CENTER" />
@@ -56,12 +56,12 @@
       </HBox>
       <StackPane fx:id="stackAnimacao" prefHeight="703.0" prefWidth="620.0">
          <children>
-            <ImageView fx:id="mapaCidade" fitHeight="600.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="mapaCidade" fitHeight="720.0" fitWidth="720.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Imagem.png" />
                </image>
             </ImageView>
-            <Pane fx:id="layoutAnimacao" prefHeight="600.0" prefWidth="600.0" StackPane.alignment="CENTER">
+            <Pane fx:id="layoutAnimacao" prefHeight="720.0" prefWidth="720.0" StackPane.alignment="CENTER">
                <StackPane.margin>
                   <Insets left="10.0" right="10.0" />
                </StackPane.margin>
@@ -80,7 +80,7 @@
          </children></StackPane>
       <HBox fx:id="menuInferior" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label fx:id="feitoPor" alignment="TOP_RIGHT" prefHeight="37.0" prefWidth="630.0" text="Feito por: Éverton, Lucas, Helmut e Vinicius" textAlignment="RIGHT">
+            <Label fx:id="feitoPor" alignment="CENTER_RIGHT" prefHeight="37.0" prefWidth="751.0" text="Feito por: Éverton, Lucas, Helmuth e Vinicius" textAlignment="RIGHT">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
