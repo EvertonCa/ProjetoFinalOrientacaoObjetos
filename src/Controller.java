@@ -88,6 +88,9 @@ public class Controller implements Initializable{
         carro.setLayoutX(xInicial*5);
         carro.setLayoutY(yInicial*5);
 
+        xAtual = xInicial*5;
+        yAtual = yInicial*5;
+
         SequentialTransition animaTudo = new SequentialTransition();
         animaTudo.setNode(carro);
 
@@ -95,36 +98,45 @@ public class Controller implements Initializable{
         {
             if(caminhosGUI.get(i).getDirecao().equals("direita"))
             {
+                int x;
+                xAtual = xAtual + caminhosGUI.get(i).getTamanho()*5;
+                x = xAtual;
                 TranslateTransition animacao = new TranslateTransition();
-                animacao.setDuration(Duration.seconds(caminhosGUI.get(0).getTamanho()));
+                animacao.setDuration(Duration.seconds(caminhosGUI.get(i).getTamanho()/2));
                 animacao.setNode(carro);
-                animacao.setToX(xInicial*5 + caminhosGUI.get(0).getTamanho());
+                animacao.setToX(x);
                 animaTudo.getChildren().add(animacao);
             }
             else if(caminhosGUI.get(i).getDirecao().equals("esquerda"))
             {
+                int x;
+                xAtual = xAtual - caminhosGUI.get(i).getTamanho()*5;
+                x = xAtual;
                 TranslateTransition animacao = new TranslateTransition();
-                animacao.setDuration(Duration.seconds(caminhosGUI.get(0).getTamanho()));
+                animacao.setDuration(Duration.seconds(caminhosGUI.get(i).getTamanho()/2));
                 animacao.setNode(carro);
-                animacao.setToX(xInicial*5 - caminhosGUI.get(0).getTamanho());
+                animacao.setToX(x);
                 animaTudo.getChildren().add(animacao);
             }
             else if(caminhosGUI.get(i).getDirecao().equals("cima"))
             {
+                yAtual = yAtual - caminhosGUI.get(i).getTamanho()*5;
                 TranslateTransition animacao = new TranslateTransition();
-                animacao.setDuration(Duration.seconds(caminhosGUI.get(0).getTamanho()));
+                animacao.setDuration(Duration.seconds(caminhosGUI.get(i).getTamanho()/2));
                 animacao.setNode(carro);
-                animacao.setToY(yInicial*5 - caminhosGUI.get(0).getTamanho());
+                animacao.setToY(yAtual);
                 animaTudo.getChildren().add(animacao);
             }
             else
             {
+                yAtual = yAtual + caminhosGUI.get(i).getTamanho()*5;
                 TranslateTransition animacao = new TranslateTransition();
-                animacao.setDuration(Duration.seconds(caminhosGUI.get(0).getTamanho()));
+                animacao.setDuration(Duration.seconds(caminhosGUI.get(i).getTamanho()/2));
                 animacao.setNode(carro);
-                animacao.setToY(yInicial*5 + caminhosGUI.get(0).getTamanho());
+                animacao.setToY(yAtual);
                 animaTudo.getChildren().add(animacao);
             }
+            System.out.println("X atual = " + xAtual + " Y atual = " + yAtual);
 
             RotateTransition gira = new RotateTransition();
             gira.setDuration(Duration.seconds(1));
@@ -150,5 +162,5 @@ public class Controller implements Initializable{
     public AutoPilot tesla;
     public List <CaminhoGUI> caminhosGUI;
     public Rectangle carro;
-    public int xInicial, yInicial;
+    public int xInicial, yInicial, xAtual, yAtual;
 }
