@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class CoordenadasSemaforos
 {
     public int getSizeQ1()
@@ -87,10 +89,10 @@ public class CoordenadasSemaforos
 
 
     //32 semaforos Q1
-    protected int coordenadasXQ1[] = {15, 20, 21, 20};
-    protected int coordenadasYQ1[] = {9, 14, 19, 24};
+    protected int coordenadasXQ1[] = { 8, 13, 14, 13};
+    protected int coordenadasYQ1[] = {13, 14, 19, 24};
     protected boolean verdeQ1[] = {true, false, true, false};
-    protected int duracao[] = {3000, 3000, 4000, 4000};
+    protected int duracao[] = {3, 3, 4, 4};
 
     //27 semaforos Q2
     protected int coordenadasXQ2[] = { 0, 9, 8,13,14, 9,13,14,33,38,44,49,57,56, 9, 8,13,14,23,24,29,39,44,45,52,57,51};

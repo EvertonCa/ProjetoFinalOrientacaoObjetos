@@ -21,17 +21,18 @@ public class Main
 
         while(true)
         {
+            for(int i = 0; i < 4; i ++)
+            {
+                semaforosQ1.get(i).run(meuMundo.mundoQ1);
+            }
             for (int i=0; i < semaforosQ1.size(); i++)
             {
                 meuMundo.populaSemaforoQ1(semaforosQ1.get(i));
             }
             meuMundo.desenhaMundo(meuMundo.getMundoQ1());
+            System.out.println("");
 
-            try{
-                Thread.sleep(500);
-            }catch (InterruptedException e){
-                e.printStackTrace();
-            }
+            meuMundo.pausaMundo();
         }
     }
 }

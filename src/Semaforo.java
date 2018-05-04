@@ -1,6 +1,6 @@
 import java.util.concurrent.Semaphore;
 
-public class Semaforo extends Thread implements Runnable
+public class Semaforo
 {
     public Semaforo(int x, int y, boolean verde, int duracao)
     {
@@ -8,30 +8,37 @@ public class Semaforo extends Thread implements Runnable
         this.y = y;
         this.verde = verde;
         this.duracao = duracao;
+        this.contadorDeTempo = 0;
 
-        this.parar = false;
-
-        new Thread(this).start();
     }
 
     // Função que faz o semaforo mudar
-    @Override
-    public void run()
+    public void run(int[][] mapa)
     {
         // laço que sempre acontecerá até que o programa finalize
-        while(!parar)
+        if (this.verde)
         {
-            try {
-                if (this.verde)
-                    Thread.sleep(this.duracao);
+            if (this.contadorDeTempo == this.duracao)
+            {
+                mudarCor();
+            }
+            else
+            {
+                if ((y + 1 <= 24 && mapa[y+1][x] != 9) && (y - 1 >= 0 && mapa[y-1][x] != 9) && (x + 1 <= 24 && mapa[y][x+1] != 9)
+                        && (x - 1 >= 0 && mapa[y][x-1] != 9))// menor que o tamanho do mapa e não tiver um carro
+                {
+                    System.out.println(mapa[y+1][x] + " " + mapa[y-1][x] + " " + mapa[y][x+1] + " " + mapa[y][x-1]);
+                    mudarCor();
+                }
                 else
-                    Thread.sleep(this.duracao);
-
-                this.mudarCor();
+                {
+                    contadorDeTempo ++;
+                }
             }
-            catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        }
+        else
+        {
+            mudarCor();
         }
     }
 
@@ -45,11 +52,7 @@ public class Semaforo extends Thread implements Runnable
         {
             this.verde = true;
         }
-    }
-
-    public synchronized void deligarSemaforo ()
-    {
-        this.parar = true;
+        this.contadorDeTempo = 0;
     }
 
     public int getX()
@@ -70,5 +73,5 @@ public class Semaforo extends Thread implements Runnable
     protected int x, y;
     protected int duracao;
     protected boolean verde;
-    private boolean parar;
+    protected int contadorDeTempo;
 }
