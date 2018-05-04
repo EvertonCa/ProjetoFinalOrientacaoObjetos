@@ -3,7 +3,7 @@ import java.util.*;
 
 public class GPS
 {
-    public GPS(String aleatorio)
+    public GPS()
     {
         Grafo grafo = new Grafo();
         this.grafo = grafo;
@@ -15,58 +15,29 @@ public class GPS
         this.grafo3 = grafo3;
         Grafo grafo4 = new Grafo();
         this.grafo4 = grafo4;
-
-        if(aleatorio.equals("aleatorio"))
-            obterRuasAleatorias();
-        else
-            obterRuasUsuario();
-        obterRota();
-
     }
 
-    public void obterRuasUsuario()
+    public void obterRuasUsuario(String ruaDeOrigem, String ruaDeDestino)
     {
-        Scanner teclado = new Scanner(System.in);
         boolean origemExiste = false, destinoExiste = false;
 
         while (!origemExiste)
         {
-            System.out.printf("Entre com a origem: ");
-            ruaOrigem = teclado.nextLine();
+            origem = ruaDeOrigem;
 
-            origem = ruaExiste("origem");
+            encontraArestas(origem, "origem");
+            encontraVertices("origem");
+            origemExiste = true;
 
-            if(origem.equals("naoEncontrado"))
-            {
-                System.out.printf("Rua não encontrada! tente novamente!\n");
-            }
-
-            else
-            {
-                encontraArestas(origem, "origem");
-                encontraVertices("origem");
-                origemExiste = true;
-            }
         }
 
         while (!destinoExiste)
         {
-            System.out.printf("Entre com a destino: ");
-            ruaDestino = teclado.nextLine();
+            destino = ruaDeDestino;
 
-            destino = ruaExiste("destino");
-
-            if(destino.equals("naoEncontrado"))
-            {
-                System.out.printf("Rua não encontrada! tente novamente!\n");
-            }
-
-            else
-            {
-                encontraArestas(destino, "destino");
-                encontraVertices("destino");
-                destinoExiste = true;
-            }
+            encontraArestas(destino, "destino");
+            encontraVertices("destino");
+            destinoExiste = true;
         }
     }
 
@@ -89,7 +60,7 @@ public class GPS
         encontraVertices("destino");
     }
 
-    public String ruaExiste(String origemOuDestino) {
+    public String ruaExiste(String rua) {
         try {
             Manipulador manip = new Manipulador();
             Properties propQ1 = manip.getRuasQ1();
@@ -99,17 +70,11 @@ public class GPS
 
             String tudoJunto, resposta;
 
-            if (origemOuDestino.equals("origem")) {
-
-                String separados[] = ruaOrigem.split(" ");
-                tudoJunto = separados[0] + separados[1];
-            } else {
-                String separados[] = ruaDestino.split(" ");
-                tudoJunto = separados[0] + separados[1];
-            }
+            String separados[] = rua.split(" ");
+            tudoJunto = separados[0] + separados[1];
 
             String arestas = propQ1.getProperty(tudoJunto);
-            quadrante = 1;
+            int quadrante = 1;
 
             if(arestas == null)
             {
@@ -128,6 +93,10 @@ public class GPS
                     }
                 }
             }
+            if(quadranteOrigem == 0)
+                quadranteOrigem = quadrante;
+            else
+                quadranteDestino = quadrante;
 
             if(arestas == null)
             {
@@ -138,7 +107,7 @@ public class GPS
                 resposta = arestas;
             }
             return resposta;
-        } catch (IOException e){return null;}
+        } catch (IOException e){return "Arquivo Não Encontrado";}
     }
 
     public void encontraArestas(String arestas, String origemOuDestino)
@@ -148,7 +117,7 @@ public class GPS
         int segundaAresta = Integer.parseInt(separados[1]);
         if(origemOuDestino.equals("origem"))
         {
-            switch (quadrante)
+            switch (quadranteOrigem)
             {
                 default:
                 {
@@ -181,7 +150,7 @@ public class GPS
         }
         else
         {
-            switch (quadrante)
+            switch (quadranteDestino)
             {
                 default:
                 {
@@ -320,7 +289,7 @@ public class GPS
     }
 
     protected Grafo grafo, grafo1, grafo2, grafo3, grafo4;
-    protected int quadrante;
+    protected int quadranteOrigem = 0, quadranteDestino = 0;
     protected List <Vertice> menorRota1,menorRota2, menorRota3, menorRota4, menorRota;
     protected List <Aresta> arestasOrigem = new ArrayList<>();
     protected List <Aresta> arestasDestino = new ArrayList<>();

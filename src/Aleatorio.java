@@ -3,9 +3,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Aleatorio
 {
-    public Aresta randomizeArestaGrafo(Grafo grafo)
+    public static Aresta randomizeArestaGrafo(Grafo grafo)
     {
-        this.grafo = grafo;
         int quadrante = ThreadLocalRandom.current().nextInt(1,5);
         int tamanhoLista;
         switch (quadrante)
@@ -36,7 +35,7 @@ public class Aleatorio
         }
     }
 
-    public String randomizaRua()
+    public static String randomizaRua()
     {
         String rua;
         int numero;
@@ -47,7 +46,7 @@ public class Aleatorio
         return rua;
     }
 
-    public String randomizaRuaComExcecao(String excecao)
+    public static String randomizaRuaComExcecao(String excecao)
     {
         String rua = randomizaRua();
 
@@ -59,7 +58,7 @@ public class Aleatorio
         return rua;
     }
 
-    public Aresta randomizeArestaVertice(Vertice vertice)
+    public static Aresta randomizeArestaVertice(Vertice vertice)
     {
         List <Aresta> listaDeArestas = vertice.getArestas();
         int tamanho = listaDeArestas.size();
@@ -67,19 +66,16 @@ public class Aleatorio
     }
 
     ///volta um número aleatório entre 100 e 300000
-    public int randomizeID()
+    public static int randomizeID()
     {
         int id = ThreadLocalRandom.current().nextInt(100,300000);
         return id;
     }
 
-    public int randomizeIDParaAleatorios()
+    public static int randomizeIDParaAleatorios()
     {
         int id = ThreadLocalRandom.current().nextInt(300001,600000);
         return id;
     }
 
-
-    protected int numero;
-    protected Grafo grafo;
 }
