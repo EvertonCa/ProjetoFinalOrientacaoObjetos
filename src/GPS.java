@@ -74,7 +74,7 @@ public class GPS
             tudoJunto = separados[0] + separados[1];
 
             String arestas = propQ1.getProperty(tudoJunto);
-            quadrante = 1;
+            int quadrante = 1;
 
             if(arestas == null)
             {
@@ -93,6 +93,10 @@ public class GPS
                     }
                 }
             }
+            if(quadranteOrigem == 0)
+                quadranteOrigem = quadrante;
+            else
+                quadranteDestino = quadrante;
 
             if(arestas == null)
             {
@@ -113,7 +117,7 @@ public class GPS
         int segundaAresta = Integer.parseInt(separados[1]);
         if(origemOuDestino.equals("origem"))
         {
-            switch (quadrante)
+            switch (quadranteOrigem)
             {
                 default:
                 {
@@ -146,7 +150,7 @@ public class GPS
         }
         else
         {
-            switch (quadrante)
+            switch (quadranteDestino)
             {
                 default:
                 {
@@ -285,7 +289,7 @@ public class GPS
     }
 
     protected Grafo grafo, grafo1, grafo2, grafo3, grafo4;
-    protected int quadrante;
+    protected int quadranteOrigem = 0, quadranteDestino = 0;
     protected List <Vertice> menorRota1,menorRota2, menorRota3, menorRota4, menorRota;
     protected List <Aresta> arestasOrigem = new ArrayList<>();
     protected List <Aresta> arestasDestino = new ArrayList<>();

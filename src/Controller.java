@@ -57,13 +57,38 @@ public class Controller implements Initializable{
 
         tesla = new AutoPilot(gps.getMenorRota(), gps.getArestasDefinitivas(), "definido");
 
+        quadranteInicial = tesla.getQuadranteAtual();
+
         tesla.gerarCoordenadasGUI();
         caminhosGUI = tesla.gerarRotasGUI();
         tesla.exibeRotasGUI();
         tesla.posicionaNaAresta();
-        xInicial = tesla.getX();
-        yInicial = tesla.getY();
+        defineCoordenadaInicial();
         new Animador().start();
+    }
+
+    public void defineCoordenadaInicial()
+    {
+        if(quadranteInicial == 1)
+        {
+            xInicial = tesla.getX();
+            yInicial = tesla.getY();
+        }
+        else if(quadranteInicial == 2)
+        {
+            xInicial = tesla.getX() + 60;
+            yInicial = tesla.getY();
+        }
+        else if(quadranteInicial == 3)
+        {
+            xInicial = tesla.getX();
+            yInicial = tesla.getY() + 60;
+        }
+        else
+        {
+            xInicial = tesla.getX() + 60;
+            yInicial = tesla.getY() + 60;
+        }
     }
 
     public void chamaErroEndereco() throws IOException
@@ -289,4 +314,5 @@ public class Controller implements Initializable{
     public Rectangle carro;
     public double xInicial, yInicial, xAtual, yAtual, contadorRotacao = 0.0;
     public boolean keepGoing = true, girando = false;
+    public int quadranteInicial;
 }
