@@ -1,48 +1,17 @@
-import javafx.animation.Animation;
-import javafx.animation.RotateTransition;
-import javafx.animation.SequentialTransition;
-import javafx.animation.TranslateTransition;
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.util.Duration;
-import javafx.scene.shape.Rectangle;
 
-import java.awt.*;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
 
-public class Controller{
+public class AreaPrincipalHandle {
 
-
-    public void obterRota() throws IOException {
-        ruaDeOrigem = ruaOrigem.getText();
-        ruaDeDestino = ruaDestino.getText();
+    public AreaPrincipalHandle(String ruaDeOrigem, String ruaDeDestino)
+    {
+        this.ruaDeOrigem = ruaDeOrigem;
+        this.ruaDeDestino = ruaDeDestino;
         gps = new GPS();
+
         respostaGPSOrigem = gps.ruaExiste(ruaDeOrigem);
         respostaGPSDestino = gps.ruaExiste(ruaDeDestino);
-
-        if(respostaGPSOrigem.equals("naoEncontrado") || respostaGPSDestino.equals("naoEncontrado"))
-        {
-            chamaErroEndereco();
-        }
 
         System.out.println("Arestas da rua de Origem: " + respostaGPSOrigem + "\nArestas da rua de Destino: " + respostaGPSDestino);
 
@@ -60,7 +29,9 @@ public class Controller{
         tesla.exibeRotasGUI();
         tesla.posicionaNaAresta();
         defineCoordenadaInicial();
-        new Animador().start();
+
+        xAtual = xInicial *6.5; //outro local para mudar a proporção é no construtor de CaminhosGUI
+        yAtual = yInicial *6.5;
     }
 
     public void defineCoordenadaInicial()
@@ -87,56 +58,7 @@ public class Controller{
         }
     }
 
-    public void chamaErroEndereco() throws IOException
-    {
-        Parent erroEnderecoParent = FXMLLoader.load(getClass().getResource("PopupErroEndereco.fxml"));
-        Scene erroEnderecoScene = new Scene(erroEnderecoParent);
-
-        avisoErro = new Stage();
-        avisoErro.setTitle("ENDEREÇO INVÁLIDO!");
-        avisoErro.setScene(erroEnderecoScene);
-        avisoErro.initModality(Modality.APPLICATION_MODAL);
-        avisoErro.initOwner(botaoEnderecos.getScene().getWindow());
-        avisoErro.showAndWait();
-    }
-
-    public void fechaAviso()
-    {
-        Stage stage = (Stage) botaoOk.getScene().getWindow();
-        stage.close();
-    }
-
-    class Animador extends Thread
-    {
-        @Override
-        public void run()
-        {
-            try
-            {
-                xAtual = xInicial*6.5; //outro local para mudar a proporção é no construtor de CaminhosGUI
-                yAtual = yInicial*6.5;
-
-
-                while (keepGoing)
-                {
-                    Thread.sleep(25); //40fps
-                    Platform.runLater(new Runnable() {
-                        @Override
-                        public void run()
-                        {
-                            moveObjetos();
-                        }
-                    });
-                }
-
-            }catch (InterruptedException ex)
-            {
-                return;
-            }
-        }
-    }
-
-    public void moveObjetos() //incrementos de 0.15 px para 40fps e mapa de 720x720
+    public void moveObjetos(ImageView carro) //incrementos de 0.15 px para 40fps e mapa de 720x720
     {
         if(keepGoing && !girando)
         {
@@ -265,16 +187,16 @@ public class Controller{
         }
         if(girando)
         {
-            gira();
+            gira(carro);
         }
-        carro1.setVisible(true);
-        carro1.setLayoutY(yAtual);
-        carro1.setLayoutX(xAtual);
-        carro1.setRotate(caminhosGUI.get(0).getAngulo());
+        carro.setVisible(true);
+        carro.setLayoutY(yAtual);
+        carro.setLayoutX(xAtual);
+        carro.setRotate(caminhosGUI.get(0).getAngulo());
 
     }
 
-    public void gira()
+    public void gira(ImageView carro)
     {
         if(giraPara.equals("horario"))
         {
@@ -282,7 +204,7 @@ public class Controller{
         }
         else
             caminhosGUI.get(0).setAngulo(caminhosGUI.get(0).getAngulo() - 5);
-        carro1.setRotate(caminhosGUI.get(0).getAngulo());
+        carro.setRotate(caminhosGUI.get(0).getAngulo());
         contadorRotacao++;
         if(contadorRotacao == 18.0)
         {
@@ -292,20 +214,140 @@ public class Controller{
         }
     }
 
-    public Button botaoEnderecos, botaoOk;
-    public Pane layoutAnimacao;
-    public HBox menuSuperior, menuInferior;
-    public VBox layout;
-    public Label origem, destino, feitoPor;
-    public TextField ruaOrigem, ruaDestino;
-    public String ruaDeOrigem, ruaDeDestino, respostaGPSOrigem, respostaGPSDestino, giraPara;
-    public ImageView mapaCidade, carro1, carro2, carro3, carro4, carro5;
-    public StackPane stackAnimacao;
-    public Stage avisoErro;
-    public GPS gps;
-    public AutoPilot tesla;
-    public List <CaminhoGUI> caminhosGUI;
-    public double xInicial, yInicial, xAtual, yAtual, contadorRotacao = 0.0;
-    public boolean keepGoing = true, girando = false;
-    public int quadranteInicial;
+    public GPS getGps() {
+        return gps;
+    }
+
+    public void setGps(GPS gps) {
+        this.gps = gps;
+    }
+
+    public AutoPilot getTesla() {
+        return tesla;
+    }
+
+    public void setTesla(AutoPilot tesla) {
+        this.tesla = tesla;
+    }
+
+    public List<CaminhoGUI> getCaminhosGUI() {
+        return caminhosGUI;
+    }
+
+    public void setCaminhosGUI(List<CaminhoGUI> caminhosGUI) {
+        this.caminhosGUI = caminhosGUI;
+    }
+
+    public String getRuaDeOrigem() {
+        return ruaDeOrigem;
+    }
+
+    public void setRuaDeOrigem(String ruaDeOrigem) {
+        this.ruaDeOrigem = ruaDeOrigem;
+    }
+
+    public String getRuaDeDestino() {
+        return ruaDeDestino;
+    }
+
+    public void setRuaDeDestino(String ruaDeDestino) {
+        this.ruaDeDestino = ruaDeDestino;
+    }
+
+    public String getRespostaGPSOrigem() {
+        return respostaGPSOrigem;
+    }
+
+    public void setRespostaGPSOrigem(String respostaGPSOrigem) {
+        this.respostaGPSOrigem = respostaGPSOrigem;
+    }
+
+    public String getRespostaGPSDestino() {
+        return respostaGPSDestino;
+    }
+
+    public void setRespostaGPSDestino(String respostaGPSDestino) {
+        this.respostaGPSDestino = respostaGPSDestino;
+    }
+
+    public String getGiraPara() {
+        return giraPara;
+    }
+
+    public void setGiraPara(String giraPara) {
+        this.giraPara = giraPara;
+    }
+
+    public double getxInicial() {
+        return xInicial;
+    }
+
+    public void setxInicial(double xInicial) {
+        this.xInicial = xInicial;
+    }
+
+    public double getyInicial() {
+        return yInicial;
+    }
+
+    public void setyInicial(double yInicial) {
+        this.yInicial = yInicial;
+    }
+
+    public double getxAtual() {
+        return xAtual;
+    }
+
+    public void setxAtual(double xAtual) {
+        this.xAtual = xAtual;
+    }
+
+    public double getyAtual() {
+        return yAtual;
+    }
+
+    public void setyAtual(double yAtual) {
+        this.yAtual = yAtual;
+    }
+
+    public double getContadorRotacao() {
+        return contadorRotacao;
+    }
+
+    public void setContadorRotacao(double contadorRotacao) {
+        this.contadorRotacao = contadorRotacao;
+    }
+
+    public boolean isKeepGoing() {
+        return keepGoing;
+    }
+
+    public void setKeepGoing(boolean keepGoing) {
+        this.keepGoing = keepGoing;
+    }
+
+    public boolean isGirando() {
+        return girando;
+    }
+
+    public void setGirando(boolean girando) {
+        this.girando = girando;
+    }
+
+    public int getQuadranteInicial() {
+        return quadranteInicial;
+    }
+
+    public void setQuadranteInicial(int quadranteInicial) {
+        this.quadranteInicial = quadranteInicial;
+    }
+
+    //protected ImageView carro;
+    protected GPS gps;
+    protected AutoPilot tesla;
+    protected List<CaminhoGUI> caminhosGUI;
+    protected String ruaDeOrigem, ruaDeDestino, respostaGPSOrigem, respostaGPSDestino, giraPara;
+    protected double xInicial, yInicial, xAtual, yAtual, contadorRotacao = 0.0;
+    protected boolean keepGoing = true, girando = false;
+    protected int quadranteInicial;
 }

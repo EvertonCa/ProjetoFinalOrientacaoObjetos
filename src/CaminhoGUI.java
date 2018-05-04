@@ -3,7 +3,7 @@ public class CaminhoGUI {
     {
         this.direcao = direcao;
         this.tamanho = tamanho;
-        this.xAtual = xInicial*6.5; //outro local para mudar a proporção é no animador de Controller
+        this.xAtual = xInicial*6.5; //outro local para mudar a proporção é no animador de AreaPrincipalController
         this.yAtual = yInicial*6.5;
         if(direcao.equals("direita"))
         {

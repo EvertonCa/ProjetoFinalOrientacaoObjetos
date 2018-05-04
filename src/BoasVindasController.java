@@ -9,7 +9,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Logger;
 
 public class BoasVindasController implements Initializable
 {
@@ -35,7 +34,7 @@ public class BoasVindasController implements Initializable
                         Parent root = null;
                         try
                         {
-                            root = FXMLLoader.load(getClass().getResource("GUI.fxml"));
+                            root = FXMLLoader.load(getClass().getResource("AreaPrincipal.fxml"));
                         }catch (IOException ex)
                         {
                             return;

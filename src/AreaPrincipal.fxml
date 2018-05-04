@@ -31,7 +31,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="layout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<VBox fx:id="layout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AreaPrincipalController">
    <children>
       <MenuBar>
         <menus>
@@ -53,6 +53,21 @@
             <Region HBox.hgrow="ALWAYS" />
             <VBox minWidth="400.0">
                <children>
+                  <Pane prefHeight="235.0" prefWidth="401.0">
+                     <children>
+                        <ImageView fitHeight="235.0" fitWidth="230.0" layoutX="86.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Imagem.png" />
+                           </image>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </ImageView>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Pane>
                   <VBox spacing="5.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="17.0" prefWidth="384.0" text="Carros com rotas..." textAlignment="CENTER" />
@@ -152,7 +167,7 @@
                               <Label text="Cor" />
                               <Pane prefHeight="200.0" prefWidth="200.0">
                                  <children>
-                                    <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="58.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="51.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@carroOriginalMini.png" />
                                        </image>
@@ -160,7 +175,7 @@
                                           <DropShadow />
                                        </effect>
                                     </ImageView>
-                                    <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="58.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="51.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@carroAmareloMini.png" />
                                        </image>
@@ -168,7 +183,7 @@
                                           <DropShadow />
                                        </effect>
                                     </ImageView>
-                                    <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="58.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="51.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@carroAzulMini.png" />
                                        </image>
@@ -176,7 +191,7 @@
                                           <DropShadow />
                                        </effect>
                                     </ImageView>
-                                    <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="58.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="51.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@carroPretoMini.png" />
                                        </image>
@@ -184,7 +199,7 @@
                                           <DropShadow />
                                        </effect>
                                     </ImageView>
-                                    <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="58.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="51.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@carroVerdeMini.png" />
                                        </image>
@@ -253,18 +268,11 @@
                         </VBox>
                      </children>
                   </HBox>
-                  <Pane prefHeight="285.0" prefWidth="401.0">
+                  <VBox alignment="CENTER">
                      <children>
-                        <ImageView fitHeight="287.0" fitWidth="401.0" layoutX="57.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@Imagem.png" />
-                           </image>
-                           <effect>
-                              <DropShadow />
-                           </effect>
-                        </ImageView>
+                        <Button fx:id="botaoMostrarNoMapa" mnemonicParsing="false" onAction="#rodarPrograma" text="Mostrar no Mapa!" />
                      </children>
-                  </Pane>
+                  </VBox>
                </children>
             </VBox>
             <Region HBox.hgrow="ALWAYS" />
