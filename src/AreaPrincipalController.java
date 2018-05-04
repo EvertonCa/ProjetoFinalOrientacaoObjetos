@@ -163,6 +163,8 @@ public class AreaPrincipalController implements Initializable {
         {
             botaoEnderecos.setDisable(true);
         }
+        if(botaoEnderecos.isDisabled())
+            botaoMostrarNoMapa.setDisable(false);
         ruaOrigem.clear();
         ruaDestino.clear();
     }

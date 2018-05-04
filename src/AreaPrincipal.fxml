@@ -280,7 +280,7 @@
                   </HBox>
                   <VBox alignment="CENTER">
                      <children>
-                        <Button fx:id="botaoMostrarNoMapa" mnemonicParsing="false" onAction="#rodarPrograma" text="Mostrar no Mapa!" />
+                        <Button fx:id="botaoMostrarNoMapa" disable="true" mnemonicParsing="false" onAction="#rodarPrograma" text="Mostrar no Mapa!" />
                      </children>
                   </VBox>
                </children>
