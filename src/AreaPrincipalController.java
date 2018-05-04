@@ -61,6 +61,11 @@ public class AreaPrincipalController implements Initializable {
             rotasDefinidas = false;
         }
 
+        if(!rotasDefinidas)
+            habilitaRotasAleatórias();
+        else
+            habilitaRotasDefinidas();
+
         System.out.println("Rotas definidas: " + rotasDefinidas);
     }
 
@@ -80,102 +85,109 @@ public class AreaPrincipalController implements Initializable {
 
     public void obterRota() throws IOException
     {
-        if(rotasCalculadas == 0)
+        if(!rotasDefinidas)
         {
-            handleCarro1 = new AreaPrincipalHandle(ruaOrigem.getText(), ruaDestino.getText());
-
-            if(handleCarro1.getRespostaGPSOrigem().equals("naoEncontrado") || handleCarro1.getRespostaGPSDestino().equals("naoEncontrado"))
+            rotasAleatorias();
+        }
+        else
+        {
+            if(rotasCalculadas == 0)
             {
-                chamaErroEndereco();
-            }
-            rotasCalculadas = 1;
-            labelTituloRuas.setVisible(true);
-            labelCor.setVisible(true);
-            labelRuaDestino.setVisible(true);
-            labelRuaOrigem.setVisible(true);
-            ruaDeOrigem1.setText(ruaOrigem.getText());
-            ruaDeOrigem1.setVisible(true);
-            ruaDeDestino1.setText(ruaDestino.getText());
-            ruaDeDestino1.setVisible(true);
-            iconeCarro1.setVisible(true);
-            botaoDefinido.setDisable(true);
-            botaoAleatorio.setDisable(true);
-            botaoHabilitado.setDisable(true);
-            botaoNaoHabilitado.setDisable(true);
-            radioButton1.setDisable(true);
-            radioButton2.setDisable(true);
-            radioButton3.setDisable(true);
-            radioButton4.setDisable(true);
-            radioButton5.setDisable(true);
-        }
-        else if(rotasCalculadas == 1)
-        {
-            handleCarro2 = new AreaPrincipalHandle(ruaOrigem.getText(), ruaDestino.getText());
+                handleCarro1 = new AreaPrincipalHandle(ruaOrigem.getText(), ruaDestino.getText());
 
-            if(handleCarro2.getRespostaGPSOrigem().equals("naoEncontrado") || handleCarro2.getRespostaGPSDestino().equals("naoEncontrado"))
-            {
-                chamaErroEndereco();
+                if(handleCarro1.getRespostaGPSOrigem().equals("naoEncontrado") || handleCarro1.getRespostaGPSDestino().equals("naoEncontrado"))
+                {
+                    chamaErroEndereco();
+                }
+                rotasCalculadas = 1;
+                labelTituloRuas.setVisible(true);
+                labelCor.setVisible(true);
+                labelRuaDestino.setVisible(true);
+                labelRuaOrigem.setVisible(true);
+                ruaDeOrigem1.setText(ruaOrigem.getText());
+                ruaDeOrigem1.setVisible(true);
+                ruaDeDestino1.setText(ruaDestino.getText());
+                ruaDeDestino1.setVisible(true);
+                iconeCarro1.setVisible(true);
+                botaoDefinido.setDisable(true);
+                botaoAleatorio.setDisable(true);
+                botaoHabilitado.setDisable(true);
+                botaoNaoHabilitado.setDisable(true);
+                radioButton1.setDisable(true);
+                radioButton2.setDisable(true);
+                radioButton3.setDisable(true);
+                radioButton4.setDisable(true);
+                radioButton5.setDisable(true);
             }
-            rotasCalculadas = 2;
-            ruaDeOrigem2.setText(ruaOrigem.getText());
-            ruaDeOrigem2.setVisible(true);
-            ruaDeDestino2.setText(ruaDestino.getText());
-            ruaDeDestino2.setVisible(true);
-            iconeCarro2.setVisible(true);
-        }
-        else if(rotasCalculadas == 2)
-        {
-            handleCarro3 = new AreaPrincipalHandle(ruaOrigem.getText(), ruaDestino.getText());
+            else if(rotasCalculadas == 1)
+            {
+                handleCarro2 = new AreaPrincipalHandle(ruaOrigem.getText(), ruaDestino.getText());
 
-            if(handleCarro3.getRespostaGPSOrigem().equals("naoEncontrado") || handleCarro3.getRespostaGPSDestino().equals("naoEncontrado"))
-            {
-                chamaErroEndereco();
+                if(handleCarro2.getRespostaGPSOrigem().equals("naoEncontrado") || handleCarro2.getRespostaGPSDestino().equals("naoEncontrado"))
+                {
+                    chamaErroEndereco();
+                }
+                rotasCalculadas = 2;
+                ruaDeOrigem2.setText(ruaOrigem.getText());
+                ruaDeOrigem2.setVisible(true);
+                ruaDeDestino2.setText(ruaDestino.getText());
+                ruaDeDestino2.setVisible(true);
+                iconeCarro2.setVisible(true);
             }
-            rotasCalculadas = 3;
-            ruaDeOrigem3.setText(ruaOrigem.getText());
-            ruaDeOrigem3.setVisible(true);
-            ruaDeDestino3.setText(ruaDestino.getText());
-            ruaDeDestino3.setVisible(true);
-            iconeCarro3.setVisible(true);
-        }
-        else if(rotasCalculadas == 3)
-        {
-            handleCarro4 = new AreaPrincipalHandle(ruaOrigem.getText(), ruaDestino.getText());
+            else if(rotasCalculadas == 2)
+            {
+                handleCarro3 = new AreaPrincipalHandle(ruaOrigem.getText(), ruaDestino.getText());
 
-            if(handleCarro4.getRespostaGPSOrigem().equals("naoEncontrado") || handleCarro4.getRespostaGPSDestino().equals("naoEncontrado"))
-            {
-                chamaErroEndereco();
+                if(handleCarro3.getRespostaGPSOrigem().equals("naoEncontrado") || handleCarro3.getRespostaGPSDestino().equals("naoEncontrado"))
+                {
+                    chamaErroEndereco();
+                }
+                rotasCalculadas = 3;
+                ruaDeOrigem3.setText(ruaOrigem.getText());
+                ruaDeOrigem3.setVisible(true);
+                ruaDeDestino3.setText(ruaDestino.getText());
+                ruaDeDestino3.setVisible(true);
+                iconeCarro3.setVisible(true);
             }
-            rotasCalculadas = 4;
-            ruaDeOrigem4.setText(ruaOrigem.getText());
-            ruaDeOrigem4.setVisible(true);
-            ruaDeDestino4.setText(ruaDestino.getText());
-            ruaDeDestino4.setVisible(true);
-            iconeCarro4.setVisible(true);
-        }
-        else if(rotasCalculadas == 4)
-        {
-            handleCarro5 = new AreaPrincipalHandle(ruaOrigem.getText(), ruaDestino.getText());
+            else if(rotasCalculadas == 3)
+            {
+                handleCarro4 = new AreaPrincipalHandle(ruaOrigem.getText(), ruaDestino.getText());
 
-            if(handleCarro5.getRespostaGPSOrigem().equals("naoEncontrado") || handleCarro5.getRespostaGPSDestino().equals("naoEncontrado"))
-            {
-                chamaErroEndereco();
+                if(handleCarro4.getRespostaGPSOrigem().equals("naoEncontrado") || handleCarro4.getRespostaGPSDestino().equals("naoEncontrado"))
+                {
+                    chamaErroEndereco();
+                }
+                rotasCalculadas = 4;
+                ruaDeOrigem4.setText(ruaOrigem.getText());
+                ruaDeOrigem4.setVisible(true);
+                ruaDeDestino4.setText(ruaDestino.getText());
+                ruaDeDestino4.setVisible(true);
+                iconeCarro4.setVisible(true);
             }
-            rotasCalculadas = 5;
-            ruaDeOrigem5.setText(ruaOrigem.getText());
-            ruaDeOrigem5.setVisible(true);
-            ruaDeDestino5.setText(ruaDestino.getText());
-            ruaDeDestino5.setVisible(true);
-            iconeCarro5.setVisible(true);
+            else if(rotasCalculadas == 4)
+            {
+                handleCarro5 = new AreaPrincipalHandle(ruaOrigem.getText(), ruaDestino.getText());
+
+                if(handleCarro5.getRespostaGPSOrigem().equals("naoEncontrado") || handleCarro5.getRespostaGPSDestino().equals("naoEncontrado"))
+                {
+                    chamaErroEndereco();
+                }
+                rotasCalculadas = 5;
+                ruaDeOrigem5.setText(ruaOrigem.getText());
+                ruaDeOrigem5.setVisible(true);
+                ruaDeDestino5.setText(ruaDestino.getText());
+                ruaDeDestino5.setVisible(true);
+                iconeCarro5.setVisible(true);
+            }
+            if(rotasCalculadas == quantidadeDeCarros)
+            {
+                botaoEnderecos.setDisable(true);
+            }
+            if(botaoEnderecos.isDisabled())
+                botaoMostrarNoMapa.setDisable(false);
+            ruaOrigem.clear();
+            ruaDestino.clear();
         }
-        if(rotasCalculadas == quantidadeDeCarros)
-        {
-            botaoEnderecos.setDisable(true);
-        }
-        if(botaoEnderecos.isDisabled())
-            botaoMostrarNoMapa.setDisable(false);
-        ruaOrigem.clear();
-        ruaDestino.clear();
     }
 
     public void rodarPrograma()
@@ -280,6 +292,118 @@ public class AreaPrincipalController implements Initializable {
     {
         VBox buffer = FXMLLoader.load(getClass().getResource("AreaPrincipal.fxml"));
         layout.getChildren().setAll(buffer);
+    }
+
+    public void habilitaRotasAleatórias()
+    {
+        origem.setDisable(true);
+        destino.setDisable(true);
+        ruaOrigem.setDisable(true);
+        ruaDestino.setDisable(true);
+    }
+
+    public void habilitaRotasDefinidas()
+    {
+        origem.setDisable(false);
+        destino.setDisable(false);
+        ruaOrigem.setDisable(false);
+        ruaDestino.setDisable(false);
+    }
+
+    public void rotasAleatorias()
+    {
+        for(int i=0; i < quantidadeDeCarros; i++)
+        {
+            if(rotasCalculadas == 0)
+            {
+                String ruaOrigemAleatoria = Aleatorio.randomizaRua();
+                String ruaDestinoAleatorio = Aleatorio.randomizaRuaComExcecao(ruaOrigemAleatoria);
+
+                handleCarro1 = new AreaPrincipalHandle(ruaOrigemAleatoria, ruaDestinoAleatorio);
+
+                rotasCalculadas = 1;
+                labelTituloRuas.setVisible(true);
+                labelCor.setVisible(true);
+                labelRuaDestino.setVisible(true);
+                labelRuaOrigem.setVisible(true);
+                ruaDeOrigem1.setText(ruaOrigemAleatoria);
+                ruaDeOrigem1.setVisible(true);
+                ruaDeDestino1.setText(ruaDestinoAleatorio);
+                ruaDeDestino1.setVisible(true);
+                iconeCarro1.setVisible(true);
+                botaoDefinido.setDisable(true);
+                botaoAleatorio.setDisable(true);
+                botaoHabilitado.setDisable(true);
+                botaoNaoHabilitado.setDisable(true);
+                radioButton1.setDisable(true);
+                radioButton2.setDisable(true);
+                radioButton3.setDisable(true);
+                radioButton4.setDisable(true);
+                radioButton5.setDisable(true);
+            }
+            else if(rotasCalculadas == 1)
+            {
+                String ruaOrigemAleatoria = Aleatorio.randomizaRua();
+                String ruaDestinoAleatorio = Aleatorio.randomizaRuaComExcecao(ruaOrigemAleatoria);
+
+                handleCarro2 = new AreaPrincipalHandle(ruaOrigemAleatoria, ruaDestinoAleatorio);
+
+                rotasCalculadas = 2;
+                ruaDeOrigem2.setText(ruaOrigemAleatoria);
+                ruaDeOrigem2.setVisible(true);
+                ruaDeDestino2.setText(ruaDestinoAleatorio);
+                ruaDeDestino2.setVisible(true);
+                iconeCarro2.setVisible(true);
+            }
+            else if(rotasCalculadas == 2)
+            {
+                String ruaOrigemAleatoria = Aleatorio.randomizaRua();
+                String ruaDestinoAleatorio = Aleatorio.randomizaRuaComExcecao(ruaOrigemAleatoria);
+
+                handleCarro3 = new AreaPrincipalHandle(ruaOrigemAleatoria, ruaDestinoAleatorio);
+
+                rotasCalculadas = 3;
+                ruaDeOrigem3.setText(ruaOrigemAleatoria);
+                ruaDeOrigem3.setVisible(true);
+                ruaDeDestino3.setText(ruaDestinoAleatorio);
+                ruaDeDestino3.setVisible(true);
+                iconeCarro3.setVisible(true);
+            }
+            else if(rotasCalculadas == 3)
+            {
+                String ruaOrigemAleatoria = Aleatorio.randomizaRua();
+                String ruaDestinoAleatorio = Aleatorio.randomizaRuaComExcecao(ruaOrigemAleatoria);
+
+                handleCarro4 = new AreaPrincipalHandle(ruaOrigemAleatoria, ruaDestinoAleatorio);
+
+                rotasCalculadas = 4;
+                ruaDeOrigem4.setText(ruaOrigemAleatoria);
+                ruaDeOrigem4.setVisible(true);
+                ruaDeDestino4.setText(ruaDestinoAleatorio);
+                ruaDeDestino4.setVisible(true);
+                iconeCarro4.setVisible(true);
+            }
+            else if(rotasCalculadas == 4)
+            {
+                String ruaOrigemAleatoria = Aleatorio.randomizaRua();
+                String ruaDestinoAleatorio = Aleatorio.randomizaRuaComExcecao(ruaOrigemAleatoria);
+
+                handleCarro5 = new AreaPrincipalHandle(ruaOrigemAleatoria, ruaDestinoAleatorio);
+
+                rotasCalculadas = 5;
+                ruaDeOrigem5.setText(ruaOrigemAleatoria);
+                ruaDeOrigem5.setVisible(true);
+                ruaDeDestino5.setText(ruaDestinoAleatorio);
+                ruaDeDestino5.setVisible(true);
+                iconeCarro5.setVisible(true);
+            }
+            if(rotasCalculadas == quantidadeDeCarros)
+            {
+                botaoEnderecos.setDisable(true);
+            }
+            if(botaoEnderecos.isDisabled())
+                botaoMostrarNoMapa.setDisable(false);
+        }
     }
 
     public Button botaoEnderecos, botaoOk, botaoMostrarNoMapa;
