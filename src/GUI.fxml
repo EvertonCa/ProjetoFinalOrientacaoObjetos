@@ -152,7 +152,7 @@
                               <Label text="Cor" />
                               <Pane prefHeight="200.0" prefWidth="200.0">
                                  <children>
-                                    <ImageView fitHeight="30.0" fitWidth="45.0" layoutX="58.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+                                    <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="58.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@carroOriginalMini.png" />
                                        </image>
@@ -160,7 +160,7 @@
                                           <DropShadow />
                                        </effect>
                                     </ImageView>
-                                    <ImageView fitHeight="30.0" fitWidth="37.0" layoutX="58.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+                                    <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="58.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@carroAmareloMini.png" />
                                        </image>
@@ -168,7 +168,7 @@
                                           <DropShadow />
                                        </effect>
                                     </ImageView>
-                                    <ImageView fitHeight="30.0" fitWidth="56.0" layoutX="58.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+                                    <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="58.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@carroAzulMini.png" />
                                        </image>
@@ -176,7 +176,7 @@
                                           <DropShadow />
                                        </effect>
                                     </ImageView>
-                                    <ImageView fitHeight="30.0" fitWidth="45.0" layoutX="58.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+                                    <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="58.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@carroPretoMini.png" />
                                        </image>
@@ -184,7 +184,7 @@
                                           <DropShadow />
                                        </effect>
                                     </ImageView>
-                                    <ImageView fitHeight="30.0" fitWidth="37.0" layoutX="58.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+                                    <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="58.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@carroVerdeMini.png" />
                                        </image>
@@ -280,18 +280,7 @@
                         <Insets />
                      </StackPane.margin>
                      <children>
-                        <Rectangle fx:id="carro" arcHeight="5.0" arcWidth="5.0" height="7.0" layoutX="372.0" layoutY="387.0" stroke="BLACK" strokeType="INSIDE" width="15.0">
-                           <fill>
-                              <LinearGradient endX="1.0" endY="1.0">
-                                 <stops>
-                                    <Stop color="#0d0000" />
-                                    <Stop color="#0d0000" offset="0.007434944237918215" />
-                                    <Stop color="#fff8f8" offset="1.0" />
-                                 </stops>
-                              </LinearGradient>
-                           </fill>
-                        </Rectangle>
-                        <ImageView fx:id="carro1" fitHeight="30.0" fitWidth="200.0" layoutX="371.0" layoutY="353.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+                        <ImageView fx:id="carro1" fitHeight="30.0" fitWidth="25.0" layoutX="371.0" layoutY="353.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@carroOriginalMini.png" />
                            </image>

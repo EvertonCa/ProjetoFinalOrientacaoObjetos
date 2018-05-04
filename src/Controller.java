@@ -29,12 +29,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class Controller implements Initializable{
+public class Controller{
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
 
     public void obterRota() throws IOException {
         ruaDeOrigem = ruaOrigem.getText();
@@ -271,9 +267,10 @@ public class Controller implements Initializable{
         {
             gira();
         }
-        carro.setLayoutY(yAtual);
-        carro.setLayoutX(xAtual);
-        carro.setRotate(caminhosGUI.get(0).getAngulo());
+        carro1.setVisible(true);
+        carro1.setLayoutY(yAtual);
+        carro1.setLayoutX(xAtual);
+        carro1.setRotate(caminhosGUI.get(0).getAngulo());
 
     }
 
@@ -285,7 +282,7 @@ public class Controller implements Initializable{
         }
         else
             caminhosGUI.get(0).setAngulo(caminhosGUI.get(0).getAngulo() - 5);
-        carro.setRotate(caminhosGUI.get(0).getAngulo());
+        carro1.setRotate(caminhosGUI.get(0).getAngulo());
         contadorRotacao++;
         if(contadorRotacao == 18.0)
         {
@@ -308,7 +305,6 @@ public class Controller implements Initializable{
     public GPS gps;
     public AutoPilot tesla;
     public List <CaminhoGUI> caminhosGUI;
-    public Rectangle carro;
     public double xInicial, yInicial, xAtual, yAtual, contadorRotacao = 0.0;
     public boolean keepGoing = true, girando = false;
     public int quadranteInicial;
