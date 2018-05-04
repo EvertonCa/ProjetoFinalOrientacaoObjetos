@@ -33,16 +33,17 @@
 
 <VBox fx:id="layout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AreaPrincipalController">
    <children>
-      <MenuBar>
+      <MenuBar fx:id="menuBar">
         <menus>
-          <Menu mnemonicParsing="false" text="Arquivo">
+          <Menu fx:id="menuArquivo" mnemonicParsing="false" text="Arquivo">
             <items>
-              <MenuItem mnemonicParsing="false" text="Fechar" />
+                  <MenuItem fx:id="itemNovo" mnemonicParsing="false" onAction="#novoPrograma" text="Novo" />
+              <MenuItem fx:id="itemFechar" mnemonicParsing="false" onAction="#fecharPrograma" text="Fechar" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Ajuda">
+          <Menu fx:id="menuAjuda" mnemonicParsing="false" text="Ajuda">
             <items>
-              <MenuItem mnemonicParsing="false" text="Sobre" />
+              <MenuItem fx:id="itemSobre" mnemonicParsing="false" text="Sobre" />
             </items>
           </Menu>
         </menus>
@@ -55,7 +56,7 @@
                <children>
                   <Pane prefHeight="235.0" prefWidth="401.0">
                      <children>
-                        <ImageView fitHeight="235.0" fitWidth="230.0" layoutX="86.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="miniMapa" fitHeight="235.0" fitWidth="230.0" layoutX="86.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@Imagem.png" />
                            </image>
@@ -73,8 +74,11 @@
                         <Label alignment="CENTER" prefHeight="17.0" prefWidth="384.0" text="Carros com rotas..." textAlignment="CENTER" />
                         <HBox alignment="CENTER">
                            <children>
-                              <ToggleButton mnemonicParsing="false" selected="true" text="DEFINIDAS" />
-                              <ToggleButton mnemonicParsing="false" text="ALEATÓRIAS" />
+                              <ToggleButton fx:id="botaoDefinido" mnemonicParsing="false" onAction="#determinaRotasDefinidas" selected="true" text="DEFINIDAS">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="toggleButton1Group" />
+                                 </toggleGroup></ToggleButton>
+                              <ToggleButton fx:id="botaoAleatorio" mnemonicParsing="false" onAction="#determinaRotasDefinidas" text="ALEATÓRIAS" toggleGroup="$toggleButton1Group" />
                            </children>
                            <padding>
                               <Insets bottom="5.0" top="5.0" />
@@ -83,8 +87,11 @@
                         <Label alignment="CENTER" prefHeight="17.0" prefWidth="384.0" text="Semáforos:" textAlignment="CENTER" />
                         <HBox alignment="CENTER">
                            <children>
-                              <ToggleButton mnemonicParsing="false" selected="true" text="HABILITADOS" />
-                              <ToggleButton mnemonicParsing="false" text="DESABILITADOS" />
+                              <ToggleButton fx:id="botaoHabilitado" mnemonicParsing="false" onAction="#determinaSemaforosHabilitados" selected="true" text="HABILITADOS">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="toggleButton2Group" />
+                                 </toggleGroup></ToggleButton>
+                              <ToggleButton fx:id="botaoNaoHabilitado" mnemonicParsing="false" onAction="#determinaSemaforosHabilitados" text="DESABILITADOS" toggleGroup="$toggleButton2Group" />
                            </children>
                            <padding>
                               <Insets bottom="5.0" top="5.0" />
@@ -95,11 +102,14 @@
                            <children>
                               <VBox alignment="CENTER" prefHeight="200.0" prefWidth="200.0" spacing="3.0">
                                  <children>
-                                    <RadioButton mnemonicParsing="false" selected="true" text="1" />
-                                    <RadioButton mnemonicParsing="false" text="2" />
-                                    <RadioButton mnemonicParsing="false" text="3" />
-                                    <RadioButton mnemonicParsing="false" text="4" />
-                                    <RadioButton mnemonicParsing="false" text="5" />
+                                    <RadioButton fx:id="radioButton1" mnemonicParsing="false" onAction="#determinaQuantidadeDeCarros" selected="true" text="1">
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="radioButtonGroup" />
+                                       </toggleGroup></RadioButton>
+                                    <RadioButton fx:id="radioButton2" mnemonicParsing="false" onAction="#determinaQuantidadeDeCarros" text="2" toggleGroup="$radioButtonGroup" />
+                                    <RadioButton fx:id="radioButton3" mnemonicParsing="false" onAction="#determinaQuantidadeDeCarros" text="3" toggleGroup="$radioButtonGroup" />
+                                    <RadioButton fx:id="radioButton4" mnemonicParsing="false" onAction="#determinaQuantidadeDeCarros" text="4" toggleGroup="$radioButtonGroup" />
+                                    <RadioButton fx:id="radioButton5" mnemonicParsing="false" onAction="#determinaQuantidadeDeCarros" text="5" toggleGroup="$radioButtonGroup" />
                                  </children>
                               </VBox>
                            </children>
@@ -152,7 +162,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
                      </padding>
                   </HBox>
-                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="399.0" text="Rotas dos Veículos" textAlignment="CENTER">
+                  <Label fx:id="labelTituloRuas" alignment="CENTER" prefHeight="17.0" prefWidth="399.0" text="Rotas dos Veículos" textAlignment="CENTER" visible="false">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -164,10 +174,10 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="102.0" prefWidth="200.0">
                            <children>
-                              <Label text="Cor" />
+                              <Label fx:id="labelCor" text="Cor" visible="false" />
                               <Pane prefHeight="200.0" prefWidth="200.0">
                                  <children>
-                                    <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="51.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="iconeCarro1" fitHeight="30.0" fitWidth="35.0" layoutX="51.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                        <image>
                                           <Image url="@carroOriginalMini.png" />
                                        </image>
@@ -175,7 +185,7 @@
                                           <DropShadow />
                                        </effect>
                                     </ImageView>
-                                    <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="51.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="iconeCarro2" fitHeight="30.0" fitWidth="35.0" layoutX="51.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                        <image>
                                           <Image url="@carroAmareloMini.png" />
                                        </image>
@@ -183,7 +193,7 @@
                                           <DropShadow />
                                        </effect>
                                     </ImageView>
-                                    <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="51.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="iconeCarro3" fitHeight="30.0" fitWidth="35.0" layoutX="51.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                        <image>
                                           <Image url="@carroAzulMini.png" />
                                        </image>
@@ -191,7 +201,7 @@
                                           <DropShadow />
                                        </effect>
                                     </ImageView>
-                                    <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="51.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="iconeCarro4" fitHeight="30.0" fitWidth="35.0" layoutX="51.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                        <image>
                                           <Image url="@carroPretoMini.png" />
                                        </image>
@@ -199,7 +209,7 @@
                                           <DropShadow />
                                        </effect>
                                     </ImageView>
-                                    <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="51.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="iconeCarro5" fitHeight="30.0" fitWidth="35.0" layoutX="51.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                        <image>
                                           <Image url="@carroVerdeMini.png" />
                                        </image>
@@ -212,27 +222,27 @@
                         </VBox>
                         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <Label alignment="TOP_CENTER" prefHeight="16.0" prefWidth="91.0" text="Rua de Origem">
+                              <Label fx:id="labelRuaOrigem" alignment="TOP_CENTER" prefHeight="16.0" prefWidth="91.0" text="Rua de Origem" visible="false">
                                  <padding>
                                     <Insets bottom="5.0" />
                                  </padding></Label>
-                              <Label disable="true" text="-">
+                              <Label fx:id="ruaDeOrigem1" text="-" visible="false">
                                  <padding>
                                     <Insets bottom="1.0" />
                                  </padding></Label>
-                              <Label disable="true" text="-">
+                              <Label fx:id="ruaDeOrigem2" text="-" visible="false">
                                  <padding>
                                     <Insets bottom="1.0" />
                                  </padding></Label>
-                              <Label disable="true" text="-">
+                              <Label fx:id="ruaDeOrigem3" text="-" visible="false">
                                  <padding>
                                     <Insets bottom="1.0" />
                                  </padding></Label>
-                              <Label disable="true" text="-">
+                              <Label fx:id="ruaDeOrigem4" text="-" visible="false">
                                  <padding>
                                     <Insets bottom="1.0" />
                                  </padding></Label>
-                              <Label disable="true" text="-">
+                              <Label fx:id="ruaDeOrigem5" text="-" visible="false">
                                  <padding>
                                     <Insets bottom="1.0" />
                                  </padding></Label>
@@ -240,27 +250,27 @@
                         </VBox>
                         <VBox alignment="TOP_CENTER" prefHeight="102.0" prefWidth="200.0">
                            <children>
-                              <Label text="Rua de Destino">
+                              <Label fx:id="labelRuaDestino" text="Rua de Destino" visible="false">
                                  <padding>
                                     <Insets bottom="5.0" />
                                  </padding></Label>
-                              <Label disable="true" text="-">
+                              <Label fx:id="ruaDeDestino1" text="-" visible="false">
                                  <padding>
                                     <Insets bottom="1.0" />
                                  </padding></Label>
-                              <Label disable="true" text="-">
+                              <Label fx:id="ruaDeDestino2" text="-" visible="false">
                                  <padding>
                                     <Insets bottom="1.0" />
                                  </padding></Label>
-                              <Label disable="true" text="-">
+                              <Label fx:id="ruaDeDestino3" text="-" visible="false">
                                  <padding>
                                     <Insets bottom="1.0" />
                                  </padding></Label>
-                              <Label disable="true" text="-">
+                              <Label fx:id="ruaDeDestino4" text="-" visible="false">
                                  <padding>
                                     <Insets bottom="1.0" />
                                  </padding></Label>
-                              <Label disable="true" text="-">
+                              <Label fx:id="ruaDeDestino5" text="-" visible="false">
                                  <padding>
                                     <Insets bottom="1.0" />
                                  </padding></Label>
@@ -295,6 +305,26 @@
                            <effect>
                               <DropShadow />
                            </effect>
+                        </ImageView>
+                        <ImageView fx:id="carro2" fitHeight="30.0" fitWidth="25.0" layoutX="371.0" layoutY="402.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                           <image>
+                              <Image url="@carroAmareloMini.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="carro3" fitHeight="30.0" fitWidth="25.0" layoutX="322.0" layoutY="425.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                           <image>
+                              <Image url="@carroAzulMini.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="carro4" fitHeight="30.0" fitWidth="25.0" layoutX="316.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                           <image>
+                              <Image url="@carroPretoMini.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="carro5" fitHeight="30.0" fitWidth="25.0" layoutX="384.0" layoutY="432.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                           <image>
+                              <Image url="@carroVerdeMini.png" />
+                           </image>
                         </ImageView>
                      </children>
                      <effect>
