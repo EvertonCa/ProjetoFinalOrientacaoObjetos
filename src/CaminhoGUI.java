@@ -3,26 +3,26 @@ public class CaminhoGUI {
     {
         this.direcao = direcao;
         this.tamanho = tamanho;
-        this.xAtual = xInicial*6;
-        this.yAtual = yInicial*6;
+        this.xAtual = xInicial*6.5; //outro local para mudar a proporção é no animador de Controller
+        this.yAtual = yInicial*6.5;
         if(direcao.equals("direita"))
         {
-            xDestino = xAtual + (tamanho * 6);
+            xDestino = xAtual + (tamanho * 6.5);
             angulo = 0.0;
         }
         else if(direcao.equals("esquerda"))
         {
-            xDestino = xAtual - (tamanho * 6);
+            xDestino = xAtual - (tamanho * 6.5);
             angulo = 180.0;
         }
         else if(direcao.equals("cima"))
         {
-            yDestino = yAtual - (tamanho * 6);
+            yDestino = yAtual - (tamanho * 6.5);
             angulo = 270.0;
         }
         else
         {
-            yDestino = yAtual + (tamanho * 6);
+            yDestino = yAtual + (tamanho * 6.5);
             angulo = 90.0;
         }
     }

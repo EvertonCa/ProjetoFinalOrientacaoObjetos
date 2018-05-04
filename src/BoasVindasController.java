@@ -42,6 +42,7 @@ public class BoasVindasController implements Initializable
                         }
                         Scene scene = new Scene(root);
                         Stage stage = new Stage();
+                        stage.setTitle("Ruas Inteligentes - Trabalho Final Orientação a Objetos");
                         stage.setScene(scene);
                         stage.show();
                         popup.getScene().getWindow().hide();

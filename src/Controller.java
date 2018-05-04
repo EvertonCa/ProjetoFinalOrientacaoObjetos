@@ -117,8 +117,8 @@ public class Controller implements Initializable{
         {
             try
             {
-                xAtual = xInicial*6;
-                yAtual = yInicial*6;
+                xAtual = xInicial*6.5; //outro local para mudar a proporção é no construtor de CaminhosGUI
+                yAtual = yInicial*6.5;
 
 
                 while (keepGoing)
@@ -148,7 +148,7 @@ public class Controller implements Initializable{
             {
                 if(caminhosGUI.get(0).getxAtual() < caminhosGUI.get(0).getxDestino())
                 {
-                    xAtual += 0.3;
+                    xAtual += 0.5;
                     caminhosGUI.get(0).setxAtual(xAtual);
                 }
                 else
@@ -179,7 +179,7 @@ public class Controller implements Initializable{
             {
                 if(caminhosGUI.get(0).getxAtual() > caminhosGUI.get(0).getxDestino())
                 {
-                    xAtual -= 0.3;
+                    xAtual -= 0.5;
                     caminhosGUI.get(0).setxAtual(xAtual);
                 }
                 else
@@ -210,7 +210,7 @@ public class Controller implements Initializable{
             {
                 if(caminhosGUI.get(0).getyAtual() > caminhosGUI.get(0).getyDestino())
                 {
-                    yAtual -= 0.3;
+                    yAtual -= 0.5;
                     caminhosGUI.get(0).setyAtual(yAtual);
                 }
                 else
@@ -240,7 +240,7 @@ public class Controller implements Initializable{
             {
                 if(caminhosGUI.get(0).getyAtual() < caminhosGUI.get(0).getyDestino())
                 {
-                    yAtual += 0.3;
+                    yAtual += 0.5;
                     caminhosGUI.get(0).setyAtual(yAtual);
                 }
                 else
@@ -274,23 +274,20 @@ public class Controller implements Initializable{
         carro.setLayoutY(yAtual);
         carro.setLayoutX(xAtual);
         carro.setRotate(caminhosGUI.get(0).getAngulo());
-        //System.out.println("x atual " + caminhosGUI.get(0).getxAtual());
-        //System.out.println("y atual " + caminhosGUI.get(0).getyAtual());
-        //System.out.println("x destino " + caminhosGUI.get(0).getxDestino());
-        //System.out.println("y destino " + caminhosGUI.get(0).getyDestino());
+
     }
 
     public void gira()
     {
         if(giraPara.equals("horario"))
         {
-            caminhosGUI.get(0).setAngulo(caminhosGUI.get(0).getAngulo() + 1);
+            caminhosGUI.get(0).setAngulo(caminhosGUI.get(0).getAngulo() + 5);
         }
         else
-            caminhosGUI.get(0).setAngulo(caminhosGUI.get(0).getAngulo() - 1);
+            caminhosGUI.get(0).setAngulo(caminhosGUI.get(0).getAngulo() - 5);
         carro.setRotate(caminhosGUI.get(0).getAngulo());
         contadorRotacao++;
-        if(contadorRotacao == 90.0)
+        if(contadorRotacao == 18.0)
         {
             girando = false;
             contadorRotacao = 0;
@@ -305,7 +302,7 @@ public class Controller implements Initializable{
     public Label origem, destino, feitoPor;
     public TextField ruaOrigem, ruaDestino;
     public String ruaDeOrigem, ruaDeDestino, respostaGPSOrigem, respostaGPSDestino, giraPara;
-    public ImageView mapaCidade;
+    public ImageView mapaCidade, carro1, carro2, carro3, carro4, carro5;
     public StackPane stackAnimacao;
     public Stage avisoErro;
     public GPS gps;
