@@ -98,6 +98,15 @@ public class AreaPrincipalController implements Initializable {
             ruaDeDestino1.setText(ruaDestino.getText());
             ruaDeDestino1.setVisible(true);
             iconeCarro1.setVisible(true);
+            botaoDefinido.setDisable(true);
+            botaoAleatorio.setDisable(true);
+            botaoHabilitado.setDisable(true);
+            botaoNaoHabilitado.setDisable(true);
+            radioButton1.setDisable(true);
+            radioButton2.setDisable(true);
+            radioButton3.setDisable(true);
+            radioButton4.setDisable(true);
+            radioButton5.setDisable(true);
         }
         else if(rotasCalculadas == 1)
         {
