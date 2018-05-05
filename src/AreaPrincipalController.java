@@ -95,29 +95,32 @@ public class AreaPrincipalController implements Initializable {
             {
                 handleCarro1 = new AreaPrincipalHandle(ruaOrigem.getText(), ruaDestino.getText());
 
-                if(handleCarro1.getRespostaGPSOrigem().equals("naoEncontrado") || handleCarro1.getRespostaGPSDestino().equals("naoEncontrado"))
+                if(handleCarro1.getRespostaGPSOrigem().equals("Formato Errado!") || handleCarro1.getRespostaGPSDestino().equals("Formato Errado!"))
                 {
                     chamaErroEndereco();
                 }
-                rotasCalculadas = 1;
-                labelTituloRuas.setVisible(true);
-                labelCor.setVisible(true);
-                labelRuaDestino.setVisible(true);
-                labelRuaOrigem.setVisible(true);
-                ruaDeOrigem1.setText(ruaOrigem.getText());
-                ruaDeOrigem1.setVisible(true);
-                ruaDeDestino1.setText(ruaDestino.getText());
-                ruaDeDestino1.setVisible(true);
-                iconeCarro1.setVisible(true);
-                botaoDefinido.setDisable(true);
-                botaoAleatorio.setDisable(true);
-                botaoHabilitado.setDisable(true);
-                botaoNaoHabilitado.setDisable(true);
-                radioButton1.setDisable(true);
-                radioButton2.setDisable(true);
-                radioButton3.setDisable(true);
-                radioButton4.setDisable(true);
-                radioButton5.setDisable(true);
+                else
+                {
+                    rotasCalculadas = 1;
+                    labelTituloRuas.setVisible(true);
+                    labelCor.setVisible(true);
+                    labelRuaDestino.setVisible(true);
+                    labelRuaOrigem.setVisible(true);
+                    ruaDeOrigem1.setText(ruaOrigem.getText());
+                    ruaDeOrigem1.setVisible(true);
+                    ruaDeDestino1.setText(ruaDestino.getText());
+                    ruaDeDestino1.setVisible(true);
+                    iconeCarro1.setVisible(true);
+                    botaoDefinido.setDisable(true);
+                    botaoAleatorio.setDisable(true);
+                    botaoHabilitado.setDisable(true);
+                    botaoNaoHabilitado.setDisable(true);
+                    radioButton1.setDisable(true);
+                    radioButton2.setDisable(true);
+                    radioButton3.setDisable(true);
+                    radioButton4.setDisable(true);
+                    radioButton5.setDisable(true);
+                }
             }
             else if(rotasCalculadas == 1)
             {

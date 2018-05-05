@@ -13,25 +13,28 @@ public class AreaPrincipalHandle {
         respostaGPSOrigem = gps.ruaExiste(ruaDeOrigem);
         respostaGPSDestino = gps.ruaExiste(ruaDeDestino);
 
-        System.out.println("Arestas da rua de Origem: " + respostaGPSOrigem + "\nArestas da rua de Destino: " + respostaGPSDestino);
+        if (!respostaGPSOrigem.equals("Formato Errado!") && !respostaGPSDestino.equals("Formato Errado!"))
+        {
+            System.out.println("Arestas da rua de Origem: " + respostaGPSOrigem + "\nArestas da rua de Destino: " + respostaGPSDestino);
 
-        gps.obterRuasUsuario(respostaGPSOrigem, respostaGPSDestino);
-        gps.obterRota();
+            gps.obterRuasUsuario(respostaGPSOrigem, respostaGPSDestino);
+            gps.obterRota();
 
-        gps.exibirMenorRota();
+            gps.exibirMenorRota();
 
-        tesla = new AutoPilot(gps.getMenorRota(), gps.getArestasDefinitivas(), "definido");
+            tesla = new AutoPilot(gps.getMenorRota(), gps.getArestasDefinitivas(), "definido");
 
-        quadranteInicial = tesla.getQuadranteAtual();
+            quadranteInicial = tesla.getQuadranteAtual();
 
-        tesla.gerarCoordenadasGUI();
-        caminhosGUI = tesla.gerarRotasGUI();
-        tesla.exibeRotasGUI();
-        tesla.posicionaNaAresta();
-        defineCoordenadaInicial();
+            tesla.gerarCoordenadasGUI();
+            caminhosGUI = tesla.gerarRotasGUI();
+            tesla.exibeRotasGUI();
+            tesla.posicionaNaAresta();
+            defineCoordenadaInicial();
 
-        xAtual = xInicial *6.5; //outro local para mudar a proporção é no construtor de CaminhosGUI
-        yAtual = yInicial *6.5;
+            xAtual = xInicial *6.5; //outro local para mudar a proporção é no construtor de CaminhosGUI
+            yAtual = yInicial *6.5;
+        }
     }
 
     public void defineCoordenadaInicial()

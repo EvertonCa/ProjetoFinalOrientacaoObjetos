@@ -70,43 +70,50 @@ public class GPS
 
             String tudoJunto, resposta;
 
-            String separados[] = rua.split(" ");
-            tudoJunto = separados[0] + separados[1];
-
-            String arestas = propQ1.getProperty(tudoJunto);
-            int quadrante = 1;
-
-            if(arestas == null)
+            try
             {
-                arestas = propQ2.getProperty(tudoJunto);
-                quadrante = 2;
+                String separados[] = rua.split(" ");
+                tudoJunto = separados[0] + separados[1];
+
+                String arestas = propQ1.getProperty(tudoJunto);
+                int quadrante = 1;
 
                 if(arestas == null)
                 {
-                    arestas = propQ3.getProperty(tudoJunto);
-                    quadrante = 3;
+                    arestas = propQ2.getProperty(tudoJunto);
+                    quadrante = 2;
 
                     if(arestas == null)
                     {
-                        arestas = propQ4.getProperty(tudoJunto);
-                        quadrante = 4;
+                        arestas = propQ3.getProperty(tudoJunto);
+                        quadrante = 3;
+
+                        if(arestas == null)
+                        {
+                            arestas = propQ4.getProperty(tudoJunto);
+                            quadrante = 4;
+                        }
                     }
                 }
-            }
-            if(quadranteOrigem == 0)
-                quadranteOrigem = quadrante;
-            else
+
                 quadranteDestino = quadrante;
 
-            if(arestas == null)
+                if(arestas == null)
+                {
+                    resposta = "naoEncontrado";
+                }
+                else
+                {
+                    resposta = arestas;
+                }
+                return resposta;
+
+            }catch (Exception e)
             {
-                resposta = "naoEncontrado";
+                return "Formato Errado!";
             }
-            else
-            {
-                resposta = arestas;
-            }
-            return resposta;
+
+
         } catch (IOException e){return "Arquivo Não Encontrado";}
     }
 
