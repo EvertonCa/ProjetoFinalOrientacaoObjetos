@@ -103,7 +103,7 @@ public class Manipulador
     public static Properties getInterseccoesQ1() throws IOException
     {
         Properties props = new Properties();
-        FileInputStream file = new FileInputStream("./Properties/InterseccoesQ1.properties");
+        FileInputStream file = new FileInputStream("./Properties/IntersaccoesQ1.properties");
         props.load(file);
         return props;
     }
