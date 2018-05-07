@@ -57,5 +57,9 @@ public class Veiculos
         return quadranteAtual;
     }
 
+    public int getQuadranteDestino() {
+        return quadranteDestino;
+    }
+
     protected int x, y, xDestino, yDestino, quadranteAtual, quadranteDestino, ID;
 }

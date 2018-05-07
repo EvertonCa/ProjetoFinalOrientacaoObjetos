@@ -1,3 +1,4 @@
+import javax.annotation.processing.SupportedSourceVersion;
 import java.io.IOException;
 import java.util.*;
 
@@ -41,25 +42,6 @@ public class GPS
         }
     }
 
-    public void obterRuasAleatorias()
-    {
-        Aleatorio random = new Aleatorio();
-
-        ruaOrigem = random.randomizaRua();
-        ruaDestino = random.randomizaRuaComExcecao(ruaOrigem);
-
-        System.out.printf("Origem: " + ruaOrigem + "\n");
-        System.out.printf("Destino: " + ruaDestino + "\n");
-
-        origem = ruaExiste("origem");
-        encontraArestas(origem, "origem");
-        encontraVertices("origem");
-
-        destino = ruaExiste("destino");
-        encontraArestas(destino, "destino");
-        encontraVertices("destino");
-    }
-
     public String ruaExiste(String rua) {
         try {
             Manipulador manip = new Manipulador();
@@ -96,7 +78,10 @@ public class GPS
                     }
                 }
 
-                quadranteDestino = quadrante;
+                if(quadranteOrigem == 0)
+                    quadranteOrigem = quadrante;
+                else
+                    quadranteDestino = quadrante;
 
                 if(arestas == null)
                 {
@@ -196,7 +181,6 @@ public class GPS
         {
             verticesOrigem.add(arestasOrigem.get(0).getDestino());
             verticesOrigem.add(arestasOrigem.get(1).getDestino());
-
         }
         else
         {
@@ -285,6 +269,8 @@ public class GPS
             System.out.print(menorRota.get(i));
         }
         System.out.printf("\n");
+        System.out.println("Origem da aresta de origem: " + arestasDefinitivas.get(0).getOrigem());
+        System.out.println("Origem da aresta de destino: " + arestasDefinitivas.get(1).getOrigem());
     }
 
     public List<Vertice> getMenorRota() {

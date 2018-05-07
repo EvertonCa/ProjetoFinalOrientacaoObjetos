@@ -58,7 +58,7 @@
                      <children>
                         <ImageView fx:id="miniMapa" fitHeight="235.0" fitWidth="230.0" layoutX="86.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@Imagem.png" />
+                              <Image url="@mapa.jpeg" />
                            </image>
                            <effect>
                               <DropShadow />
@@ -286,11 +286,11 @@
                </children>
             </VBox>
             <Region HBox.hgrow="ALWAYS" />
-            <StackPane fx:id="stackAnimacao" prefHeight="790.0" prefWidth="790.0">
+            <StackPane fx:id="stackAnimacao" maxHeight="780.0" maxWidth="780.0" prefHeight="780.0" prefWidth="780.0">
                <children>
                   <ImageView fx:id="mapaCidade" fitHeight="780.0" fitWidth="780.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER">
                      <image>
-                        <Image url="@Imagem.png" />
+                        <Image url="@mapa.jpeg" />
                      </image>
                   </ImageView>
                   <Pane fx:id="layoutAnimacao" maxHeight="780.0" maxWidth="780.0" prefHeight="780.0" prefWidth="780.0" StackPane.alignment="CENTER">
@@ -332,6 +332,9 @@
                      </effect>
                   </Pane>
                </children>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
             </StackPane>
             <Region HBox.hgrow="ALWAYS" />
          </children>

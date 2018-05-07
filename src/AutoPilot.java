@@ -12,7 +12,6 @@ public class AutoPilot extends Veiculos
         this.menorRota = menorRota;
         arestaOrigem = origemDestino.get(0);
         arestaDestino = origemDestino.get(1);
-        setQuadranteAtual(arestaOrigem.getQuadrante());
         posicionaNaAresta();
         defineCoordenadasDestino();
     }
@@ -189,7 +188,8 @@ public class AutoPilot extends Veiculos
                 }
             }
 
-            if(super.getX() == super.getxDestino() && super.getY() == super.getyDestino())
+            if(super.getX() == super.getxDestino() && super.getY() == super.getyDestino() &&
+                    super.getQuadranteAtual() == super.getQuadranteDestino())
             {
                 cheguei = true;
             }
@@ -450,14 +450,16 @@ public class AutoPilot extends Veiculos
     {
         caminhosGUI = new ArrayList<>();
 
-        while (getX() != getxDestino() || getY() != getyDestino())
+        while ((getX() != getxDestino() || getY() != getyDestino()) || super.getQuadranteAtual() != super.getQuadranteDestino())
         {
             System.out.printf("X atual e Y atual: ");
             System.out.print(getX() + " " + getY() + "\n");
             System.out.printf("X final e Y final: ");
             System.out.print(getxDestino() + " " + getyDestino() + "\n");
-            System.out.printf("Quadrante: ");
-            System.out.print(getQuadranteAtual() + "\n\n");
+            System.out.printf("Quadrante atual: ");
+            System.out.print(getQuadranteAtual() + "\n");
+            System.out.printf("Quadrante final: ");
+            System.out.print(getQuadranteDestino() + "\n\n");
 
             List<Integer> bufferXeY = new ArrayList<>();
 
@@ -491,8 +493,10 @@ public class AutoPilot extends Veiculos
         System.out.print(getX() + " " + getY() + "\n");
         System.out.printf("X final e Y final: ");
         System.out.print(getxDestino() + " " + getyDestino() + "\n");
-        System.out.printf("Quadrante: ");
-        System.out.print(getQuadranteAtual() + "\n\n");
+        System.out.printf("Quadrante atual: ");
+        System.out.print(getQuadranteAtual() + "\n");
+        System.out.printf("Quadrante final: ");
+        System.out.print(getQuadranteDestino() + "\n\n");
     }
 
     public List < CaminhoGUI > gerarRotasGUI()

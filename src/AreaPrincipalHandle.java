@@ -16,6 +16,7 @@ public class AreaPrincipalHandle {
         if (!respostaGPSOrigem.equals("Formato Errado!") && !respostaGPSDestino.equals("Formato Errado!"))
         {
             System.out.println("Arestas da rua de Origem: " + respostaGPSOrigem + "\nArestas da rua de Destino: " + respostaGPSDestino);
+            System.out.println("Quadrante da rua de Origem: " + gps.quadranteOrigem + "\nQuadrante da rua de Destino: " + gps.quadranteDestino);
 
             gps.obterRuasUsuario(respostaGPSOrigem, respostaGPSDestino);
             gps.obterRota();
