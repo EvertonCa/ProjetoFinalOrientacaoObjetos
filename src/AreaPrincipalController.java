@@ -226,7 +226,6 @@ public class AreaPrincipalController implements Initializable {
         {
             try
             {
-
                 while (keepGoing)
                 {
                     Thread.sleep(25); //40fps
@@ -238,6 +237,8 @@ public class AreaPrincipalController implements Initializable {
                             {
                                 handleCarro1.moveObjetos(carro1);
                                 keepGoing = handleCarro1.isKeepGoing();
+                                checaPopUpChegou(1);
+
                             }
                             else if(quantidadeDeCarros == 2)
                             {
@@ -246,6 +247,9 @@ public class AreaPrincipalController implements Initializable {
 
                                 if(!handleCarro1.isKeepGoing() && !handleCarro2.isKeepGoing())
                                     keepGoing = false;
+
+                                checaPopUpChegou(1);
+                                checaPopUpChegou(2);
                             }
                             else if(quantidadeDeCarros == 3)
                             {
@@ -254,6 +258,10 @@ public class AreaPrincipalController implements Initializable {
                                 handleCarro3.moveObjetos(carro3);
                                 if(!handleCarro1.isKeepGoing() && !handleCarro2.isKeepGoing() && !handleCarro3.isKeepGoing())
                                     keepGoing = false;
+
+                                checaPopUpChegou(1);
+                                checaPopUpChegou(2);
+                                checaPopUpChegou(3);
                             }
                             else if(quantidadeDeCarros == 4)
                             {
@@ -264,6 +272,11 @@ public class AreaPrincipalController implements Initializable {
                                 if(!handleCarro1.isKeepGoing() && !handleCarro2.isKeepGoing() &&
                                         !handleCarro3.isKeepGoing() && !handleCarro4.isKeepGoing())
                                     keepGoing = false;
+
+                                checaPopUpChegou(1);
+                                checaPopUpChegou(2);
+                                checaPopUpChegou(3);
+                                checaPopUpChegou(4);
                             }
                             else
                             {
@@ -275,6 +288,12 @@ public class AreaPrincipalController implements Initializable {
                                 if(!handleCarro1.isKeepGoing() && !handleCarro2.isKeepGoing() &&
                                         !handleCarro3.isKeepGoing() && !handleCarro4.isKeepGoing() && !handleCarro5.isKeepGoing())
                                     keepGoing = false;
+
+                                checaPopUpChegou(1);
+                                checaPopUpChegou(2);
+                                checaPopUpChegou(3);
+                                checaPopUpChegou(4);
+                                checaPopUpChegou(5);
                             }
                         }
                     });
@@ -285,6 +304,51 @@ public class AreaPrincipalController implements Initializable {
                 return;
             }
         }
+    }
+
+    public void checaPopUpChegou(int carro)
+    {
+        if(carro == 1)
+        {
+            if(!handleCarro1.isKeepGoing() && !popUpChegou1Exibido)
+            {
+                popUpChegou(1);
+                popUpChegou1Exibido = true;
+            }
+        }
+        else if(carro == 2)
+        {
+            if(!handleCarro2.isKeepGoing() && !popUpChegou2Exibido)
+            {
+                popUpChegou(2);
+                popUpChegou2Exibido = true;
+            }
+        }
+        else if(carro == 3)
+        {
+            if(!handleCarro3.isKeepGoing() && !popUpChegou3Exibido)
+            {
+                popUpChegou(3);
+                popUpChegou3Exibido = true;
+            }
+        }
+        else if(carro == 4)
+        {
+            if(!handleCarro4.isKeepGoing() && !popUpChegou4Exibido)
+            {
+                popUpChegou(4);
+                popUpChegou4Exibido = true;
+            }
+        }
+        else
+        {
+            if(!handleCarro5.isKeepGoing() && !popUpChegou5Exibido)
+            {
+                popUpChegou(5);
+                popUpChegou5Exibido = true;
+            }
+        }
+
     }
 
     public void fecharPrograma()
@@ -413,7 +477,7 @@ public class AreaPrincipalController implements Initializable {
 
     public void sobre()
     {
-        Parent root = null;
+        Parent root;
         try
         {
             root = FXMLLoader.load(getClass().getResource("PopUpSobre.fxml"));
@@ -423,10 +487,103 @@ public class AreaPrincipalController implements Initializable {
         }
         Scene scene = new Scene(root);
         Stage stage = new Stage();
-        stage.setTitle("Ruas Inteligentes - Trabalho Final Orientação a Objetos");
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void popUpChegou(int carro)
+    {
+        if(carro == 1)
+        {
+            {
+                Parent root;
+                try
+                {
+                    root = FXMLLoader.load(getClass().getResource("PopUpChegou1.fxml"));
+                }catch (IOException ex)
+                {
+                    return;
+                }
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.setScene(scene);
+                stage.show();
+            }
+        }
+        else if(carro == 2)
+        {
+            {
+                Parent root;
+                try
+                {
+                    root = FXMLLoader.load(getClass().getResource("PopUpChegou2.fxml"));
+                }catch (IOException ex)
+                {
+                    return;
+                }
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.setScene(scene);
+                stage.show();
+            }
+        }
+        else if(carro == 3)
+        {
+            {
+                Parent root;
+                try
+                {
+                    root = FXMLLoader.load(getClass().getResource("PopUpChegou3.fxml"));
+                }catch (IOException ex)
+                {
+                    return;
+                }
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.setScene(scene);
+                stage.show();
+            }
+        }
+        else if(carro == 4)
+        {
+            {
+                Parent root;
+                try
+                {
+                    root = FXMLLoader.load(getClass().getResource("PopUpChegou4.fxml"));
+                }catch (IOException ex)
+                {
+                    return;
+                }
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.setScene(scene);
+                stage.show();
+            }
+        }
+        else
+        {
+            {
+                Parent root;
+                try
+                {
+                    root = FXMLLoader.load(getClass().getResource("PopUpChegou5.fxml"));
+                }catch (IOException ex)
+                {
+                    return;
+                }
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.setScene(scene);
+                stage.show();
+            }
+        }
     }
 
     public Button botaoEnderecos, botaoOk, botaoMostrarNoMapa;
@@ -445,6 +602,8 @@ public class AreaPrincipalController implements Initializable {
     public Stage avisoErro;
     public AreaPrincipalHandle handleCarro1, handleCarro2, handleCarro3, handleCarro4, handleCarro5;
     public boolean keepGoing = true, rotasDefinidas = true, semaforosHabilitados = true;
+    public boolean popUpChegou1Exibido = false, popUpChegou2Exibido = false, popUpChegou3Exibido = false,
+            popUpChegou4Exibido = false, popUpChegou5Exibido = false;
     public int quantidadeDeCarros = 1, rotasCalculadas = 0;
     public Menu menuArquivo, menuAjuda;
     public MenuItem itemNovo, itemFechar, itemSobre;

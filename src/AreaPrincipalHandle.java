@@ -1,5 +1,11 @@
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
+import java.io.IOException;
 import java.util.List;
 
 public class AreaPrincipalHandle {
@@ -76,11 +82,7 @@ public class AreaPrincipalHandle {
                 else
                 {
                     direitaOuEsquerda("horario", "antihorario");
-                    if(caminhosGUI.isEmpty())
-                    {
-                        System.out.println("oi");
-                        keepGoing = false;
-                    }
+
                 }
             }
             else if(caminhosGUI.get(0).getDirecao().equals("esquerda"))
@@ -94,10 +96,6 @@ public class AreaPrincipalHandle {
                 {
                     direitaOuEsquerda("antihorario", "horario");
 
-                    if(caminhosGUI.isEmpty())
-                    {
-                        keepGoing = false;
-                    }
                 }
             }
             else if(caminhosGUI.get(0).getDirecao().equals("cima"))
@@ -110,10 +108,6 @@ public class AreaPrincipalHandle {
                 else
                 {
                     cimaOuBaixo("esquerda", "direita");
-                    if(caminhosGUI.isEmpty())
-                    {
-                        keepGoing = false;
-                    }
                 }
             }
             else
@@ -126,10 +120,6 @@ public class AreaPrincipalHandle {
                 else
                 {
                     cimaOuBaixo("direita", "esquerda");
-                    if(caminhosGUI.isEmpty())
-                    {
-                        keepGoing = false;
-                    }
                 }
             }
         }
@@ -137,6 +127,7 @@ public class AreaPrincipalHandle {
         {
             gira(carro);
         }
+
         carro.setVisible(true);
         carro.setLayoutY(yAtual);
         carro.setLayoutX(xAtual);
@@ -160,6 +151,8 @@ public class AreaPrincipalHandle {
             else
                 caminhosGUI.remove(0);
         }
+        else
+            keepGoing = false;
     }
 
     private void direitaOuEsquerda(String horario, String antihorario) {
@@ -178,6 +171,8 @@ public class AreaPrincipalHandle {
             else
                 caminhosGUI.remove(0);
         }
+        else
+            keepGoing = false;
     }
 
     public void gira(ImageView carro)
@@ -197,6 +192,8 @@ public class AreaPrincipalHandle {
             caminhosGUI.remove(0);
         }
     }
+
+
 
     public GPS getGps() {
         return gps;
