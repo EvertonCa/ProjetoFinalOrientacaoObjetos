@@ -75,21 +75,7 @@ public class AreaPrincipalHandle {
                 }
                 else
                 {
-                    if(caminhosGUI.size() > 1)
-                    {
-                        if(caminhosGUI.get(1).getDirecao().equals("baixo"))
-                        {
-                            girando = true;
-                            giraPara = "horario";
-                        }
-                        else if(caminhosGUI.get(1).getDirecao().equals("cima"))
-                        {
-                            girando = true;
-                            giraPara = "antihorario";
-                        }
-                        else
-                            caminhosGUI.remove(0);
-                    }
+                    direitaOuEsquerda("horario", "antihorario");
                     if(caminhosGUI.isEmpty())
                     {
                         System.out.println("oi");
@@ -106,21 +92,7 @@ public class AreaPrincipalHandle {
                 }
                 else
                 {
-                    if(caminhosGUI.size() > 1)
-                    {
-                        if(caminhosGUI.get(1).getDirecao().equals("baixo"))
-                        {
-                            girando = true;
-                            giraPara = "antihorario";
-                        }
-                        else if(caminhosGUI.get(1).getDirecao().equals("cima"))
-                        {
-                            girando = true;
-                            giraPara = "horario";
-                        }
-                        else
-                            caminhosGUI.remove(0);
-                    }
+                    direitaOuEsquerda("antihorario", "horario");
 
                     if(caminhosGUI.isEmpty())
                     {
@@ -137,21 +109,7 @@ public class AreaPrincipalHandle {
                 }
                 else
                 {
-                    if(caminhosGUI.size() > 1)
-                    {
-                        if(caminhosGUI.get(1).getDirecao().equals("esquerda"))
-                        {
-                            girando = true;
-                            giraPara = "antihorario";
-                        }
-                        else if(caminhosGUI.get(1).getDirecao().equals("direita"))
-                        {
-                            girando = true;
-                            giraPara = "horario";
-                        }
-                        else
-                            caminhosGUI.remove(0);
-                    }
+                    cimaOuBaixo("esquerda", "direita");
                     if(caminhosGUI.isEmpty())
                     {
                         keepGoing = false;
@@ -167,21 +125,7 @@ public class AreaPrincipalHandle {
                 }
                 else
                 {
-                    if(caminhosGUI.size() > 1)
-                    {
-                        if(caminhosGUI.get(1).getDirecao().equals("direita"))
-                        {
-                            girando = true;
-                            giraPara = "antihorario";
-                        }
-                        else if(caminhosGUI.get(1).getDirecao().equals("esquerda"))
-                        {
-                            girando = true;
-                            giraPara = "horario";
-                        }
-                        else
-                            caminhosGUI.remove(0);
-                    }
+                    cimaOuBaixo("direita", "esquerda");
                     if(caminhosGUI.isEmpty())
                     {
                         keepGoing = false;
@@ -198,6 +142,42 @@ public class AreaPrincipalHandle {
         carro.setLayoutX(xAtual);
         carro.setRotate(caminhosGUI.get(0).getAngulo());
 
+    }
+
+    private void cimaOuBaixo(String esquerda, String direita) {
+        if(caminhosGUI.size() > 1)
+        {
+            if(caminhosGUI.get(1).getDirecao().equals(esquerda))
+            {
+                girando = true;
+                giraPara = "antihorario";
+            }
+            else if(caminhosGUI.get(1).getDirecao().equals(direita))
+            {
+                girando = true;
+                giraPara = "horario";
+            }
+            else
+                caminhosGUI.remove(0);
+        }
+    }
+
+    private void direitaOuEsquerda(String horario, String antihorario) {
+        if(caminhosGUI.size() > 1)
+        {
+            if(caminhosGUI.get(1).getDirecao().equals("baixo"))
+            {
+                girando = true;
+                giraPara = horario;
+            }
+            else if(caminhosGUI.get(1).getDirecao().equals("cima"))
+            {
+                girando = true;
+                giraPara = antihorario;
+            }
+            else
+                caminhosGUI.remove(0);
+        }
     }
 
     public void gira(ImageView carro)
