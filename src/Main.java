@@ -1,34 +1,95 @@
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
 
 public class Main
 {
+    public static List<Interseccao> criaInterseccao()
+    {
+        List<Interseccao> listaInterseccoes = new ArrayList<Interseccao>();
+        try
+        {
+            for (int k = 0; k < 1; k ++)
+            {
+
+
+                Manipulador manip = new Manipulador();
+                Properties prop;
+
+//            switch (quadrante)
+//            {
+//                default:
+//                {
+//                    prop = manip.getInterseccoesQ1();
+//                    break;
+//                }
+//
+//                case 2:
+//                {
+//                    prop = manip.getInterseccoesQ2();
+//                    break;
+//                }
+//
+//                case 3:
+//                {
+//                    prop = manip.getInterseccoesQ3();
+//                    break;
+//                }
+//
+//                case 4:
+//                {
+//                    prop = manip.getInterseccoesQ4();
+//                    break;
+//                }
+//
+//            }
+                prop = manip.getInterseccoesQ1();
+
+                int quantidadeDeInterseccoes = Integer.parseInt(prop.getProperty("quantidadeDeInterseccoes"));
+
+                for(int i = 0; i < quantidadeDeInterseccoes; i++)
+                {
+                    int descricao = Integer.parseInt(prop.getProperty("interseccao" + i + "Descricao"));
+                    int quantidadeDeSemaforos = Integer.parseInt(prop.getProperty("interseccao" + i + "QuantidadeDeSemaforos"));
+                    List <Semaforo> semaforosDaInterseccao = new ArrayList<Semaforo>();
+
+                    for (int j = 0; j < quantidadeDeSemaforos; j++)
+                    {
+                        int x = Integer.parseInt(prop.getProperty("interseccao" + i + "CoordenadaSemaforoX" + j));
+                        int y = Integer.parseInt(prop.getProperty("interseccao" + i + "CoordenadaSemaforoY" + j));
+                        boolean verde = Boolean.parseBoolean(prop.getProperty("interseccao" + i + "SituacaoSemaforo" + j));
+
+                        int duracao = Integer.parseInt(prop.getProperty("interseccao" + i + "DuracaoSemaforo"));
+
+                        semaforosDaInterseccao.add(new Semaforo(x, y, verde, duracao));
+                    }
+                    listaInterseccoes.add(new Interseccao(semaforosDaInterseccao, descricao));
+                }
+            }
+        }catch (IOException e){System.out.println("Erro no arquivo de propriedades");}
+
+        return listaInterseccoes;
+    }
+
     public static void main (String argv[])
     {
         ///criação do objeto mundo
         Mundo meuMundo = new Mundo();
 
-        ///criação do objeto padrao de coordenadas de semaforos
-        CoordenadasSemaforos coordenadas = new CoordenadasSemaforos();
+        List <Interseccao> listaInterseccoes;
+        listaInterseccoes = criaInterseccao();
 
-        ///criação da lista que armazena os objetos semaforos do Q1
-        ArrayList <Semaforo> semaforosQ1 = new ArrayList<>();
-
-        ///adiciona os objetos semaforos com as coordenadas padrão na lista do Q1
-        for (int i=0; i < coordenadas.getSizeQ1(); i++)
-        {
-            semaforosQ1.add(new Semaforo(coordenadas.getCoordenadasXQ1(i), coordenadas.getCoordenadasYQ1(i), coordenadas.getVerdeQ1(i), coordenadas.getDuracao(i)));
-        }
 
         while(true)
         {
-            for(int i = 0; i < 4; i ++)
+            meuMundo.populaInterseccao(listaInterseccoes);
+
+            for (int i = 0; i < listaInterseccoes.size(); i++)
             {
-                semaforosQ1.get(i).run(meuMundo.mundoQ1);
+                listaInterseccoes.get(i).verificaSemaforo(meuMundo.mundoQ1);
             }
-            for (int i=0; i < semaforosQ1.size(); i++)
-            {
-                meuMundo.populaSemaforoQ1(semaforosQ1.get(i));
-            }
+
             meuMundo.desenhaMundo(meuMundo.getMundoQ1());
             System.out.println("");
 

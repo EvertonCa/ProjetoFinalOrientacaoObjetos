@@ -7,86 +7,54 @@ public class Interseccao {
     Interseccao(List <Semaforo> litaSemaforos, int descricao) {
         this.listaSemaforos = litaSemaforos;
         this.descricao = descricao;
+        this.contadorDeTempo = 0;
     }
 
     public void verificaSemaforo (int[][] mapa)
     {
+        int contVerde = 0;
+        int contVermelho = 0;
 
-        boolean vetMudaCor[] = new boolean[listaSemaforos.size()];
+        boolean temCarro[] = new boolean[listaSemaforos.size()];
+
         for(int i = 0; i < listaSemaforos.size(); i ++)
         {
-            vetMudaCor[i] = listaSemaforos.get(i).run(mapa);
+            temCarro[i] = listaSemaforos.get(i).run(mapa);
+            if (temCarro[i] && !listaSemaforos.get(i).getVerde())
+            {
+                contVermelho ++;
+            }
+            else if (temCarro[i] && listaSemaforos.get(i).getVerde())
+            {
+                contVerde ++;
+            }
         }
 
+//        System.out.println(contVermelho);System.out.println(contVerde);
+        if (contVermelho != 0 && contVerde == 0 || contadorDeTempo == listaSemaforos.get(0).getDuracao())
+        {
+            mudaCorVertice();
+        }
+        else
+        {
+            contadorDeTempo ++;
+        }
     }
 
-
-    public void criaInterseccao(int quadrante)
+    public void mudaCorVertice ()
     {
-        try
+        for(int i = 0; i < listaSemaforos.size(); i ++)
         {
-            List <Interseccao> listaInterseccoes = new ArrayList<Interseccao>();
+            listaSemaforos.get(i).mudarCor();
+        }
+        contadorDeTempo = 0;
+    }
 
-            Manipulador manip = new Manipulador();
-            Properties prop;
-
-//            switch (quadrante)
-//            {
-//                default:
-//                {
-//                    prop = manip.getInterseccoesQ1();
-//                    break;
-//                }
-//
-//                case 2:
-//                {
-//                    prop = manip.getInterseccoesQ2();
-//                    arestasQ2 = arestas;
-//                    break;
-//                }
-//
-//                case 3:
-//                {
-//                    prop = manip.getArestasQ3();
-//                    arestasQ3 = arestas;
-//                    break;
-//                }
-//
-//                case 4:
-//                {
-//                    prop = manip.getArestasQ4();
-//                    arestasQ4 = arestas;
-//                    break;
-//                }
-//
-//            }
-
-            prop = manip.getInterseccoesQ1();
-
-
-            int quantidadeDeInterseccoes = Integer.parseInt(prop.getProperty("quantidadeDeInterseccoes"));
-
-            for(int i = 0; i < quantidadeDeInterseccoes; i++)
-            {
-                int descricao = Integer.parseInt("interseccao" + i + "Descricao");
-                int quantidadeDeSemaforos = Integer.parseInt(prop.getProperty("interseccao" + i + "QuantidadeDeSemaforos"));
-                List <Semaforo> semaforosDaInterseccao = new ArrayList<Semaforo>();
-
-                for (int j = 0; j < quantidadeDeSemaforos; j++)
-                {
-                    int x = Integer.parseInt(prop.getProperty("interseccao" + i + "CoordenadaSemaforoX" + j));
-                    int y = Integer.parseInt(prop.getProperty("interseccao" + i + "CoordenadaSemaforoY" + j));
-                    boolean verde = Boolean.getBoolean(prop.getProperty("interseccao" + i + "SituacaoSemaforo" + j));
-                    int duracao = Integer.parseInt("interseccao" + i + "DuracaoSemaforo");
-
-                    semaforosDaInterseccao.add(new Semaforo(x, y, verde, duracao));
-                }
-                listaInterseccoes.add(new Interseccao(semaforosDaInterseccao, descricao));
-            }
-
-        }catch (IOException e){System.out.println("Erro no arquivo de propriedades Quadrante " + quadrante);}
+    public List<Semaforo> getListaSemaforos() {
+        return listaSemaforos;
     }
 
     private List <Semaforo> listaSemaforos;
     private int descricao;
+    private int contadorDeTempo;
 }

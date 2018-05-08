@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Mundo
 {
     public Mundo()
@@ -23,7 +25,7 @@ public class Mundo
                         {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                         {6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6},
                         {2, 2, 2, 0, 0, 2, 2, 2, 2, 0, 0, 2, 2, 2, 2, 0, 0, 2, 2, 2, 2, 0, 0, 2, 2},
-                        {5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5},
+                        {5, 5, 5, 5, 5, 5, 5, 5, 9, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5},
                         {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                         {1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 8, 2, 9, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                         {1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 8, 2, 7, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -35,7 +37,7 @@ public class Mundo
                         {1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 8, 2, 7, 0, 2, 2, 2, 2, 0, 0, 2, 2, 2, 2, 0},
                         {1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 8, 2, 7, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5},
                         {1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 8, 2, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                        {1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 8, 2, 7, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
+                        {1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 8, 2, 9, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
                 };
 
     }
@@ -324,7 +326,17 @@ public class Mundo
         }
     }
 
-    public void populaSemaforoQ1(Semaforo farol)
+    public void populaInterseccao (List <Interseccao> listaInterseccoes) {
+        for (int i = 0; i < listaInterseccoes.size(); i++)
+        {
+            for (int j = 0; j < listaInterseccoes.get(i).getListaSemaforos().size(); j ++)
+            {
+                populaSemaforo(listaInterseccoes.get(i).getListaSemaforos().get(j));
+            }
+        }
+    }
+
+    public void populaSemaforo(Semaforo farol)
     {
         if(farol.getVerde() == true)
         {
@@ -333,42 +345,6 @@ public class Mundo
         else
         {
             mundoQ1[farol.getY()][farol.getX()] = 3;
-        }
-    }
-
-    public void populaSemaforoQ2(Semaforo farol)
-    {
-        if(farol.getVerde() == true)
-        {
-            mundoQ2[farol.getY()][farol.getX()] = 4;
-        }
-        else
-        {
-            mundoQ2[farol.getY()][farol.getX()] = 3;
-        }
-    }
-
-    public void populaSemaforoQ3(Semaforo farol)
-    {
-        if(farol.getVerde() == true)
-        {
-            mundoQ3[farol.getY()][farol.getX()] = 4;
-        }
-        else
-        {
-            mundoQ3[farol.getY()][farol.getX()] = 3;
-        }
-    }
-
-    public void populaSemaforoQ4(Semaforo farol)
-    {
-        if(farol.getVerde() == true)
-        {
-            mundoQ4[farol.getY()][farol.getX()] = 4;
-        }
-        else
-        {
-            mundoQ4[farol.getY()][farol.getX()] = 3;
         }
     }
 
