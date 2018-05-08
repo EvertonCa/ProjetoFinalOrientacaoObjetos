@@ -33,8 +33,8 @@ public class AreaPrincipalHandle {
             tesla.posicionaNaAresta();
             defineCoordenadaInicial();
 
-            xAtual = xInicial *6.5; //outro local para mudar a proporção é no construtor de CaminhosGUI
-            yAtual = yInicial *6.5;
+            xAtual = xInicial * 6.5 - 6; //outro local para mudar a proporção é no construtor de CaminhosGUI
+            yAtual = yInicial * 6.5 - 7;
         }
     }
 
