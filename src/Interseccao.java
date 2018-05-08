@@ -4,16 +4,28 @@ import java.util.List;
 import java.util.Properties;
 
 public class Interseccao {
-    Interseccao()
+    Interseccao(List <Semaforo> litaSemaforos, int descricao) {
+        this.listaSemaforos = litaSemaforos;
+        this.descricao = descricao;
+    }
+
+    public void verificaSemaforo (int[][] mapa)
     {
 
+        boolean vetMudaCor[] = new boolean[listaSemaforos.size()];
+        for(int i = 0; i < listaSemaforos.size(); i ++)
+        {
+            vetMudaCor[i] = listaSemaforos.get(i).run(mapa);
+        }
+
     }
+
 
     public void criaInterseccao(int quadrante)
     {
         try
         {
-            List <Semaforo> semaforos = new ArrayList<Semaforo>();
+            List <Interseccao> listaInterseccoes = new ArrayList<Interseccao>();
 
             Manipulador manip = new Manipulador();
             Properties prop;
@@ -58,6 +70,7 @@ public class Interseccao {
             {
                 int descricao = Integer.parseInt("interseccao" + i + "Descricao");
                 int quantidadeDeSemaforos = Integer.parseInt(prop.getProperty("interseccao" + i + "QuantidadeDeSemaforos"));
+                List <Semaforo> semaforosDaInterseccao = new ArrayList<Semaforo>();
 
                 for (int j = 0; j < quantidadeDeSemaforos; j++)
                 {
@@ -66,11 +79,14 @@ public class Interseccao {
                     boolean verde = Boolean.getBoolean(prop.getProperty("interseccao" + i + "SituacaoSemaforo" + j));
                     int duracao = Integer.parseInt("interseccao" + i + "DuracaoSemaforo");
 
-                    //semaforos.add(new Semaforo(x, y, verde, duracao));
+                    semaforosDaInterseccao.add(new Semaforo(x, y, verde, duracao));
                 }
+                listaInterseccoes.add(new Interseccao(semaforosDaInterseccao, descricao));
             }
 
         }catch (IOException e){System.out.println("Erro no arquivo de propriedades Quadrante " + quadrante);}
     }
 
+    private List <Semaforo> listaSemaforos;
+    private int descricao;
 }
