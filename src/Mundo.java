@@ -331,20 +331,56 @@ public class Mundo
         {
             for (int j = 0; j < listaInterseccoes.get(i).getListaSemaforos().size(); j ++)
             {
-                populaSemaforo(listaInterseccoes.get(i).getListaSemaforos().get(j));
+                populaSemaforo(listaInterseccoes.get(i).getListaSemaforos().get(j), listaInterseccoes.get(i).getQuadrante());
             }
         }
     }
 
-    public void populaSemaforo(Semaforo farol)
+    public void populaSemaforo(Semaforo farol, int quadrante)
     {
-        if(farol.getVerde() == true)
+        if (quadrante == 1)
         {
-            mundoQ1[farol.getY()][farol.getX()] = 4;
+            if(farol.getVerde() == true)
+            {
+                mundoQ1[farol.getY()][farol.getX()] = 4;
+            }
+            else
+            {
+                mundoQ1[farol.getY()][farol.getX()] = 3;
+            }
         }
-        else
+        else if (quadrante == 2)
         {
-            mundoQ1[farol.getY()][farol.getX()] = 3;
+            if(farol.getVerde() == true)
+            {
+                mundoQ2[farol.getY()][farol.getX()] = 4;
+            }
+            else
+            {
+                mundoQ2[farol.getY()][farol.getX()] = 3;
+            }
+        }
+        else if (quadrante == 3)
+        {
+            if(farol.getVerde() == true)
+            {
+                mundoQ3[farol.getY()][farol.getX()] = 4;
+            }
+            else
+            {
+                mundoQ3[farol.getY()][farol.getX()] = 3;
+            }
+        }
+        else if (quadrante == 4)
+        {
+            if(farol.getVerde() == true)
+            {
+                mundoQ4[farol.getY()][farol.getX()] = 4;
+            }
+            else
+            {
+                mundoQ4[farol.getY()][farol.getX()] = 3;
+            }
         }
     }
 

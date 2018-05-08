@@ -17,7 +17,7 @@ public class Main
                 Manipulador manip = new Manipulador();
                 Properties prop;
 
-//            switch (quadrante)
+//            switch (i)
 //            {
 //                default:
 //                {
@@ -47,6 +47,7 @@ public class Main
                 prop = manip.getInterseccoesQ1();
 
                 int quantidadeDeInterseccoes = Integer.parseInt(prop.getProperty("quantidadeDeInterseccoes"));
+                int quandrante = Integer.parseInt(prop.getProperty("quadrante"));
 
                 for(int i = 0; i < quantidadeDeInterseccoes; i++)
                 {
@@ -64,7 +65,7 @@ public class Main
 
                         semaforosDaInterseccao.add(new Semaforo(x, y, verde, duracao));
                     }
-                    listaInterseccoes.add(new Interseccao(semaforosDaInterseccao, descricao));
+                    listaInterseccoes.add(new Interseccao(semaforosDaInterseccao, descricao, quandrante));
                 }
             }
         }catch (IOException e){System.out.println("Erro no arquivo de propriedades");}
@@ -77,8 +78,7 @@ public class Main
         ///criação do objeto mundo
         Mundo meuMundo = new Mundo();
 
-        List <Interseccao> listaInterseccoes;
-        listaInterseccoes = criaInterseccao();
+        List <Interseccao> listaInterseccoes = criaInterseccao();
 
 
         while(true)
