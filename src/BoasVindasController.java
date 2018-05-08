@@ -4,6 +4,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -25,7 +26,7 @@ public class BoasVindasController implements Initializable
         {
             try
             {
-                Thread.sleep(1000);
+                Thread.sleep(3000);
 
                 Platform.runLater(new Runnable() {
                     @Override
@@ -54,5 +55,5 @@ public class BoasVindasController implements Initializable
         }
     }
 
-    public Pane popup;
+    public StackPane popup;
 }

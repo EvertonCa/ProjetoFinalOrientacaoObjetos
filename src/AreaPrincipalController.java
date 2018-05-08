@@ -11,6 +11,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -207,6 +208,7 @@ public class AreaPrincipalController implements Initializable {
         avisoErro.setTitle("ENDEREÇO INVÁLIDO!");
         avisoErro.setScene(erroEnderecoScene);
         avisoErro.initModality(Modality.APPLICATION_MODAL);
+        avisoErro.initStyle(StageStyle.UNDECORATED);
         avisoErro.initOwner(botaoEnderecos.getScene().getWindow());
         avisoErro.showAndWait();
     }
@@ -407,6 +409,24 @@ public class AreaPrincipalController implements Initializable {
             if(botaoEnderecos.isDisabled())
                 botaoMostrarNoMapa.setDisable(false);
         }
+    }
+
+    public void sobre()
+    {
+        Parent root = null;
+        try
+        {
+            root = FXMLLoader.load(getClass().getResource("PopUpSobre.fxml"));
+        }catch (IOException ex)
+        {
+            return;
+        }
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setTitle("Ruas Inteligentes - Trabalho Final Orientação a Objetos");
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public Button botaoEnderecos, botaoOk, botaoMostrarNoMapa;
