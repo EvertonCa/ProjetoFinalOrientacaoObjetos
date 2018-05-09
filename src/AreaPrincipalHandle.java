@@ -1,5 +1,11 @@
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
+import java.io.IOException;
 import java.util.List;
 
 public class AreaPrincipalHandle {
@@ -13,25 +19,29 @@ public class AreaPrincipalHandle {
         respostaGPSOrigem = gps.ruaExiste(ruaDeOrigem);
         respostaGPSDestino = gps.ruaExiste(ruaDeDestino);
 
-        System.out.println("Arestas da rua de Origem: " + respostaGPSOrigem + "\nArestas da rua de Destino: " + respostaGPSDestino);
+        if (!respostaGPSOrigem.equals("Formato Errado!") && !respostaGPSDestino.equals("Formato Errado!"))
+        {
+            System.out.println("Arestas da rua de Origem: " + respostaGPSOrigem + "\nArestas da rua de Destino: " + respostaGPSDestino);
+            System.out.println("Quadrante da rua de Origem: " + gps.quadranteOrigem + "\nQuadrante da rua de Destino: " + gps.quadranteDestino);
 
-        gps.obterRuasUsuario(respostaGPSOrigem, respostaGPSDestino);
-        gps.obterRota();
+            gps.obterRuasUsuario(respostaGPSOrigem, respostaGPSDestino);
+            gps.obterRota();
 
-        gps.exibirMenorRota();
+            gps.exibirMenorRota();
 
-        tesla = new AutoPilot(gps.getMenorRota(), gps.getArestasDefinitivas(), "definido");
+            tesla = new AutoPilot(gps.getMenorRota(), gps.getArestasDefinitivas(), "definido");
 
-        quadranteInicial = tesla.getQuadranteAtual();
+            quadranteInicial = tesla.getQuadranteAtual();
 
-        tesla.gerarCoordenadasGUI();
-        caminhosGUI = tesla.gerarRotasGUI();
-        tesla.exibeRotasGUI();
-        tesla.posicionaNaAresta();
-        defineCoordenadaInicial();
+            tesla.gerarCoordenadasGUI();
+            caminhosGUI = tesla.gerarRotasGUI();
+            tesla.exibeRotasGUI();
+            tesla.posicionaNaAresta();
+            defineCoordenadaInicial();
 
-        xAtual = xInicial *6.5; //outro local para mudar a proporção é no construtor de CaminhosGUI
-        yAtual = yInicial *6.5;
+            xAtual = xInicial * 6.5 - 6; //outro local para mudar a proporção é no construtor de CaminhosGUI
+            yAtual = yInicial * 6.5 - 7;
+        }
     }
 
     public void defineCoordenadaInicial()
@@ -71,26 +81,8 @@ public class AreaPrincipalHandle {
                 }
                 else
                 {
-                    if(caminhosGUI.size() > 1)
-                    {
-                        if(caminhosGUI.get(1).getDirecao().equals("baixo"))
-                        {
-                            girando = true;
-                            giraPara = "horario";
-                        }
-                        else if(caminhosGUI.get(1).getDirecao().equals("cima"))
-                        {
-                            girando = true;
-                            giraPara = "antihorario";
-                        }
-                        else
-                            caminhosGUI.remove(0);
-                    }
-                    if(caminhosGUI.isEmpty())
-                    {
-                        System.out.println("oi");
-                        keepGoing = false;
-                    }
+                    direitaOuEsquerda("horario", "antihorario");
+
                 }
             }
             else if(caminhosGUI.get(0).getDirecao().equals("esquerda"))
@@ -102,26 +94,8 @@ public class AreaPrincipalHandle {
                 }
                 else
                 {
-                    if(caminhosGUI.size() > 1)
-                    {
-                        if(caminhosGUI.get(1).getDirecao().equals("baixo"))
-                        {
-                            girando = true;
-                            giraPara = "antihorario";
-                        }
-                        else if(caminhosGUI.get(1).getDirecao().equals("cima"))
-                        {
-                            girando = true;
-                            giraPara = "horario";
-                        }
-                        else
-                            caminhosGUI.remove(0);
-                    }
+                    direitaOuEsquerda("antihorario", "horario");
 
-                    if(caminhosGUI.isEmpty())
-                    {
-                        keepGoing = false;
-                    }
                 }
             }
             else if(caminhosGUI.get(0).getDirecao().equals("cima"))
@@ -133,25 +107,7 @@ public class AreaPrincipalHandle {
                 }
                 else
                 {
-                    if(caminhosGUI.size() > 1)
-                    {
-                        if(caminhosGUI.get(1).getDirecao().equals("esquerda"))
-                        {
-                            girando = true;
-                            giraPara = "antihorario";
-                        }
-                        else if(caminhosGUI.get(1).getDirecao().equals("direita"))
-                        {
-                            girando = true;
-                            giraPara = "horario";
-                        }
-                        else
-                            caminhosGUI.remove(0);
-                    }
-                    if(caminhosGUI.isEmpty())
-                    {
-                        keepGoing = false;
-                    }
+                    cimaOuBaixo("esquerda", "direita");
                 }
             }
             else
@@ -163,25 +119,7 @@ public class AreaPrincipalHandle {
                 }
                 else
                 {
-                    if(caminhosGUI.size() > 1)
-                    {
-                        if(caminhosGUI.get(1).getDirecao().equals("direita"))
-                        {
-                            girando = true;
-                            giraPara = "antihorario";
-                        }
-                        else if(caminhosGUI.get(1).getDirecao().equals("esquerda"))
-                        {
-                            girando = true;
-                            giraPara = "horario";
-                        }
-                        else
-                            caminhosGUI.remove(0);
-                    }
-                    if(caminhosGUI.isEmpty())
-                    {
-                        keepGoing = false;
-                    }
+                    cimaOuBaixo("direita", "esquerda");
                 }
             }
         }
@@ -189,11 +127,52 @@ public class AreaPrincipalHandle {
         {
             gira(carro);
         }
+
         carro.setVisible(true);
         carro.setLayoutY(yAtual);
         carro.setLayoutX(xAtual);
         carro.setRotate(caminhosGUI.get(0).getAngulo());
 
+    }
+
+    private void cimaOuBaixo(String esquerda, String direita) {
+        if(caminhosGUI.size() > 1)
+        {
+            if(caminhosGUI.get(1).getDirecao().equals(esquerda))
+            {
+                girando = true;
+                giraPara = "antihorario";
+            }
+            else if(caminhosGUI.get(1).getDirecao().equals(direita))
+            {
+                girando = true;
+                giraPara = "horario";
+            }
+            else
+                caminhosGUI.remove(0);
+        }
+        else
+            keepGoing = false;
+    }
+
+    private void direitaOuEsquerda(String horario, String antihorario) {
+        if(caminhosGUI.size() > 1)
+        {
+            if(caminhosGUI.get(1).getDirecao().equals("baixo"))
+            {
+                girando = true;
+                giraPara = horario;
+            }
+            else if(caminhosGUI.get(1).getDirecao().equals("cima"))
+            {
+                girando = true;
+                giraPara = antihorario;
+            }
+            else
+                caminhosGUI.remove(0);
+        }
+        else
+            keepGoing = false;
     }
 
     public void gira(ImageView carro)
@@ -213,6 +192,8 @@ public class AreaPrincipalHandle {
             caminhosGUI.remove(0);
         }
     }
+
+
 
     public GPS getGps() {
         return gps;
