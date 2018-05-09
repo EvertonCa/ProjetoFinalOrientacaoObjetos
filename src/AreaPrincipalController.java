@@ -586,6 +586,29 @@ public class AreaPrincipalController implements Initializable {
         }
     }
 
+    public void mostrarLegenda()
+    {
+        Parent root;
+        try
+        {
+            root = FXMLLoader.load(getClass().getResource("LegendaMapa.fxml"));
+        }catch (IOException ex)
+        {
+            return;
+        }
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void fecharLegenda()
+    {
+        Stage stage = (Stage) legendaMapa.getScene().getWindow();
+        stage.close();
+    }
+
     public Button botaoEnderecos, botaoOk, botaoMostrarNoMapa;
     public RadioButton radioButton1, radioButton2, radioButton3, radioButton4, radioButton5;
     public ToggleButton botaoDefinido, botaoAleatorio, botaoHabilitado, botaoNaoHabilitado;
@@ -596,7 +619,7 @@ public class AreaPrincipalController implements Initializable {
     public Label origem, destino, feitoPor, ruaDeOrigem1, ruaDeOrigem2, ruaDeOrigem3, ruaDeOrigem4, ruaDeOrigem5, labelTituloRuas;
     public Label ruaDeDestino1, ruaDeDestino2, ruaDeDestino3, ruaDeDestino4, ruaDeDestino5, labelCor, labelRuaOrigem, labelRuaDestino;
     public TextField ruaOrigem, ruaDestino;
-    public ImageView mapaCidade,miniMapa, carro1, carro2, carro3, carro4, carro5;
+    public ImageView mapaCidade,miniMapa, legendaMapa, carro1, carro2, carro3, carro4, carro5;
     public ImageView iconeCarro1, iconeCarro2, iconeCarro3, iconeCarro4, iconeCarro5;
     public StackPane stackAnimacao;
     public Stage avisoErro;

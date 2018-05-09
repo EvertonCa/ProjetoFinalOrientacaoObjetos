@@ -350,12 +350,6 @@ public class AutoPilot extends Veiculos
         }
     }
 
-    public void defineArestaProxima()
-    {
-        Aleatorio aleatorio = new Aleatorio();
-        arestaProxima = aleatorio.randomizeArestaVertice(arestaAtual.getDestino());
-    }
-
     public void moveNoVertice()
     {
         if(rotaNosCruzamentos.get(0).equals("direita"))
