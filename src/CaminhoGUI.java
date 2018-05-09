@@ -7,22 +7,22 @@ public class CaminhoGUI {
         this.yAtual = yInicial*6.5;
         if(direcao.equals("direita"))
         {
-            xDestino = xAtual + (tamanho * 6.5);
+            xDestino = xAtual + (tamanho * 6.5 - 6);
             angulo = 0.0;
         }
         else if(direcao.equals("esquerda"))
         {
-            xDestino = xAtual - (tamanho * 6.5);
+            xDestino = xAtual - (tamanho * 6.5 + 6);
             angulo = 180.0;
         }
         else if(direcao.equals("cima"))
         {
-            yDestino = yAtual - (tamanho * 6.5);
+            yDestino = yAtual - (tamanho * 6.5 + 7);
             angulo = 270.0;
         }
         else
         {
-            yDestino = yAtual + (tamanho * 6.5);
+            yDestino = yAtual + (tamanho * 6.5 - 7);
             angulo = 90.0;
         }
     }
