@@ -1,3 +1,4 @@
+import javax.annotation.processing.SupportedSourceVersion;
 import java.io.IOException;
 import java.util.*;
 
@@ -41,25 +42,6 @@ public class GPS
         }
     }
 
-    public void obterRuasAleatorias()
-    {
-        Aleatorio random = new Aleatorio();
-
-        ruaOrigem = random.randomizaRua();
-        ruaDestino = random.randomizaRuaComExcecao(ruaOrigem);
-
-        System.out.printf("Origem: " + ruaOrigem + "\n");
-        System.out.printf("Destino: " + ruaDestino + "\n");
-
-        origem = ruaExiste("origem");
-        encontraArestas(origem, "origem");
-        encontraVertices("origem");
-
-        destino = ruaExiste("destino");
-        encontraArestas(destino, "destino");
-        encontraVertices("destino");
-    }
-
     public String ruaExiste(String rua) {
         try {
             Manipulador manip = new Manipulador();
@@ -70,43 +52,53 @@ public class GPS
 
             String tudoJunto, resposta;
 
-            String separados[] = rua.split(" ");
-            tudoJunto = separados[0] + separados[1];
-
-            String arestas = propQ1.getProperty(tudoJunto);
-            int quadrante = 1;
-
-            if(arestas == null)
+            try
             {
-                arestas = propQ2.getProperty(tudoJunto);
-                quadrante = 2;
+                String separados[] = rua.split(" ");
+                tudoJunto = separados[0] + separados[1];
+
+                String arestas = propQ1.getProperty(tudoJunto);
+                int quadrante = 1;
 
                 if(arestas == null)
                 {
-                    arestas = propQ3.getProperty(tudoJunto);
-                    quadrante = 3;
+                    arestas = propQ2.getProperty(tudoJunto);
+                    quadrante = 2;
 
                     if(arestas == null)
                     {
-                        arestas = propQ4.getProperty(tudoJunto);
-                        quadrante = 4;
+                        arestas = propQ3.getProperty(tudoJunto);
+                        quadrante = 3;
+
+                        if(arestas == null)
+                        {
+                            arestas = propQ4.getProperty(tudoJunto);
+                            quadrante = 4;
+                        }
                     }
                 }
-            }
-            if(quadranteOrigem == 0)
-                quadranteOrigem = quadrante;
-            else
-                quadranteDestino = quadrante;
 
-            if(arestas == null)
+                if(quadranteOrigem == 0)
+                    quadranteOrigem = quadrante;
+                else
+                    quadranteDestino = quadrante;
+
+                if(arestas == null)
+                {
+                    resposta = "naoEncontrado";
+                }
+                else
+                {
+                    resposta = arestas;
+                }
+                return resposta;
+
+            }catch (Exception e)
             {
-                resposta = "naoEncontrado";
+                return "Formato Errado!";
             }
-            else
-            {
-                resposta = arestas;
-            }
-            return resposta;
+
+
         } catch (IOException e){return "Arquivo Não Encontrado";}
     }
 
@@ -189,7 +181,6 @@ public class GPS
         {
             verticesOrigem.add(arestasOrigem.get(0).getDestino());
             verticesOrigem.add(arestasOrigem.get(1).getDestino());
-
         }
         else
         {
@@ -278,6 +269,8 @@ public class GPS
             System.out.print(menorRota.get(i));
         }
         System.out.printf("\n");
+        System.out.println("Origem da aresta de origem: " + arestasDefinitivas.get(0).getOrigem());
+        System.out.println("Origem da aresta de destino: " + arestasDefinitivas.get(1).getOrigem());
     }
 
     public List<Vertice> getMenorRota() {
