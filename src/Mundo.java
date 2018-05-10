@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Mundo
 {
     public Mundo()
@@ -366,51 +368,70 @@ public class Mundo
         }
     }
 
-    public void populaSemaforoQ1(Semaforo farol)
-    {
-        if(farol.getVerde() == true)
+    public void populaInterseccao (List <Interseccao> listaInterseccoes) {
+        for (int i = 0; i < listaInterseccoes.size(); i++)
         {
-            mundoQ1[farol.getY()][farol.getX()] = 4;
-        }
-        else
-        {
-            mundoQ1[farol.getY()][farol.getX()] = 3;
+            for (int j = 0; j < listaInterseccoes.get(i).getListaSemaforos().size(); j ++)
+            {
+                populaSemaforo(listaInterseccoes.get(i).getListaSemaforos().get(j));
+            }
         }
     }
 
-    public void populaSemaforoQ2(Semaforo farol)
+    public void populaSemaforo(Semaforo farol)
     {
-        if(farol.getVerde() == true)
+        if (farol.getQuadrante() == 1)
         {
-            mundoQ2[farol.getY()][farol.getX()] = 4;
+            if(farol.getVerde() == true)
+            {
+                mundoQ1[farol.getY()][farol.getX()] = 4;
+            }
+            else
+            {
+                mundoQ1[farol.getY()][farol.getX()] = 3;
+            }
         }
-        else
+        else if (farol.getQuadrante() == 2)
         {
-            mundoQ2[farol.getY()][farol.getX()] = 3;
+            if(farol.getVerde() == true)
+            {
+                mundoQ2[farol.getY()][farol.getX()] = 4;
+            }
+            else
+            {
+                mundoQ2[farol.getY()][farol.getX()] = 3;
+            }
+        }
+        else if (farol.getQuadrante() == 3)
+        {
+            if(farol.getVerde() == true)
+            {
+                mundoQ3[farol.getY()][farol.getX()] = 4;
+            }
+            else
+            {
+                mundoQ3[farol.getY()][farol.getX()] = 3;
+            }
+        }
+        else if (farol.getQuadrante() == 4)
+        {
+            if(farol.getVerde() == true)
+            {
+                mundoQ4[farol.getY()][farol.getX()] = 4;
+            }
+            else
+            {
+                mundoQ4[farol.getY()][farol.getX()] = 3;
+            }
         }
     }
 
-    public void populaSemaforoQ3(Semaforo farol)
+    public void semaforoInteligente (List <Interseccao> listaDeInterseccoes, Mundo meuMundo)
     {
-        if(farol.getVerde() == true)
+        int[][] mapa;
+        for (int i = 0; i < listaDeInterseccoes.size(); i++)
         {
-            mundoQ3[farol.getY()][farol.getX()] = 4;
-        }
-        else
-        {
-            mundoQ3[farol.getY()][farol.getX()] = 3;
-        }
-    }
-
-    public void populaSemaforoQ4(Semaforo farol)
-    {
-        if(farol.getVerde() == true)
-        {
-            mundoQ4[farol.getY()][farol.getX()] = 4;
-        }
-        else
-        {
-            mundoQ4[farol.getY()][farol.getX()] = 3;
+            listaDeInterseccoes.get(i).verificaSemaforo(meuMundo);
         }
     }
 
