@@ -58,7 +58,7 @@
                      <children>
                         <ImageView fx:id="miniMapa" fitHeight="235.0" fitWidth="230.0" layoutX="86.0" layoutY="3.0" onMouseClicked="#mostrarLegenda" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@mapa.jpeg" />
+                              <Image url="@MapaComLegendas.png" />
                            </image>
                            <effect>
                               <DropShadow />
@@ -290,7 +290,7 @@
                <children>
                   <ImageView fx:id="mapaCidade" fitHeight="780.0" fitWidth="780.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER">
                      <image>
-                        <Image url="@mapa.jpeg" />
+                        <Image url="@mapa.jpg" />
                      </image>
                      <effect>
                         <DropShadow />
