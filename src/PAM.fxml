@@ -14,7 +14,7 @@
          <children>
             <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@IMG_1390.jpg" />
+                  <Image url="@EasterEgg.jpg" />
                </image>
             </ImageView>
             <Label layoutX="31.0" layoutY="286.0" text="Esta rua não pode ser selecionada como destino!" textFill="WHITE">
