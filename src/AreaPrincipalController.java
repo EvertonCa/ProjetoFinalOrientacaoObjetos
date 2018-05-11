@@ -92,7 +92,12 @@ public class AreaPrincipalController implements Initializable {
         }
         else
         {
-            if(rotasCalculadas == 0)
+            if(ruaDestino.getText().equals("Rua 32"))
+            {
+                ruaDestino.clear();
+                erroRua32();
+            }
+            else if(rotasCalculadas == 0)
             {
                 handleCarro1 = new AreaPrincipalHandle(ruaOrigem.getText(), ruaDestino.getText());
 
@@ -609,7 +614,30 @@ public class AreaPrincipalController implements Initializable {
         stage.close();
     }
 
-    public Button botaoEnderecos, botaoOk, botaoMostrarNoMapa;
+    public void erroRua32()
+    {
+        Parent root;
+        try
+        {
+            root = FXMLLoader.load(getClass().getResource("PAM.fxml"));
+        }catch (IOException ex)
+        {
+            return;
+        }
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void fecharErro32()
+    {
+        Stage stage = (Stage) botaoFechaErro32.getScene().getWindow();
+        stage.close();
+    }
+
+    public Button botaoEnderecos, botaoOk, botaoMostrarNoMapa, botaoFechaErro32;
     public RadioButton radioButton1, radioButton2, radioButton3, radioButton4, radioButton5;
     public ToggleButton botaoDefinido, botaoAleatorio, botaoHabilitado, botaoNaoHabilitado;
     public ToggleGroup radioButtonGroup, toggleButton1Group, toggleButton2Group;

@@ -8,12 +8,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <Pane maxHeight="780.0" maxWidth="780.0" minHeight="780.0" minWidth="780.0" prefHeight="780.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AreaPrincipalController">
    <children>
       <ImageView fx:id="legendaMapa" fitHeight="780.0" fitWidth="780.0" onMouseExited="#fecharLegenda" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@mapa.jpeg" />
+            <Image url="@MapaComLegendas.png" />
          </image>
          <effect>
             <DropShadow />
