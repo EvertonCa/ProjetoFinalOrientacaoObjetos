@@ -642,13 +642,6 @@ public class AutoPilot extends Veiculos
         return rotasGUI;
     }
 
-    public boolean getCheguei() {
-        return cheguei;
-    }
-
-    public Aresta getArestaAtual() {
-        return arestaAtual;
-    }
 
     public void exibeRotasGUI()
     {
