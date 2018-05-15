@@ -1,6 +1,10 @@
 import javafx.scene.image.ImageView;
 import java.io.IOException;
 import java.util.List;
+import java.util.ArrayList;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
 
 public class AreaPrincipalHandle {
 
@@ -60,6 +64,72 @@ public class AreaPrincipalHandle {
             xInicial = tesla.getX() + 60;
             yInicial = tesla.getY() + 60;
         }
+    }
+
+    public List<Interseccao> defineCoordenadaSemaforo()
+    {
+        List<Interseccao> listaInterseccoes = new ArrayList<Interseccao>();
+        try
+        {
+            for (int k = 0; k < 1; k ++)
+            {
+                Manipulador manip = new Manipulador();
+                Properties prop;
+
+            switch (k)
+            {
+                default:
+                {
+                    prop = manip.getInterseccoesQ1();
+                    break;
+                }
+
+                case 2:
+                {
+                    prop = manip.getInterseccoesQ2();
+                    break;
+                }
+
+                case 3:
+                {
+                    prop = manip.getInterseccoesQ3();
+                    break;
+                }
+
+                case 4:
+                {
+                    prop = manip.getInterseccoesQ4();
+                    break;
+                }
+
+            }
+
+                int quantidadeDeInterseccoes = Integer.parseInt(prop.getProperty("quantidadeDeInterseccoes"));
+                int quandrante = Integer.parseInt(prop.getProperty("quadrante"));
+
+                for(int i = 0; i < quantidadeDeInterseccoes; i++)
+                {
+                    int descricao = Integer.parseInt(prop.getProperty("interseccao" + i + "Descricao"));
+                    int quantidadeDeSemaforos = Integer.parseInt(prop.getProperty("interseccao" + i + "QuantidadeDeSemaforos"));
+                    List <Semaforo> semaforosDaInterseccao = new ArrayList<Semaforo>();
+
+                    for (int j = 0; j < quantidadeDeSemaforos; j++)
+                    {
+                        int quadrante = Integer.parseInt(prop.getProperty("interseccao" + i + "QuadranteDoSemaforo" + j));
+                        int x = Integer.parseInt(prop.getProperty("interseccao" + i + "CoordenadaSemaforoX" + j));
+                        int y = Integer.parseInt(prop.getProperty("interseccao" + i + "CoordenadaSemaforoY" + j));
+                        boolean verde = Boolean.parseBoolean(prop.getProperty("interseccao" + i + "SituacaoSemaforo" + j));
+
+                        int duracao = Integer.parseInt(prop.getProperty("interseccao" + i + "DuracaoSemaforo"));
+
+                        semaforosDaInterseccao.add(new Semaforo(x, y, verde, duracao, quandrante));
+                    }
+                    listaInterseccoes.add(new Interseccao(semaforosDaInterseccao, descricao));
+                }
+            }
+        }catch (IOException e){System.out.println("Erro no arquivo de propriedades");}
+
+        return listaInterseccoes;
     }
 
     public void moveObjetos(ImageView carro) //incrementos de 0.15 px para 40fps e mapa de 720x720

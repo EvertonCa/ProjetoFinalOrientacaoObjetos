@@ -34,19 +34,19 @@
 <VBox fx:id="layout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AreaPrincipalController">
    <children>
       <MenuBar fx:id="menuBar">
-        <menus>
-          <Menu fx:id="menuArquivo" mnemonicParsing="false" text="Arquivo">
-            <items>
+         <menus>
+            <Menu fx:id="menuArquivo" mnemonicParsing="false" text="Arquivo">
+               <items>
                   <MenuItem fx:id="itemNovo" mnemonicParsing="false" onAction="#novoPrograma" text="Novo" />
-              <MenuItem fx:id="itemFechar" mnemonicParsing="false" onAction="#fecharPrograma" text="Fechar" />
-            </items>
-          </Menu>
-          <Menu fx:id="menuAjuda" mnemonicParsing="false" text="Ajuda">
-            <items>
-              <MenuItem fx:id="itemSobre" mnemonicParsing="false" onAction="#sobre" text="Sobre" />
-            </items>
-          </Menu>
-        </menus>
+                  <MenuItem fx:id="itemFechar" mnemonicParsing="false" onAction="#fecharPrograma" text="Fechar" />
+               </items>
+            </Menu>
+            <Menu fx:id="menuAjuda" mnemonicParsing="false" text="Ajuda">
+               <items>
+                  <MenuItem fx:id="itemSobre" mnemonicParsing="false" onAction="#sobre" text="Sobre" />
+               </items>
+            </Menu>
+         </menus>
       </MenuBar>
       <Region VBox.vgrow="ALWAYS" />
       <HBox prefHeight="971.0" prefWidth="1200.0">

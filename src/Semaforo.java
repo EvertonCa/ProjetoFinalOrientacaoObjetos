@@ -2,6 +2,7 @@ import java.util.concurrent.Semaphore;
 
 public class Semaforo
 {
+    // Contrutor do semaforo com coordenada, cor, duração e quadrante
     public Semaforo(int x, int y, boolean verde, int duracao, int quadrante)
     {
         this.x = x;
@@ -11,18 +12,10 @@ public class Semaforo
         this.quadrante = quadrante;
     }
 
-    // Função que faz o semaforo mudar
+    // Função que identifica se o semaforo precisa mudar
     public boolean run(int[][] mapa)
     {
         boolean temCarro = false;
-        //ABAIXO É O TESTE DO LUCAS
-//        System.out.println("x = " + x);
-//        System.out.println("y = " + y);
-//        System.out.println("mapa[" + (x + 1) + "] = " + mapa[y + 1][x]);
-//        System.out.println("mapa[" + (x - 1) + "] = " + mapa[y - 1][x]);
-//        System.out.println("mapa[" + (y + 1) + "] = " + mapa[y][x + 1]);
-//        System.out.println("mapa[" + (y - 1) + "] = " + mapa[y][x - 1]);
-
 
         if(x + 1 <= 24 && mapa[y][x + 1] == 9)
         {
@@ -46,30 +39,9 @@ public class Semaforo
         }
 
         return temCarro;
-        /*
-        //A PARTIR DAQUI É O TESTE DO HELMUTH
-        while(true)
-        {
-            if(mapa[x + 1][y] == 9)
-            {
-                cont++;
-            }
-            else if(mapa[x - 1][y] == 9)
-            {
-                cont++;
-            }
-            else if(mapa[x][y + 1] == 9)
-            {
-                cont++;
-            }
-            else if(mapa[x][y - 1] == 9)
-            {
-                cont++;
-            }
-        }*/
     }
 
-    // metodo que faz a cor mudar de vermelho para verde e vice versa
+    // metodo que faz a cor mudar do semaforo
     public void mudarCor()
     {
         if (this.verde) {
