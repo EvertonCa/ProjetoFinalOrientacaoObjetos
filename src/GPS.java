@@ -1,3 +1,4 @@
+import javax.annotation.processing.SupportedSourceVersion;
 import java.io.IOException;
 import java.util.*;
 
@@ -7,59 +8,41 @@ public class GPS
     {
         Grafo grafo = new Grafo();
         this.grafo = grafo;
-        obterRuasUsuario();
-        obterRota();
+        Grafo grafo1 = new Grafo();
+        this.grafo1 = grafo1;
+        Grafo grafo2 = new Grafo();
+        this.grafo2 = grafo2;
+        Grafo grafo3 = new Grafo();
+        this.grafo3 = grafo3;
+        Grafo grafo4 = new Grafo();
+        this.grafo4 = grafo4;
     }
 
-    public void obterRuasUsuario()
+    public void obterRuasUsuario(String ruaDeOrigem, String ruaDeDestino)
     {
-        Scanner teclado = new Scanner(System.in);
         boolean origemExiste = false, destinoExiste = false;
 
         while (!origemExiste)
         {
-            System.out.printf("Entre com a origem: ");
-            ruaOrigem = teclado.nextLine();
+            origem = ruaDeOrigem;
 
-            origem = ruaExiste("origem");
+            encontraArestas(origem, "origem");
+            encontraVertices("origem");
+            origemExiste = true;
 
-            if(origem.equals("naoEncontrado"))
-            {
-                System.out.printf("Rua não encontrada! tente novamente!\n");
-            }
-
-            else
-            {
-                encontraArestas(origem, "origem");
-                encontraVertices("origem");
-                origemExiste = true;
-            }
         }
 
         while (!destinoExiste)
         {
-            System.out.printf("Entre com a destino: ");
-            ruaDestino = teclado.nextLine();
+            destino = ruaDeDestino;
 
-            destino = ruaExiste("origem");
-
-            if(destino.equals("naoEncontrado"))
-            {
-                System.out.printf("Rua não encontrada! tente novamente!\n");
-            }
-
-            else
-            {
-                encontraArestas(destino, "destino");
-                encontraVertices("destino");
-                destinoExiste = true;
-            }
+            encontraArestas(destino, "destino");
+            encontraVertices("destino");
+            destinoExiste = true;
         }
-
-
     }
 
-    public String ruaExiste(String origemOuDestino) {
+    public String ruaExiste(String rua) {
         try {
             Manipulador manip = new Manipulador();
             Properties propQ1 = manip.getRuasQ1();
@@ -69,46 +52,54 @@ public class GPS
 
             String tudoJunto, resposta;
 
-            if (origemOuDestino.equals("origem")) {
-
-                String separados[] = ruaOrigem.split(" ");
-                tudoJunto = separados[0] + separados[1];
-            } else {
-                String separados[] = ruaDestino.split(" ");
-                tudoJunto = separados[0] + separados[1];
-            }
-
-            String arestas = propQ1.getProperty(tudoJunto);
-            quadrante = 1;
-
-            if(arestas == null)
+            try
             {
-                arestas = propQ2.getProperty(tudoJunto);
-                quadrante = 2;
+                String separados[] = rua.split(" ");
+                tudoJunto = separados[0] + separados[1];
+
+                String arestas = propQ1.getProperty(tudoJunto);
+                int quadrante = 1;
 
                 if(arestas == null)
                 {
-                    arestas = propQ3.getProperty(tudoJunto);
-                    quadrante = 3;
+                    arestas = propQ2.getProperty(tudoJunto);
+                    quadrante = 2;
 
                     if(arestas == null)
                     {
-                        arestas = propQ4.getProperty(tudoJunto);
-                        quadrante = 4;
+                        arestas = propQ3.getProperty(tudoJunto);
+                        quadrante = 3;
+
+                        if(arestas == null)
+                        {
+                            arestas = propQ4.getProperty(tudoJunto);
+                            quadrante = 4;
+                        }
                     }
                 }
+
+                if(quadranteOrigem == 0)
+                    quadranteOrigem = quadrante;
+                else
+                    quadranteDestino = quadrante;
+
+                if(arestas == null)
+                {
+                    resposta = "naoEncontrado";
+                }
+                else
+                {
+                    resposta = arestas;
+                }
+                return resposta;
+
+            }catch (Exception e)
+            {
+                return "Formato Errado!";
             }
 
-            if(arestas == null)
-            {
-                resposta = "naoEncontrado";
-            }
-            else
-            {
-                resposta = arestas;
-            }
-            return resposta;
-        } catch (IOException e){return null;}
+
+        } catch (IOException e){return "Arquivo Não Encontrado";}
     }
 
     public void encontraArestas(String arestas, String origemOuDestino)
@@ -118,59 +109,67 @@ public class GPS
         int segundaAresta = Integer.parseInt(separados[1]);
         if(origemOuDestino.equals("origem"))
         {
-            switch (quadrante)
+            switch (quadranteOrigem)
             {
                 default:
                 {
                     populaArestasOrigem(grafo.getArestasQ1(primeiraAresta));
                     populaArestasOrigem(grafo.getArestasQ1(segundaAresta));
+                    break;
                 }
 
                 case 2:
                 {
                     populaArestasOrigem(grafo.getArestasQ2(primeiraAresta));
                     populaArestasOrigem(grafo.getArestasQ2(segundaAresta));
+                    break;
                 }
 
                 case 3:
                 {
                     populaArestasOrigem(grafo.getArestasQ3(primeiraAresta));
                     populaArestasOrigem(grafo.getArestasQ3(segundaAresta));
+                    break;
                 }
 
                 case 4:
                 {
                     populaArestasOrigem(grafo.getArestasQ4(primeiraAresta));
                     populaArestasOrigem(grafo.getArestasQ4(segundaAresta));
+                    break;
                 }
             }
         }
         else
         {
-            switch (quadrante)
+            switch (quadranteDestino)
             {
                 default:
                 {
                     populaArestasDestino(grafo.getArestasQ1(primeiraAresta));
                     populaArestasDestino(grafo.getArestasQ1(segundaAresta));
+                    break;
                 }
 
                 case 2:
                 {
                     populaArestasDestino(grafo.getArestasQ2(primeiraAresta));
                     populaArestasDestino(grafo.getArestasQ2(segundaAresta));
+                    break;
                 }
 
                 case 3:
                 {
                     populaArestasDestino(grafo.getArestasQ3(primeiraAresta));
                     populaArestasDestino(grafo.getArestasQ3(segundaAresta));
+                    break;
                 }
 
                 case 4:
                 {
                     populaArestasDestino(grafo.getArestasQ4(primeiraAresta));
                     populaArestasDestino(grafo.getArestasQ4(segundaAresta));
+                    break;
                 }
             }
         }
@@ -180,13 +179,13 @@ public class GPS
     {
         if(origemOuDestino.equals("origem"))
         {
-            verticesOrigem.add(arestasOrigem.get(0).getOrigem());
-            verticesOrigem.add(arestasOrigem.get(1).getOrigem());
+            verticesOrigem.add(arestasOrigem.get(0).getDestino());
+            verticesOrigem.add(arestasOrigem.get(1).getDestino());
         }
         else
         {
-            verticesDestino.add(arestasDestino.get(0).getDestino());
-            verticesDestino.add(arestasDestino.get(1).getDestino());
+            verticesDestino.add(arestasDestino.get(0).getOrigem());
+            verticesDestino.add(arestasDestino.get(1).getOrigem());
         }
     }
 
@@ -202,20 +201,23 @@ public class GPS
 
     public void obterRota()
     {
-        Dijkstra dijkstra = new Dijkstra();
+        Dijkstra dijkstra1 = new Dijkstra();
+        Dijkstra dijkstra2 = new Dijkstra();
+        Dijkstra dijkstra3 = new Dijkstra();
+        Dijkstra dijkstra4 = new Dijkstra();
 
-        menorRota1 = dijkstra.encontrarMenorCaminhoDijkstra(grafo,
-                grafo.encontrarVertice(verticesOrigem.get(0).getDescricao()),
-                grafo.encontrarVertice(verticesDestino.get(0).getDescricao()));
-        menorRota2 = dijkstra.encontrarMenorCaminhoDijkstra(grafo,
-                grafo.encontrarVertice(verticesOrigem.get(0).getDescricao()),
-                grafo.encontrarVertice(verticesDestino.get(1).getDescricao()));
-        menorRota3 = dijkstra.encontrarMenorCaminhoDijkstra(grafo,
-                grafo.encontrarVertice(verticesOrigem.get(1).getDescricao()),
-                grafo.encontrarVertice(verticesDestino.get(0).getDescricao()));
-        menorRota4 = dijkstra.encontrarMenorCaminhoDijkstra(grafo,
-                grafo.encontrarVertice(verticesOrigem.get(1).getDescricao()),
-                grafo.encontrarVertice(verticesDestino.get(1).getDescricao()));
+        menorRota1 = dijkstra1.encontrarMenorCaminhoDijkstra(grafo1,
+                grafo1.encontrarVertice(verticesOrigem.get(0).getDescricao()),
+                grafo1.encontrarVertice(verticesDestino.get(0).getDescricao()));
+        menorRota2 = dijkstra2.encontrarMenorCaminhoDijkstra(grafo2,
+                grafo2.encontrarVertice(verticesOrigem.get(0).getDescricao()),
+                grafo2.encontrarVertice(verticesDestino.get(1).getDescricao()));
+        menorRota3 = dijkstra3.encontrarMenorCaminhoDijkstra(grafo3,
+                grafo3.encontrarVertice(verticesOrigem.get(1).getDescricao()),
+                grafo3.encontrarVertice(verticesDestino.get(0).getDescricao()));
+        menorRota4 = dijkstra4.encontrarMenorCaminhoDijkstra(grafo4,
+                grafo4.encontrarVertice(verticesOrigem.get(1).getDescricao()),
+                grafo4.encontrarVertice(verticesDestino.get(1).getDescricao()));
 
         int tamanho1 = menorRota1.size(), tamanho2 = menorRota2.size(), tamanho3 = menorRota3.size(), tamanho4 = menorRota4.size();
 
@@ -266,10 +268,21 @@ public class GPS
             System.out.printf(" -> ");
             System.out.print(menorRota.get(i));
         }
+        System.out.printf("\n");
+        System.out.println("Origem da aresta de origem: " + arestasDefinitivas.get(0).getOrigem());
+        System.out.println("Origem da aresta de destino: " + arestasDefinitivas.get(1).getOrigem());
     }
 
-    protected Grafo grafo;
-    protected int quadrante;
+    public List<Vertice> getMenorRota() {
+        return menorRota;
+    }
+
+    public List<Aresta> getArestasDefinitivas() {
+        return arestasDefinitivas;
+    }
+
+    protected Grafo grafo, grafo1, grafo2, grafo3, grafo4;
+    protected int quadranteOrigem = 0, quadranteDestino = 0;
     protected List <Vertice> menorRota1,menorRota2, menorRota3, menorRota4, menorRota;
     protected List <Aresta> arestasOrigem = new ArrayList<>();
     protected List <Aresta> arestasDestino = new ArrayList<>();

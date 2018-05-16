@@ -9,7 +9,7 @@ public class Grafo
     public Grafo()
     {
         ///cria 76 vertices padrão para os 18 vertices nulos (que saem da cidade) e 58 intersecções
-        for(int i = 0; i < 76; i++)
+        for(int i = 0; i < 77; i++)
         {
             vertices.add(new Vertice());
         }
@@ -79,6 +79,7 @@ public class Grafo
             for(int i = 0; i < quantidadeDeArestas; i++)
             {
                 String direcao = prop.getProperty("aresta" + i + "Direcao");
+
                 int verticeInicial = Integer.parseInt(prop.getProperty("aresta" + i + "VerticeInicial"));
                 int verticeFinal = Integer.parseInt(prop.getProperty("aresta" + i + "VerticeFinal"));
                 int peso = Integer.parseInt(prop.getProperty("aresta" + i + "Peso"));
@@ -88,30 +89,10 @@ public class Grafo
                 int yInicial = Integer.parseInt(prop.getProperty("aresta" + i + "CoordenadaInicialY"));
                 int yFinal = Integer.parseInt(prop.getProperty("aresta" + i + "CoordenadaFinalY"));
 
-                if(direcao.equals("direita"))
-                {
-                    arestas.add(new Aresta(vertices.get(verticeInicial), vertices.get(verticeFinal),peso,quadranteArestaNova));
-                    matriz = new int[][] {{xInicial, xFinal}, {yInicial, yFinal}};
-                    arestas.get(i).setDireita(matriz);
-                }
-                else if(direcao.equals("esquerda"))
-                {
-                    arestas.add(new Aresta(vertices.get(verticeInicial), vertices.get(verticeFinal),peso,quadranteArestaNova));
-                    matriz = new int[][] {{xInicial, xFinal}, {yInicial, yFinal}};
-                    arestas.get(i).setEsquerda(matriz);
-                }
-                else if(direcao.equals("cima"))
-                {
-                    arestas.add(new Aresta(vertices.get(verticeInicial), vertices.get(verticeFinal),peso,quadranteArestaNova));
-                    matriz = new int[][] {{xInicial, xFinal}, {yInicial, yFinal}};
-                    arestas.get(i).setCima(matriz);
-                }
-                else
-                {
-                    arestas.add(new Aresta(vertices.get(verticeInicial), vertices.get(verticeFinal),peso,quadranteArestaNova));
-                    matriz = new int[][] {{xInicial, xFinal}, {yInicial, yFinal}};
-                    arestas.get(i).setBaixo(matriz);
-                }
+                arestas.add(new Aresta(vertices.get(verticeInicial), vertices.get(verticeFinal),peso,quadranteArestaNova));
+                matriz = new int[][] {{xInicial, xFinal}, {yInicial, yFinal}};
+                arestas.get(i).setCoordenadas(matriz);
+                arestas.get(i).setDirecao(direcao);
             }
 
         }catch (IOException e){System.out.println("Erro no arquivo de propriedades Quadrante " + quadrante);}
@@ -202,6 +183,7 @@ public class Grafo
                     }
                 }
                 vertices.get(i).setArestas(arestasVizinhas);
+                vertices.get(i).setQuadrante(quadrante);
             }
 
         }catch (IOException e){System.out.println("Erro no arquivo de propriedades Quadrante " + quadrante);}
@@ -243,6 +225,26 @@ public class Grafo
     public Aresta getArestasQ4(int indice)
     {
         return arestasQ4.get(indice);
+    }
+
+    public List<Aresta> getListaArestasQ1()
+    {
+        return arestasQ1;
+    }
+
+    public List<Aresta> getListaArestasQ2()
+    {
+        return arestasQ2;
+    }
+
+    public List<Aresta> getListaArestasQ3()
+    {
+        return arestasQ3;
+    }
+
+    public List<Aresta> getListaArestasQ4()
+    {
+        return arestasQ4;
     }
 
     protected List <Vertice> grafo = new ArrayList<Vertice>();

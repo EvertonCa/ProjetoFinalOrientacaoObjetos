@@ -1,50 +1,9 @@
 public class Veiculos
 {
-    public Veiculos(int quadranteAtual ,int xAtual, int yAtual, int quadranteDestino, int xDestino, int yDestino)
+    public Veiculos()
     {
         Aleatorio random = new Aleatorio();
-        this.xAtual = xAtual;
-        this.xDestino = xDestino;
-        this.yAtual = yAtual;
-        this.yDestino = yDestino;
-        this.quadranteAtual = quadranteAtual;
-        this.quadranteDestino = quadranteDestino;
         ID = random.randomizeID();
-    }
-
-    public void move()
-    {
-        Mundo mundoComparador = new Mundo();
-
-        if(mundoComparador.getLocalizacao(quadranteAtual, xAtual, yAtual) == 5 && xAtual + 1 == 5)
-        {
-            xAtual++;
-        }
-
-        else if(mundoComparador.getLocalizacao(quadranteAtual, xAtual, yAtual) == 6 && xAtual - 1 == 6)
-        {
-            xAtual--;
-        }
-
-        if(mundoComparador.getLocalizacao(quadranteAtual, xAtual, yAtual) == 7 && yAtual - 1 == 7)
-        {
-            yAtual--;
-        }
-
-        else if(mundoComparador.getLocalizacao(quadranteAtual, xAtual, yAtual) == 8 && yAtual + 1 == 8)
-        {
-            yAtual++;
-        }
-    }
-
-    public int getxAtual()
-    {
-        return xAtual;
-    }
-
-    public int getyAtual()
-    {
-        return yAtual;
     }
 
     public int getxDestino()
@@ -57,10 +16,50 @@ public class Veiculos
         return yDestino;
     }
 
+    public void setIDParaRandom()
+    {
+        Aleatorio random = new Aleatorio();
+        ID = random.randomizeIDParaAleatorios();
+    }
+
     public int getID()
     {
         return ID;
     }
 
-    protected int xAtual, yAtual, xDestino, yDestino, quadranteAtual, quadranteDestino, ID;
+    public void setX(int x)
+    {
+        this.x = x;
+    }
+
+    public void setY(int y)
+    {
+        this.y = y;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setQuadranteAtual(int quadranteAtual) {
+        this.quadranteAtual = quadranteAtual;
+    }
+
+    public void setQuadranteDestino(int quadranteDestino) {
+        this.quadranteDestino = quadranteDestino;
+    }
+
+    public int getQuadranteAtual() {
+        return quadranteAtual;
+    }
+
+    public int getQuadranteDestino() {
+        return quadranteDestino;
+    }
+
+    protected int x, y, xDestino, yDestino, quadranteAtual, quadranteDestino, ID;
 }

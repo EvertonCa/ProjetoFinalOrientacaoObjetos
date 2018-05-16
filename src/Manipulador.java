@@ -99,4 +99,33 @@ public class Manipulador
         props.load(file);
         return props;
     }
+
+    public static Properties getInterseccoesQ1() throws IOException
+    {
+        Properties props = new Properties();
+        FileInputStream file = new FileInputStream("./Properties/SemaforosQ1.properties");
+        props.load(file);
+        return props;
+    }
+    public static Properties getInterseccoesQ2() throws IOException
+    {
+        Properties props = new Properties();
+        FileInputStream file = new FileInputStream("./Properties/SemaforosQ2.properties");
+        props.load(file);
+        return props;
+    }
+    public static Properties getInterseccoesQ3() throws IOException
+    {
+        Properties props = new Properties();
+        FileInputStream file = new FileInputStream("./Properties/SemaforosQ3.properties");
+        props.load(file);
+        return props;
+    }
+    public static Properties getInterseccoesQ4() throws IOException
+    {
+        Properties props = new Properties();
+        FileInputStream file = new FileInputStream("./Properties/SemaforosQ4.properties");
+        props.load(file);
+        return props;
+    }
 }
