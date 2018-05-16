@@ -68,7 +68,6 @@ public class AreaPrincipalHandle {
 
     public List<Interseccao> defineCoordenadaSemaforo()
     {
-        List<Interseccao> listaInterseccoes = new ArrayList<Interseccao>();
         try
         {
             for (int k = 0; k < 1; k ++)
@@ -124,12 +123,12 @@ public class AreaPrincipalHandle {
 
                         semaforosDaInterseccao.add(new Semaforo(x, y, verde, duracao, quandrante));
                     }
-                    listaInterseccoes.add(new Interseccao(semaforosDaInterseccao, descricao));
+                    listaDeInteseccao.add(new Interseccao(semaforosDaInterseccao, descricao));
                 }
             }
         }catch (IOException e){System.out.println("Erro no arquivo de propriedades");}
 
-        return listaInterseccoes;
+        return listaDeInteseccao;
     }
 
     public void moveObjetos(ImageView carro) //incrementos de 0.15 px para 40fps e mapa de 720x720
@@ -395,4 +394,5 @@ public class AreaPrincipalHandle {
     protected double xInicial, yInicial, xAtual, yAtual, contadorRotacao = 0.0;
     protected boolean keepGoing = true, girando = false;
     protected int quadranteInicial;
+    protected List <Interseccao> listaDeInteseccao;
 }

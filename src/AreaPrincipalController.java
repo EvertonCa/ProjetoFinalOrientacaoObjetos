@@ -80,8 +80,17 @@ public class AreaPrincipalController implements Initializable {
         {
             semaforosHabilitados = false;
         }
+        if (semaforosHabilitados)
+        {
+            semaforosFuncionando();
+        }
 
         System.out.println("Semaforos Habilitados: " + semaforosHabilitados);
+    }
+
+    public void semaforosFuncionando()
+    {
+
     }
 
     public void obterRota() throws IOException
@@ -659,5 +668,21 @@ public class AreaPrincipalController implements Initializable {
     public Menu menuArquivo, menuAjuda;
     public MenuItem itemNovo, itemFechar, itemSobre;
     public MenuBar menuBar;
+    public ImageView semaforo1, semaforo2, semaforo3, semaforo4, semaforo5, semaforo6, semaforo7, semaforo8, semaforo9,
+            semaforo10, semaforo11, semaforo12, semaforo13, semaforo14, semaforo15, semaforo16, semaforo17, semaforo18,
+            semaforo19, semaforo20, semaforo21, semaforo22, semaforo23, semaforo24, semaforo25, semaforo26, semaforo27,
+            semaforo28, semaforo29, semaforo30, semaforo31, semaforo32, semaforo33, semaforo34, semaforo35, semaforo36,
+            semaforo37, semaforo38, semaforo39, semaforo40, semaforo41, semaforo42, semaforo43, semaforo44, semaforo45,
+            semaforo46, semaforo47, semaforo48, semaforo49, semaforo50, semaforo51, semaforo52, semaforo53, semaforo54,
+            semaforo55, semaforo56, semaforo57, semaforo58, semaforo59, semaforo60, semaforo61, semaforo62, semaforo63,
+            semaforo64, semaforo65, semaforo66, semaforo67, semaforo68, semaforo69, semaforo70, semaforo71, semaforo72,
+            semaforo73, semaforo74, semaforo75, semaforo76, semaforo77, semaforo78, semaforo79, semaforo80, semaforo81,
+            semaforo82, semaforo83, semaforo84, semaforo85, semaforo86, semaforo87, semaforo88, semaforo89, semaforo90,
+            semaforo91, semaforo92, semaforo93, semaforo94, semaforo95, semaforo96, semaforo97, semaforo98, semaforo99,
+            semaforo100, semaforo101, semaforo102, semaforo103, semaforo104, semaforo105, semaforo106, semaforo107, semaforo108,
+            semaforo109, semaforo110, semaforo111, semaforo112, semaforo113, semaforo114, semaforo115, semaforo116, semaforo117,
+            semaforo118, semaforo119, semaforo120;
+    public ImageView[] semaforo;
+
 
 }
