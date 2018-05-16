@@ -50,7 +50,7 @@ public class Aleatorio
     {
         String rua = randomizaRua();
 
-        while (rua.equals(excecao))
+        while (rua.equals(excecao) || rua.equals("Rua 32"))
         {
             rua = randomizaRua();
         }

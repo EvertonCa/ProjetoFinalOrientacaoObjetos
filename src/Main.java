@@ -17,7 +17,7 @@ public class Main extends Application
     {
         Parent root = FXMLLoader.load(getClass().getResource("PopUpBoasVindas.fxml"));
         primaryStage.setTitle("Ruas Inteligentes - Trabalho Final Orientação a Objetos");
-        primaryStage.setScene(new Scene(root, 300, 250));
+        primaryStage.setScene(new Scene(root, 480, 300));
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.show();
     }

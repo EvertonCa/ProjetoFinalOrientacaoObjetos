@@ -11,6 +11,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -91,33 +92,41 @@ public class AreaPrincipalController implements Initializable {
         }
         else
         {
-            if(rotasCalculadas == 0)
+            if(ruaDestino.getText().equals("Rua 32"))
+            {
+                ruaDestino.clear();
+                erroRua32();
+            }
+            else if(rotasCalculadas == 0)
             {
                 handleCarro1 = new AreaPrincipalHandle(ruaOrigem.getText(), ruaDestino.getText());
 
-                if(handleCarro1.getRespostaGPSOrigem().equals("naoEncontrado") || handleCarro1.getRespostaGPSDestino().equals("naoEncontrado"))
+                if(handleCarro1.getRespostaGPSOrigem().equals("Formato Errado!") || handleCarro1.getRespostaGPSDestino().equals("Formato Errado!"))
                 {
                     chamaErroEndereco();
                 }
-                rotasCalculadas = 1;
-                labelTituloRuas.setVisible(true);
-                labelCor.setVisible(true);
-                labelRuaDestino.setVisible(true);
-                labelRuaOrigem.setVisible(true);
-                ruaDeOrigem1.setText(ruaOrigem.getText());
-                ruaDeOrigem1.setVisible(true);
-                ruaDeDestino1.setText(ruaDestino.getText());
-                ruaDeDestino1.setVisible(true);
-                iconeCarro1.setVisible(true);
-                botaoDefinido.setDisable(true);
-                botaoAleatorio.setDisable(true);
-                botaoHabilitado.setDisable(true);
-                botaoNaoHabilitado.setDisable(true);
-                radioButton1.setDisable(true);
-                radioButton2.setDisable(true);
-                radioButton3.setDisable(true);
-                radioButton4.setDisable(true);
-                radioButton5.setDisable(true);
+                else
+                {
+                    rotasCalculadas = 1;
+                    labelTituloRuas.setVisible(true);
+                    labelCor.setVisible(true);
+                    labelRuaDestino.setVisible(true);
+                    labelRuaOrigem.setVisible(true);
+                    ruaDeOrigem1.setText(ruaOrigem.getText());
+                    ruaDeOrigem1.setVisible(true);
+                    ruaDeDestino1.setText(ruaDestino.getText());
+                    ruaDeDestino1.setVisible(true);
+                    iconeCarro1.setVisible(true);
+                    botaoDefinido.setDisable(true);
+                    botaoAleatorio.setDisable(true);
+                    botaoHabilitado.setDisable(true);
+                    botaoNaoHabilitado.setDisable(true);
+                    radioButton1.setDisable(true);
+                    radioButton2.setDisable(true);
+                    radioButton3.setDisable(true);
+                    radioButton4.setDisable(true);
+                    radioButton5.setDisable(true);
+                }
             }
             else if(rotasCalculadas == 1)
             {
@@ -204,6 +213,7 @@ public class AreaPrincipalController implements Initializable {
         avisoErro.setTitle("ENDEREÇO INVÁLIDO!");
         avisoErro.setScene(erroEnderecoScene);
         avisoErro.initModality(Modality.APPLICATION_MODAL);
+        avisoErro.initStyle(StageStyle.UNDECORATED);
         avisoErro.initOwner(botaoEnderecos.getScene().getWindow());
         avisoErro.showAndWait();
     }
@@ -221,7 +231,6 @@ public class AreaPrincipalController implements Initializable {
         {
             try
             {
-
                 while (keepGoing)
                 {
                     Thread.sleep(25); //40fps
@@ -233,6 +242,8 @@ public class AreaPrincipalController implements Initializable {
                             {
                                 handleCarro1.moveObjetos(carro1);
                                 keepGoing = handleCarro1.isKeepGoing();
+                                checaPopUpChegou(1);
+
                             }
                             else if(quantidadeDeCarros == 2)
                             {
@@ -241,6 +252,9 @@ public class AreaPrincipalController implements Initializable {
 
                                 if(!handleCarro1.isKeepGoing() && !handleCarro2.isKeepGoing())
                                     keepGoing = false;
+
+                                checaPopUpChegou(1);
+                                checaPopUpChegou(2);
                             }
                             else if(quantidadeDeCarros == 3)
                             {
@@ -249,6 +263,10 @@ public class AreaPrincipalController implements Initializable {
                                 handleCarro3.moveObjetos(carro3);
                                 if(!handleCarro1.isKeepGoing() && !handleCarro2.isKeepGoing() && !handleCarro3.isKeepGoing())
                                     keepGoing = false;
+
+                                checaPopUpChegou(1);
+                                checaPopUpChegou(2);
+                                checaPopUpChegou(3);
                             }
                             else if(quantidadeDeCarros == 4)
                             {
@@ -259,6 +277,11 @@ public class AreaPrincipalController implements Initializable {
                                 if(!handleCarro1.isKeepGoing() && !handleCarro2.isKeepGoing() &&
                                         !handleCarro3.isKeepGoing() && !handleCarro4.isKeepGoing())
                                     keepGoing = false;
+
+                                checaPopUpChegou(1);
+                                checaPopUpChegou(2);
+                                checaPopUpChegou(3);
+                                checaPopUpChegou(4);
                             }
                             else
                             {
@@ -270,6 +293,12 @@ public class AreaPrincipalController implements Initializable {
                                 if(!handleCarro1.isKeepGoing() && !handleCarro2.isKeepGoing() &&
                                         !handleCarro3.isKeepGoing() && !handleCarro4.isKeepGoing() && !handleCarro5.isKeepGoing())
                                     keepGoing = false;
+
+                                checaPopUpChegou(1);
+                                checaPopUpChegou(2);
+                                checaPopUpChegou(3);
+                                checaPopUpChegou(4);
+                                checaPopUpChegou(5);
                             }
                         }
                     });
@@ -280,6 +309,51 @@ public class AreaPrincipalController implements Initializable {
                 return;
             }
         }
+    }
+
+    public void checaPopUpChegou(int carro)
+    {
+        if(carro == 1)
+        {
+            if(!handleCarro1.isKeepGoing() && !popUpChegou1Exibido)
+            {
+                popUpChegou(1);
+                popUpChegou1Exibido = true;
+            }
+        }
+        else if(carro == 2)
+        {
+            if(!handleCarro2.isKeepGoing() && !popUpChegou2Exibido)
+            {
+                popUpChegou(2);
+                popUpChegou2Exibido = true;
+            }
+        }
+        else if(carro == 3)
+        {
+            if(!handleCarro3.isKeepGoing() && !popUpChegou3Exibido)
+            {
+                popUpChegou(3);
+                popUpChegou3Exibido = true;
+            }
+        }
+        else if(carro == 4)
+        {
+            if(!handleCarro4.isKeepGoing() && !popUpChegou4Exibido)
+            {
+                popUpChegou(4);
+                popUpChegou4Exibido = true;
+            }
+        }
+        else
+        {
+            if(!handleCarro5.isKeepGoing() && !popUpChegou5Exibido)
+            {
+                popUpChegou(5);
+                popUpChegou5Exibido = true;
+            }
+        }
+
     }
 
     public void fecharPrograma()
@@ -406,7 +480,164 @@ public class AreaPrincipalController implements Initializable {
         }
     }
 
-    public Button botaoEnderecos, botaoOk, botaoMostrarNoMapa;
+    public void sobre()
+    {
+        Parent root;
+        try
+        {
+            root = FXMLLoader.load(getClass().getResource("PopUpSobre.fxml"));
+        }catch (IOException ex)
+        {
+            return;
+        }
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void popUpChegou(int carro)
+    {
+        if(carro == 1)
+        {
+            {
+                Parent root;
+                try
+                {
+                    root = FXMLLoader.load(getClass().getResource("PopUpChegou1.fxml"));
+                }catch (IOException ex)
+                {
+                    return;
+                }
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.setScene(scene);
+                stage.show();
+            }
+        }
+        else if(carro == 2)
+        {
+            {
+                Parent root;
+                try
+                {
+                    root = FXMLLoader.load(getClass().getResource("PopUpChegou2.fxml"));
+                }catch (IOException ex)
+                {
+                    return;
+                }
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.setScene(scene);
+                stage.show();
+            }
+        }
+        else if(carro == 3)
+        {
+            {
+                Parent root;
+                try
+                {
+                    root = FXMLLoader.load(getClass().getResource("PopUpChegou3.fxml"));
+                }catch (IOException ex)
+                {
+                    return;
+                }
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.setScene(scene);
+                stage.show();
+            }
+        }
+        else if(carro == 4)
+        {
+            {
+                Parent root;
+                try
+                {
+                    root = FXMLLoader.load(getClass().getResource("PopUpChegou4.fxml"));
+                }catch (IOException ex)
+                {
+                    return;
+                }
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.setScene(scene);
+                stage.show();
+            }
+        }
+        else
+        {
+            {
+                Parent root;
+                try
+                {
+                    root = FXMLLoader.load(getClass().getResource("PopUpChegou5.fxml"));
+                }catch (IOException ex)
+                {
+                    return;
+                }
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.setScene(scene);
+                stage.show();
+            }
+        }
+    }
+
+    public void mostrarLegenda()
+    {
+        Parent root;
+        try
+        {
+            root = FXMLLoader.load(getClass().getResource("LegendaMapa.fxml"));
+        }catch (IOException ex)
+        {
+            return;
+        }
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void fecharLegenda()
+    {
+        Stage stage = (Stage) legendaMapa.getScene().getWindow();
+        stage.close();
+    }
+
+    public void erroRua32()
+    {
+        Parent root;
+        try
+        {
+            root = FXMLLoader.load(getClass().getResource("PAM.fxml"));
+        }catch (IOException ex)
+        {
+            return;
+        }
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void fecharErro32()
+    {
+        Stage stage = (Stage) botaoFechaErro32.getScene().getWindow();
+        stage.close();
+    }
+
+    public Button botaoEnderecos, botaoOk, botaoMostrarNoMapa, botaoFechaErro32;
     public RadioButton radioButton1, radioButton2, radioButton3, radioButton4, radioButton5;
     public ToggleButton botaoDefinido, botaoAleatorio, botaoHabilitado, botaoNaoHabilitado;
     public ToggleGroup radioButtonGroup, toggleButton1Group, toggleButton2Group;
@@ -416,12 +647,14 @@ public class AreaPrincipalController implements Initializable {
     public Label origem, destino, feitoPor, ruaDeOrigem1, ruaDeOrigem2, ruaDeOrigem3, ruaDeOrigem4, ruaDeOrigem5, labelTituloRuas;
     public Label ruaDeDestino1, ruaDeDestino2, ruaDeDestino3, ruaDeDestino4, ruaDeDestino5, labelCor, labelRuaOrigem, labelRuaDestino;
     public TextField ruaOrigem, ruaDestino;
-    public ImageView mapaCidade,miniMapa, carro1, carro2, carro3, carro4, carro5;
+    public ImageView mapaCidade,miniMapa, legendaMapa, carro1, carro2, carro3, carro4, carro5;
     public ImageView iconeCarro1, iconeCarro2, iconeCarro3, iconeCarro4, iconeCarro5;
     public StackPane stackAnimacao;
     public Stage avisoErro;
     public AreaPrincipalHandle handleCarro1, handleCarro2, handleCarro3, handleCarro4, handleCarro5;
     public boolean keepGoing = true, rotasDefinidas = true, semaforosHabilitados = true;
+    public boolean popUpChegou1Exibido = false, popUpChegou2Exibido = false, popUpChegou3Exibido = false,
+            popUpChegou4Exibido = false, popUpChegou5Exibido = false;
     public int quantidadeDeCarros = 1, rotasCalculadas = 0;
     public Menu menuArquivo, menuAjuda;
     public MenuItem itemNovo, itemFechar, itemSobre;

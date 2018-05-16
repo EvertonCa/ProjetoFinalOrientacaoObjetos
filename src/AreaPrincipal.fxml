@@ -43,7 +43,7 @@
           </Menu>
           <Menu fx:id="menuAjuda" mnemonicParsing="false" text="Ajuda">
             <items>
-              <MenuItem fx:id="itemSobre" mnemonicParsing="false" text="Sobre" />
+              <MenuItem fx:id="itemSobre" mnemonicParsing="false" onAction="#sobre" text="Sobre" />
             </items>
           </Menu>
         </menus>
@@ -56,9 +56,9 @@
                <children>
                   <Pane prefHeight="235.0" prefWidth="401.0">
                      <children>
-                        <ImageView fx:id="miniMapa" fitHeight="235.0" fitWidth="230.0" layoutX="86.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="miniMapa" fitHeight="235.0" fitWidth="230.0" layoutX="86.0" layoutY="3.0" onMouseClicked="#mostrarLegenda" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@Imagem.png" />
+                              <Image url="@MapaComLegendas.png" />
                            </image>
                            <effect>
                               <DropShadow />
@@ -286,12 +286,15 @@
                </children>
             </VBox>
             <Region HBox.hgrow="ALWAYS" />
-            <StackPane fx:id="stackAnimacao" prefHeight="790.0" prefWidth="790.0">
+            <StackPane fx:id="stackAnimacao" maxHeight="800.0" maxWidth="800.0" prefHeight="800.0" prefWidth="800.0">
                <children>
                   <ImageView fx:id="mapaCidade" fitHeight="780.0" fitWidth="780.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER">
                      <image>
-                        <Image url="@Imagem.png" />
+                        <Image url="@mapa.jpg" />
                      </image>
+                     <effect>
+                        <DropShadow />
+                     </effect>
                   </ImageView>
                   <Pane fx:id="layoutAnimacao" maxHeight="780.0" maxWidth="780.0" prefHeight="780.0" prefWidth="780.0" StackPane.alignment="CENTER">
                      <StackPane.margin>
@@ -332,6 +335,9 @@
                      </effect>
                   </Pane>
                </children>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
             </StackPane>
             <Region HBox.hgrow="ALWAYS" />
          </children>
