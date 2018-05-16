@@ -1,9 +1,13 @@
+/**
+ / Classe extendida de Veiculos responsavel por definir pontos de origem, destino e rotas do veiculo
+ **/
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class AutoPilot extends Veiculos
 {
-    ///construtor com rota especifica
+    /// construtor com rota especifica
     public AutoPilot(List <Vertice> menorRota, List <Aresta> origemDestino, String aleatorio)
     {
         if(aleatorio.equals("aleatorio"))
@@ -16,6 +20,7 @@ public class AutoPilot extends Veiculos
         defineCoordenadasDestino();
     }
 
+    /// posiciona o veiculo na aresta
     public void posicionaNaAresta()
     {
         arestaAtual = arestaOrigem;
@@ -27,6 +32,7 @@ public class AutoPilot extends Veiculos
         super.setY(yCentral);
     }
 
+    /// define as coordenadas de destino do veiculo
     public void defineCoordenadasDestino()
     {
         super.setQuadranteDestino(arestaDestino.getQuadrante());
@@ -37,6 +43,7 @@ public class AutoPilot extends Veiculos
         super.yDestino = yCentral;
     }
 
+    /// centraliza o veiculo na aresta
     public void centraliza(Aresta aresta)
     {
         int coordenadas[][] = aresta.getCoordenadas();
@@ -63,6 +70,7 @@ public class AutoPilot extends Veiculos
         }
     }
 
+    /// nove o veiculo no mundo de grades
     public void move()
     {
         String direcao = arestaAtual.getDirecao();
@@ -196,6 +204,7 @@ public class AutoPilot extends Veiculos
         }
     }
 
+    /// calcula a rota do veiculo nas esquinas
     public void naEsquinaRota()
     {
         if(!proxArestaDefinida)
@@ -235,6 +244,7 @@ public class AutoPilot extends Veiculos
         }
     }
 
+    /// define as direções a serem seguidas em esquinas
     public void rotaParaProximaAresta()
     {
         rotaNosCruzamentos.clear();
@@ -350,6 +360,7 @@ public class AutoPilot extends Veiculos
         }
     }
 
+    /// move o veiculo nas esquinas
     public void moveNoVertice()
     {
         if(rotaNosCruzamentos.get(0).equals("direita"))
@@ -440,6 +451,7 @@ public class AutoPilot extends Veiculos
         }
     }
 
+    /// gera as coordenadas a serem seguidas na Interface Gráfica
     public void gerarCoordenadasGUI()
     {
         caminhosGUI = new ArrayList<>();
@@ -493,6 +505,7 @@ public class AutoPilot extends Veiculos
         System.out.print(getQuadranteDestino() + "\n\n");
     }
 
+    /// gera as rotas a serem seguidas na interface grafica, baseado nas coordenadas GUI
     public List < CaminhoGUI > gerarRotasGUI()
     {
         int contador = 0;
@@ -643,6 +656,7 @@ public class AutoPilot extends Veiculos
     }
 
 
+    /// exibe no terminal as rotas seguidas na interface grafica
     public void exibeRotasGUI()
     {
         for(int i = 0; i < rotasGUI.size(); i++)

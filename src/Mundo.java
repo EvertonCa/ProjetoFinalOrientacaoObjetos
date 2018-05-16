@@ -1,10 +1,16 @@
+/**
+ / Classe responsavel por gerar os mundos de grade dos 4 quadrantes
+ **/
+
 public class Mundo
 {
+    /// construtor padrão
     public Mundo()
     {
       ///mundo com 76 vertices (nulos e intersecções)
       reiniciaMundos();
     }
+
 
     public void reiniciaMundoQ1()
     {
@@ -275,203 +281,6 @@ public class Mundo
         reiniciaMundoQ2();
         reiniciaMundoQ3();
         reiniciaMundoQ4();
-    }
-
-    public void desenhaMundo(int[][] q1, int[][] q2)
-    {
-        for (int i = 0; i < 60; i++)
-        {
-            for (int j = 0; j < 60; j++)
-            {
-                desenhaLinha(q1, i, j);
-            }
-
-            for (int j = 0; j < 60; j++)
-            {
-                desenhaLinha(q2, i, j);
-            }
-
-            System.out.printf("\n");
-        }
-    }
-
-    public void desenhaLinha(int[][] quadrante, int i, int j)
-    {
-        if(quadrante[i][j] == 1) //quarteirao - azul
-        {
-            System.out.printf("\33[7;34m  \33[0m");
-        }
-
-        else if(quadrante[i][j] == 0) //rua - preta
-        {
-            System.out.printf("\33[7;30m  \33[0m");
-        }
-
-        else if(quadrante[i][j] == 2) //faixa - branca
-        {
-            System.out.printf("\33[7;37m  \33[0m");
-        }
-
-        else if(quadrante[i][j] == 3) //semarofo - vermelho
-        {
-            System.out.printf("\33[7;31m  \33[0m");
-        }
-
-        else if(quadrante[i][j] == 4) //semaforo - verde
-        {
-            System.out.printf("\33[7;32m  \33[0m");
-        }
-
-        else if(quadrante[i][j] == 5) //caminho possivel para o carro para direita - preta
-        {
-            System.out.printf("\33[7;30m  \33[0m");
-        }
-
-        else if(quadrante[i][j] == 6) //caminho possivel para o carro para esquerda - preta
-        {
-            System.out.printf("\33[7;30m  \33[0m");
-        }
-
-        else if(quadrante[i][j] == 7) //caminho possivel para o carro para cima - preta
-        {
-            System.out.printf("\33[7;30m  \33[0m");
-        }
-
-        else if(quadrante[i][j] == 8) //caminho possivel para o carro para baixo - preta
-        {
-            System.out.printf("\33[7;30m  \33[0m");
-        }
-
-        else if(quadrante[i][j] >= 100 && quadrante[i][j] < 300000) //carros definidos - roxo
-        {
-            System.out.printf("\33[7;35m  \33[0m");
-        }
-
-        else if(quadrante[i][j] >= 300001 && quadrante[i][j] < 600000) //carros aleatorios - amarelos
-        {
-            System.out.printf("\33[7;33m  \33[0m");
-        }
-
-        else if(quadrante[i][j] >= 10 && quadrante[i][j] <= 99) //intersecções - preta
-        {
-            System.out.printf("\33[7;30m  \33[0m");
-        }
-    }
-
-    public void voltaComeco()
-    {
-        for (int i = 0; i < 120; i++)
-        {
-            System.out.printf("\33[A");
-        }
-    }
-
-    public void populaSemaforoQ1(Semaforo farol)
-    {
-        if(farol.getVerde() == true)
-        {
-            mundoQ1[farol.getY()][farol.getX()] = 4;
-        }
-        else
-        {
-            mundoQ1[farol.getY()][farol.getX()] = 3;
-        }
-    }
-
-    public void populaSemaforoQ2(Semaforo farol)
-    {
-        if(farol.getVerde() == true)
-        {
-            mundoQ2[farol.getY()][farol.getX()] = 4;
-        }
-        else
-        {
-            mundoQ2[farol.getY()][farol.getX()] = 3;
-        }
-    }
-
-    public void populaSemaforoQ3(Semaforo farol)
-    {
-        if(farol.getVerde() == true)
-        {
-            mundoQ3[farol.getY()][farol.getX()] = 4;
-        }
-        else
-        {
-            mundoQ3[farol.getY()][farol.getX()] = 3;
-        }
-    }
-
-    public void populaSemaforoQ4(Semaforo farol)
-    {
-        if(farol.getVerde() == true)
-        {
-            mundoQ4[farol.getY()][farol.getX()] = 4;
-        }
-        else
-        {
-            mundoQ4[farol.getY()][farol.getX()] = 3;
-        }
-    }
-
-    public void pausaMundo()
-    {
-        try
-        {
-            Thread.sleep(1000); //funcao para dar uma pequena pausa
-        }
-        catch (InterruptedException e) { }
-    }
-
-    public int getLocalizacao(int quadrante, int x, int y)
-    {
-        if(quadrante == 1)
-        {
-            return mundoQ1[x][y];
-        }
-
-        else if (quadrante == 2)
-        {
-            return mundoQ2[x][y];
-        }
-
-        else if (quadrante == 3)
-        {
-            return mundoQ3[x][y];
-        }
-
-        else
-        {
-            return mundoQ4[x][y];
-        }
-    }
-
-    public void insereVeiculoNoMundo(int x, int y, int quadrante, int ID)
-    {
-        switch (quadrante)
-        {
-            default:
-            {
-                mundoQ1[y][x] = ID;
-                break;
-            }
-            case 2:
-            {
-                mundoQ2[y][x] = ID;
-                break;
-            }
-            case 3:
-            {
-                mundoQ3[y][x] = ID;
-                break;
-            }
-            case 4:
-            {
-                mundoQ4[y][x] = ID;
-                break;
-            }
-
-        }
     }
 
     public int[][] getMundoQ1()

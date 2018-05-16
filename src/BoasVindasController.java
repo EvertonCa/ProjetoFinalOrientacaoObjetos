@@ -1,3 +1,7 @@
+/**
+ / Controlador da View Splash de Boas Vindas
+ **/
+
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
