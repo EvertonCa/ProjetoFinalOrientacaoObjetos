@@ -329,612 +329,602 @@
                               <Image url="@carroVerdeMini.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo1" fitHeight="40.0" fitWidth="10.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo1" fitHeight="40.0" fitWidth="10.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo2" fitHeight="40.0" fitWidth="10.0" layoutX="198.0" layoutY="162.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo2" fitHeight="40.0" fitWidth="10.0" layoutX="198.0" layoutY="162.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo3" fitHeight="40.0" fitWidth="10.0" layoutX="188.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo3" fitHeight="40.0" fitWidth="10.0" layoutX="188.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo4" fitHeight="40.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo4" fitHeight="40.0" fitWidth="10.0" layoutX="188.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo5" fitHeight="40.0" fitWidth="10.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo5" fitHeight="40.0" fitWidth="10.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo6" fitHeight="40.0" fitWidth="10.0" layoutX="198.0" layoutY="162.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo6" fitHeight="40.0" fitWidth="10.0" layoutX="198.0" layoutY="162.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo7" fitHeight="40.0" fitWidth="10.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo7" fitHeight="40.0" fitWidth="10.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo8" fitHeight="40.0" fitWidth="10.0" layoutX="208.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo8" fitHeight="40.0" fitWidth="10.0" layoutX="208.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo9" fitHeight="40.0" fitWidth="10.0" layoutX="30.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo9" fitHeight="40.0" fitWidth="10.0" layoutX="30.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo10" fitHeight="40.0" fitWidth="10.0" layoutX="218.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo10" fitHeight="40.0" fitWidth="10.0" layoutX="218.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo11" fitHeight="40.0" fitWidth="10.0" layoutX="40.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo11" fitHeight="40.0" fitWidth="10.0" layoutX="40.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo12" fitHeight="40.0" fitWidth="10.0" layoutX="228.0" layoutY="192.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo12" fitHeight="40.0" fitWidth="10.0" layoutX="228.0" layoutY="192.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo13" fitHeight="40.0" fitWidth="10.0" layoutX="278.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo13" fitHeight="40.0" fitWidth="10.0" layoutX="278.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo14" fitHeight="40.0" fitWidth="10.0" layoutX="90.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo14" fitHeight="40.0" fitWidth="10.0" layoutX="90.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo15" fitHeight="40.0" fitWidth="10.0" layoutX="268.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo15" fitHeight="40.0" fitWidth="10.0" layoutX="268.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo16" fitHeight="40.0" fitWidth="10.0" layoutX="80.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo16" fitHeight="40.0" fitWidth="10.0" layoutX="80.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo17" fitHeight="40.0" fitWidth="10.0" layoutX="258.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo17" fitHeight="40.0" fitWidth="10.0" layoutX="258.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo18" fitHeight="40.0" fitWidth="10.0" layoutX="70.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo18" fitHeight="40.0" fitWidth="10.0" layoutX="70.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo19" fitHeight="40.0" fitWidth="10.0" layoutX="248.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo19" fitHeight="40.0" fitWidth="10.0" layoutX="248.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo20" fitHeight="40.0" fitWidth="10.0" layoutX="60.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo20" fitHeight="40.0" fitWidth="10.0" layoutX="60.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo21" fitHeight="40.0" fitWidth="10.0" layoutX="288.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo21" fitHeight="40.0" fitWidth="10.0" layoutX="288.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo22" fitHeight="40.0" fitWidth="10.0" layoutX="100.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo22" fitHeight="40.0" fitWidth="10.0" layoutX="100.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo23" fitHeight="40.0" fitWidth="10.0" layoutX="278.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo23" fitHeight="40.0" fitWidth="10.0" layoutX="278.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo24" fitHeight="40.0" fitWidth="10.0" layoutX="90.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo24" fitHeight="40.0" fitWidth="10.0" layoutX="90.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo25" fitHeight="40.0" fitWidth="10.0" layoutX="268.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo25" fitHeight="40.0" fitWidth="10.0" layoutX="268.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo26" fitHeight="40.0" fitWidth="10.0" layoutX="80.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo26" fitHeight="40.0" fitWidth="10.0" layoutX="80.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo27" fitHeight="40.0" fitWidth="10.0" layoutX="258.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo27" fitHeight="40.0" fitWidth="10.0" layoutX="258.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo28" fitHeight="40.0" fitWidth="10.0" layoutX="70.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo28" fitHeight="40.0" fitWidth="10.0" layoutX="70.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo29" fitHeight="40.0" fitWidth="10.0" layoutX="298.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo29" fitHeight="40.0" fitWidth="10.0" layoutX="298.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo30" fitHeight="40.0" fitWidth="10.0" layoutX="110.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo30" fitHeight="40.0" fitWidth="10.0" layoutX="110.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo31" fitHeight="40.0" fitWidth="10.0" layoutX="288.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo31" fitHeight="40.0" fitWidth="10.0" layoutX="288.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo32" fitHeight="40.0" fitWidth="10.0" layoutX="100.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo32" fitHeight="40.0" fitWidth="10.0" layoutX="100.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo33" fitHeight="40.0" fitWidth="10.0" layoutX="278.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo33" fitHeight="40.0" fitWidth="10.0" layoutX="278.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo34" fitHeight="40.0" fitWidth="10.0" layoutX="90.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo34" fitHeight="40.0" fitWidth="10.0" layoutX="90.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo35" fitHeight="40.0" fitWidth="10.0" layoutX="268.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo35" fitHeight="40.0" fitWidth="10.0" layoutX="268.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo36" fitHeight="40.0" fitWidth="10.0" layoutX="80.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo36" fitHeight="40.0" fitWidth="10.0" layoutX="80.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo37" fitHeight="40.0" fitWidth="10.0" layoutX="308.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo37" fitHeight="40.0" fitWidth="10.0" layoutX="308.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo38" fitHeight="40.0" fitWidth="10.0" layoutX="120.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo38" fitHeight="40.0" fitWidth="10.0" layoutX="120.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo39" fitHeight="40.0" fitWidth="10.0" layoutX="298.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo39" fitHeight="40.0" fitWidth="10.0" layoutX="298.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo40" fitHeight="40.0" fitWidth="10.0" layoutX="110.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo40" fitHeight="40.0" fitWidth="10.0" layoutX="110.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo41" fitHeight="40.0" fitWidth="10.0" layoutX="288.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo41" fitHeight="40.0" fitWidth="10.0" layoutX="288.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo42" fitHeight="40.0" fitWidth="10.0" layoutX="100.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo42" fitHeight="40.0" fitWidth="10.0" layoutX="100.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo43" fitHeight="40.0" fitWidth="10.0" layoutX="278.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo43" fitHeight="40.0" fitWidth="10.0" layoutX="278.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo44" fitHeight="40.0" fitWidth="10.0" layoutX="90.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo44" fitHeight="40.0" fitWidth="10.0" layoutX="90.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo45" fitHeight="40.0" fitWidth="10.0" layoutX="318.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo45" fitHeight="40.0" fitWidth="10.0" layoutX="318.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo46" fitHeight="40.0" fitWidth="10.0" layoutX="130.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo46" fitHeight="40.0" fitWidth="10.0" layoutX="130.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo47" fitHeight="40.0" fitWidth="10.0" layoutX="308.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo47" fitHeight="40.0" fitWidth="10.0" layoutX="308.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo48" fitHeight="40.0" fitWidth="10.0" layoutX="120.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo48" fitHeight="40.0" fitWidth="10.0" layoutX="120.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo49" fitHeight="40.0" fitWidth="10.0" layoutX="298.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo49" fitHeight="40.0" fitWidth="10.0" layoutX="298.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo50" fitHeight="40.0" fitWidth="10.0" layoutX="110.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo50" fitHeight="40.0" fitWidth="10.0" layoutX="110.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo51" fitHeight="40.0" fitWidth="10.0" layoutX="288.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo51" fitHeight="40.0" fitWidth="10.0" layoutX="288.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo52" fitHeight="40.0" fitWidth="10.0" layoutX="100.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo52" fitHeight="40.0" fitWidth="10.0" layoutX="100.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo53" fitHeight="40.0" fitWidth="10.0" layoutX="328.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo53" fitHeight="40.0" fitWidth="10.0" layoutX="328.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo54" fitHeight="40.0" fitWidth="10.0" layoutX="140.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo54" fitHeight="40.0" fitWidth="10.0" layoutX="140.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo55" fitHeight="40.0" fitWidth="10.0" layoutX="318.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo55" fitHeight="40.0" fitWidth="10.0" layoutX="318.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo56" fitHeight="40.0" fitWidth="10.0" layoutX="130.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo56" fitHeight="40.0" fitWidth="10.0" layoutX="130.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo57" fitHeight="40.0" fitWidth="10.0" layoutX="308.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo57" fitHeight="40.0" fitWidth="10.0" layoutX="308.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo58" fitHeight="40.0" fitWidth="10.0" layoutX="120.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo58" fitHeight="40.0" fitWidth="10.0" layoutX="120.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo59" fitHeight="40.0" fitWidth="10.0" layoutX="298.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo59" fitHeight="40.0" fitWidth="10.0" layoutX="298.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo60" fitHeight="40.0" fitWidth="10.0" layoutX="110.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo60" fitHeight="40.0" fitWidth="10.0" layoutX="110.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo61" fitHeight="40.0" fitWidth="10.0" layoutX="338.0" layoutY="302.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo61" fitHeight="40.0" fitWidth="10.0" layoutX="338.0" layoutY="302.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo52" fitHeight="40.0" fitWidth="10.0" layoutX="150.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo62" fitHeight="40.0" fitWidth="10.0" layoutX="150.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo63" fitHeight="40.0" fitWidth="10.0" layoutX="328.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo63" fitHeight="40.0" fitWidth="10.0" layoutX="328.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo64" fitHeight="40.0" fitWidth="10.0" layoutX="140.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo64" fitHeight="40.0" fitWidth="10.0" layoutX="140.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo65" fitHeight="40.0" fitWidth="10.0" layoutX="318.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo65" fitHeight="40.0" fitWidth="10.0" layoutX="318.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo66" fitHeight="40.0" fitWidth="10.0" layoutX="130.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo66" fitHeight="40.0" fitWidth="10.0" layoutX="130.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo67" fitHeight="40.0" fitWidth="10.0" layoutX="308.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo67" fitHeight="40.0" fitWidth="10.0" layoutX="308.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo68" fitHeight="40.0" fitWidth="10.0" layoutX="120.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo68" fitHeight="40.0" fitWidth="10.0" layoutX="120.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo69" fitHeight="40.0" fitWidth="10.0" layoutX="348.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo69" fitHeight="40.0" fitWidth="10.0" layoutX="348.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo70" fitHeight="40.0" fitWidth="10.0" layoutX="160.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo70" fitHeight="40.0" fitWidth="10.0" layoutX="160.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo71" fitHeight="40.0" fitWidth="10.0" layoutX="338.0" layoutY="302.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo71" fitHeight="40.0" fitWidth="10.0" layoutX="338.0" layoutY="302.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo72" fitHeight="40.0" fitWidth="10.0" layoutX="150.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo72" fitHeight="40.0" fitWidth="10.0" layoutX="150.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo72" fitHeight="40.0" fitWidth="10.0" layoutX="328.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo73" fitHeight="40.0" fitWidth="10.0" layoutX="140.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo73" fitHeight="40.0" fitWidth="10.0" layoutX="140.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo74" fitHeight="40.0" fitWidth="10.0" layoutX="318.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo74" fitHeight="40.0" fitWidth="10.0" layoutX="318.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo75" fitHeight="40.0" fitWidth="10.0" layoutX="130.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo75" fitHeight="40.0" fitWidth="10.0" layoutX="130.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo76" fitHeight="40.0" fitWidth="10.0" layoutX="358.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo76" fitHeight="40.0" fitWidth="10.0" layoutX="358.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo77" fitHeight="40.0" fitWidth="10.0" layoutX="170.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo77" fitHeight="40.0" fitWidth="10.0" layoutX="170.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo78" fitHeight="40.0" fitWidth="10.0" layoutX="348.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo78" fitHeight="40.0" fitWidth="10.0" layoutX="348.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo79" fitHeight="40.0" fitWidth="10.0" layoutX="160.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo79" fitHeight="40.0" fitWidth="10.0" layoutX="160.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo80" fitHeight="40.0" fitWidth="10.0" layoutX="338.0" layoutY="302.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo80" fitHeight="40.0" fitWidth="10.0" layoutX="338.0" layoutY="302.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo81" fitHeight="40.0" fitWidth="10.0" layoutX="150.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo81" fitHeight="40.0" fitWidth="10.0" layoutX="150.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo82" fitHeight="40.0" fitWidth="10.0" layoutX="328.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo82" fitHeight="40.0" fitWidth="10.0" layoutX="328.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo83" fitHeight="40.0" fitWidth="10.0" layoutX="140.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo83" fitHeight="40.0" fitWidth="10.0" layoutX="140.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo84" fitHeight="40.0" fitWidth="10.0" layoutX="368.0" layoutY="332.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo84" fitHeight="40.0" fitWidth="10.0" layoutX="368.0" layoutY="332.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo85" fitHeight="40.0" fitWidth="10.0" layoutX="180.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo85" fitHeight="40.0" fitWidth="10.0" layoutX="180.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo86" fitHeight="40.0" fitWidth="10.0" layoutX="358.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo86" fitHeight="40.0" fitWidth="10.0" layoutX="358.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo87" fitHeight="40.0" fitWidth="10.0" layoutX="170.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo87" fitHeight="40.0" fitWidth="10.0" layoutX="170.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo88" fitHeight="40.0" fitWidth="10.0" layoutX="348.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo88" fitHeight="40.0" fitWidth="10.0" layoutX="348.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo89" fitHeight="40.0" fitWidth="10.0" layoutX="160.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo89" fitHeight="40.0" fitWidth="10.0" layoutX="160.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo90" fitHeight="40.0" fitWidth="10.0" layoutX="338.0" layoutY="302.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo90" fitHeight="40.0" fitWidth="10.0" layoutX="338.0" layoutY="302.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo91" fitHeight="40.0" fitWidth="10.0" layoutX="150.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo91" fitHeight="40.0" fitWidth="10.0" layoutX="150.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo92" fitHeight="40.0" fitWidth="10.0" layoutX="378.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo92" fitHeight="40.0" fitWidth="10.0" layoutX="378.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo93" fitHeight="40.0" fitWidth="10.0" layoutX="190.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo93" fitHeight="40.0" fitWidth="10.0" layoutX="190.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo94" fitHeight="40.0" fitWidth="10.0" layoutX="368.0" layoutY="332.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo94" fitHeight="40.0" fitWidth="10.0" layoutX="368.0" layoutY="332.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo95" fitHeight="40.0" fitWidth="10.0" layoutX="180.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo95" fitHeight="40.0" fitWidth="10.0" layoutX="180.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo96" fitHeight="40.0" fitWidth="10.0" layoutX="358.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo96" fitHeight="40.0" fitWidth="10.0" layoutX="358.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo97" fitHeight="40.0" fitWidth="10.0" layoutX="170.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo97" fitHeight="40.0" fitWidth="10.0" layoutX="170.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo98" fitHeight="40.0" fitWidth="10.0" layoutX="348.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo98" fitHeight="40.0" fitWidth="10.0" layoutX="348.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo99" fitHeight="40.0" fitWidth="10.0" layoutX="160.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo99" fitHeight="40.0" fitWidth="10.0" layoutX="160.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo100" fitHeight="40.0" fitWidth="10.0" layoutX="170.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo100" fitHeight="40.0" fitWidth="10.0" layoutX="170.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo101" fitHeight="40.0" fitWidth="10.0" layoutX="358.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo101" fitHeight="40.0" fitWidth="10.0" layoutX="358.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo102" fitHeight="40.0" fitWidth="10.0" layoutX="180.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo102" fitHeight="40.0" fitWidth="10.0" layoutX="180.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo103" fitHeight="40.0" fitWidth="10.0" layoutX="368.0" layoutY="332.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo103" fitHeight="40.0" fitWidth="10.0" layoutX="368.0" layoutY="332.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo104" fitHeight="40.0" fitWidth="10.0" layoutX="190.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo104" fitHeight="40.0" fitWidth="10.0" layoutX="190.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo105" fitHeight="40.0" fitWidth="10.0" layoutX="200.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo104" fitHeight="40.0" fitWidth="10.0" layoutX="378.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo106" fitHeight="40.0" fitWidth="10.0" layoutX="388.0" layoutY="352.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo105" fitHeight="40.0" fitWidth="10.0" layoutX="200.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo107" fitHeight="40.0" fitWidth="10.0" layoutX="160.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo106" fitHeight="40.0" fitWidth="10.0" layoutX="388.0" layoutY="352.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo108" fitHeight="40.0" fitWidth="10.0" layoutX="348.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo107" fitHeight="40.0" fitWidth="10.0" layoutX="160.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo109" fitHeight="40.0" fitWidth="10.0" layoutX="170.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo108" fitHeight="40.0" fitWidth="10.0" layoutX="348.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo110" fitHeight="40.0" fitWidth="10.0" layoutX="358.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo109" fitHeight="40.0" fitWidth="10.0" layoutX="170.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo111" fitHeight="40.0" fitWidth="10.0" layoutX="180.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo110" fitHeight="40.0" fitWidth="10.0" layoutX="358.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo112" fitHeight="40.0" fitWidth="10.0" layoutX="368.0" layoutY="332.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo111" fitHeight="40.0" fitWidth="10.0" layoutX="180.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo113" fitHeight="40.0" fitWidth="10.0" layoutX="190.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo112" fitHeight="40.0" fitWidth="10.0" layoutX="368.0" layoutY="332.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo114" fitHeight="40.0" fitWidth="10.0" layoutX="378.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo113" fitHeight="40.0" fitWidth="10.0" layoutX="190.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo115" fitHeight="40.0" fitWidth="10.0" layoutX="243.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo114" fitHeight="40.0" fitWidth="10.0" layoutX="378.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo116" fitHeight="40.0" fitWidth="10.0" layoutX="338.0" layoutY="302.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo115" fitHeight="40.0" fitWidth="10.0" layoutX="150.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo117" fitHeight="40.0" fitWidth="10.0" layoutX="160.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo116" fitHeight="40.0" fitWidth="10.0" layoutX="338.0" layoutY="302.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo118" fitHeight="40.0" fitWidth="10.0" layoutX="348.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo117" fitHeight="40.0" fitWidth="10.0" layoutX="160.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo119" fitHeight="40.0" fitWidth="10.0" layoutX="170.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="semaforo118" fitHeight="40.0" fitWidth="10.0" layoutX="348.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@FarolVerde.jpg" />
-                           </image>
-                        </ImageView>
-                        <ImageView fx:id="semaforo119" fitHeight="40.0" fitWidth="10.0" layoutX="170.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@FarolVerde.jpg" />
-                           </image>
-                        </ImageView>
-                        <ImageView fx:id="semaforo120" fitHeight="40.0" fitWidth="10.0" layoutX="358.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="semaforo120" fitHeight="40.0" fitWidth="10.0" layoutX="358.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />
                            </image>

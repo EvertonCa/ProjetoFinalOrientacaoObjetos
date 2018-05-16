@@ -23,7 +23,24 @@ public class AreaPrincipalController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
+        colocaSemaforoNoMapa();
+    }
 
+    public void colocaSemaforoNoMapa()
+    {
+        for (int i = 0; i < 120; i ++)
+        {
+            semaforo1.setLayoutX(99);
+            semaforo1.setLayoutY(99);
+            semaforo1.setVisible(true);
+        }
+    }
+    public void tiraSemaforoDoMapa ()
+    {
+        for (int i = 0; i < 120; i ++)
+        {
+            semaforo1.setVisible(false);
+        }
     }
 
     public void determinaQuantidadeDeCarros()
@@ -75,23 +92,17 @@ public class AreaPrincipalController implements Initializable {
         if(toggleButton2Group.getSelectedToggle().equals(botaoHabilitado))
         {
             semaforosHabilitados = true;
+            colocaSemaforoNoMapa();
         }
         else
         {
             semaforosHabilitados = false;
-        }
-        if (semaforosHabilitados)
-        {
-            semaforosFuncionando();
+            tiraSemaforoDoMapa();
         }
 
         System.out.println("Semaforos Habilitados: " + semaforosHabilitados);
     }
 
-    public void semaforosFuncionando()
-    {
-
-    }
 
     public void obterRota() throws IOException
     {
@@ -682,7 +693,6 @@ public class AreaPrincipalController implements Initializable {
             semaforo100, semaforo101, semaforo102, semaforo103, semaforo104, semaforo105, semaforo106, semaforo107, semaforo108,
             semaforo109, semaforo110, semaforo111, semaforo112, semaforo113, semaforo114, semaforo115, semaforo116, semaforo117,
             semaforo118, semaforo119, semaforo120;
-    public ImageView[] semaforo;
 
 
 }
