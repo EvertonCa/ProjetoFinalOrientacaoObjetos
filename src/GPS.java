@@ -1,9 +1,13 @@
-import javax.annotation.processing.SupportedSourceVersion;
+/**
+ / Classe responsável por calcular e retornar a melhor rota para as ruas solicitadas e suas arestas de origem e destino
+ **/
+
 import java.io.IOException;
 import java.util.*;
 
 public class GPS
 {
+    /// construtor padrao
     public GPS()
     {
         Grafo grafo = new Grafo();
@@ -18,6 +22,7 @@ public class GPS
         this.grafo4 = grafo4;
     }
 
+    /// obtem as ruas e encontra as arestas correspondentes.
     public void obterRuasUsuario(String ruaDeOrigem, String ruaDeDestino)
     {
         boolean origemExiste = false, destinoExiste = false;
@@ -42,6 +47,7 @@ public class GPS
         }
     }
 
+    /// verifica se a rua existe
     public String ruaExiste(String rua) {
         try {
             Manipulador manip = new Manipulador();
@@ -102,6 +108,7 @@ public class GPS
         } catch (IOException e){return "Arquivo Não Encontrado";}
     }
 
+    /// encontra as arestas correspondentes a rua solicitada.
     public void encontraArestas(String arestas, String origemOuDestino)
     {
         String separados[] = arestas.split("e");
@@ -175,6 +182,7 @@ public class GPS
         }
     }
 
+    /// encontra os vertices correspondentes a rua selecionada.
     public void encontraVertices(String origemOuDestino)
     {
         if(origemOuDestino.equals("origem"))
@@ -189,16 +197,19 @@ public class GPS
         }
     }
 
+    /// popula a lista de arestas de origem
     public void populaArestasOrigem(Aresta aresta)
     {
         arestasOrigem.add(aresta);
     }
 
+    /// popula a lista de arestas de destino
     public void populaArestasDestino(Aresta aresta)
     {
         arestasDestino.add(aresta);
     }
 
+    /// obtem a melhor rota possivel entre as ruas de origem e destino
     public void obterRota()
     {
         Dijkstra dijkstra1 = new Dijkstra();
@@ -258,6 +269,7 @@ public class GPS
         }
     }
 
+    /// exibe no terminal a melhor rota possivel entre as ruas.
     public void exibirMenorRota()
     {
         System.out.printf("A menor rota para o destino é a seguinte:\n");

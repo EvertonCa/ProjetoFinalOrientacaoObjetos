@@ -1,8 +1,13 @@
+/**
+ / Classe que armazena os vertices do grafo.
+ **/
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Vertice implements Comparable<Vertice>
 {
+    /// construtor padrão
     public Vertice()
     {
         visitado = false;
@@ -18,19 +23,9 @@ public class Vertice implements Comparable<Vertice>
         return arestas;
     }
 
-    public void addAresta(Aresta aresta)
-    {
-        this.arestas.add(aresta);
-    }
-
     public void setVerticesVizinhos(List<Vertice> verticesVizinhos)
     {
         this.verticesVizinhos.addAll(verticesVizinhos);
-    }
-
-    public List<Vertice> getVerticesVizinhos()
-    {
-        return verticesVizinhos;
     }
 
     public void setDescricao(String descricao)
@@ -77,9 +72,6 @@ public class Vertice implements Comparable<Vertice>
         this.quadrante = quadrante;
     }
 
-    public int getQuadrante() {
-        return quadrante;
-    }
 
     public int compareTo(Vertice vertice)
     {

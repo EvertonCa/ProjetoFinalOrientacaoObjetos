@@ -1,5 +1,10 @@
+/**
+ / Classe Arestas.
+ **/
+
 public class Aresta
 {
+    /// Construtor para criação de Arestas com os Vertices de Origem e Destino, peso e quadrante.
     public Aresta(Vertice origem, Vertice destino, int peso, int quadrante)
     {
         this.origem = origem;
