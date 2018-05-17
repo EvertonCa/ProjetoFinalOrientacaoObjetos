@@ -15,7 +15,9 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 public class AreaPrincipalController implements Initializable {
@@ -23,25 +25,132 @@ public class AreaPrincipalController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
+        System.out.println("Entrou na execução");
+        defineCoordenadaSemaforo();
+        System.out.println("Criou lista de interseccoes");
+        criaArrayDeImagens();
+        System.out.println("Criou array");
         colocaSemaforoNoMapa();
+        System.out.println("Colocou no mapa");
     }
 
     public void colocaSemaforoNoMapa()
     {
-        for (int i = 0; i < 120; i ++)
+        for (int i = 0; i < listaDeInteseccao.size(); i++)
         {
-            semaforo1.setLayoutX(99);
-            semaforo1.setLayoutY(99);
-            semaforo1.setVisible(true);
+            for (int j = 0; j < listaDeInteseccao.get(i).getListaSemaforos().size(); j++){
+                if (listaDeInteseccao.get(i).getListaSemaforos().get(j).getQuadrante() == 1)
+                {
+                    vetorDeImagensDoSemaforo.get(i+j).setLayoutX(listaDeInteseccao.get(i).getListaSemaforos().get(j).getX());
+                    vetorDeImagensDoSemaforo.get(i+j).setLayoutX(listaDeInteseccao.get(i).getListaSemaforos().get(j).getY());
+                    vetorDeImagensDoSemaforo.get(i+j).setVisible(true);
+                }
+                if (listaDeInteseccao.get(i).getListaSemaforos().get(j).getQuadrante() == 2)
+                {
+                    vetorDeImagensDoSemaforo.get(i+j).setLayoutX(listaDeInteseccao.get(i).getListaSemaforos().get(j).getX() + 60);
+                    vetorDeImagensDoSemaforo.get(i+j).setLayoutX(listaDeInteseccao.get(i).getListaSemaforos().get(j).getY());
+                    vetorDeImagensDoSemaforo.get(i+j).setVisible(true);
+                }
+                if (listaDeInteseccao.get(i).getListaSemaforos().get(j).getQuadrante() == 1)
+                {
+                    vetorDeImagensDoSemaforo.get(i+j).setLayoutX(listaDeInteseccao.get(i).getListaSemaforos().get(j).getX());
+                    vetorDeImagensDoSemaforo.get(i+j).setLayoutX(listaDeInteseccao.get(i).getListaSemaforos().get(j).getY() + 60);
+                    vetorDeImagensDoSemaforo.get(i+j).setVisible(true);
+                }
+                if (listaDeInteseccao.get(i).getListaSemaforos().get(j).getQuadrante() == 1)
+                {
+                    vetorDeImagensDoSemaforo.get(i+j).setLayoutX(listaDeInteseccao.get(i).getListaSemaforos().get(j).getX() + 60);
+                    vetorDeImagensDoSemaforo.get(i+j).setLayoutX(listaDeInteseccao.get(i).getListaSemaforos().get(j).getY() + 60);
+                    vetorDeImagensDoSemaforo.get(i+j).setVisible(true);
+                }
+            }
         }
     }
     public void tiraSemaforoDoMapa ()
     {
-        for (int i = 0; i < 120; i ++)
+        vetorDeImagensDoSemaforo.get(0).setVisible(false);
+
+        for (int i = 0; i < listaDeInteseccao.size(); i++)
         {
-            semaforo1.setVisible(false);
+            for (int j = 0; j < listaDeInteseccao.get(i).getListaSemaforos().size(); j++){
+                vetorDeImagensDoSemaforo.get(i+j).setVisible(false);
+            }
         }
     }
+
+    public void defineCoordenadaSemaforo()
+    {
+        try
+        {
+            for (int k = 0; k < 4; k ++)
+            {
+                Manipulador manip = new Manipulador();
+                Properties prop;
+
+                switch (k)
+                {
+                    default:
+                    {
+                        prop = manip.getInterseccoesQ1();
+                        break;
+                    }
+
+                    case 2:
+                    {
+                        prop = manip.getInterseccoesQ2();
+                        break;
+                    }
+
+                    case 3:
+                    {
+                        prop = manip.getInterseccoesQ3();
+                        break;
+                    }
+
+                    case 4:
+                    {
+                        prop = manip.getInterseccoesQ4();
+                        break;
+                    }
+
+                }
+
+                System.out.println("Lendo quadrante " + (k+1));
+
+                int quantidadeDeInterseccoes = Integer.parseInt(prop.getProperty("quantidadeDeInterseccoes"));
+
+                for(int i = 0; i < quantidadeDeInterseccoes; i++)
+                {
+                    int descricao = Integer.parseInt(prop.getProperty("interseccao" + i + "Descricao"));
+                    int duracao = Integer.parseInt(prop.getProperty("interseccao" + i + "DuracaoSemaforo"));
+                    int quantidadeDeSemaforos = Integer.parseInt(prop.getProperty("interseccao" + i + "QuantidadeDeSemaforos"));
+                    List <Semaforo> semaforosDaInterseccao = new ArrayList<Semaforo>();
+
+                    for (int j = 0; j < quantidadeDeSemaforos; j++)
+                    {
+                        int quadrante = Integer.parseInt(prop.getProperty("interseccao" + i + "QuadranteDoSemaforo" + j));
+                        int x = Integer.parseInt(prop.getProperty("interseccao" + i + "CoordenadaSemaforoX" + j));
+                        int y = Integer.parseInt(prop.getProperty("interseccao" + i + "CoordenadaSemaforoY" + j));
+                        boolean verde = Boolean.parseBoolean(prop.getProperty("interseccao" + i + "SituacaoSemaforo" + j));
+
+                        semaforosDaInterseccao.add(new Semaforo(x, y, verde, duracao, quadrante));
+                        System.out.println("Leu " + (i+j));
+                    }
+                    listaDeInteseccao.add(new Interseccao(semaforosDaInterseccao, descricao));
+                    semaforosDaInterseccao.clear();
+                }
+                System.out.println("Leu o quadrante " + (k+1));
+            }
+        }catch (IOException e){System.out.println("Erro no arquivo de propriedades");}
+    }
+
+    public void criaArrayDeImagens ()
+    {
+        vetorDeImagensDoSemaforo = new ArrayList<ImageView>();
+
+        vetorDeImagensDoSemaforo.add(semaforo1);
+    }
+
 
     public void determinaQuantidadeDeCarros()
     {
@@ -693,6 +802,6 @@ public class AreaPrincipalController implements Initializable {
             semaforo100, semaforo101, semaforo102, semaforo103, semaforo104, semaforo105, semaforo106, semaforo107, semaforo108,
             semaforo109, semaforo110, semaforo111, semaforo112, semaforo113, semaforo114, semaforo115, semaforo116, semaforo117,
             semaforo118, semaforo119, semaforo120;
-
-
+    protected List <Interseccao> listaDeInteseccao;
+    protected ArrayList <ImageView> vetorDeImagensDoSemaforo;
 }

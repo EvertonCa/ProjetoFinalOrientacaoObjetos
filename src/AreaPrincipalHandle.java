@@ -66,71 +66,6 @@ public class AreaPrincipalHandle {
         }
     }
 
-    public List<Interseccao> defineCoordenadaSemaforo()
-    {
-        try
-        {
-            for (int k = 0; k < 1; k ++)
-            {
-                Manipulador manip = new Manipulador();
-                Properties prop;
-
-            switch (k)
-            {
-                default:
-                {
-                    prop = manip.getInterseccoesQ1();
-                    break;
-                }
-
-                case 2:
-                {
-                    prop = manip.getInterseccoesQ2();
-                    break;
-                }
-
-                case 3:
-                {
-                    prop = manip.getInterseccoesQ3();
-                    break;
-                }
-
-                case 4:
-                {
-                    prop = manip.getInterseccoesQ4();
-                    break;
-                }
-
-            }
-
-                int quantidadeDeInterseccoes = Integer.parseInt(prop.getProperty("quantidadeDeInterseccoes"));
-                int quandrante = Integer.parseInt(prop.getProperty("quadrante"));
-
-                for(int i = 0; i < quantidadeDeInterseccoes; i++)
-                {
-                    int descricao = Integer.parseInt(prop.getProperty("interseccao" + i + "Descricao"));
-                    int quantidadeDeSemaforos = Integer.parseInt(prop.getProperty("interseccao" + i + "QuantidadeDeSemaforos"));
-                    List <Semaforo> semaforosDaInterseccao = new ArrayList<Semaforo>();
-
-                    for (int j = 0; j < quantidadeDeSemaforos; j++)
-                    {
-                        int quadrante = Integer.parseInt(prop.getProperty("interseccao" + i + "QuadranteDoSemaforo" + j));
-                        int x = Integer.parseInt(prop.getProperty("interseccao" + i + "CoordenadaSemaforoX" + j));
-                        int y = Integer.parseInt(prop.getProperty("interseccao" + i + "CoordenadaSemaforoY" + j));
-                        boolean verde = Boolean.parseBoolean(prop.getProperty("interseccao" + i + "SituacaoSemaforo" + j));
-
-                        int duracao = Integer.parseInt(prop.getProperty("interseccao" + i + "DuracaoSemaforo"));
-
-                        semaforosDaInterseccao.add(new Semaforo(x, y, verde, duracao, quandrante));
-                    }
-                    listaDeInteseccao.add(new Interseccao(semaforosDaInterseccao, descricao));
-                }
-            }
-        }catch (IOException e){System.out.println("Erro no arquivo de propriedades");}
-
-        return listaDeInteseccao;
-    }
-
     public void moveObjetos(ImageView carro) //incrementos de 0.15 px para 40fps e mapa de 720x720
     {
         if(keepGoing && !girando)
@@ -394,5 +329,4 @@ public class AreaPrincipalHandle {
     protected double xInicial, yInicial, xAtual, yAtual, contadorRotacao = 0.0;
     protected boolean keepGoing = true, girando = false;
     protected int quadranteInicial;
-    protected List <Interseccao> listaDeInteseccao;
 }
