@@ -329,6 +329,8 @@
                               <Image url="@carroVerdeMini.png" />
                            </image>
                         </ImageView>
+                        <FlowPane fx:id="container" minWidth="780.0" minHeight="780.0" prefHeight="780.0" prefWidth="780.0" StackPane.alignment="CENTER">
+                        </FlowPane>
                         <ImageView fx:id="semaforo1" fitHeight="40.0" fitWidth="10.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@FarolVerde.jpg" />

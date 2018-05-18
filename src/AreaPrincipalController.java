@@ -5,10 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -66,6 +63,16 @@ public class AreaPrincipalController implements Initializable {
             }
         }
     }
+
+    public void initialize() {
+        vetorDeImagensDoSemaforo = new ArrayList<>();
+        for (int i = 1; i <= 120; i++) {
+            ImageView label = new ImageView("FarolVerde.jpg");
+            vetorDeImagensDoSemaforo.add(label);
+            container.getChildren().add(label);
+        }
+    }
+
     public void tiraSemaforoDoMapa ()
     {
         vetorDeImagensDoSemaforo.get(0).setVisible(false);
@@ -803,5 +810,6 @@ public class AreaPrincipalController implements Initializable {
             semaforo109, semaforo110, semaforo111, semaforo112, semaforo113, semaforo114, semaforo115, semaforo116, semaforo117,
             semaforo118, semaforo119, semaforo120;
     protected List <Interseccao> listaDeInteseccao;
-    protected ArrayList <ImageView> vetorDeImagensDoSemaforo;
+    private FlowPane container ;
+    protected List <ImageView> vetorDeImagensDoSemaforo;
 }
