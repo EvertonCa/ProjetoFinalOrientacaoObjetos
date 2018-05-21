@@ -35,68 +35,58 @@ public class AreaPrincipalController implements Initializable {
     {
         for (int i = 0; i < listaDeInteseccao.size(); i++)
         {
+            System.out.println("Interseccao " + i);
             for (int j = 0; j < listaDeInteseccao.get(i).getListaSemaforos().size(); j++){
+                System.out.println("Semaforo " + j);
                 if (listaDeInteseccao.get(i).getListaSemaforos().get(j).getQuadrante() == 1)
                 {
-                    vetorDeImagensDoSemaforo.get(i+j).setLayoutX(listaDeInteseccao.get(i).getListaSemaforos().get(j).getX());
-                    vetorDeImagensDoSemaforo.get(i+j).setLayoutX(listaDeInteseccao.get(i).getListaSemaforos().get(j).getY());
+                    vetorDeImagensDoSemaforo.get(i+j).setX(listaDeInteseccao.get(i).getListaSemaforos().get(j).getX());
+                    vetorDeImagensDoSemaforo.get(i+j).setY(listaDeInteseccao.get(i).getListaSemaforos().get(j).getY());
                     vetorDeImagensDoSemaforo.get(i+j).setVisible(true);
                 }
-                if (listaDeInteseccao.get(i).getListaSemaforos().get(j).getQuadrante() == 2)
+                else if (listaDeInteseccao.get(i).getListaSemaforos().get(j).getQuadrante() == 2)
                 {
-                    vetorDeImagensDoSemaforo.get(i+j).setLayoutX(listaDeInteseccao.get(i).getListaSemaforos().get(j).getX() + 60);
-                    vetorDeImagensDoSemaforo.get(i+j).setLayoutX(listaDeInteseccao.get(i).getListaSemaforos().get(j).getY());
+                    vetorDeImagensDoSemaforo.get(i+j).setX(listaDeInteseccao.get(i).getListaSemaforos().get(j).getX() + 60);
+                    vetorDeImagensDoSemaforo.get(i+j).setY(listaDeInteseccao.get(i).getListaSemaforos().get(j).getY());
                     vetorDeImagensDoSemaforo.get(i+j).setVisible(true);
                 }
-                if (listaDeInteseccao.get(i).getListaSemaforos().get(j).getQuadrante() == 1)
+                else if (listaDeInteseccao.get(i).getListaSemaforos().get(j).getQuadrante() == 3)
                 {
-                    vetorDeImagensDoSemaforo.get(i+j).setLayoutX(listaDeInteseccao.get(i).getListaSemaforos().get(j).getX());
-                    vetorDeImagensDoSemaforo.get(i+j).setLayoutX(listaDeInteseccao.get(i).getListaSemaforos().get(j).getY() + 60);
+                    vetorDeImagensDoSemaforo.get(i+j).setX(listaDeInteseccao.get(i).getListaSemaforos().get(j).getX());
+                    vetorDeImagensDoSemaforo.get(i+j).setY(listaDeInteseccao.get(i).getListaSemaforos().get(j).getY() + 60);
                     vetorDeImagensDoSemaforo.get(i+j).setVisible(true);
                 }
-                if (listaDeInteseccao.get(i).getListaSemaforos().get(j).getQuadrante() == 1)
+                else
                 {
-                    vetorDeImagensDoSemaforo.get(i+j).setLayoutX(listaDeInteseccao.get(i).getListaSemaforos().get(j).getX() + 60);
-                    vetorDeImagensDoSemaforo.get(i+j).setLayoutX(listaDeInteseccao.get(i).getListaSemaforos().get(j).getY() + 60);
+                    vetorDeImagensDoSemaforo.get(i+j).setX(listaDeInteseccao.get(i).getListaSemaforos().get(j).getX() + 60);
+                    vetorDeImagensDoSemaforo.get(i+j).setY(listaDeInteseccao.get(i).getListaSemaforos().get(j).getY() + 60);
                     vetorDeImagensDoSemaforo.get(i+j).setVisible(true);
                 }
             }
-        }
-    }
-
-    public void initialize() {
-        vetorDeImagensDoSemaforo = new ArrayList<>();
-        for (int i = 1; i <= 120; i++) {
-            ImageView label = new ImageView("FarolVerde.jpg");
-            vetorDeImagensDoSemaforo.add(label);
-            container.getChildren().add(label);
         }
     }
 
     public void tiraSemaforoDoMapa ()
     {
-        vetorDeImagensDoSemaforo.get(0).setVisible(false);
-
-        for (int i = 0; i < listaDeInteseccao.size(); i++)
+        for (int i = 0; i < 120; i++)
         {
-            for (int j = 0; j < listaDeInteseccao.get(i).getListaSemaforos().size(); j++){
-                vetorDeImagensDoSemaforo.get(i+j).setVisible(false);
-            }
+            vetorDeImagensDoSemaforo.get(i).setVisible(false);
         }
     }
 
     public void defineCoordenadaSemaforo()
     {
+        listaDeInteseccao = new ArrayList<>();
         try
         {
-            for (int k = 0; k < 4; k ++)
+            for (int k = 1; k <= 4; k ++)
             {
                 Manipulador manip = new Manipulador();
                 Properties prop;
 
                 switch (k)
                 {
-                    default:
+                    case 1:
                     {
                         prop = manip.getInterseccoesQ1();
                         break;
@@ -114,7 +104,7 @@ public class AreaPrincipalController implements Initializable {
                         break;
                     }
 
-                    case 4:
+                    default:
                     {
                         prop = manip.getInterseccoesQ4();
                         break;
@@ -122,16 +112,16 @@ public class AreaPrincipalController implements Initializable {
 
                 }
 
-                System.out.println("Lendo quadrante " + (k+1));
-
                 int quantidadeDeInterseccoes = Integer.parseInt(prop.getProperty("quantidadeDeInterseccoes"));
 
                 for(int i = 0; i < quantidadeDeInterseccoes; i++)
                 {
+                    System.out.println("Interseccao " + (i+1));
                     int descricao = Integer.parseInt(prop.getProperty("interseccao" + i + "Descricao"));
                     int duracao = Integer.parseInt(prop.getProperty("interseccao" + i + "DuracaoSemaforo"));
                     int quantidadeDeSemaforos = Integer.parseInt(prop.getProperty("interseccao" + i + "QuantidadeDeSemaforos"));
-                    List <Semaforo> semaforosDaInterseccao = new ArrayList<Semaforo>();
+
+                    ArrayList <Semaforo> semaforosDaInterseccao = new ArrayList<Semaforo>();
 
                     for (int j = 0; j < quantidadeDeSemaforos; j++)
                     {
@@ -141,12 +131,19 @@ public class AreaPrincipalController implements Initializable {
                         boolean verde = Boolean.parseBoolean(prop.getProperty("interseccao" + i + "SituacaoSemaforo" + j));
 
                         semaforosDaInterseccao.add(new Semaforo(x, y, verde, duracao, quadrante));
-                        System.out.println("Leu " + (i+j));
+                    }
+                    for (int j = 0; j < semaforosDaInterseccao.size(); j++)
+                    {
+                        System.out.println(semaforosDaInterseccao.get(j).getX());
+                        System.out.println(semaforosDaInterseccao.get(j).getY());
+                        System.out.println(semaforosDaInterseccao.get(j).getVerde());
+                        System.out.println(semaforosDaInterseccao.get(j).getQuadrante());
+                        System.out.println(semaforosDaInterseccao.get(j).getDuracao());
                     }
                     listaDeInteseccao.add(new Interseccao(semaforosDaInterseccao, descricao));
                     semaforosDaInterseccao.clear();
                 }
-                System.out.println("Leu o quadrante " + (k+1));
+                System.out.println("Leu os semaforos do quadrante " + (k+1));
             }
         }catch (IOException e){System.out.println("Erro no arquivo de propriedades");}
     }
@@ -156,6 +153,125 @@ public class AreaPrincipalController implements Initializable {
         vetorDeImagensDoSemaforo = new ArrayList<ImageView>();
 
         vetorDeImagensDoSemaforo.add(semaforo1);
+        vetorDeImagensDoSemaforo.add(semaforo2);
+        vetorDeImagensDoSemaforo.add(semaforo3);
+        vetorDeImagensDoSemaforo.add(semaforo4);
+        vetorDeImagensDoSemaforo.add(semaforo5);
+        vetorDeImagensDoSemaforo.add(semaforo6);
+        vetorDeImagensDoSemaforo.add(semaforo7);
+        vetorDeImagensDoSemaforo.add(semaforo8);
+        vetorDeImagensDoSemaforo.add(semaforo9);
+        vetorDeImagensDoSemaforo.add(semaforo10);
+        vetorDeImagensDoSemaforo.add(semaforo11);
+        vetorDeImagensDoSemaforo.add(semaforo12);
+        vetorDeImagensDoSemaforo.add(semaforo13);
+        vetorDeImagensDoSemaforo.add(semaforo14);
+        vetorDeImagensDoSemaforo.add(semaforo15);
+        vetorDeImagensDoSemaforo.add(semaforo16);
+        vetorDeImagensDoSemaforo.add(semaforo17);
+        vetorDeImagensDoSemaforo.add(semaforo18);
+        vetorDeImagensDoSemaforo.add(semaforo19);
+        vetorDeImagensDoSemaforo.add(semaforo20);
+        vetorDeImagensDoSemaforo.add(semaforo21);
+        vetorDeImagensDoSemaforo.add(semaforo22);
+        vetorDeImagensDoSemaforo.add(semaforo23);
+        vetorDeImagensDoSemaforo.add(semaforo24);
+        vetorDeImagensDoSemaforo.add(semaforo25);
+        vetorDeImagensDoSemaforo.add(semaforo26);
+        vetorDeImagensDoSemaforo.add(semaforo27);
+        vetorDeImagensDoSemaforo.add(semaforo28);
+        vetorDeImagensDoSemaforo.add(semaforo29);
+        vetorDeImagensDoSemaforo.add(semaforo30);
+        vetorDeImagensDoSemaforo.add(semaforo31);
+        vetorDeImagensDoSemaforo.add(semaforo32);
+        vetorDeImagensDoSemaforo.add(semaforo33);
+        vetorDeImagensDoSemaforo.add(semaforo34);
+        vetorDeImagensDoSemaforo.add(semaforo35);
+        vetorDeImagensDoSemaforo.add(semaforo36);
+        vetorDeImagensDoSemaforo.add(semaforo37);
+        vetorDeImagensDoSemaforo.add(semaforo38);
+        vetorDeImagensDoSemaforo.add(semaforo39);
+        vetorDeImagensDoSemaforo.add(semaforo40);
+        vetorDeImagensDoSemaforo.add(semaforo41);
+        vetorDeImagensDoSemaforo.add(semaforo42);
+        vetorDeImagensDoSemaforo.add(semaforo43);
+        vetorDeImagensDoSemaforo.add(semaforo44);
+        vetorDeImagensDoSemaforo.add(semaforo45);
+        vetorDeImagensDoSemaforo.add(semaforo46);
+        vetorDeImagensDoSemaforo.add(semaforo47);
+        vetorDeImagensDoSemaforo.add(semaforo48);
+        vetorDeImagensDoSemaforo.add(semaforo49);
+        vetorDeImagensDoSemaforo.add(semaforo50);
+        vetorDeImagensDoSemaforo.add(semaforo51);
+        vetorDeImagensDoSemaforo.add(semaforo52);
+        vetorDeImagensDoSemaforo.add(semaforo53);
+        vetorDeImagensDoSemaforo.add(semaforo54);
+        vetorDeImagensDoSemaforo.add(semaforo55);
+        vetorDeImagensDoSemaforo.add(semaforo56);
+        vetorDeImagensDoSemaforo.add(semaforo57);
+        vetorDeImagensDoSemaforo.add(semaforo58);
+        vetorDeImagensDoSemaforo.add(semaforo59);
+        vetorDeImagensDoSemaforo.add(semaforo60);
+        vetorDeImagensDoSemaforo.add(semaforo61);
+        vetorDeImagensDoSemaforo.add(semaforo62);
+        vetorDeImagensDoSemaforo.add(semaforo63);
+        vetorDeImagensDoSemaforo.add(semaforo64);
+        vetorDeImagensDoSemaforo.add(semaforo65);
+        vetorDeImagensDoSemaforo.add(semaforo66);
+        vetorDeImagensDoSemaforo.add(semaforo67);
+        vetorDeImagensDoSemaforo.add(semaforo68);
+        vetorDeImagensDoSemaforo.add(semaforo69);
+        vetorDeImagensDoSemaforo.add(semaforo70);
+        vetorDeImagensDoSemaforo.add(semaforo71);
+        vetorDeImagensDoSemaforo.add(semaforo72);
+        vetorDeImagensDoSemaforo.add(semaforo73);
+        vetorDeImagensDoSemaforo.add(semaforo74);
+        vetorDeImagensDoSemaforo.add(semaforo75);
+        vetorDeImagensDoSemaforo.add(semaforo76);
+        vetorDeImagensDoSemaforo.add(semaforo77);
+        vetorDeImagensDoSemaforo.add(semaforo78);
+        vetorDeImagensDoSemaforo.add(semaforo79);
+        vetorDeImagensDoSemaforo.add(semaforo80);
+        vetorDeImagensDoSemaforo.add(semaforo81);
+        vetorDeImagensDoSemaforo.add(semaforo82);
+        vetorDeImagensDoSemaforo.add(semaforo83);
+        vetorDeImagensDoSemaforo.add(semaforo84);
+        vetorDeImagensDoSemaforo.add(semaforo85);
+        vetorDeImagensDoSemaforo.add(semaforo86);
+        vetorDeImagensDoSemaforo.add(semaforo87);
+        vetorDeImagensDoSemaforo.add(semaforo88);
+        vetorDeImagensDoSemaforo.add(semaforo89);
+        vetorDeImagensDoSemaforo.add(semaforo90);
+        vetorDeImagensDoSemaforo.add(semaforo91);
+        vetorDeImagensDoSemaforo.add(semaforo92);
+        vetorDeImagensDoSemaforo.add(semaforo93);
+        vetorDeImagensDoSemaforo.add(semaforo94);
+        vetorDeImagensDoSemaforo.add(semaforo95);
+        vetorDeImagensDoSemaforo.add(semaforo96);
+        vetorDeImagensDoSemaforo.add(semaforo97);
+        vetorDeImagensDoSemaforo.add(semaforo98);
+        vetorDeImagensDoSemaforo.add(semaforo99);
+        vetorDeImagensDoSemaforo.add(semaforo100);
+        vetorDeImagensDoSemaforo.add(semaforo101);
+        vetorDeImagensDoSemaforo.add(semaforo102);
+        vetorDeImagensDoSemaforo.add(semaforo103);
+        vetorDeImagensDoSemaforo.add(semaforo104);
+        vetorDeImagensDoSemaforo.add(semaforo105);
+        vetorDeImagensDoSemaforo.add(semaforo106);
+        vetorDeImagensDoSemaforo.add(semaforo107);
+        vetorDeImagensDoSemaforo.add(semaforo108);
+        vetorDeImagensDoSemaforo.add(semaforo109);
+        vetorDeImagensDoSemaforo.add(semaforo110);
+        vetorDeImagensDoSemaforo.add(semaforo111);
+        vetorDeImagensDoSemaforo.add(semaforo112);
+        vetorDeImagensDoSemaforo.add(semaforo113);
+        vetorDeImagensDoSemaforo.add(semaforo114);
+        vetorDeImagensDoSemaforo.add(semaforo115);
+        vetorDeImagensDoSemaforo.add(semaforo116);
+        vetorDeImagensDoSemaforo.add(semaforo117);
+        vetorDeImagensDoSemaforo.add(semaforo118);
+        vetorDeImagensDoSemaforo.add(semaforo119);
+        vetorDeImagensDoSemaforo.add(semaforo120);
     }
 
 
@@ -809,7 +925,6 @@ public class AreaPrincipalController implements Initializable {
             semaforo100, semaforo101, semaforo102, semaforo103, semaforo104, semaforo105, semaforo106, semaforo107, semaforo108,
             semaforo109, semaforo110, semaforo111, semaforo112, semaforo113, semaforo114, semaforo115, semaforo116, semaforo117,
             semaforo118, semaforo119, semaforo120;
-    protected List <Interseccao> listaDeInteseccao;
-    private FlowPane container ;
-    protected List <ImageView> vetorDeImagensDoSemaforo;
+    protected ArrayList <Interseccao> listaDeInteseccao;
+    protected ArrayList <ImageView> vetorDeImagensDoSemaforo;
 }
