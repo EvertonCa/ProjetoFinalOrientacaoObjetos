@@ -33,42 +33,48 @@ public class AreaPrincipalController implements Initializable {
 
     public void colocaSemaforoNoMapa()
     {
+        int cont = 0;
+        int cont1 = 0;
         for (int i = 0; i < listaDeInteseccao.size(); i++)
         {
             System.out.println("Interseccao " + i);
             for (int j = 0; j < listaDeInteseccao.get(i).getListaSemaforos().size(); j++){
-                System.out.println("Semaforo " + j);
+                System.out.println("Semaforo " + j + " quadrante " + listaDeInteseccao.get(i).getListaSemaforos().get(j).getQuadrante());
                 if (listaDeInteseccao.get(i).getListaSemaforos().get(j).getQuadrante() == 1)
                 {
-                    vetorDeImagensDoSemaforo.get(i+j).setX(listaDeInteseccao.get(i).getListaSemaforos().get(j).getX());
-                    vetorDeImagensDoSemaforo.get(i+j).setY(listaDeInteseccao.get(i).getListaSemaforos().get(j).getY());
-                    vetorDeImagensDoSemaforo.get(i+j).setVisible(true);
+                    cont1 ++;
+                    vetorDeImagensDoSemaforo.get(cont).setX(listaDeInteseccao.get(i).getListaSemaforos().get(j).getY() *3);
+                    vetorDeImagensDoSemaforo.get(cont).setY(listaDeInteseccao.get(i).getListaSemaforos().get(j).getX()*3);
+                    vetorDeImagensDoSemaforo.get(cont).setVisible(true);
                 }
-                else if (listaDeInteseccao.get(i).getListaSemaforos().get(j).getQuadrante() == 2)
-                {
-                    vetorDeImagensDoSemaforo.get(i+j).setX(listaDeInteseccao.get(i).getListaSemaforos().get(j).getX() + 60);
-                    vetorDeImagensDoSemaforo.get(i+j).setY(listaDeInteseccao.get(i).getListaSemaforos().get(j).getY());
-                    vetorDeImagensDoSemaforo.get(i+j).setVisible(true);
-                }
-                else if (listaDeInteseccao.get(i).getListaSemaforos().get(j).getQuadrante() == 3)
-                {
-                    vetorDeImagensDoSemaforo.get(i+j).setX(listaDeInteseccao.get(i).getListaSemaforos().get(j).getX());
-                    vetorDeImagensDoSemaforo.get(i+j).setY(listaDeInteseccao.get(i).getListaSemaforos().get(j).getY() + 60);
-                    vetorDeImagensDoSemaforo.get(i+j).setVisible(true);
-                }
-                else
-                {
-                    vetorDeImagensDoSemaforo.get(i+j).setX(listaDeInteseccao.get(i).getListaSemaforos().get(j).getX() + 60);
-                    vetorDeImagensDoSemaforo.get(i+j).setY(listaDeInteseccao.get(i).getListaSemaforos().get(j).getY() + 60);
-                    vetorDeImagensDoSemaforo.get(i+j).setVisible(true);
-                }
+//                else if (listaDeInteseccao.get(i).getListaSemaforos().get(j).getQuadrante() == 2)
+//                {
+//                    vetorDeImagensDoSemaforo.get(cont).setX((listaDeInteseccao.get(i).getListaSemaforos().get(j).getX() + 60) * 6.4);
+//                    vetorDeImagensDoSemaforo.get(cont).setY(listaDeInteseccao.get(i).getListaSemaforos().get(j).getY() * 6.4);
+//                    vetorDeImagensDoSemaforo.get(cont).setVisible(true);
+//                }
+//                else if (listaDeInteseccao.get(i).getListaSemaforos().get(j).getQuadrante() == 3)
+//                {
+//                    vetorDeImagensDoSemaforo.get(cont).setX(listaDeInteseccao.get(i).getListaSemaforos().get(j).getX() * 6.4);
+//                    vetorDeImagensDoSemaforo.get(cont).setY((listaDeInteseccao.get(i).getListaSemaforos().get(j).getY() + 60) * 6.4);
+//                    vetorDeImagensDoSemaforo.get(cont).setVisible(true);
+//                }
+//                else
+//                {
+//                    vetorDeImagensDoSemaforo.get(cont).setX((listaDeInteseccao.get(i).getListaSemaforos().get(j).getX() + 60) * 6.4);
+//                    vetorDeImagensDoSemaforo.get(cont).setY((listaDeInteseccao.get(i).getListaSemaforos().get(j).getY() + 60) * 6.4);
+//                    vetorDeImagensDoSemaforo.get(cont).setVisible(true);
+//                }
+                cont ++;
             }
         }
+        System.out.println(cont);
+        System.out.println(cont1);
     }
 
     public void tiraSemaforoDoMapa ()
     {
-        for (int i = 0; i < 120; i++)
+        for (int i = 0; i < vetorDeImagensDoSemaforo.size(); i++)
         {
             vetorDeImagensDoSemaforo.get(i).setVisible(false);
         }
@@ -141,9 +147,8 @@ public class AreaPrincipalController implements Initializable {
                         System.out.println(semaforosDaInterseccao.get(j).getDuracao());
                     }
                     listaDeInteseccao.add(new Interseccao(semaforosDaInterseccao, descricao));
-                    semaforosDaInterseccao.clear();
                 }
-                System.out.println("Leu os semaforos do quadrante " + (k+1));
+                System.out.println("Leu os semaforos do quadrante " + (k));
             }
         }catch (IOException e){System.out.println("Erro no arquivo de propriedades");}
     }
@@ -266,12 +271,6 @@ public class AreaPrincipalController implements Initializable {
         vetorDeImagensDoSemaforo.add(semaforo112);
         vetorDeImagensDoSemaforo.add(semaforo113);
         vetorDeImagensDoSemaforo.add(semaforo114);
-        vetorDeImagensDoSemaforo.add(semaforo115);
-        vetorDeImagensDoSemaforo.add(semaforo116);
-        vetorDeImagensDoSemaforo.add(semaforo117);
-        vetorDeImagensDoSemaforo.add(semaforo118);
-        vetorDeImagensDoSemaforo.add(semaforo119);
-        vetorDeImagensDoSemaforo.add(semaforo120);
     }
 
 
