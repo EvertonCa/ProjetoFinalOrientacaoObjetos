@@ -1,3 +1,7 @@
+/**
+ / Constrolador dos popups de aviso de veiculos que chegaram no destino
+ **/
+
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 

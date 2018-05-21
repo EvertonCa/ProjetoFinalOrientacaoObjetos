@@ -1,5 +1,10 @@
+/**
+ / Classe pai veiculos que é extendida em AutoPilot e armazena coordenadas do veiculo
+ **/
+
 public class Veiculos
 {
+    /// Construtor padrão
     public Veiculos()
     {
         Aleatorio random = new Aleatorio();
@@ -16,6 +21,7 @@ public class Veiculos
         return yDestino;
     }
 
+    /// Cria uma ID aleatória para veiculos aleatórios
     public void setIDParaRandom()
     {
         Aleatorio random = new Aleatorio();

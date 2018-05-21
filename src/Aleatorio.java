@@ -1,40 +1,13 @@
-import java.util.List;
+/**
+/ Classe responsável pela criação de ruas de origem, destino e IDs aleatórios
+ **/
+
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Aleatorio
 {
-    public static Aresta randomizeArestaGrafo(Grafo grafo)
-    {
-        int quadrante = ThreadLocalRandom.current().nextInt(1,5);
-        int tamanhoLista;
-        switch (quadrante)
-        {
-            default:
-            {
-                tamanhoLista = grafo.getListaArestasQ1().size();
-                return grafo.getListaArestasQ1().get(ThreadLocalRandom.current().nextInt(0,tamanhoLista));
-            }
 
-            case 2:
-            {
-                tamanhoLista = grafo.getListaArestasQ2().size();
-                return grafo.getListaArestasQ2().get(ThreadLocalRandom.current().nextInt(0,tamanhoLista));
-            }
-
-            case 3:
-            {
-                tamanhoLista = grafo.getListaArestasQ3().size();
-                return grafo.getListaArestasQ3().get(ThreadLocalRandom.current().nextInt(0,tamanhoLista));
-            }
-
-            case 4:
-            {
-                tamanhoLista = grafo.getListaArestasQ4().size();
-                return grafo.getListaArestasQ4().get(ThreadLocalRandom.current().nextInt(0,tamanhoLista));
-            }
-        }
-    }
-
+    /// Retorna uma Rua de Origem aleatória
     public static String randomizaRua()
     {
         String rua;
@@ -46,6 +19,7 @@ public class Aleatorio
         return rua;
     }
 
+    /// Retorna uma Rua de Destino aleatória que não seja igual a rua de Origem ou a Rua 32
     public static String randomizaRuaComExcecao(String excecao)
     {
         String rua = randomizaRua();
@@ -56,13 +30,6 @@ public class Aleatorio
         }
 
         return rua;
-    }
-
-    public static Aresta randomizeArestaVertice(Vertice vertice)
-    {
-        List <Aresta> listaDeArestas = vertice.getArestas();
-        int tamanho = listaDeArestas.size();
-        return listaDeArestas.get(ThreadLocalRandom.current().nextInt(0,tamanho+1));
     }
 
     ///volta um número aleatório entre 100 e 300000
