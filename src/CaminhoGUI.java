@@ -1,3 +1,7 @@
+/**
+ / Objeto que armazena os caminhos e coordenadas do veiculo para a interface
+ **/
+
 public class CaminhoGUI {
     public CaminhoGUI(String direcao, int tamanho, int xInicial, int yInicial)
     {

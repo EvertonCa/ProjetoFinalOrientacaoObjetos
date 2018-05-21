@@ -1,5 +1,8 @@
+/**
+ / Classe responsável por administrar a criação e movimentação de veiculos individuais
+ **/
+
 import javafx.scene.image.ImageView;
-import java.io.IOException;
 import java.util.List;
 import java.util.ArrayList;
 import java.io.FileInputStream;
@@ -8,6 +11,7 @@ import java.util.Properties;
 
 public class AreaPrincipalHandle {
 
+    /// Construtor que recebe as ruas de origem e destino e calcula a rota e os caminhos para o veiculo.
     public AreaPrincipalHandle(String ruaDeOrigem, String ruaDeDestino)
     {
         this.ruaDeOrigem = ruaDeOrigem;
@@ -42,6 +46,7 @@ public class AreaPrincipalHandle {
         }
     }
 
+    /// Define a coordenada inicial na Rua de Origem.
     public void defineCoordenadaInicial()
     {
         if(quadranteInicial == 1)
@@ -66,7 +71,8 @@ public class AreaPrincipalHandle {
         }
     }
 
-    public void moveObjetos(ImageView carro) //incrementos de 0.15 px para 40fps e mapa de 720x720
+    /// Move o objeto 0.5 pixel ou o gira para a direção definida.
+    public void moveObjetos(ImageView carro)
     {
         if(keepGoing && !girando)
         {
@@ -133,6 +139,7 @@ public class AreaPrincipalHandle {
 
     }
 
+    /// Método auxiliar para "MoveObjeto"
     private void cimaOuBaixo(String esquerda, String direita) {
         if(caminhosGUI.size() > 1)
         {
@@ -153,6 +160,7 @@ public class AreaPrincipalHandle {
             keepGoing = false;
     }
 
+    /// Método auxiliar para "MoveObjeto"
     private void direitaOuEsquerda(String horario, String antihorario) {
         if(caminhosGUI.size() > 1)
         {
@@ -173,6 +181,7 @@ public class AreaPrincipalHandle {
             keepGoing = false;
     }
 
+    /// Gira o veiculos para o sentido correto (5 graus por iteração)
     public void gira(ImageView carro)
     {
         if(giraPara.equals("horario"))
@@ -191,137 +200,18 @@ public class AreaPrincipalHandle {
         }
     }
 
-
-
-    public GPS getGps() {
-        return gps;
-    }
-
-    public void setGps(GPS gps) {
-        this.gps = gps;
-    }
-
-    public AutoPilot getTesla() {
-        return tesla;
-    }
-
-    public void setTesla(AutoPilot tesla) {
-        this.tesla = tesla;
-    }
-
-    public List<CaminhoGUI> getCaminhosGUI() {
-        return caminhosGUI;
-    }
-
-    public void setCaminhosGUI(List<CaminhoGUI> caminhosGUI) {
-        this.caminhosGUI = caminhosGUI;
-    }
-
-    public String getRuaDeOrigem() {
-        return ruaDeOrigem;
-    }
-
-    public void setRuaDeOrigem(String ruaDeOrigem) {
-        this.ruaDeOrigem = ruaDeOrigem;
-    }
-
-    public String getRuaDeDestino() {
-        return ruaDeDestino;
-    }
-
-    public void setRuaDeDestino(String ruaDeDestino) {
-        this.ruaDeDestino = ruaDeDestino;
-    }
-
     public String getRespostaGPSOrigem() {
         return respostaGPSOrigem;
-    }
-
-    public void setRespostaGPSOrigem(String respostaGPSOrigem) {
-        this.respostaGPSOrigem = respostaGPSOrigem;
     }
 
     public String getRespostaGPSDestino() {
         return respostaGPSDestino;
     }
 
-    public void setRespostaGPSDestino(String respostaGPSDestino) {
-        this.respostaGPSDestino = respostaGPSDestino;
-    }
-
-    public String getGiraPara() {
-        return giraPara;
-    }
-
-    public void setGiraPara(String giraPara) {
-        this.giraPara = giraPara;
-    }
-
-    public double getxInicial() {
-        return xInicial;
-    }
-
-    public void setxInicial(double xInicial) {
-        this.xInicial = xInicial;
-    }
-
-    public double getyInicial() {
-        return yInicial;
-    }
-
-    public void setyInicial(double yInicial) {
-        this.yInicial = yInicial;
-    }
-
-    public double getxAtual() {
-        return xAtual;
-    }
-
-    public void setxAtual(double xAtual) {
-        this.xAtual = xAtual;
-    }
-
-    public double getyAtual() {
-        return yAtual;
-    }
-
-    public void setyAtual(double yAtual) {
-        this.yAtual = yAtual;
-    }
-
-    public double getContadorRotacao() {
-        return contadorRotacao;
-    }
-
-    public void setContadorRotacao(double contadorRotacao) {
-        this.contadorRotacao = contadorRotacao;
-    }
-
     public boolean isKeepGoing() {
         return keepGoing;
     }
-
-    public void setKeepGoing(boolean keepGoing) {
-        this.keepGoing = keepGoing;
-    }
-
-    public boolean isGirando() {
-        return girando;
-    }
-
-    public void setGirando(boolean girando) {
-        this.girando = girando;
-    }
-
-    public int getQuadranteInicial() {
-        return quadranteInicial;
-    }
-
-    public void setQuadranteInicial(int quadranteInicial) {
-        this.quadranteInicial = quadranteInicial;
-    }
-
-    //protected ImageView carro;
+    
     protected GPS gps;
     protected AutoPilot tesla;
     protected List<CaminhoGUI> caminhosGUI;

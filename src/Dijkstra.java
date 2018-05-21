@@ -1,3 +1,7 @@
+/**
+ / Algoritmo de Dijkstra para calculo de melhor rota em um grafo com peso.
+ **/
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

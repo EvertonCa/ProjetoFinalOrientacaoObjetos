@@ -1,9 +1,14 @@
+/**
+ / Classe responsavel por manipular as properties que armazenam as Ruas, Arestas, Vertices e Semaforos
+ **/
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
 public class Manipulador
 {
+    /// retorna a property das arestas do quadrante 1
     public static Properties getArestasQ1() throws IOException
     {
         Properties props = new Properties();
@@ -12,6 +17,7 @@ public class Manipulador
         return props;
     }
 
+    /// retorna a property dos vertices do quadrante 1
     public static Properties getVerticesQ1() throws IOException
     {
         Properties props = new Properties();
@@ -20,6 +26,7 @@ public class Manipulador
         return props;
     }
 
+    /// retorna a property das ruas do quadrante 1
     public static Properties getRuasQ1() throws IOException
     {
         Properties props = new Properties();
@@ -28,6 +35,7 @@ public class Manipulador
         return props;
     }
 
+    /// retorna a property das arestas do quadrante 2
     public static Properties getArestasQ2() throws IOException
     {
         Properties props = new Properties();
@@ -36,6 +44,7 @@ public class Manipulador
         return props;
     }
 
+    /// retorna a property dos vertices do quadrante 2
     public static Properties getVerticesQ2() throws IOException
     {
         Properties props = new Properties();
@@ -44,6 +53,7 @@ public class Manipulador
         return props;
     }
 
+    /// retorna a property das ruas do quadrante 2
     public static Properties getRuasQ2() throws IOException
     {
         Properties props = new Properties();
@@ -52,6 +62,7 @@ public class Manipulador
         return props;
     }
 
+    /// retorna a property das arestas do quadrante 3
     public static Properties getArestasQ3() throws IOException
     {
         Properties props = new Properties();
@@ -60,6 +71,7 @@ public class Manipulador
         return props;
     }
 
+    /// retorna a property dos vertices do quadrante 3
     public static Properties getVerticesQ3() throws IOException
     {
         Properties props = new Properties();
@@ -68,6 +80,7 @@ public class Manipulador
         return props;
     }
 
+    /// retorna a property das ruas do quadrante 3
     public static Properties getRuasQ3() throws IOException
     {
         Properties props = new Properties();
@@ -76,6 +89,7 @@ public class Manipulador
         return props;
     }
 
+    /// retorna a property das arestas do quadrante 4
     public static Properties getArestasQ4() throws IOException
     {
         Properties props = new Properties();
@@ -84,6 +98,7 @@ public class Manipulador
         return props;
     }
 
+    /// retorna a property dos vertices do quadrante 4
     public static Properties getVerticesQ4() throws IOException
     {
         Properties props = new Properties();
@@ -92,6 +107,7 @@ public class Manipulador
         return props;
     }
 
+    /// retorna a property das ruas do quadrante 4
     public static Properties getRuasQ4() throws IOException
     {
         Properties props = new Properties();

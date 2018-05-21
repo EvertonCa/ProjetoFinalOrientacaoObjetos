@@ -1,3 +1,7 @@
+/**
+ / Constrolador dos popups "Sobre"
+ **/
+
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
