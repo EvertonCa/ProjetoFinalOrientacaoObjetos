@@ -34,7 +34,6 @@ public class AreaPrincipalController implements Initializable {
     public void colocaSemaforoNoMapa()
     {
         int cont = 0;
-        int cont1 = 0;
         for (int i = 0; i < listaDeInteseccao.size(); i++)
         {
             System.out.println("Interseccao " + i);
@@ -42,34 +41,32 @@ public class AreaPrincipalController implements Initializable {
                 System.out.println("Semaforo " + j + " quadrante " + listaDeInteseccao.get(i).getListaSemaforos().get(j).getQuadrante());
                 if (listaDeInteseccao.get(i).getListaSemaforos().get(j).getQuadrante() == 1)
                 {
-                    cont1 ++;
-                    vetorDeImagensDoSemaforo.get(cont).setX(listaDeInteseccao.get(i).getListaSemaforos().get(j).getY() *3);
-                    vetorDeImagensDoSemaforo.get(cont).setY(listaDeInteseccao.get(i).getListaSemaforos().get(j).getX()*3);
+                    vetorDeImagensDoSemaforo.get(cont).setLayoutX(listaDeInteseccao.get(i).getListaSemaforos().get(j).getX() * 6.5 - 4);
+                    vetorDeImagensDoSemaforo.get(cont).setLayoutY(listaDeInteseccao.get(i).getListaSemaforos().get(j).getY() * 6.5 - 7);
                     vetorDeImagensDoSemaforo.get(cont).setVisible(true);
                 }
-//                else if (listaDeInteseccao.get(i).getListaSemaforos().get(j).getQuadrante() == 2)
-//                {
-//                    vetorDeImagensDoSemaforo.get(cont).setX((listaDeInteseccao.get(i).getListaSemaforos().get(j).getX() + 60) * 6.4);
-//                    vetorDeImagensDoSemaforo.get(cont).setY(listaDeInteseccao.get(i).getListaSemaforos().get(j).getY() * 6.4);
-//                    vetorDeImagensDoSemaforo.get(cont).setVisible(true);
-//                }
-//                else if (listaDeInteseccao.get(i).getListaSemaforos().get(j).getQuadrante() == 3)
-//                {
-//                    vetorDeImagensDoSemaforo.get(cont).setX(listaDeInteseccao.get(i).getListaSemaforos().get(j).getX() * 6.4);
-//                    vetorDeImagensDoSemaforo.get(cont).setY((listaDeInteseccao.get(i).getListaSemaforos().get(j).getY() + 60) * 6.4);
-//                    vetorDeImagensDoSemaforo.get(cont).setVisible(true);
-//                }
-//                else
-//                {
-//                    vetorDeImagensDoSemaforo.get(cont).setX((listaDeInteseccao.get(i).getListaSemaforos().get(j).getX() + 60) * 6.4);
-//                    vetorDeImagensDoSemaforo.get(cont).setY((listaDeInteseccao.get(i).getListaSemaforos().get(j).getY() + 60) * 6.4);
-//                    vetorDeImagensDoSemaforo.get(cont).setVisible(true);
-//                }
+                else if (listaDeInteseccao.get(i).getListaSemaforos().get(j).getQuadrante() == 2)
+                {
+                    vetorDeImagensDoSemaforo.get(cont).setLayoutX((listaDeInteseccao.get(i).getListaSemaforos().get(j).getX() + 60) * 6.5 - 4);
+                    vetorDeImagensDoSemaforo.get(cont).setLayoutY(listaDeInteseccao.get(i).getListaSemaforos().get(j).getY() * 6.5 - 7);
+                    vetorDeImagensDoSemaforo.get(cont).setVisible(true);
+                }
+                else if (listaDeInteseccao.get(i).getListaSemaforos().get(j).getQuadrante() == 3)
+                {
+                    vetorDeImagensDoSemaforo.get(cont).setLayoutX(listaDeInteseccao.get(i).getListaSemaforos().get(j).getX() * 6.5 - 4);
+                    vetorDeImagensDoSemaforo.get(cont).setLayoutY((listaDeInteseccao.get(i).getListaSemaforos().get(j).getY() + 60) * 6.5 - 7);
+                    vetorDeImagensDoSemaforo.get(cont).setVisible(true);
+                }
+                else
+                {
+                    vetorDeImagensDoSemaforo.get(cont).setLayoutX((listaDeInteseccao.get(i).getListaSemaforos().get(j).getX() + 60) * 6.5 - 4);
+                    vetorDeImagensDoSemaforo.get(cont).setLayoutY((listaDeInteseccao.get(i).getListaSemaforos().get(j).getY() + 60) * 6.5 - 7);
+                    vetorDeImagensDoSemaforo.get(cont).setVisible(true);
+                }
                 cont ++;
             }
         }
         System.out.println(cont);
-        System.out.println(cont1);
     }
 
     public void tiraSemaforoDoMapa ()
