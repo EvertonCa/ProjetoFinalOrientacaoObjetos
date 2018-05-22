@@ -481,23 +481,74 @@ public class AreaPrincipalController implements Initializable {
             Mundo meuMundo = new Mundo();
             int tempo = 0;
 
+            boolean podeMover[];
+
+            podeMover = new boolean[quantidadeDeCarros];
+
+            for(int i = 0; i < quantidadeDeCarros; i++)
+            {
+                podeMover[i] = true;
+            }
+
             try
             {
                 while (keepGoing)
                 {
                     Thread.sleep(25); //40fps
 
-                    if (tempo == 40)
+                    if (tempo == 13)
                     {
+                        int xDoCarro[], yDoCarro[];
+
                         tempo = 0;
+                        xDoCarro = new int[quantidadeDeCarros];
+                        yDoCarro = new int[quantidadeDeCarros];
 
                         if (semaforosHabilitados)
                         {
+                            int xDoSemaforo, yDoSemaforo;
+
+                            // Executa logica do semaforo
                             for (int i = 0; i < listaDeInteseccao.size(); i++)
                             {
                                 listaDeInteseccao.get(i).verificaSemaforo(meuMundo);
                             }
+                            //coloca os semaforos na interface grafica
                             colocaSemaforoNoMapa();
+
+                            // Carro verifica se tem semaforo e a cor dele
+                            for (int i = 0; i < listaDeInteseccao.size(); i++)
+                            {
+                                for (int j = 0; j < listaDeInteseccao.get(i).getListaSemaforos().size(); j++)
+                                {
+                                    for (int k = 0; k < quantidadeDeCarros; k++)
+                                    {
+                                        xDoSemaforo = listaDeInteseccao.get(i).getListaSemaforos().get(j).getX();
+                                        yDoSemaforo = listaDeInteseccao.get(i).getListaSemaforos().get(j).getY();
+
+                                        if (xDoCarro[k] + 1 == xDoSemaforo && yDoCarro[k] + 1 == yDoSemaforo)
+                                        {
+                                            podeMover[k] = listaDeInteseccao.get(i).getListaSemaforos().get(j).getVerde();
+                                        }
+                                        else if (xDoCarro[k] - 1 == xDoSemaforo && yDoCarro[k] + 1 == yDoSemaforo)
+                                        {
+                                            podeMover[k] = listaDeInteseccao.get(i).getListaSemaforos().get(j).getVerde();
+                                        }
+                                        else if (xDoCarro[k] + 1 == xDoSemaforo && yDoCarro[k] - 1 == yDoSemaforo)
+                                        {
+                                            podeMover[k] = listaDeInteseccao.get(i).getListaSemaforos().get(j).getVerde();
+                                        }
+                                        else if (xDoCarro[k] - 1 == xDoSemaforo && yDoCarro[k] - 1 == yDoSemaforo)
+                                        {
+                                            podeMover[k] = listaDeInteseccao.get(i).getListaSemaforos().get(j).getVerde();
+                                        }
+                                        else
+                                        {
+                                            podeMover[k] = true;
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
 
@@ -507,15 +558,18 @@ public class AreaPrincipalController implements Initializable {
                         {
                             if(quantidadeDeCarros == 1)
                             {
-                                handleCarro1.moveObjetos(carro1);
+                                if (podeMover[0])
+                                    handleCarro1.moveObjetos(carro1);
                                 keepGoing = handleCarro1.isKeepGoing();
                                 checaPopUpChegou(1);
 
                             }
                             else if(quantidadeDeCarros == 2)
                             {
-                                handleCarro1.moveObjetos(carro1);
-                                handleCarro2.moveObjetos(carro2);
+                                if (podeMover[0])
+                                    handleCarro1.moveObjetos(carro1);
+                                if (podeMover[1])
+                                    handleCarro2.moveObjetos(carro2);
 
                                 if(!handleCarro1.isKeepGoing() && !handleCarro2.isKeepGoing())
                                     keepGoing = false;
@@ -525,9 +579,13 @@ public class AreaPrincipalController implements Initializable {
                             }
                             else if(quantidadeDeCarros == 3)
                             {
-                                handleCarro1.moveObjetos(carro1);
-                                handleCarro2.moveObjetos(carro2);
-                                handleCarro3.moveObjetos(carro3);
+                                if (podeMover[0])
+                                    handleCarro1.moveObjetos(carro1);
+                                if (podeMover[1])
+                                    handleCarro2.moveObjetos(carro2);
+                                if (podeMover[2])
+                                    handleCarro3.moveObjetos(carro3);
+
                                 if(!handleCarro1.isKeepGoing() && !handleCarro2.isKeepGoing() && !handleCarro3.isKeepGoing())
                                     keepGoing = false;
 
@@ -537,10 +595,15 @@ public class AreaPrincipalController implements Initializable {
                             }
                             else if(quantidadeDeCarros == 4)
                             {
-                                handleCarro1.moveObjetos(carro1);
-                                handleCarro2.moveObjetos(carro2);
-                                handleCarro3.moveObjetos(carro3);
-                                handleCarro4.moveObjetos(carro4);
+                                if (podeMover[0])
+                                    handleCarro1.moveObjetos(carro1);
+                                if (podeMover[1])
+                                    handleCarro2.moveObjetos(carro2);
+                                if (podeMover[2])
+                                    handleCarro3.moveObjetos(carro3);
+                                if (podeMover[3])
+                                    handleCarro4.moveObjetos(carro4);
+
                                 if(!handleCarro1.isKeepGoing() && !handleCarro2.isKeepGoing() &&
                                         !handleCarro3.isKeepGoing() && !handleCarro4.isKeepGoing())
                                     keepGoing = false;
@@ -552,11 +615,17 @@ public class AreaPrincipalController implements Initializable {
                             }
                             else
                             {
-                                handleCarro1.moveObjetos(carro1);
-                                handleCarro2.moveObjetos(carro2);
-                                handleCarro3.moveObjetos(carro3);
-                                handleCarro4.moveObjetos(carro4);
-                                handleCarro5.moveObjetos(carro5);
+                                if (podeMover[0])
+                                    handleCarro1.moveObjetos(carro1);
+                                if (podeMover[1])
+                                    handleCarro2.moveObjetos(carro2);
+                                if (podeMover[2])
+                                    handleCarro3.moveObjetos(carro3);
+                                if (podeMover[3])
+                                    handleCarro4.moveObjetos(carro4);
+                                if (podeMover[4])
+                                    handleCarro5.moveObjetos(carro5);
+
                                 if(!handleCarro1.isKeepGoing() && !handleCarro2.isKeepGoing() &&
                                         !handleCarro3.isKeepGoing() && !handleCarro4.isKeepGoing() && !handleCarro5.isKeepGoing())
                                     keepGoing = false;

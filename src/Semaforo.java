@@ -17,7 +17,7 @@ public class Semaforo
     {
         boolean temCarro = false;
 
-        if(x + 1 <= 24 && mapa[y][x + 1] == 9)
+        if(x + 1 <= 59 && mapa[y][x + 1] == 9)
         {
             temCarro = true;
         }
@@ -25,7 +25,7 @@ public class Semaforo
         {
             temCarro = true;
         }
-        else if(y + 1 <= 24 && mapa[y + 1][x] == 9)
+        else if(y + 1 <= 59 && mapa[y + 1][x] == 9)
         {
             temCarro = true;
         }

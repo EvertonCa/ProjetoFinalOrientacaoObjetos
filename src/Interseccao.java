@@ -54,7 +54,7 @@ public class Interseccao {
         }
 
 //        System.out.println(contVermelho);System.out.println(contVerde);
-        if (contVermelho != 0 && contVerde == 0 || contadorDeTempo >= listaSemaforos.get(0).getDuracao())
+        if (contVermelho != 0 && contVerde == 0 || contadorDeTempo >= (listaSemaforos.get(0).getDuracao()) * 384)
         {
             mudaCorVertice();
         }
