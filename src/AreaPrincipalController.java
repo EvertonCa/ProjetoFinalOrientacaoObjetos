@@ -532,36 +532,43 @@ public class AreaPrincipalController implements Initializable {
                             colocaSemaforoNoMapa();
 
                             // Carro verifica se tem semaforo e a cor dele
-                            for (int i = 0; i < listaDeInteseccao.size(); i++)
+                            boolean temSemaforo;
+                            for (int k = 0; k < quantidadeDeCarros; k++)
                             {
-                                for (int j = 0; j < listaDeInteseccao.get(i).getListaSemaforos().size(); j++)
+                                temSemaforo = false;
+                                for (int i = 0; i < listaDeInteseccao.size(); i++)
                                 {
-                                    for (int k = 0; k < quantidadeDeCarros; k++)
+                                    for (int j = 0; j < listaDeInteseccao.get(i).getListaSemaforos().size(); j++)
                                     {
+
                                         xDoSemaforo = listaDeInteseccao.get(i).getListaSemaforos().get(j).getX();
                                         yDoSemaforo = listaDeInteseccao.get(i).getListaSemaforos().get(j).getY();
 
-                                        if (xDoCarro[k] + 1 == xDoSemaforo && yDoCarro[k] + 1 == yDoSemaforo)
+                                        if (xDoCarro[k] == xDoSemaforo && yDoCarro[k] + 1 == yDoSemaforo)
                                         {
+                                            temSemaforo = true;
                                             podeMover[k] = listaDeInteseccao.get(i).getListaSemaforos().get(j).getVerde();
                                         }
-                                        else if (xDoCarro[k] - 1 == xDoSemaforo && yDoCarro[k] + 1 == yDoSemaforo)
+                                        else if (xDoCarro[k] == xDoSemaforo && yDoCarro[k] - 1 == yDoSemaforo)
                                         {
+                                            temSemaforo = true;
                                             podeMover[k] = listaDeInteseccao.get(i).getListaSemaforos().get(j).getVerde();
                                         }
-                                        else if (xDoCarro[k] + 1 == xDoSemaforo && yDoCarro[k] - 1 == yDoSemaforo)
+                                        else if (xDoCarro[k] + 1 == xDoSemaforo && yDoCarro[k] == yDoSemaforo)
                                         {
+                                            temSemaforo = true;
                                             podeMover[k] = listaDeInteseccao.get(i).getListaSemaforos().get(j).getVerde();
                                         }
-                                        else if (xDoCarro[k] - 1 == xDoSemaforo && yDoCarro[k] - 1 == yDoSemaforo)
+                                        else if (xDoCarro[k] - 1 == xDoSemaforo && yDoCarro[k] == yDoSemaforo)
                                         {
+                                            temSemaforo = true;
                                             podeMover[k] = listaDeInteseccao.get(i).getListaSemaforos().get(j).getVerde();
-                                        }
-                                        else
-                                        {
-                                            podeMover[k] = true;
                                         }
                                     }
+                                }
+                                if (!temSemaforo)
+                                {
+                                    podeMover[k] = true;
                                 }
                             }
                         }
