@@ -428,7 +428,6 @@ public class Mundo
 
     public void semaforoInteligente (List <Interseccao> listaDeInterseccoes, Mundo meuMundo)
     {
-        int[][] mapa;
         for (int i = 0; i < listaDeInterseccoes.size(); i++)
         {
             listaDeInterseccoes.get(i).verificaSemaforo(meuMundo);
@@ -467,28 +466,28 @@ public class Mundo
         }
     }
 
-    public void insereVeiculoNoMundo(int x, int y, int quadrante, int ID)
+    public void insereVeiculoNoMundo(int x, int y, int quadrante)
     {
         switch (quadrante)
         {
             default:
             {
-                mundoQ1[y][x] = ID;
+                mundoQ1[y][x] = 9;
                 break;
             }
             case 2:
             {
-                mundoQ2[y][x] = ID;
+                mundoQ2[y][x] = 9;
                 break;
             }
             case 3:
             {
-                mundoQ3[y][x] = ID;
+                mundoQ3[y][x] = 9;
                 break;
             }
             case 4:
             {
-                mundoQ4[y][x] = ID;
+                mundoQ4[y][x] = 9;
                 break;
             }
 

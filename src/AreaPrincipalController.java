@@ -478,11 +478,29 @@ public class AreaPrincipalController implements Initializable {
         @Override
         public void run()
         {
+            Mundo meuMundo = new Mundo();
+            int tempo = 0;
+
             try
             {
                 while (keepGoing)
                 {
                     Thread.sleep(25); //40fps
+
+                    if (tempo == 40)
+                    {
+                        tempo = 0;
+
+                        if (semaforosHabilitados)
+                        {
+                            for (int i = 0; i < listaDeInteseccao.size(); i++)
+                            {
+                                listaDeInteseccao.get(i).verificaSemaforo(meuMundo);
+                            }
+                            colocaSemaforoNoMapa();
+                        }
+                    }
+
                     Platform.runLater(new Runnable() {
                         @Override
                         public void run()
@@ -551,6 +569,7 @@ public class AreaPrincipalController implements Initializable {
                             }
                         }
                     });
+                    tempo ++;
                 }
 
             }catch (InterruptedException ex)
