@@ -4,6 +4,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Modality;
@@ -13,7 +14,6 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
@@ -22,51 +22,60 @@ public class AreaPrincipalController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
-        System.out.println("Entrou na execução");
+        System.out.println("Inicializou o programa");
         defineCoordenadaSemaforo();
         System.out.println("Criou lista de interseccoes");
         criaArrayDeImagens();
-        System.out.println("Criou array");
+        System.out.println("Criou array de imagens");
         colocaSemaforoNoMapa();
-        System.out.println("Colocou no mapa");
+        System.out.println("Semaforos Habilitados: true");
     }
 
     public void colocaSemaforoNoMapa()
     {
         int cont = 0;
+
+        Image img;
         for (int i = 0; i < listaDeInteseccao.size(); i++)
         {
-            System.out.println("Interseccao " + i);
             for (int j = 0; j < listaDeInteseccao.get(i).getListaSemaforos().size(); j++){
-                System.out.println("Semaforo " + j + " quadrante " + listaDeInteseccao.get(i).getListaSemaforos().get(j).getQuadrante());
                 if (listaDeInteseccao.get(i).getListaSemaforos().get(j).getQuadrante() == 1)
                 {
                     vetorDeImagensDoSemaforo.get(cont).setLayoutX(listaDeInteseccao.get(i).getListaSemaforos().get(j).getX() * 6.5 - 4);
                     vetorDeImagensDoSemaforo.get(cont).setLayoutY(listaDeInteseccao.get(i).getListaSemaforos().get(j).getY() * 6.5 - 7);
-                    vetorDeImagensDoSemaforo.get(cont).setVisible(true);
                 }
                 else if (listaDeInteseccao.get(i).getListaSemaforos().get(j).getQuadrante() == 2)
                 {
                     vetorDeImagensDoSemaforo.get(cont).setLayoutX((listaDeInteseccao.get(i).getListaSemaforos().get(j).getX() + 60) * 6.5 - 4);
                     vetorDeImagensDoSemaforo.get(cont).setLayoutY(listaDeInteseccao.get(i).getListaSemaforos().get(j).getY() * 6.5 - 7);
-                    vetorDeImagensDoSemaforo.get(cont).setVisible(true);
                 }
                 else if (listaDeInteseccao.get(i).getListaSemaforos().get(j).getQuadrante() == 3)
                 {
                     vetorDeImagensDoSemaforo.get(cont).setLayoutX(listaDeInteseccao.get(i).getListaSemaforos().get(j).getX() * 6.5 - 4);
                     vetorDeImagensDoSemaforo.get(cont).setLayoutY((listaDeInteseccao.get(i).getListaSemaforos().get(j).getY() + 60) * 6.5 - 7);
-                    vetorDeImagensDoSemaforo.get(cont).setVisible(true);
                 }
                 else
                 {
                     vetorDeImagensDoSemaforo.get(cont).setLayoutX((listaDeInteseccao.get(i).getListaSemaforos().get(j).getX() + 60) * 6.5 - 4);
                     vetorDeImagensDoSemaforo.get(cont).setLayoutY((listaDeInteseccao.get(i).getListaSemaforos().get(j).getY() + 60) * 6.5 - 7);
-                    vetorDeImagensDoSemaforo.get(cont).setVisible(true);
                 }
+
+                if (listaDeInteseccao.get(i).getListaSemaforos().get(j).getVerde())
+                {
+                    img = new Image("FarolVerde.png");
+                    vetorDeImagensDoSemaforo.get(cont).setImage(img);
+                }
+                else
+                {
+                    img = new Image("FarolVermelho.png");
+                    vetorDeImagensDoSemaforo.get(cont).setImage(img);
+                }
+
+                vetorDeImagensDoSemaforo.get(cont).setVisible(true);
+
                 cont ++;
             }
         }
-        System.out.println(cont);
     }
 
     public void tiraSemaforoDoMapa ()
@@ -119,7 +128,6 @@ public class AreaPrincipalController implements Initializable {
 
                 for(int i = 0; i < quantidadeDeInterseccoes; i++)
                 {
-                    System.out.println("Interseccao " + (i+1));
                     int descricao = Integer.parseInt(prop.getProperty("interseccao" + i + "Descricao"));
                     int duracao = Integer.parseInt(prop.getProperty("interseccao" + i + "DuracaoSemaforo"));
                     int quantidadeDeSemaforos = Integer.parseInt(prop.getProperty("interseccao" + i + "QuantidadeDeSemaforos"));
@@ -135,14 +143,7 @@ public class AreaPrincipalController implements Initializable {
 
                         semaforosDaInterseccao.add(new Semaforo(x, y, verde, duracao, quadrante));
                     }
-                    for (int j = 0; j < semaforosDaInterseccao.size(); j++)
-                    {
-                        System.out.println(semaforosDaInterseccao.get(j).getX());
-                        System.out.println(semaforosDaInterseccao.get(j).getY());
-                        System.out.println(semaforosDaInterseccao.get(j).getVerde());
-                        System.out.println(semaforosDaInterseccao.get(j).getQuadrante());
-                        System.out.println(semaforosDaInterseccao.get(j).getDuracao());
-                    }
+
                     listaDeInteseccao.add(new Interseccao(semaforosDaInterseccao, descricao));
                 }
                 System.out.println("Leu os semaforos do quadrante " + (k));
