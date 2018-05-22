@@ -479,30 +479,45 @@ public class AreaPrincipalController implements Initializable {
         public void run()
         {
             Mundo meuMundo = new Mundo();
-            int tempo = 0;
+            int tempo = 13;
 
             boolean podeMover[];
 
             podeMover = new boolean[quantidadeDeCarros];
 
-            for(int i = 0; i < quantidadeDeCarros; i++)
-            {
-                podeMover[i] = true;
-            }
 
             try
             {
                 while (keepGoing)
                 {
+                    meuMundo.reiniciaMundos();
                     Thread.sleep(25); //40fps
 
                     if (tempo == 13)
                     {
+                        if (!semaforosHabilitados)
+                        {
+                            for(int i = 0; i < quantidadeDeCarros; i++)
+                            {
+                                podeMover[i] = true;
+                            }
+                        }
+
                         int xDoCarro[], yDoCarro[];
 
                         tempo = 0;
                         xDoCarro = new int[quantidadeDeCarros];
                         yDoCarro = new int[quantidadeDeCarros];
+
+                        xDoCarro[0] = 8;
+                        yDoCarro[0] = 7;
+                        xDoCarro[1] = 14;
+                        yDoCarro[1] = 7;
+
+                        for (int i = 0; i < quantidadeDeCarros; i ++)
+                        {
+                            meuMundo.insereVeiculoNoMundo(xDoCarro[i], yDoCarro[i], 1);
+                        }
 
                         if (semaforosHabilitados)
                         {
@@ -560,6 +575,7 @@ public class AreaPrincipalController implements Initializable {
                             {
                                 if (podeMover[0])
                                     handleCarro1.moveObjetos(carro1);
+
                                 keepGoing = handleCarro1.isKeepGoing();
                                 checaPopUpChegou(1);
 
