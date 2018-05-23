@@ -509,14 +509,57 @@ public class AreaPrincipalController implements Initializable {
                         xDoCarro = new int[quantidadeDeCarros];
                         yDoCarro = new int[quantidadeDeCarros];
 
-                        xDoCarro[0] = 8;
-                        yDoCarro[0] = 7;
-                        xDoCarro[1] = 14;
-                        yDoCarro[1] = 7;
-
                         for (int i = 0; i < quantidadeDeCarros; i ++)
                         {
-                            meuMundo.insereVeiculoNoMundo(xDoCarro[i], yDoCarro[i], 1);
+                            int quadrante;
+                            if (i == 1)
+                            {
+                                xDoCarro[i] = (int) ((handleCarro1.getxAtual() + 6) / 6.5);
+                                yDoCarro[i] = (int) ((handleCarro1.getyAtual() + 7) / 6.5);
+                            }
+                            else if (i == 2)
+                            {
+                                xDoCarro[i] = (int) ((handleCarro2.getxAtual() + 6) / 6.5);
+                                yDoCarro[i] = (int) ((handleCarro2.getyAtual() + 7) / 6.5);
+                            }
+                            else if (i == 3)
+                            {
+                                xDoCarro[i] = (int) ((handleCarro3.getxAtual() + 6) / 6.5);
+                                yDoCarro[i] = (int) ((handleCarro3.getyAtual() + 7) / 6.5);
+                            }
+                            else if (i == 4)
+                            {
+                                xDoCarro[i] = (int) ((handleCarro4.getxAtual() + 6) / 6.5);
+                                yDoCarro[i] = (int) ((handleCarro4.getyAtual() + 7) / 6.5);
+                            }
+                            else if (i == 5)
+                            {
+                                xDoCarro[i] = (int) ((handleCarro5.getxAtual() + 6) / 6.5);
+                                yDoCarro[i] = (int) ((handleCarro5.getyAtual() + 7) / 6.5);
+                            }
+
+                            if (xDoCarro[i] - 60 >= 0 && yDoCarro[i] - 60 >= 0)
+                            {
+                                xDoCarro[i] -= 60;
+                                yDoCarro[i] -= 60;
+                                quadrante = 4;
+                            }
+                            else if (xDoCarro[i] - 60 >= 0)
+                            {
+                                xDoCarro[i] -= 60;
+                                quadrante = 2;
+                            }
+                            else if (yDoCarro[i] - 60 >= 0)
+                            {
+                                yDoCarro[i] -= 60;
+                                quadrante = 3;
+                            }
+                            else
+                            {
+                                quadrante = 1;
+                            }
+
+                            meuMundo.insereVeiculoNoMundo(xDoCarro[i], yDoCarro[i], quadrante);
                         }
 
                         if (semaforosHabilitados)

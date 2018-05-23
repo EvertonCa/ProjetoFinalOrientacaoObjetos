@@ -211,7 +211,15 @@ public class AreaPrincipalHandle {
     public boolean isKeepGoing() {
         return keepGoing;
     }
-    
+
+    public double getyAtual() {
+        return yAtual;
+    }
+
+    public double getxAtual() {
+        return xAtual;
+    }
+
     protected GPS gps;
     protected AutoPilot tesla;
     protected List<CaminhoGUI> caminhosGUI;
