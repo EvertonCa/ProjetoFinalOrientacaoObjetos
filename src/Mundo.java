@@ -297,6 +297,12 @@ public class Mundo
         }
     }
 
+    public void desenhaMundoInteiro()
+    {
+        desenhaMundo(getMundoQ1(), getMundoQ2());
+        desenhaMundo(getMundoQ3(), getMundoQ4());
+    }
+
     public void desenhaLinha(int[][] quadrante, int i, int j)
     {
         if(quadrante[i][j] == 1) //quarteirao - azul
@@ -344,7 +350,7 @@ public class Mundo
             System.out.printf("\33[7;30m  \33[0m");
         }
 
-        else if(quadrante[i][j] >= 100 && quadrante[i][j] < 300000) //carros definidos - roxo
+        else if(quadrante[i][j] >= 9) //carros definidos - roxo
         {
             System.out.printf("\33[7;35m  \33[0m");
         }
