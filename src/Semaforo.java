@@ -1,8 +1,12 @@
+/**
+ / Classe utilizada para analizar individualmente cada semáforo
+ **/
+
 import java.util.concurrent.Semaphore;
 
 public class Semaforo
 {
-    // Contrutor do semaforo com coordenada, cor, duração e quadrante
+    /// Contrutor do semáforo com coordenada, cor, duração e quadrante
     public Semaforo(int x, int y, boolean verde, int duracao, int quadrante)
     {
         this.x = x;
@@ -12,7 +16,7 @@ public class Semaforo
         this.quadrante = quadrante;
     }
 
-    // Função que identifica se o semaforo precisa mudar
+    /// Função que identifica se é necessário o semáforo mudar
     public boolean run(int[][] mapa)
     {
         boolean temCarro = false;
@@ -41,7 +45,7 @@ public class Semaforo
         return temCarro;
     }
 
-    // metodo que faz a cor mudar do semaforo
+    /// Método que muda a cor do semáforo
     public void mudarCor()
     {
         if (this.verde) {

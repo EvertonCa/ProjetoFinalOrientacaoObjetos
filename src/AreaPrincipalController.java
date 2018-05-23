@@ -1,3 +1,7 @@
+/**
+ / Controlador da View principal da Interface Gráfica
+ **/
+
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,7 +22,7 @@ import java.util.Properties;
 import java.util.ResourceBundle;
 
 public class AreaPrincipalController implements Initializable {
-
+    /// Sempre executa esse metodo quando cria AreaPrincipalController para configurar os semaforos
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
@@ -31,6 +35,7 @@ public class AreaPrincipalController implements Initializable {
         System.out.println("Semaforos Habilitados: true");
     }
 
+    /// Determina a posição e a cor dos semaforos na interface gráfica
     public void colocaSemaforoNoMapa()
     {
         int cont = 0;
@@ -78,6 +83,7 @@ public class AreaPrincipalController implements Initializable {
         }
     }
 
+    /// Todas as imagens dos semáforos ficam invísiveis
     public void tiraSemaforoDoMapa ()
     {
         for (int i = 0; i < vetorDeImagensDoSemaforo.size(); i++)
@@ -86,6 +92,7 @@ public class AreaPrincipalController implements Initializable {
         }
     }
 
+    /// Método que faz a leitura das properties das coordenadas dos semáforos e coloca em uma lista
     public void defineCoordenadaSemaforo()
     {
         listaDeInteseccao = new ArrayList<>();
@@ -151,6 +158,7 @@ public class AreaPrincipalController implements Initializable {
         }catch (IOException e){System.out.println("Erro no arquivo de propriedades");}
     }
 
+    /// Método que cria um vetor com todas as imagens de semáforos
     public void criaArrayDeImagens ()
     {
         vetorDeImagensDoSemaforo = new ArrayList<ImageView>();
@@ -271,7 +279,7 @@ public class AreaPrincipalController implements Initializable {
         vetorDeImagensDoSemaforo.add(semaforo114);
     }
 
-
+    /// Determina quantos carros rodarão no programa baseado na seleção do usuário nos Radio Buttons da UI.
     public void determinaQuantidadeDeCarros()
     {
         if(radioButtonGroup.getSelectedToggle().equals(radioButton1))
@@ -297,6 +305,7 @@ public class AreaPrincipalController implements Initializable {
         System.out.println("Quantidade de Carros: " + quantidadeDeCarros);
     }
 
+    /// Determina se o programa rodará com rotas entradas pelo usuário ou aleatórias.
     public void determinaRotasDefinidas()
     {
         if(toggleButton1Group.getSelectedToggle().equals(botaoDefinido))
@@ -316,6 +325,7 @@ public class AreaPrincipalController implements Initializable {
         System.out.println("Rotas definidas: " + rotasDefinidas);
     }
 
+    /// Determina se os semáforos estarão habilitados na execução do programa.
     public void determinaSemaforosHabilitados()
     {
         if(toggleButton2Group.getSelectedToggle().equals(botaoHabilitado))
@@ -332,20 +342,23 @@ public class AreaPrincipalController implements Initializable {
         System.out.println("Semaforos Habilitados: " + semaforosHabilitados);
     }
 
-
+    /// Método chamadado ao clicar no botão "Adicionar Rota" no programa, calculando as rodas para os endereços.
     public void obterRota() throws IOException
     {
+        /// Chama a função de rotas aleatórias caso o boleano de rotas definidas esteja falso.
         if(!rotasDefinidas)
-        {
             rotasAleatorias();
-        }
+
         else
         {
+            /// Caso a Rua 32 seja selecionada como destino pelo usuário, chama o easter egg e limpa a caixa de texto
             if(ruaDestino.getText().equals("Rua 32"))
             {
                 ruaDestino.clear();
                 erroRua32();
             }
+
+            /// calcula a rota do primeiro veiculo.
             else if(rotasCalculadas == 0)
             {
                 handleCarro1 = new AreaPrincipalHandle(ruaOrigem.getText(), ruaDestino.getText());
@@ -377,6 +390,8 @@ public class AreaPrincipalController implements Initializable {
                     radioButton5.setDisable(true);
                 }
             }
+
+            /// calcula a rota do segundo veiculo.
             else if(rotasCalculadas == 1)
             {
                 handleCarro2 = new AreaPrincipalHandle(ruaOrigem.getText(), ruaDestino.getText());
@@ -392,6 +407,8 @@ public class AreaPrincipalController implements Initializable {
                 ruaDeDestino2.setVisible(true);
                 iconeCarro2.setVisible(true);
             }
+
+            /// calcula a rota do terceiro veiculo.
             else if(rotasCalculadas == 2)
             {
                 handleCarro3 = new AreaPrincipalHandle(ruaOrigem.getText(), ruaDestino.getText());
@@ -407,6 +424,8 @@ public class AreaPrincipalController implements Initializable {
                 ruaDeDestino3.setVisible(true);
                 iconeCarro3.setVisible(true);
             }
+
+            /// calcula a rota do quarto veiculo.
             else if(rotasCalculadas == 3)
             {
                 handleCarro4 = new AreaPrincipalHandle(ruaOrigem.getText(), ruaDestino.getText());
@@ -422,6 +441,8 @@ public class AreaPrincipalController implements Initializable {
                 ruaDeDestino4.setVisible(true);
                 iconeCarro4.setVisible(true);
             }
+
+            /// calcula a rota do quinto veiculo.
             else if(rotasCalculadas == 4)
             {
                 handleCarro5 = new AreaPrincipalHandle(ruaOrigem.getText(), ruaDestino.getText());
@@ -437,22 +458,30 @@ public class AreaPrincipalController implements Initializable {
                 ruaDeDestino5.setVisible(true);
                 iconeCarro5.setVisible(true);
             }
+
+            /// verifica se o numero de rotas calculadas é igual ao numero de carros desejados e desabilita o botão correspondente caso verdade.
             if(rotasCalculadas == quantidadeDeCarros)
             {
                 botaoEnderecos.setDisable(true);
             }
+
+            /// habilita o botão de "Mostrar no mapa" caso o botão de obter rotas esta desabilitado.
             if(botaoEnderecos.isDisabled())
                 botaoMostrarNoMapa.setDisable(false);
+
+            /// limpa os campos de input do usuário
             ruaOrigem.clear();
             ruaDestino.clear();
         }
     }
 
+    /// Executa a classe responsavel por animar o mapa.
     public void rodarPrograma()
     {
         new Animador().start();
     }
 
+    /// Método responsável pelo PopUp de erro em caso de Endereço inválido.
     public void chamaErroEndereco() throws IOException
     {
         Parent erroEnderecoParent = FXMLLoader.load(getClass().getResource("PopupErroEndereco.fxml"));
@@ -467,12 +496,14 @@ public class AreaPrincipalController implements Initializable {
         avisoErro.showAndWait();
     }
 
+    /// Método para fechar o aviso de erro.
     public void fechaAviso()
     {
         Stage stage = (Stage) botaoOk.getScene().getWindow();
         stage.close();
     }
 
+    /// Classe responsável por animar o mapa
     class Animador extends Thread
     {
         @Override
@@ -493,8 +524,10 @@ public class AreaPrincipalController implements Initializable {
                     meuMundo.reiniciaMundos();
                     Thread.sleep(25); //40fps
 
+                    /// Se o tempo estiver 13 o carro andou 1 posição no mundo de grades
                     if (tempo == 13)
                     {
+                        /// Se os semáforos não estiverem habilitados todos os carros podem se mover
                         if (!semaforosHabilitados)
                         {
                             for(int i = 0; i < quantidadeDeCarros; i++)
@@ -509,6 +542,7 @@ public class AreaPrincipalController implements Initializable {
                         xDoCarro = new int[quantidadeDeCarros];
                         yDoCarro = new int[quantidadeDeCarros];
 
+                        /// Popula os carros no mundo de grades
                         for (int i = 0; i < quantidadeDeCarros; i ++)
                         {
                             int quadrante;
@@ -562,20 +596,23 @@ public class AreaPrincipalController implements Initializable {
                             meuMundo.insereVeiculoNoMundo(xDoCarro[i], yDoCarro[i], quadrante);
                         }
 
+
                         if (semaforosHabilitados)
                         {
                             int xDoSemaforo, yDoSemaforo;
 
-                            // Executa logica do semaforo
+                            // Executa lógica do semaforo para todos
                             for (int i = 0; i < listaDeInteseccao.size(); i++)
                             {
                                 listaDeInteseccao.get(i).verificaSemaforo(meuMundo);
                             }
-                            //coloca os semaforos na interface grafica
+
+                            //coloca os semaforos na interface gráfica
                             colocaSemaforoNoMapa();
 
-                            // Carro verifica se tem semaforo e a cor dele
                             boolean temSemaforo;
+
+                            // Carro verifica se tem semaforo do lado e se tiver verifica a cor
                             for (int k = 0; k < quantidadeDeCarros; k++)
                             {
                                 temSemaforo = false;
@@ -621,6 +658,7 @@ public class AreaPrincipalController implements Initializable {
                         @Override
                         public void run()
                         {
+                            /// Verifica a quantidade de carros e os move se o semaforo estiver verde
                             if(quantidadeDeCarros == 1)
                             {
                                 if (podeMover[0])
@@ -714,6 +752,7 @@ public class AreaPrincipalController implements Initializable {
         }
     }
 
+    /// Verifica se os veiculos chegaram na origem e em caso positivo, exibe o PopUp de aviso.
     public void checaPopUpChegou(int carro)
     {
         if(carro == 1)
@@ -759,18 +798,21 @@ public class AreaPrincipalController implements Initializable {
 
     }
 
+    /// Método para fechar o programa.
     public void fecharPrograma()
     {
         Stage stage = (Stage) layout.getScene().getWindow();
         stage.close();
     }
 
+    /// Método para criar uma nova iteração do programa.
     public void novoPrograma() throws IOException
     {
         VBox buffer = FXMLLoader.load(getClass().getResource("AreaPrincipal.fxml"));
         layout.getChildren().setAll(buffer);
     }
 
+    /// Desabilita os campos de input de usuário para quando rotas aleatórias estiverem selecionadas
     public void habilitaRotasAleatórias()
     {
         origem.setDisable(true);
@@ -779,6 +821,7 @@ public class AreaPrincipalController implements Initializable {
         ruaDestino.setDisable(true);
     }
 
+    /// Habilita os campos de input de usuário para quando rotas definidas estiverem selecionadas
     public void habilitaRotasDefinidas()
     {
         origem.setDisable(false);
@@ -787,6 +830,7 @@ public class AreaPrincipalController implements Initializable {
         ruaDestino.setDisable(false);
     }
 
+    /// Método responsável por definir os endereços aleatórios para cada veiculos do programa.
     public void rotasAleatorias()
     {
         for(int i=0; i < quantidadeDeCarros; i++)
@@ -883,6 +927,7 @@ public class AreaPrincipalController implements Initializable {
         }
     }
 
+    /// Exibe o PopUp "Sobre"
     public void sobre()
     {
         Parent root;
@@ -900,6 +945,7 @@ public class AreaPrincipalController implements Initializable {
         stage.show();
     }
 
+    /// Exibe o PopUp informando que o veiculo chegou no destino.
     public void popUpChegou(int carro)
     {
         if(carro == 1)
@@ -994,6 +1040,7 @@ public class AreaPrincipalController implements Initializable {
         }
     }
 
+    /// Método que exibe o mapa com legenda
     public void mostrarLegenda()
     {
         Parent root;
@@ -1011,12 +1058,14 @@ public class AreaPrincipalController implements Initializable {
         stage.show();
     }
 
+    /// Método para fechar o mapa com legenda
     public void fecharLegenda()
     {
         Stage stage = (Stage) legendaMapa.getScene().getWindow();
         stage.close();
     }
 
+    /// Exibe a janela do EasterEgg da Rua 32
     public void erroRua32()
     {
         Parent root;
@@ -1034,6 +1083,7 @@ public class AreaPrincipalController implements Initializable {
         stage.show();
     }
 
+    /// Fecha a janela do EasterEgg
     public void fecharErro32()
     {
         Stage stage = (Stage) botaoFechaErro32.getScene().getWindow();
