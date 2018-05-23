@@ -1,3 +1,7 @@
+/**
+ / Armazena o grafo do mundo de grades, com seus vertives e arestas e suas conexões
+ **/
+
 import java.util.ArrayList;
 import java.util.List;
 import java.io.FileInputStream;
@@ -6,6 +10,7 @@ import java.util.Properties;
 
 public class Grafo
 {
+    /// construtor padrão
     public Grafo()
     {
         ///cria 76 vertices padrão para os 18 vertices nulos (que saem da cidade) e 58 intersecções
@@ -31,6 +36,7 @@ public class Grafo
         return grafo;
     }
 
+    /// cria as arestas obtidas das properties.
     public void criaArestas(int quadrante)
     {
         try
@@ -98,6 +104,7 @@ public class Grafo
         }catch (IOException e){System.out.println("Erro no arquivo de propriedades Quadrante " + quadrante);}
     }
 
+    /// cria os vertices obtidos da properties
     public void criaVertices(int quadrante)
     {
         try
@@ -189,6 +196,7 @@ public class Grafo
         }catch (IOException e){System.out.println("Erro no arquivo de propriedades Quadrante " + quadrante);}
     }
 
+    /// cria o grafo com as arestas e vertices criados.
     public void criaGrafo()
     {
         this.grafo.addAll(vertices);
@@ -225,26 +233,6 @@ public class Grafo
     public Aresta getArestasQ4(int indice)
     {
         return arestasQ4.get(indice);
-    }
-
-    public List<Aresta> getListaArestasQ1()
-    {
-        return arestasQ1;
-    }
-
-    public List<Aresta> getListaArestasQ2()
-    {
-        return arestasQ2;
-    }
-
-    public List<Aresta> getListaArestasQ3()
-    {
-        return arestasQ3;
-    }
-
-    public List<Aresta> getListaArestasQ4()
-    {
-        return arestasQ4;
     }
 
     protected List <Vertice> grafo = new ArrayList<Vertice>();
