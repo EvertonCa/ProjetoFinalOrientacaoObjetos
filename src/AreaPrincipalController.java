@@ -546,27 +546,27 @@ public class AreaPrincipalController implements Initializable {
                         for (int i = 0; i < quantidadeDeCarros; i ++)
                         {
                             int quadrante;
-                            if (i == 1)
+                            if (i == 0)
                             {
                                 xDoCarro[i] = (int) ((handleCarro1.getxAtual() + 6) / 6.5);
                                 yDoCarro[i] = (int) ((handleCarro1.getyAtual() + 7) / 6.5);
                             }
-                            else if (i == 2)
+                            else if (i == 1)
                             {
                                 xDoCarro[i] = (int) ((handleCarro2.getxAtual() + 6) / 6.5);
                                 yDoCarro[i] = (int) ((handleCarro2.getyAtual() + 7) / 6.5);
                             }
-                            else if (i == 3)
+                            else if (i == 2)
                             {
                                 xDoCarro[i] = (int) ((handleCarro3.getxAtual() + 6) / 6.5);
                                 yDoCarro[i] = (int) ((handleCarro3.getyAtual() + 7) / 6.5);
                             }
-                            else if (i == 4)
+                            else if (i == 3)
                             {
                                 xDoCarro[i] = (int) ((handleCarro4.getxAtual() + 6) / 6.5);
                                 yDoCarro[i] = (int) ((handleCarro4.getyAtual() + 7) / 6.5);
                             }
-                            else if (i == 5)
+                            else if (i == 4)
                             {
                                 xDoCarro[i] = (int) ((handleCarro5.getxAtual() + 6) / 6.5);
                                 yDoCarro[i] = (int) ((handleCarro5.getyAtual() + 7) / 6.5);
@@ -594,6 +594,8 @@ public class AreaPrincipalController implements Initializable {
                             }
 
                             meuMundo.insereVeiculoNoMundo(xDoCarro[i], yDoCarro[i], quadrante);
+
+                            System.out.println(xDoCarro[i] + " " + yDoCarro[i] + " " + quadrante);
                         }
 
 
@@ -601,18 +603,18 @@ public class AreaPrincipalController implements Initializable {
                         {
                             int xDoSemaforo, yDoSemaforo;
 
-                            // Executa lógica do semaforo para todos
+                            /// Executa lógica do semaforo para todos
                             for (int i = 0; i < listaDeInteseccao.size(); i++)
                             {
                                 listaDeInteseccao.get(i).verificaSemaforo(meuMundo);
                             }
 
-                            //coloca os semaforos na interface gráfica
+                            /// Coloca os semaforos na interface gráfica
                             colocaSemaforoNoMapa();
 
                             boolean temSemaforo;
 
-                            // Carro verifica se tem semaforo do lado e se tiver verifica a cor
+                            /// Carro verifica se tem semaforo do lado e se tiver verifica a cor
                             for (int k = 0; k < quantidadeDeCarros; k++)
                             {
                                 temSemaforo = false;
