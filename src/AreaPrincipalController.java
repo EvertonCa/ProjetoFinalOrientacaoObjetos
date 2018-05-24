@@ -4,6 +4,7 @@
 
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -17,9 +18,18 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
 
-public class AreaPrincipalController
+public class AreaPrincipalController implements Initializable
 {
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        listaBotao.add(new Button());
+    }
 
     /// Determina quantos carros rodarão no programa baseado na seleção do usuário nos Radio Buttons da UI.
     public void determinaQuantidadeDeCarros()
@@ -691,5 +701,6 @@ public class AreaPrincipalController
     public Menu menuArquivo, menuAjuda;
     public MenuItem itemNovo, itemFechar, itemSobre;
     public MenuBar menuBar;
+    public List <Button> listaBotao = new ArrayList<Button>();
 
 }
