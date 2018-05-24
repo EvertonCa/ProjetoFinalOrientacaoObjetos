@@ -503,6 +503,71 @@ public class AreaPrincipalController implements Initializable {
         stage.close();
     }
 
+    /// Carro verifica se tem semaforo do lado e se tiver verifica a cor
+    public boolean carroPodeAndar (int xDoCarro, int yDoCarro)
+    {
+
+        boolean temSemaforo = false, podeMover = false;
+        int xDoSemaforo, yDoSemaforo;
+        for (int i = 0; i < listaDeInteseccao.size(); i++)
+        {
+            for (int j = 0; j < listaDeInteseccao.get(i).getListaSemaforos().size(); j++)
+            {
+
+                xDoSemaforo = listaDeInteseccao.get(i).getListaSemaforos().get(j).getX();
+                yDoSemaforo = listaDeInteseccao.get(i).getListaSemaforos().get(j).getY();
+
+                if (xDoCarro == xDoSemaforo && yDoCarro + 1 == yDoSemaforo)
+                {
+                    temSemaforo = true;
+                    podeMover = listaDeInteseccao.get(i).getListaSemaforos().get(j).getVerde();
+                }
+                else if (xDoCarro == xDoSemaforo && yDoCarro - 1 == yDoSemaforo)
+                {
+                    temSemaforo = true;
+                    podeMover = listaDeInteseccao.get(i).getListaSemaforos().get(j).getVerde();
+                }
+                else if (xDoCarro + 1 == xDoSemaforo && yDoCarro == yDoSemaforo)
+                {
+                    temSemaforo = true;
+                    podeMover = listaDeInteseccao.get(i).getListaSemaforos().get(j).getVerde();
+                }
+                else if (xDoCarro - 1 == xDoSemaforo && yDoCarro == yDoSemaforo)
+                {
+                    temSemaforo = true;
+                    podeMover = listaDeInteseccao.get(i).getListaSemaforos().get(j).getVerde();
+                }
+            }
+        }
+        if (!temSemaforo)
+        {
+            podeMover = true;
+        }
+
+        return podeMover;
+    }
+
+    /// Coloca os carros no mundo de grades de acordo com a posição na interface gráfica
+    public void mudaIFparaMG (Mundo meuMundo, int xDoCarro, int yDoCarro) {
+        int quadrante;
+
+        if (xDoCarro - 60 >= 0 && yDoCarro - 60 >= 0) {
+            xDoCarro -= 60;
+            yDoCarro -= 60;
+            quadrante = 4;
+        } else if (xDoCarro - 60 >= 0) {
+            xDoCarro -= 60;
+            quadrante = 2;
+        } else if (yDoCarro - 60 >= 0) {
+            yDoCarro -= 60;
+            quadrante = 3;
+        } else {
+            quadrante = 1;
+        }
+
+        meuMundo.insereVeiculoNoMundo(xDoCarro, yDoCarro, quadrante);
+    }
+
     /// Classe responsável por animar o mapa
     class Animador extends Thread
     {
@@ -527,15 +592,6 @@ public class AreaPrincipalController implements Initializable {
                     /// Se o tempo estiver 13 o carro andou 1 posição no mundo de grades
                     if (tempo == 13)
                     {
-                        /// Se os semáforos não estiverem habilitados todos os carros podem se mover
-                        if (!semaforosHabilitados)
-                        {
-                            for(int i = 0; i < quantidadeDeCarros; i++)
-                            {
-                                podeMover[i] = true;
-                            }
-                        }
-
                         int xDoCarro[], yDoCarro[];
 
                         tempo = 0;
@@ -545,61 +601,27 @@ public class AreaPrincipalController implements Initializable {
                         /// Popula os carros no mundo de grades
                         for (int i = 0; i < quantidadeDeCarros; i ++)
                         {
-                            int quadrante;
                             if (i == 0)
-                            {
-                                xDoCarro[i] = (int) ((handleCarro1.getxAtual() + 6) / 6.5);
-                                yDoCarro[i] = (int) ((handleCarro1.getyAtual() + 7) / 6.5);
-                            }
+                                mudaIFparaMG(meuMundo, (int) ((handleCarro1.getxAtual() + 6) / 6.5),  (int) ((handleCarro1.getyAtual() + 7) / 6.5));
                             else if (i == 1)
-                            {
-                                xDoCarro[i] = (int) ((handleCarro2.getxAtual() + 6) / 6.5);
-                                yDoCarro[i] = (int) ((handleCarro2.getyAtual() + 7) / 6.5);
-                            }
+                                mudaIFparaMG(meuMundo, (int) ((handleCarro2.getxAtual() + 6) / 6.5),  (int) ((handleCarro2.getyAtual() + 7) / 6.5));
                             else if (i == 2)
-                            {
-                                xDoCarro[i] = (int) ((handleCarro3.getxAtual() + 6) / 6.5);
-                                yDoCarro[i] = (int) ((handleCarro3.getyAtual() + 7) / 6.5);
-                            }
+                                mudaIFparaMG(meuMundo, (int) ((handleCarro3.getxAtual() + 6) / 6.5),  (int) ((handleCarro3.getyAtual() + 7) / 6.5));
                             else if (i == 3)
-                            {
-                                xDoCarro[i] = (int) ((handleCarro4.getxAtual() + 6) / 6.5);
-                                yDoCarro[i] = (int) ((handleCarro4.getyAtual() + 7) / 6.5);
-                            }
-                            else if (i == 4)
-                            {
-                                xDoCarro[i] = (int) ((handleCarro5.getxAtual() + 6) / 6.5);
-                                yDoCarro[i] = (int) ((handleCarro5.getyAtual() + 7) / 6.5);
-                            }
-
-                            if (xDoCarro[i] - 60 >= 0 && yDoCarro[i] - 60 >= 0)
-                            {
-                                xDoCarro[i] -= 60;
-                                yDoCarro[i] -= 60;
-                                quadrante = 4;
-                            }
-                            else if (xDoCarro[i] - 60 >= 0)
-                            {
-                                xDoCarro[i] -= 60;
-                                quadrante = 2;
-                            }
-                            else if (yDoCarro[i] - 60 >= 0)
-                            {
-                                yDoCarro[i] -= 60;
-                                quadrante = 3;
-                            }
+                                mudaIFparaMG(meuMundo, (int) ((handleCarro4.getxAtual() + 6) / 6.5),  (int) ((handleCarro4.getyAtual() + 7) / 6.5));
                             else
-                            {
-                                quadrante = 1;
-                            }
-
-                            meuMundo.insereVeiculoNoMundo(xDoCarro[i], yDoCarro[i], quadrante);
-
-                            System.out.println(xDoCarro[i] + " " + yDoCarro[i] + " " + quadrante);
+                                mudaIFparaMG(meuMundo, (int) ((handleCarro5.getxAtual() + 6) / 6.5),  (int) ((handleCarro5.getyAtual() + 7) / 6.5));
                         }
 
-
-                        if (semaforosHabilitados)
+                        /// Se os semáforos não estiverem habilitados todos os carros podem se mover
+                        if (!semaforosHabilitados)
+                        {
+                            for(int i = 0; i < quantidadeDeCarros; i++)
+                            {
+                                podeMover[i] = true;
+                            }
+                        }
+                        else
                         {
                             int xDoSemaforo, yDoSemaforo;
 
@@ -612,46 +634,10 @@ public class AreaPrincipalController implements Initializable {
                             /// Coloca os semaforos na interface gráfica
                             colocaSemaforoNoMapa();
 
-                            boolean temSemaforo;
-
-                            /// Carro verifica se tem semaforo do lado e se tiver verifica a cor
+                            /// Verifica cada se carro tem semaforo do lado e se tiver verifica a cor
                             for (int k = 0; k < quantidadeDeCarros; k++)
                             {
-                                temSemaforo = false;
-                                for (int i = 0; i < listaDeInteseccao.size(); i++)
-                                {
-                                    for (int j = 0; j < listaDeInteseccao.get(i).getListaSemaforos().size(); j++)
-                                    {
-
-                                        xDoSemaforo = listaDeInteseccao.get(i).getListaSemaforos().get(j).getX();
-                                        yDoSemaforo = listaDeInteseccao.get(i).getListaSemaforos().get(j).getY();
-
-                                        if (xDoCarro[k] == xDoSemaforo && yDoCarro[k] + 1 == yDoSemaforo)
-                                        {
-                                            temSemaforo = true;
-                                            podeMover[k] = listaDeInteseccao.get(i).getListaSemaforos().get(j).getVerde();
-                                        }
-                                        else if (xDoCarro[k] == xDoSemaforo && yDoCarro[k] - 1 == yDoSemaforo)
-                                        {
-                                            temSemaforo = true;
-                                            podeMover[k] = listaDeInteseccao.get(i).getListaSemaforos().get(j).getVerde();
-                                        }
-                                        else if (xDoCarro[k] + 1 == xDoSemaforo && yDoCarro[k] == yDoSemaforo)
-                                        {
-                                            temSemaforo = true;
-                                            podeMover[k] = listaDeInteseccao.get(i).getListaSemaforos().get(j).getVerde();
-                                        }
-                                        else if (xDoCarro[k] - 1 == xDoSemaforo && yDoCarro[k] == yDoSemaforo)
-                                        {
-                                            temSemaforo = true;
-                                            podeMover[k] = listaDeInteseccao.get(i).getListaSemaforos().get(j).getVerde();
-                                        }
-                                    }
-                                }
-                                if (!temSemaforo)
-                                {
-                                    podeMover[k] = true;
-                                }
+                                podeMover[k] = carroPodeAndar(xDoCarro[k], yDoCarro[k]);
                             }
                         }
                     }
