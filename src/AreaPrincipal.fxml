@@ -87,11 +87,11 @@
                         <Label alignment="CENTER" prefHeight="17.0" prefWidth="384.0" text="Semáforos:" textAlignment="CENTER" />
                         <HBox alignment="CENTER">
                            <children>
-                              <ToggleButton fx:id="botaoHabilitado" mnemonicParsing="false" onAction="#determinaSemaforosHabilitados" selected="true" text="HABILITADOS">
+                              <ToggleButton fx:id="botaoHabilitado" mnemonicParsing="false" onAction="#determinaSemaforosHabilitados" text="HABILITADOS">
                                  <toggleGroup>
                                     <ToggleGroup fx:id="toggleButton2Group" />
                                  </toggleGroup></ToggleButton>
-                              <ToggleButton fx:id="botaoNaoHabilitado" mnemonicParsing="false" onAction="#determinaSemaforosHabilitados" text="DESABILITADOS" toggleGroup="$toggleButton2Group" />
+                              <ToggleButton fx:id="botaoNaoHabilitado" mnemonicParsing="false" onAction="#determinaSemaforosHabilitados" selected="true" text="DESABILITADOS" toggleGroup="$toggleButton2Group" />
                            </children>
                            <padding>
                               <Insets bottom="5.0" top="5.0" />

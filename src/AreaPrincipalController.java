@@ -21,19 +21,17 @@ import java.util.ArrayList;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
-public class AreaPrincipalController implements Initializable {
-    /// Sempre executa esse metodo quando cria AreaPrincipalController para configurar os semaforos
-    @Override
-    public void initialize(URL location, ResourceBundle resources)
+public class AreaPrincipalController {
+
+    public void inicializaSemaforos()
     {
-        System.out.println("Inicializou o programa");
+        System.out.println("Inicializou o programa!");
         defineCoordenadaSemaforo();
         System.out.println("Criou lista de interseccoes");
         criaArrayDeImagens();
         System.out.println("Criou array de imagens");
         colocaSemaforoNoMapa();
         System.out.println("Semaforos Habilitados: true");
-
     }
 
     /// Determina a posição e a cor dos semaforos na interface gráfica
@@ -43,9 +41,11 @@ public class AreaPrincipalController implements Initializable {
 
         Image imgVerde = new Image("FarolVerde.png");
         Image imgVermelho = new Image("FarolVermelho.png");
+
         for (int i = 0; i < listaDeInteseccao.size(); i++)
         {
-            for (int j = 0; j < listaDeInteseccao.get(i).getListaSemaforos().size(); j++){
+            for (int j = 0; j < listaDeInteseccao.get(i).getListaSemaforos().size(); j++)
+            {
                 if (listaDeInteseccao.get(i).getListaSemaforos().get(j).getQuadrante() == 1)
                 {
                     vetorDeImagensDoSemaforo.get(cont).setLayoutX(listaDeInteseccao.get(i).getListaSemaforos().get(j).getX() * 6.5 - 4);
@@ -79,6 +79,28 @@ public class AreaPrincipalController implements Initializable {
                 vetorDeImagensDoSemaforo.get(cont).setVisible(true);
 
                 cont ++;
+            }
+        }
+    }
+
+    public void atualizaSemaforos()
+    {
+        Image imgVerde = new Image("FarolVerde.png");
+        Image imgVermelho = new Image("FarolVermelho.png");
+
+        for (int i = 0; i < listaDeInteseccao.size(); i++)
+        {
+            for (int j = 0; j < listaDeInteseccao.get(i).getListaSemaforos().size(); j++)
+            {
+
+                if (listaDeInteseccao.get(i).getListaSemaforos().get(j).getVerde())
+                {
+                    vetorDeImagensDoSemaforo.get(i).setImage(imgVerde);
+                }
+                else
+                {
+                    vetorDeImagensDoSemaforo.get(i).setImage(imgVermelho);
+                }
             }
         }
     }
@@ -330,6 +352,11 @@ public class AreaPrincipalController implements Initializable {
     {
         if(toggleButton2Group.getSelectedToggle().equals(botaoHabilitado))
         {
+            if(!inicializouSemaforos)
+            {
+                inicializaSemaforos();
+                inicializouSemaforos = true;
+            }
             semaforosHabilitados = true;
             colocaSemaforoNoMapa();
         }
@@ -355,7 +382,6 @@ public class AreaPrincipalController implements Initializable {
             if(ruaDestino.getText().equals("Rua 32"))
             {
                 ruaDestino.clear();
-                System.out.println("Erro 32");
                 erroRua32();
             }
 
@@ -1127,7 +1153,7 @@ public class AreaPrincipalController implements Initializable {
     public AreaPrincipalHandle handleCarro1, handleCarro2, handleCarro3, handleCarro4, handleCarro5;
     public boolean keepGoing = true, rotasDefinidas = true, semaforosHabilitados = true;
     public boolean popUpChegou1Exibido = false, popUpChegou2Exibido = false, popUpChegou3Exibido = false,
-            popUpChegou4Exibido = false, popUpChegou5Exibido = false;
+            popUpChegou4Exibido = false, popUpChegou5Exibido = false, inicializouSemaforos = false;
     public int quantidadeDeCarros = 1, rotasCalculadas = 0;
     public Menu menuArquivo, menuAjuda;
     public MenuItem itemNovo, itemFechar, itemSobre;
