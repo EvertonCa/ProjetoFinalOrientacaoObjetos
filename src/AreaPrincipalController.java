@@ -88,6 +88,8 @@ public class AreaPrincipalController {
         Image imgVerde = new Image("FarolVerde.png");
         Image imgVermelho = new Image("FarolVermelho.png");
 
+        int cont = 0;
+
         for (int i = 0; i < listaDeInteseccao.size(); i++)
         {
             for (int j = 0; j < listaDeInteseccao.get(i).getListaSemaforos().size(); j++)
@@ -95,12 +97,14 @@ public class AreaPrincipalController {
 
                 if (listaDeInteseccao.get(i).getListaSemaforos().get(j).getVerde())
                 {
-                    vetorDeImagensDoSemaforo.get(i).setImage(imgVerde);
+                    vetorDeImagensDoSemaforo.get(cont).setImage(imgVerde);
                 }
                 else
                 {
-                    vetorDeImagensDoSemaforo.get(i).setImage(imgVermelho);
+                    vetorDeImagensDoSemaforo.get(cont).setImage(imgVermelho);
                 }
+
+                cont++;
             }
         }
     }
@@ -673,7 +677,7 @@ public class AreaPrincipalController {
                             meuMundo.populaInterseccao(listaDeInteseccao);
 
                             /// Coloca os semaforos na interface gráfica
-                            colocaSemaforoNoMapa();
+                            atualizaSemaforos();
 
                             /// Verifica cada se carro tem semaforo do lado e se tiver verifica a cor
                             for (int k = 0; k < quantidadeDeCarros; k++)
