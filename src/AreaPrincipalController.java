@@ -4,7 +4,6 @@
 
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -14,15 +13,13 @@ import javafx.scene.layout.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Properties;
-import java.util.ResourceBundle;
 
 public class AreaPrincipalController {
 
+    /// Inicializa os semaforos na interface grafica.
     public void inicializaSemaforos()
     {
         System.out.println("Inicializou o programa!");
