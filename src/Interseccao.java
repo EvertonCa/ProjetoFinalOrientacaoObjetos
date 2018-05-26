@@ -14,6 +14,8 @@ public class Interseccao {
         this.listaSemaforos = litaSemaforos;
         this.descricao = descricao;
         this.contadorDeTempo = 0;
+        this.passandoCarro = false;
+        this.contPassandoCarro = 0;
     }
 
     /// Lógica para saber se os semáforos podem mudar de cor
@@ -55,19 +57,28 @@ public class Interseccao {
             }
         }
 
-        if (contVermelho == 0 && contVerde != 0)
+        if (!passandoCarro || contPassandoCarro > 7)
         {
-            contadorDeTempo = 0;
-        }
+            if (contVermelho == 0 && contVerde != 0)
+            {
+                contadorDeTempo = 0;
+                passandoCarro = true;
+            }
 
-        if (contVermelho != 0 && contVerde == 0 || contadorDeTempo >= listaSemaforos.get(0).getDuracao())
-        {
-            mudaCorVertice();
+            if (contVermelho != 0 && contVerde == 0 || contadorDeTempo >= listaSemaforos.get(0).getDuracao())
+            {
+                mudaCorVertice();
+            }
+            else
+            {
+                contadorDeTempo ++;
+            }
         }
         else
         {
-            contadorDeTempo ++;
+            contPassandoCarro ++;
         }
+
     }
 
     /// Método que muda a cor de todos os semáforos que estão no vertice
@@ -89,4 +100,6 @@ public class Interseccao {
     private List <Semaforo> listaSemaforos;
     private int descricao;
     private int contadorDeTempo;
+    private boolean passandoCarro;
+    private int contPassandoCarro;
 }
