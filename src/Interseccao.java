@@ -57,25 +57,24 @@ public class Interseccao {
             }
         }
 
-        if (!passandoCarro || contPassandoCarro > 7)
+        if (!passandoCarro || (passandoCarro && contPassandoCarro > 7))
         {
             if (contVermelho == 0 && contVerde != 0)
             {
-                contadorDeTempo = 0;
                 passandoCarro = true;
             }
-
-            if (contVermelho != 0 && contVerde == 0 || contadorDeTempo >= listaSemaforos.get(0).getDuracao()) {
-                if (contVermelho != 0 && contVerde == 0) {
-                    passandoCarro = true;
-                } else
-                {
-                    passandoCarro = false;
-                }
+            else if (contVermelho != 0 && contVerde == 0) {
+                passandoCarro = true;
+                mudaCorVertice();
+            }
+            else if (contadorDeTempo >= listaSemaforos.get(0).getDuracao())
+            {
+                passandoCarro = false;
                 mudaCorVertice();
             }
             else
             {
+                passandoCarro = false;
                 contadorDeTempo ++;
             }
 
