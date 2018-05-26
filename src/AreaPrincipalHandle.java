@@ -4,6 +4,10 @@
 
 import javafx.scene.image.ImageView;
 import java.util.List;
+import java.util.ArrayList;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
 
 public class AreaPrincipalHandle {
 
@@ -207,7 +211,15 @@ public class AreaPrincipalHandle {
     public boolean isKeepGoing() {
         return keepGoing;
     }
-    
+
+    public double getyAtual() {
+        return yAtual;
+    }
+
+    public double getxAtual() {
+        return xAtual;
+    }
+
     protected GPS gps;
     protected AutoPilot tesla;
     protected List<CaminhoGUI> caminhosGUI;
