@@ -65,14 +65,21 @@ public class Interseccao {
                 passandoCarro = true;
             }
 
-            if (contVermelho != 0 && contVerde == 0 || contadorDeTempo >= listaSemaforos.get(0).getDuracao())
-            {
+            if (contVermelho != 0 && contVerde == 0 || contadorDeTempo >= listaSemaforos.get(0).getDuracao()) {
+                if (contVermelho != 0 && contVerde == 0) {
+                    passandoCarro = true;
+                } else
+                {
+                    passandoCarro = false;
+                }
                 mudaCorVertice();
             }
             else
             {
                 contadorDeTempo ++;
             }
+
+            contPassandoCarro = 0;
         }
         else
         {
